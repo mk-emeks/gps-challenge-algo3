@@ -8,9 +8,9 @@ public class EzeTest {
 
     @Test
     public void testDevolverMiNombreComoStrig(){
-        Eze referenciaAMirko = new Eze();
+        Eze referenciaAEze = new Eze();
 
-        Assert.assertEquals("Eze", referenciaAMirko.devolverMiNombre() );
+        Assert.assertEquals("Eze", referenciaAEze.devolverMiNombre() );
 
     }
 
