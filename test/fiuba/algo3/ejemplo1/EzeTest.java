@@ -14,4 +14,11 @@ public class EzeTest {
 
     }
 
+    @Test
+    public void testConNombreEquivocado() {
+        Eze referenciaAEze = new Eze();
+
+        Assert.assertNotSame("Pedro", referenciaAEze.devolverMiNombre());
+    }
+
 }
