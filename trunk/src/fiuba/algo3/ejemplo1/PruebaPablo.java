@@ -22,7 +22,7 @@ public class PruebaPablo {
         personas.add(eduardo);
         personas.add(mirko);
 
-        System.out.println("Ejemplo de programación contra interfaces:");
+        System.out.println("Ejemplo de programacion contra interfaces:");
         System.out.println("=========================================");
 
         for (Persona persona : personas) {
