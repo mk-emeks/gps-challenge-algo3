@@ -42,4 +42,12 @@ public class PosicionTest {
 
         Assert.assertFalse(posicionUno.comparar(posicionDos));
     }
+
+    @Test
+    public void testDeberiaPoderCalcularLaDistanciaEntreDosPosiciones() {
+        Posicion posicionUno = new Posicion (2.0,1.0);
+        Posicion posicionDos = new Posicion (3.0,1.0);
+
+        Assert.assertEquals(1.0, posicionUno.calcularDistancia(posicionDos));
+    }
 }

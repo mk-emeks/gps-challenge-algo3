@@ -52,6 +52,11 @@ public class Posicion {
         }
 
         return iguales;
+    }
 
+    public double calcularDistancia(Posicion unaPosicion) {
+        Posicion posicionResultante = this.restar(unaPosicion);
+        double distancia = (Math.pow(posicionResultante.getPosicionX(),2) + Math.pow(posicionResultante.getPosicionY(),2));
+        return Math.sqrt(distancia);
     }
 }
