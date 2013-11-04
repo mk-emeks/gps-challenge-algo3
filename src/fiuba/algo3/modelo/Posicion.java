@@ -3,31 +3,31 @@ package fiuba.algo3.modelo;
 
 public class Posicion {
 
-    private double posicionX;
-    private double posicionY;
+    private int posicionX;
+    private int posicionY;
 
     public Posicion() {
-        this.posicionX = 0.0;
-        this.posicionY = 0.0;
+        this.posicionX = 0;
+        this.posicionY = 0;
     }
 
-    public Posicion(double unaPosicionX, double unaPosicionY) {
+    public Posicion(int unaPosicionX, int unaPosicionY) {
         this.posicionX = unaPosicionX;
         this.posicionY = unaPosicionY;
     }
 
-    public double getPosicionX() {
+    public int getPosicionX() {
         return this.posicionX;
     }
 
-    public double getPosicionY() {
+    public int getPosicionY() {
         return this.posicionY;
     }
 
     public Posicion sumar(Posicion unaPosicion){
 
-        double posicionFinalX = (this.getPosicionX() + unaPosicion.getPosicionX());
-        double posicionFinalY = (this.getPosicionY() + unaPosicion.getPosicionY());
+        int posicionFinalX = (this.getPosicionX() + unaPosicion.getPosicionX());
+        int posicionFinalY = (this.getPosicionY() + unaPosicion.getPosicionY());
 
         Posicion posicionFinal = new Posicion(posicionFinalX, posicionFinalY);
         return posicionFinal;
@@ -35,8 +35,8 @@ public class Posicion {
 
     public Posicion restar(Posicion unaPosicion){
 
-        double posicionFinalX = (this.getPosicionX() - unaPosicion.getPosicionX());
-        double posicionFinalY = (this.getPosicionY() - unaPosicion.getPosicionY());
+        int posicionFinalX = (this.getPosicionX() - unaPosicion.getPosicionX());
+        int posicionFinalY = (this.getPosicionY() - unaPosicion.getPosicionY());
 
         Posicion posicionFinal = new Posicion(posicionFinalX, posicionFinalY);
         return posicionFinal;
