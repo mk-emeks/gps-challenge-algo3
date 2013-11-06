@@ -18,27 +18,27 @@ public class EnsambladorTest {
 
         unEnsablador.ensambleSimpleDeTablero(unTablero);
 
-        Casilla casillaEnsamblada = unTablero.getCasilla(1,1);
-        Casilla unVecino = unTablero.getCasilla(1,2);
-        Casilla otroVecino = unTablero.getCasilla(2,1);
+        Casilla casillaEnsamblada = unTablero.getCasilla(0,0);
+        Casilla unVecino = unTablero.getCasilla(0,1);
+        Casilla otroVecino = unTablero.getCasilla(1,0);
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(abajo),unVecino);
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(derecho),otroVecino);
 
-        casillaEnsamblada = unTablero.getCasilla(2,1);
-        unVecino = unTablero.getCasilla(2,2);
-        otroVecino = unTablero.getCasilla(1,2);
+        casillaEnsamblada = unTablero.getCasilla(1,0);
+        unVecino = unTablero.getCasilla(1,1);
+        otroVecino = unTablero.getCasilla(0,0);
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(abajo),unVecino);
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(izquierdo),otroVecino);
 
-        casillaEnsamblada = unTablero.getCasilla(1,2);
-        unVecino = unTablero.getCasilla(1,1);
-        otroVecino = unTablero.getCasilla(2,2);
+        casillaEnsamblada = unTablero.getCasilla(0,1);
+        unVecino = unTablero.getCasilla(0,0);
+        otroVecino = unTablero.getCasilla(1,1);
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(arriba),unVecino);
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(derecho),otroVecino);
 
-        casillaEnsamblada = unTablero.getCasilla(2,2);
-        unVecino = unTablero.getCasilla(1,2);
-        otroVecino = unTablero.getCasilla(2,1);
+        casillaEnsamblada = unTablero.getCasilla(1,1);
+        unVecino = unTablero.getCasilla(1,0);
+        otroVecino = unTablero.getCasilla(0,1);
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(arriba),unVecino);
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(izquierdo),otroVecino);
 
@@ -57,16 +57,34 @@ public class EnsambladorTest {
 
         unEnsablador.ensambleSimpleDeTablero(unTablero);
 
-        Casilla casillaEnsamblada = unTablero.getCasilla(2,2);
-        Casilla vecinoDerecho = unTablero.getCasilla(1,2);
-        Casilla vecinoIzquierdo = unTablero.getCasilla(3,2);
-        Casilla vecinoArriba = unTablero.getCasilla(2,1);
-        Casilla vecinoAbajo = unTablero.getCasilla(2,3);
+        Casilla casillaEnsamblada = unTablero.getCasilla(1,1);
+        Casilla vecinoDerecho = unTablero.getCasilla(2,1);
+        Casilla vecinoIzquierdo = unTablero.getCasilla(0,1);
+        Casilla vecinoArriba = unTablero.getCasilla(1,0);
+        Casilla vecinoAbajo = unTablero.getCasilla(1,2);
 
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(derecho),vecinoDerecho);
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(izquierdo),vecinoIzquierdo);
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(abajo),vecinoAbajo);
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(arriba),vecinoArriba);
+
+    }
+
+    /** deberia dar mal!!!! **/
+    @Test
+    public void testLaCasillaNoDeberiaTenerUnVecinoQueNoFueseConsecutivoEnElEnsableSimpleDeTablero() {
+
+
+        Direccion derecho = new DireccionDerecha();
+        Ensamblador unEnsablador = new Ensamblador();
+        Tablero unTablero = new Tablero (3,3);
+
+        unEnsablador.ensambleSimpleDeTablero(unTablero);
+
+        Casilla casillaEnsamblada = unTablero.getCasilla(1,1);
+        Casilla vecinoAbajo = unTablero.getCasilla(1,2);
+
+        Assert.assertNotSame(casillaEnsamblada.devolverSiguiente(derecho),vecinoAbajo);
 
     }
 }
