@@ -54,24 +54,26 @@ public class Casilla {
         listaDeVecinos = new ArrayList<Vecino>();
         this.estado = unEstado;
         this.contenido = null;
-
-
     }
 
     /** Metodos **/
 
     public Posicion devolverPosicion(){
-
         return this.posicion;
     }
 
     public void setEstado( EstadoCasilla unEstado){
-
         this.estado = unEstado;
     }
 
+    public EstadoCasilla getEstado() {
+        return this.estado;
+    }
+
     public void agregarContenido(Posicionable unContenido) {
-        this.contenido = unContenido;
+        if (this.getEstado().sosAlojable()) {
+            this.contenido = unContenido;
+        }
     }
 
     public Posicionable getContenido() {
@@ -86,16 +88,10 @@ public class Casilla {
         return (this.contenido == objeto);
     }
 
-     /**Meti mano aca porque necesito verificar una cosa**/
-    public EstadoCasilla getEstado() {
-        return this.estado;
-    }
-
     public void agregarSiguiente(Casilla unaCasilla, Direccion unaDireccion){
 
         Vecino nuevoVecino = new Vecino(unaCasilla,unaDireccion);
         this.listaDeVecinos.add(nuevoVecino);
-
     }
 
     /** temporal; inecesario **/
