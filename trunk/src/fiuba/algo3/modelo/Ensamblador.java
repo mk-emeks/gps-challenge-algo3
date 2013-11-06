@@ -41,18 +41,17 @@ public class Ensamblador {
             for (int fil = 0 ; fil <= maxFilas ; fil++ ) {
 
                 casilla = tablero.getCasilla(col,fil);
-
                 if ( col == 0 )  { this.ensambleSimpleDeCasilla(casilla,tablero,derecho); }
                 if ( col == maxColumnas ) { this.ensambleSimpleDeCasilla(casilla,tablero,izquierdo); }
                 if ( fil == 0 )  { this.ensambleSimpleDeCasilla(casilla,tablero,abajo); }
                 if ( fil == maxFilas ) { this.ensambleSimpleDeCasilla(casilla,tablero,arriba); }
                 if ( ( col != 0 ) && (col != maxColumnas) ) {
-                    this.ensambleSimpleDeCasilla(casilla,tablero,arriba);
-                    this.ensambleSimpleDeCasilla(casilla,tablero,abajo);
-                }
-                if ( ( fil != 0 ) && (fil != maxFilas) ) {
                     this.ensambleSimpleDeCasilla(casilla,tablero,derecho);
                     this.ensambleSimpleDeCasilla(casilla,tablero,izquierdo);
+                }
+                if ( ( fil != 0 ) && (fil != maxFilas) ) {
+                    this.ensambleSimpleDeCasilla(casilla,tablero,arriba);
+                    this.ensambleSimpleDeCasilla(casilla,tablero,abajo);
                 }
             }
         }

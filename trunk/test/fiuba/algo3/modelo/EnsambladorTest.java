@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class EnsambladorTest {
 
-    /**probamos los casos bordes **/
+    /**probamos el caso del tablero minimo **/
     @Test
     public void testDeberiaQuedarEnsambladoElTableroMasPequeñoPermitidoDeFormaSimple() {
 
@@ -68,9 +68,54 @@ public class EnsambladorTest {
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(abajo),vecinoAbajo);
         Assert.assertEquals(casillaEnsamblada.devolverSiguiente(arriba),vecinoArriba);
 
+
     }
 
-    /** deberia dar mal!!!! **/
+    /** probamos el caso del borde derecho horizontal **/
+    @Test
+    public void testDeberiaQuedarEnsambladoElTableroDeFormaSimpleTalQueLaCasillaDelBordeDerechoTuvieseSusRespectivos3Siguientes() {
+
+        Direccion arriba = new DireccionArriba();
+        Direccion abajo = new DireccionAbajo();
+        Direccion derecho = new DireccionDerecha();
+        Ensamblador unEnsablador = new Ensamblador();
+        Tablero unTablero = new Tablero (3,3);
+
+        unEnsablador.ensambleSimpleDeTablero(unTablero);
+
+        Casilla casillaEnsamblada = unTablero.getCasilla(0,1);
+        Casilla vecinoDerecho = unTablero.getCasilla(1,1);
+        Casilla vecinoArriba = unTablero.getCasilla(0,0);
+        Casilla vecinoAbajo = unTablero.getCasilla(0,2);
+
+        Assert.assertEquals(casillaEnsamblada.devolverSiguiente(derecho),vecinoDerecho);
+        Assert.assertEquals(casillaEnsamblada.devolverSiguiente(abajo),vecinoAbajo);
+        Assert.assertEquals(casillaEnsamblada.devolverSiguiente(arriba),vecinoArriba);
+    }
+
+    /** probamos el caso del borde de arriba  **/
+    @Test
+    public void testDeberiaQuedarEnsambladoElTableroDeFormaSimpleTalQueLaCasillaDelBordeDeArribaTuvieseSusRespectivos3Siguientes() {
+
+        Direccion abajo = new DireccionAbajo();
+        Direccion derecho = new DireccionDerecha();
+        Direccion izquierdo = new DireccionIzquierda();
+        Ensamblador unEnsablador = new Ensamblador();
+        Tablero unTablero = new Tablero (3,3);
+
+        unEnsablador.ensambleSimpleDeTablero(unTablero);
+
+        Casilla casillaEnsamblada = unTablero.getCasilla(1,0);
+        Casilla vecinoDerecho = unTablero.getCasilla(2,0);
+        Casilla vecinoIzquierdo = unTablero.getCasilla(0,0);
+        Casilla vecinoAbajo = unTablero.getCasilla(1,1);
+
+        Assert.assertEquals(casillaEnsamblada.devolverSiguiente(derecho),vecinoDerecho);
+        Assert.assertEquals(casillaEnsamblada.devolverSiguiente(izquierdo),vecinoIzquierdo);
+        Assert.assertEquals(casillaEnsamblada.devolverSiguiente(abajo),vecinoAbajo);
+
+    }
+
     @Test
     public void testLaCasillaNoDeberiaTenerUnVecinoQueNoFueseConsecutivoEnElEnsableSimpleDeTablero() {
 
@@ -87,4 +132,5 @@ public class EnsambladorTest {
         Assert.assertNotSame(casillaEnsamblada.devolverSiguiente(derecho),vecinoAbajo);
 
     }
+
 }
