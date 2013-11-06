@@ -6,11 +6,11 @@ public class Tablero {
     private int tamanioFila;
     private Casilla[][] mapa;
 
-    public Tablero (int cuadrasPorFila,int cuadrasPorColumna) {
+    public Tablero (int cantidadFilas,int cantidadColumnas) {
 
-        this.mapa = new Casilla[cuadrasPorFila][cuadrasPorColumna];
-        this.tamanioFila = cuadrasPorFila ;
-        this.tamanioColumna = cuadrasPorColumna ;
+        this.mapa = new Casilla[cantidadFilas][cantidadColumnas];
+        this.tamanioFila = cantidadFilas ;
+        this.tamanioColumna = cantidadColumnas ;
         for (int i = 0; i < this.tamanioFila; i++) {
             for (int j = 0; j < this.tamanioColumna; j++) {
                 Posicion unaPosicion = new Posicion(i,j);
@@ -32,7 +32,16 @@ public class Tablero {
         return this.mapa[x][y];
     }
 
-       /*this.tamanioFila = (2*cuadrasPorFila -1);
+    public int cantidadDeFilas() {
+        return this.tamanioFila;
+    }
+
+    public int cantidadDeColumnas() {
+        return this.tamanioColumna;
+    }
+
+}
+         /*this.tamanioFila = (2*cuadrasPorFila -1);
         this.tamanioColumna = (2*cuadrasPorColumna -1);
         this.mapa = new Casilla[tamanioFila][tamanioColumna];
 
@@ -41,5 +50,4 @@ public class Tablero {
                 Posicion unaPosicion = new Posicion(i,j);
                 this.mapa[i][j] = new Casilla(unaPosicion);
             }
-        } */ //*logica para el que pinta//*
-}
+        }  */ //*logica para el que pinta//*

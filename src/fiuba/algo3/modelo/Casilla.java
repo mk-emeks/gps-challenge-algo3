@@ -69,6 +69,11 @@ public class Casilla {
         this.estado = unEstado;
     }
 
+     /**Meti mano aca porque necesito verificar una cosa**/
+    public EstadoCasilla getEstado() {
+        return this.estado;
+    }
+
     public void agregarSiguiente(Casilla unaCasilla, Direccion unaDireccion){
 
         Vecino nuevoVecino = new Vecino(unaCasilla,unaDireccion);
