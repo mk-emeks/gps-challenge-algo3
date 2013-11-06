@@ -81,5 +81,31 @@ public class CasillaTest {
         casillaDePrueba.devolverSiguiente(abajo);
     }
 
+    @Test
+    public void testDeberiaAgregarUnContenido() {
+        Posicion posicion = new Posicion(1,2);
+        Direccion direccion = new DireccionDerecha();
+        Piloto piloto = new Piloto();
+        Auto auto = new Auto(direccion,posicion,piloto);
+        EstadoCalle estado = new EstadoCalle();
+        Casilla casilla = new Casilla(posicion,estado);
+        casilla.agregarContenido(auto);
+
+        Assert.assertTrue(casilla.estaOcupada());
+    }
+
+    @Test
+    public void testNoDeberiaAgregarElContenidoEnCasillaCuadra() {
+        Posicion posicion = new Posicion(1,2);
+        Direccion direccion = new DireccionDerecha();
+        Piloto piloto = new Piloto();
+        Auto auto = new Auto(direccion,posicion,piloto);
+        EstadoCuadra estado = new EstadoCuadra();
+        Casilla casilla = new Casilla(posicion,estado);
+        casilla.agregarContenido(auto);
+
+        Assert.assertFalse(casilla.estaOcupada());
+    }
+
 
 }

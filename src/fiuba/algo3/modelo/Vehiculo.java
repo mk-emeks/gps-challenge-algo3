@@ -1,7 +1,7 @@
 package fiuba.algo3.modelo;
 
 
-public abstract class Vehiculo implements Posicionable, Intersectable {
+public abstract class Vehiculo implements Posicionable, Interceptable {
 
     private Posicion posicion;
     private Direccion direccion;
@@ -33,5 +33,13 @@ public abstract class Vehiculo implements Posicionable, Intersectable {
         return this.piloto;
     }
 
+    public void ponerEn(Tablero tablero) {
+        int x = this.getPosicion().getPosicionX();
+        int y = this.getPosicion().getPosicionY();
+        Casilla casillaContenedora = tablero.getCasilla(x,y);
+        if (casillaContenedora.getEstado().sosAlojable()) {
+            casillaContenedora.agregarContenido(this);
+        }
+    }
 
 }
