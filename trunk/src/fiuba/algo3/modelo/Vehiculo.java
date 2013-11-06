@@ -37,9 +37,7 @@ public abstract class Vehiculo implements Posicionable, Interceptable {
         int x = this.getPosicion().getPosicionX();
         int y = this.getPosicion().getPosicionY();
         Casilla casillaContenedora = tablero.getCasilla(x,y);
-        if (casillaContenedora.getEstado().sosAlojable()) {
-            casillaContenedora.agregarContenido(this);
-        }
+        casillaContenedora.agregarContenido(this);
     }
 
 }
