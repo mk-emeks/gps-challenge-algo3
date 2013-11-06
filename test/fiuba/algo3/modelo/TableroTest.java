@@ -17,7 +17,7 @@ public class TableroTest {
     @Test
     public void deberiaCrearCasillasEnLaUltimaPosicionCorrespondienteSegunLosParametros() {
         Tablero tablero = new Tablero(12,11);
-        Assert.assertNotNull(tablero.getCasilla(22,20));
+        Assert.assertNotNull(tablero.getCasilla(11,10));
 
     }
 
