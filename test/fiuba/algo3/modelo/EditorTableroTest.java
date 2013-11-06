@@ -8,10 +8,11 @@ public class EditorTableroTest {
     @Test
     public void testDeberiaDarleUnFormatoSimpleAUnTablero() {
         Tablero unTablero = new Tablero(4,4);
-        EditorTablero pintor = new EditorTablero();
+        EditorTablero editor = new EditorTablero();
 
-        pintor.darFormatoSimpleA(unTablero);
+        editor.darFormatoSimpleA(unTablero);
 
         Assert.assertTrue(unTablero.getCasilla(0,1).getEstado().sosAlojable());
+        Assert.assertEquals(unTablero.getCasilla(0,1).devolverSiguiente(new DireccionAbajo()), unTablero.getCasilla(0,2));
     }
 }
