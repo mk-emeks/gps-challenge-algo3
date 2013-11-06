@@ -41,13 +41,3 @@ public class Tablero {
     }
 
 }
-         /*this.tamanioFila = (2*cuadrasPorFila -1);
-        this.tamanioColumna = (2*cuadrasPorColumna -1);
-        this.mapa = new Casilla[tamanioFila][tamanioColumna];
-
-        for (int i = 0; i < this.tamanioFila; i++) {
-            for (int j = 0; j < this.tamanioColumna; j++) {
-                Posicion unaPosicion = new Posicion(i,j);
-                this.mapa[i][j] = new Casilla(unaPosicion);
-            }
-        }  */ //*logica para el que pinta//*

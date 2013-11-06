@@ -9,8 +9,9 @@ public class CuatroPorCuatroTest {
     public void testDeberiaCrearLaMotoConLaPosicionIndicada() {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        Piloto piloto = new Piloto();
-        CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion,piloto);
+        //Piloto piloto = new Piloto();
+        //CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion,piloto);
+        CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion);
 
         Assert.assertEquals(posicion, cuatroPorCuatro.getPosicion());
     }
@@ -19,8 +20,9 @@ public class CuatroPorCuatroTest {
     public void testDeberiaCrearLaMotoConLaDireccionIndicada() {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        Piloto piloto = new Piloto();
-        CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion,piloto);
+        //Piloto piloto = new Piloto();
+        //CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion,piloto);
+        CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion);
 
         Assert.assertEquals(direccion,cuatroPorCuatro.getDireccion());
     }
@@ -29,8 +31,9 @@ public class CuatroPorCuatroTest {
     public void testDeberiaColocarElVehiculoEnElTablero() {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        Piloto piloto = new Piloto();
-        CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion,piloto);
+        //Piloto piloto = new Piloto();
+        //CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion,piloto);
+        CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion);
         Tablero unTablero = new Tablero(12,11);
         Pintor unPintor = new Pintor();
         unPintor.pintarTableroSimple(unTablero);
@@ -43,8 +46,9 @@ public class CuatroPorCuatroTest {
     public void testNoDeberiaColocarElVehiculoEnElTableroPorSerCasillaCuadra() {
         Posicion posicion = new Posicion(0,0);
         Direccion direccion = new DireccionDerecha();
-        Piloto piloto = new Piloto();
-        CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion,piloto);
+        //Piloto piloto = new Piloto();
+        //CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion,piloto);
+        CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion);
         Tablero unTablero = new Tablero(12,11);
         Pintor unPintor = new Pintor();
         unPintor.pintarTableroSimple(unTablero);
