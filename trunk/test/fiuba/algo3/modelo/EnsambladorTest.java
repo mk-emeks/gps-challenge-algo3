@@ -1,11 +1,7 @@
 package fiuba.algo3.modelo;
 
-import junit.extensions.TestSetup;
 import junit.framework.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
 
 public class EnsambladorTest {
 
