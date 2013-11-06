@@ -5,13 +5,6 @@ public abstract class Vehiculo implements Movible, Interceptable {
 
     private Posicion posicion;
     private Direccion direccion;
-    //private Piloto piloto;
-
-    /*public Vehiculo(Direccion unaDireccion, Posicion unaPosicion, Piloto unPiloto) {
-        this.posicion = unaPosicion;
-        this.direccion = unaDireccion;
-        this.piloto = unPiloto;
-    } */
 
     public Vehiculo(Direccion unaDireccion, Posicion unaPosicion) {
         this.posicion = unaPosicion;
@@ -33,10 +26,6 @@ public abstract class Vehiculo implements Movible, Interceptable {
     public void setDireccion(Direccion dir) {
         this.direccion = dir;
     }
-
-    /*public Piloto getPiloto() {
-        return this.piloto;
-    }*/
 
     /** por implementar interfaz **/
 
@@ -60,11 +49,13 @@ public abstract class Vehiculo implements Movible, Interceptable {
 
         Casilla casillaActual =  this.devolverCasillaDondeEstoy(tablero);
 
-        Casilla casillaNueva = casillaActual.devolverSiguiente(unaDireccion);
+        Posicion avance = unaDireccion.devolverComoPosicion();
+        Posicion posicionNueva = casillaActual.devolverPosicion().sumar(avance);
 
-        Posicion posicionNueva = casillaNueva.devolverPosicion();
+        Casilla casillaNueva = tablero.getCasilla(posicionNueva.getPosicionX(),posicionNueva.getPosicionY());
+
+
         this.setPosicion(posicionNueva);
-
         casillaNueva.agregarContenido(this);
 
         casillaActual.sacarContenido();
