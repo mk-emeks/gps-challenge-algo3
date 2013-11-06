@@ -33,8 +33,8 @@ public class Ensamblador {
     /** el ensamble simple deja a las casillas de un tablero conectadas de forma convencional **/
     public void ensambleSimpleDeTablero(Tablero tablero){
 
-        int maxColumnas = tablero.cantidadDeColumnas()-1;
-        int maxFilas = tablero.cantidadDeFilas()-1;
+        int maxColumnas = (tablero.cantidadDeColumnas()-1);
+        int maxFilas = (tablero.cantidadDeFilas()-1);
 
         for (int col = 0 ; col <= maxColumnas ; col++) {
 
@@ -42,15 +42,15 @@ public class Ensamblador {
 
                 casilla = tablero.getCasilla(col,fil);
 
-                if ( col == 1 )  { this.ensambleSimpleDeCasilla(casilla,tablero,derecho); }
+                if ( col == 0 )  { this.ensambleSimpleDeCasilla(casilla,tablero,derecho); }
                 if ( col == maxColumnas ) { this.ensambleSimpleDeCasilla(casilla,tablero,izquierdo); }
-                if ( fil == 1 )  { this.ensambleSimpleDeCasilla(casilla,tablero,abajo); }
+                if ( fil == 0 )  { this.ensambleSimpleDeCasilla(casilla,tablero,abajo); }
                 if ( fil == maxFilas ) { this.ensambleSimpleDeCasilla(casilla,tablero,arriba); }
-                if ( ( col != 1 ) && (col != maxColumnas) ) {
+                if ( ( col != 0 ) && (col != maxColumnas) ) {
                     this.ensambleSimpleDeCasilla(casilla,tablero,arriba);
                     this.ensambleSimpleDeCasilla(casilla,tablero,abajo);
                 }
-                if ( ( fil != 1 ) && (fil != maxFilas) ) {
+                if ( ( fil != 0 ) && (fil != maxFilas) ) {
                     this.ensambleSimpleDeCasilla(casilla,tablero,derecho);
                     this.ensambleSimpleDeCasilla(casilla,tablero,izquierdo);
                 }
