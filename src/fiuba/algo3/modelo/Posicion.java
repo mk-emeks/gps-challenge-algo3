@@ -45,13 +45,9 @@ public class Posicion {
 
     //Compara solo coordenadas.
     public boolean comparar(Posicion unaPosicion) {
-        boolean iguales = false;
 
-        if ( (this.getPosicionX() == unaPosicion.getPosicionX()) && (this.getPosicionX() == unaPosicion.getPosicionX())) {
-            iguales = true;
-        }
+        return ( (this.getPosicionX() == unaPosicion.getPosicionX()) && (this.getPosicionX() == unaPosicion.getPosicionX()));
 
-        return iguales;
     }
 
     public double calcularDistancia(Posicion unaPosicion) {
