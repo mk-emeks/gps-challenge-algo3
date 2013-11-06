@@ -34,8 +34,7 @@ public class Casilla {
 
     /**Atributos**/
 
-    private ArrayList<Vecino> listaDeVecinos = new ArrayList<Vecino>();
-    private ListIterator<Vecino> iterador = listaDeVecinos.listIterator();
+    private ArrayList<Vecino> listaDeVecinos;
     private Posicion posicion;
     private EstadoCasilla estado;
 
@@ -44,6 +43,7 @@ public class Casilla {
     public Casilla (Posicion unaPosicion) {
 
         this.posicion = unaPosicion;
+        listaDeVecinos = new ArrayList<Vecino>();
 
 
     }
@@ -51,7 +51,9 @@ public class Casilla {
     public Casilla (Posicion unaPosicion , EstadoCasilla unEstado) {
 
         this.posicion = unaPosicion;
+        listaDeVecinos = new ArrayList<Vecino>();
         this.estado = unEstado;
+
 
     }
 
@@ -81,23 +83,27 @@ public class Casilla {
         return !(listaDeVecinos.isEmpty());
     }
 
-    /**version Beta**/
     public Casilla devolverSiguiente(Direccion unaDireccion) throws LaCasillaNoTieneSiguienteEnNingunaDireccion , LaCasillaNoTieneElSiguientePedido {
 
-        Casilla casillaBuscada = null;
+        //Casilla casillaBuscada = null;
+        ListIterator<Vecino> iterador = listaDeVecinos.listIterator();
         if ( !(listaDeVecinos.isEmpty()) ) {
 
+            while (iterador.hasNext()) {
             Vecino vecino = iterador.next();
-            if ( vecino.devolverDireccion().esIgualA(unaDireccion) ) {
+                if ( vecino.devolverDireccion().esIgualA(unaDireccion) ) {
 
-                casillaBuscada = vecino.devolverCasilla();
+                    //casillaBuscada = vecino.devolverCasilla();
+                    return vecino.devolverCasilla();
+                }
+            }
+        throw new LaCasillaNoTieneElSiguientePedido("la casilla no posee el siguiente requerido");
 
-            } else  { throw new LaCasillaNoTieneElSiguientePedido("la casilla no posee el siguiente requerido"); }
+        } else {
+            throw new LaCasillaNoTieneSiguienteEnNingunaDireccion("la casilla se encuentra aislada");
+        }
 
-
-        } else { throw new LaCasillaNoTieneSiguienteEnNingunaDireccion("la casilla se encuentra aislada"); }
-
-        return casillaBuscada;
+        //return casillaBuscada;
     }
 
 }

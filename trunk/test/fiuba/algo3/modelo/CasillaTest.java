@@ -3,11 +3,13 @@ package fiuba.algo3.modelo;
 import junit.framework.Assert;
 import org.junit.Test;
 
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
+
 public class CasillaTest {
 
-    @Test
-
     /** temporal; su fin era para ir probando por pasos, la verdad que el metodo tenesSiguiente es incesario **/
+    @Test
     public void testDeberiaAgregarseUnaCasillaSiguiente() {
 
         Posicion unaPosicion = new Posicion(1,1);
@@ -19,10 +21,12 @@ public class CasillaTest {
         Casilla casillaDeAbajo = new Casilla(otraPosicion);
 
         casillaDePrueba.agregarSiguiente(casillaDeAbajo,abajo);
+
         Assert.assertTrue(casillaDePrueba.tenesSiguiente());
 
     }
 
+    @Test
     public void testDeberiaDevolverCasillaSiguiente() {
 
         Posicion unaPosicion = new Posicion(1,1);
@@ -41,7 +45,10 @@ public class CasillaTest {
     }
 
     /** tiene un siguiente, pero no en la direccion que se solicita **/
-    public void testDeberiaLanzarExcepcionLaCasillaNoTieneElSiguientePedido() {
+    @Rule
+    public  ExpectedException thrown1 = ExpectedException.none();
+    @Test
+    public void testDeberiaLanzarExcepcionLaCasillaNoTieneElSiguientePedido() throws LaCasillaNoTieneElSiguientePedido  {
 
         Posicion unaPosicion = new Posicion(1,1);
         Posicion otraPosicion = new Posicion(1,2);
@@ -54,24 +61,24 @@ public class CasillaTest {
 
         casillaDePrueba.agregarSiguiente(casillaDeAbajo,abajo);
 
-        /** nose como probar excepciones en java; deberua saltar con la condicion comentada aca abajo**/
-        //casillaDePrueba.devolverSiguiente(arriba)
+        thrown1.expect(LaCasillaNoTieneElSiguientePedido.class);
+        casillaDePrueba.devolverSiguiente(arriba);
 
     }
 
     /** tiene un siguiente, pero no en la direccion que se solicita **/
-    public void testDeberiaLanzarExcepcionLaCasillaNoTieneSiguienteEnNingunaDireccion() {
+    @Rule
+    public  ExpectedException thrown2 = ExpectedException.none();
+    @Test
+    public void testDeberiaLanzarExcepcionLaCasillaNoTieneSiguienteEnNingunaDireccion() throws LaCasillaNoTieneSiguienteEnNingunaDireccion   {
 
         Posicion unaPosicion = new Posicion(1,1);
-        Posicion otraPosicion = new Posicion(1,2);
-
         Direccion abajo = new DireccionAbajo();
-
 
         Casilla casillaDePrueba = new Casilla(unaPosicion);
 
-        /** nose como probar excepciones en java; deberua saltar con la condicion comentada aca abajo**/
-        //casillaDePrueba.devolverSiguiente(abajo)
+        thrown2.expect(LaCasillaNoTieneSiguienteEnNingunaDireccion.class);
+        casillaDePrueba.devolverSiguiente(abajo);
     }
 
 
