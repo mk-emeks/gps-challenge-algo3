@@ -37,15 +37,15 @@ public class Casilla {
     private ArrayList<Vecino> listaDeVecinos;
     private Posicion posicion;
     private EstadoCasilla estado;
+    private Posicionable contenido;
 
      /** Constructores **/
 
     public Casilla (Posicion unaPosicion) {
 
         this.posicion = unaPosicion;
-        listaDeVecinos = new ArrayList<Vecino>();
-
-
+        this.listaDeVecinos = new ArrayList<Vecino>();
+        this.contenido = null;
     }
 
     public Casilla (Posicion unaPosicion , EstadoCasilla unEstado) {
@@ -53,6 +53,7 @@ public class Casilla {
         this.posicion = unaPosicion;
         listaDeVecinos = new ArrayList<Vecino>();
         this.estado = unEstado;
+        this.contenido = null;
 
 
     }
@@ -67,6 +68,22 @@ public class Casilla {
     public void setEstado( EstadoCasilla unEstado){
 
         this.estado = unEstado;
+    }
+
+    public void agregarContenido(Posicionable unContenido) {
+        this.contenido = unContenido;
+    }
+
+    public Posicionable getContenido() {
+        return this.contenido;
+    }
+
+    public boolean estaOcupada() {
+        return (this.contenido != null);
+    }
+
+    public boolean contiene(Posicionable objeto) {
+        return (this.contenido == objeto);
     }
 
      /**Meti mano aca porque necesito verificar una cosa**/

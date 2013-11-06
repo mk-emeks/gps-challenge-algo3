@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo;
 
-public interface Intersectable {
+public interface Interceptable {
 
     //TO DO luego de poder poner todos los Posicionables en el Tablero
     //esta interface la implementan los vehiculos. Podria sumarse algun parametro.
