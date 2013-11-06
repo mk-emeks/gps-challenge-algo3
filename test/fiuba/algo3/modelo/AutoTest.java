@@ -9,8 +9,9 @@ public class AutoTest {
     public void testDeberiaCrearElAutoConLaPosicionIndicada() {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        Piloto piloto = new Piloto();
-        Auto auto = new Auto(direccion,posicion,piloto);
+        //Piloto piloto = new Piloto();
+        //Auto auto = new Auto(direccion,posicion,piloto);
+        Auto auto = new Auto(direccion,posicion);
 
         Assert.assertEquals(posicion,auto.getPosicion());
     }
@@ -19,8 +20,9 @@ public class AutoTest {
     public void testDeberiaCrearElAutoConLaDireccionIndicada() {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        Piloto piloto = new Piloto();
-        Auto auto = new Auto(direccion,posicion,piloto);
+        //Piloto piloto = new Piloto();
+        //Auto auto = new Auto(direccion,posicion,piloto);
+        Auto auto = new Auto(direccion,posicion);
 
         Assert.assertEquals(direccion,auto.getDireccion());
     }
@@ -29,8 +31,9 @@ public class AutoTest {
     public void testDeberiaColocarElVehiculoEnElTablero() {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        Piloto piloto = new Piloto();
-        Auto auto = new Auto(direccion,posicion,piloto);
+        //Piloto piloto = new Piloto();
+        //Auto auto = new Auto(direccion,posicion,piloto);
+        Auto auto = new Auto(direccion,posicion);
         Tablero unTablero = new Tablero(12,11);
         Pintor unPintor = new Pintor();
         unPintor.pintarTableroSimple(unTablero);
@@ -43,8 +46,9 @@ public class AutoTest {
     public void testNoDeberiaColocarElVehiculoEnElTableroPorSerCasillaCuadra() {
         Posicion posicion = new Posicion(0,0);
         Direccion direccion = new DireccionDerecha();
-        Piloto piloto = new Piloto();
-        Auto auto = new Auto(direccion,posicion,piloto);
+        //Piloto piloto = new Piloto();
+        //Auto auto = new Auto(direccion,posicion,piloto);
+        Auto auto = new Auto(direccion,posicion);
         Tablero unTablero = new Tablero(12,11);
         Pintor unPintor = new Pintor();
         unPintor.pintarTableroSimple(unTablero);

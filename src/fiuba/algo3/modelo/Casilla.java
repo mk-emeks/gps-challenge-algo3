@@ -58,10 +58,12 @@ public class Casilla {
 
     /** Metodos **/
 
+    // manejo de la Posicion
     public Posicion devolverPosicion(){
         return this.posicion;
     }
 
+    // manejo del estado
     public void setEstado( EstadoCasilla unEstado){
         this.estado = unEstado;
     }
@@ -70,10 +72,19 @@ public class Casilla {
         return this.estado;
     }
 
+    // manejo de los posicionables
+
+    /** (!) si se pasa un nuevo posicionable pisa el que estaba **/
     public void agregarContenido(Posicionable unContenido) {
         if (this.getEstado().sosAlojable()) {
             this.contenido = unContenido;
         }
+    }
+
+    public void sacarContenido() {
+
+        this.contenido = null;
+
     }
 
     public Posicionable getContenido() {
@@ -88,15 +99,17 @@ public class Casilla {
         return (this.contenido == objeto);
     }
 
+
+    /** metodos relacionados con los vecinos **/
+
     public void agregarSiguiente(Casilla unaCasilla, Direccion unaDireccion){
 
         Vecino nuevoVecino = new Vecino(unaCasilla,unaDireccion);
         this.listaDeVecinos.add(nuevoVecino);
     }
 
-    /** temporal; inecesario **/
 
-    public boolean tenesSiguiente(){
+    public boolean tenesSiguiente(){   // borrar junto con su prueba
 
         return !(listaDeVecinos.isEmpty());
     }

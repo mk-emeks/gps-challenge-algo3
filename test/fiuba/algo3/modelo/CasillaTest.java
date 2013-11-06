@@ -15,7 +15,6 @@ public class CasillaTest {
         Posicion unaPosicion = new Posicion(1,1);
         Posicion otraPosicion = new Posicion(1,2);
         Direccion abajo = new DireccionAbajo();
-        Direccion arriba = new DireccionArriba();
 
         Casilla casillaDePrueba = new Casilla(unaPosicion);
         Casilla casillaDeAbajo = new Casilla(otraPosicion);
@@ -85,8 +84,9 @@ public class CasillaTest {
     public void testDeberiaAgregarUnContenido() {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        Piloto piloto = new Piloto();
-        Auto auto = new Auto(direccion,posicion,piloto);
+        //Piloto piloto = new Piloto();
+        //Auto auto = new Auto(direccion,posicion,piloto);
+        Auto auto = new Auto(direccion,posicion);
         EstadoCalle estado = new EstadoCalle();
         Casilla casilla = new Casilla(posicion,estado);
         casilla.agregarContenido(auto);
@@ -95,11 +95,29 @@ public class CasillaTest {
     }
 
     @Test
+    public void testDeberiaQuitarUnContenido() {
+        Posicion posicion = new Posicion(1,2);
+        Direccion direccion = new DireccionDerecha();
+        //Piloto piloto = new Piloto();
+        //Auto auto = new Auto(direccion,posicion,piloto);
+        Auto auto = new Auto(direccion,posicion);
+        EstadoCalle estado = new EstadoCalle();
+        Casilla casilla = new Casilla(posicion,estado);
+        casilla.agregarContenido(auto);
+
+        Assert.assertTrue(casilla.estaOcupada());
+
+        casilla.sacarContenido();
+        Assert.assertFalse(casilla.estaOcupada());
+    }
+
+    @Test
     public void testNoDeberiaAgregarElContenidoEnCasillaCuadra() {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        Piloto piloto = new Piloto();
-        Auto auto = new Auto(direccion,posicion,piloto);
+        //Piloto piloto = new Piloto();
+        //Auto auto = new Auto(direccion,posicion,piloto);
+        Auto auto = new Auto(direccion,posicion);
         EstadoCuadra estado = new EstadoCuadra();
         Casilla casilla = new Casilla(posicion,estado);
         casilla.agregarContenido(auto);
