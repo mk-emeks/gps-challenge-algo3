@@ -7,10 +7,10 @@ public class Tablero {
     private Casilla[][] mapa;
 
     public Tablero (int cuadrasPorFila,int cuadrasPorColumna) {
-        this.tamanioFila = (2*cuadrasPorFila -1);
-        this.tamanioColumna = (2*cuadrasPorColumna -1);
-        this.mapa = new Casilla[tamanioFila][tamanioColumna];
 
+        this.mapa = new Casilla[cuadrasPorFila][cuadrasPorColumna];
+        this.tamanioFila = cuadrasPorFila ;
+        this.tamanioColumna = cuadrasPorColumna ;
         for (int i = 0; i < this.tamanioFila; i++) {
             for (int j = 0; j < this.tamanioColumna; j++) {
                 Posicion unaPosicion = new Posicion(i,j);
@@ -31,4 +31,15 @@ public class Tablero {
 
         return this.mapa[x][y];
     }
+
+       /*this.tamanioFila = (2*cuadrasPorFila -1);
+        this.tamanioColumna = (2*cuadrasPorColumna -1);
+        this.mapa = new Casilla[tamanioFila][tamanioColumna];
+
+        for (int i = 0; i < this.tamanioFila; i++) {
+            for (int j = 0; j < this.tamanioColumna; j++) {
+                Posicion unaPosicion = new Posicion(i,j);
+                this.mapa[i][j] = new Casilla(unaPosicion);
+            }
+        } */ //*logica para el que pinta//*
 }
