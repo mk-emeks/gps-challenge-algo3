@@ -46,7 +46,7 @@ public class Posicion {
     //Compara solo coordenadas.
     public boolean comparar(Posicion unaPosicion) {
 
-        return ( (this.getPosicionX() == unaPosicion.getPosicionX()) && (this.getPosicionX() == unaPosicion.getPosicionX()));
+        return ( (this.getPosicionX() == unaPosicion.getPosicionX()) && (this.getPosicionY() == unaPosicion.getPosicionY()));
 
     }
 
