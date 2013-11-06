@@ -9,8 +9,6 @@ public class MotoTest {
     public void testDeberiaCrearLaMotoConLaPosicionIndicada() {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        //Piloto piloto = new Piloto();
-        //Moto moto = new Moto(direccion,posicion,piloto);
         Moto moto = new Moto(direccion,posicion);
 
         Assert.assertEquals(posicion,moto.getPosicion());
@@ -20,8 +18,6 @@ public class MotoTest {
     public void testDeberiaCrearLaMotoConLaDireccionIndicada() {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        //Piloto piloto = new Piloto();
-        //Moto moto = new Moto(direccion,posicion,piloto);
         Moto moto = new Moto(direccion,posicion);
 
         Assert.assertEquals(direccion,moto.getDireccion());
@@ -31,8 +27,6 @@ public class MotoTest {
     public void testDeberiaColocarElVehiculoEnElTablero() {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        //Piloto piloto = new Piloto();
-        //Moto moto = new Moto(direccion,posicion,piloto);
         Moto moto = new Moto(direccion,posicion);
         Tablero unTablero = new Tablero(12,11);
         Pintor unPintor = new Pintor();
@@ -46,8 +40,6 @@ public class MotoTest {
     public void testNoDeberiaColocarElVehiculoEnElTableroPorSerCasillaCuadra() {
         Posicion posicion = new Posicion(0,0);
         Direccion direccion = new DireccionDerecha();
-        //Piloto piloto = new Piloto();
-        //Moto moto = new Moto(direccion,posicion,piloto);
         Moto moto = new Moto(direccion,posicion);
         Tablero unTablero = new Tablero(12,11);
         Pintor unPintor = new Pintor();
@@ -62,8 +54,6 @@ public class MotoTest {
     public void testDeberiaMoverseEnLaDireccionRequerida() {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        //Piloto piloto = new Piloto();
-        //Moto moto = new Moto(direccion,posicion,piloto);
         Moto moto = new Moto(direccion,posicion);
         Tablero unTablero = new Tablero(4,4);
         EditorTablero unEditor = new EditorTablero();

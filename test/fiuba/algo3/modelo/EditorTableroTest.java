@@ -13,6 +13,5 @@ public class EditorTableroTest {
         editor.darFormatoSimpleA(unTablero);
 
         Assert.assertTrue(unTablero.getCasilla(0,1).getEstado().sosAlojable());
-        Assert.assertEquals(unTablero.getCasilla(0,1).devolverSiguiente(new DireccionAbajo()), unTablero.getCasilla(0,2));
     }
 }
