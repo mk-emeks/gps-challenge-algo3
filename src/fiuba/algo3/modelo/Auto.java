@@ -6,8 +6,4 @@ public class Auto extends Vehiculo {
     public Auto(Direccion dir, Posicion pos, Piloto pilotin) {
         super(dir,pos,pilotin);
     }
-
-
-
-
 }
