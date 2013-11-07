@@ -3,6 +3,6 @@ package fiuba.algo3.modelo;
 
 public interface Movible extends Posicionable {
 
-    void moverEn(Tablero tablero, Direccion unaDireccion);
+    void moverEn(Tablero tablero) throws LaCasillaNoEsAlojable;
 
 }

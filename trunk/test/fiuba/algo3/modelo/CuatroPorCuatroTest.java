@@ -24,28 +24,28 @@ public class CuatroPorCuatroTest {
     }
 
     @Test
-    public void testDeberiaColocarElVehiculoEnElTablero() {
+    public void testDeberiaColocarElVehiculoEnElTablero() throws LaCasillaNoEsAlojable {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
         CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion);
         Tablero unTablero = new Tablero(12,11);
         Pintor unPintor = new Pintor();
         unPintor.pintarTableroSimple(unTablero);
-        cuatroPorCuatro.ponerEn(unTablero);
 
+        cuatroPorCuatro.ponerEn(unTablero);
         Assert.assertTrue(unTablero.getCasilla(1, 2).contiene(cuatroPorCuatro));
     }
 
     @Test
-    public void testNoDeberiaColocarElVehiculoEnElTableroPorSerCasillaCuadra() {
+    public void testNoDeberiaColocarElVehiculoEnElTableroPorSerCasillaCuadra() throws LaCasillaNoEsAlojable {
         Posicion posicion = new Posicion(0,0);
         Direccion direccion = new DireccionDerecha();
         CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro(direccion,posicion);
         Tablero unTablero = new Tablero(12,11);
         Pintor unPintor = new Pintor();
         unPintor.pintarTableroSimple(unTablero);
-        cuatroPorCuatro.ponerEn(unTablero);
 
+        cuatroPorCuatro.ponerEn(unTablero);
         Assert.assertFalse(unTablero.getCasilla(0, 0).contiene(cuatroPorCuatro));
     }
 }

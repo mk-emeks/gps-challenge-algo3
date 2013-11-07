@@ -6,7 +6,6 @@ public class Casilla {
 
     /**Atributos**/
 
-
     private Posicion posicion;
     private EstadoCasilla estado;
     private Posicionable contenido;
@@ -45,10 +44,13 @@ public class Casilla {
     // manejo de los posicionables
 
     /** (!) si se pasa un nuevo posicionable pisa el que estaba **/
-    public void agregarContenido(Posicionable unContenido) {
+    public void agregarContenido(Posicionable unContenido) throws LaCasillaNoEsAlojable {
         if (this.getEstado().sosAlojable()) {
             this.contenido = unContenido;
+        } else {
+            throw new LaCasillaNoEsAlojable("estas intentando alojar un posicionable en una cuadra");
         }
+
     }
 
     public void sacarContenido() {
