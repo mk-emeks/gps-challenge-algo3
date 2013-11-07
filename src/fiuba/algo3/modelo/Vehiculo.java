@@ -36,29 +36,45 @@ public abstract class Vehiculo implements Movible, Interceptable {
         return (tablero.getCasilla(x,y));
     }
 
-    public void ponerEn(Tablero tablero) {
+    public void ponerEn(Tablero tablero) throws LaCasillaNoEsAlojable {
 
         Casilla casillaContenedora = this.devolverCasillaDondeEstoy(tablero);
-        casillaContenedora.agregarContenido(this);
+
+        try {
+            casillaContenedora.agregarContenido(this);
+
+        } catch (LaCasillaNoEsAlojable excepcion) {
+            /** provisorio; para avisar por donde viene la excepcion, sin tener que crear una excepcion
+             *  propia y reducir la cantidad de codigo
+             */
+            System.out.print("el posicionable no se coloco -> motivo: ");
+            System.out.println(excepcion.getMessage());
+        }
     }
 
     /** obs: el moverEn debera usarse siempre despues de que las sorpresas surtan efecto, ya que la casilla guarda
      * un solo posicionable por vez.
      */
-    public void moverEn(Tablero tablero, Direccion unaDireccion) {
+    public void moverEn(Tablero tablero) throws LaCasillaNoEsAlojable {
 
-        Casilla casillaActual =  this.devolverCasillaDondeEstoy(tablero);
+        Casilla casillaActual = this.devolverCasillaDondeEstoy(tablero);
 
-        Posicion avance = unaDireccion.devolverComoPosicion();
+        Posicion avance = this.getDireccion().devolverComoPosicion();
         Posicion posicionNueva = casillaActual.devolverPosicion().sumar(avance);
 
         Casilla casillaNueva = tablero.getCasilla(posicionNueva.getPosicionX(),posicionNueva.getPosicionY());
 
-
-        this.setPosicion(posicionNueva);
-        casillaNueva.agregarContenido(this);
-
-        casillaActual.sacarContenido();
+        try {
+            casillaNueva.agregarContenido(this);
+            this.setPosicion(posicionNueva);
+            casillaActual.sacarContenido();
+        } catch (LaCasillaNoEsAlojable excepcion) {
+            /** provisorio; para avisar por donde viene la excepcion, sin tener que crear una excepcion
+             *  propia y reducir la cantidad de codigo
+             */
+            System.out.print("no se pudo efectuar el movimiento -> motivo: ");
+            System.out.println(excepcion.getMessage());
+        }
 
     }
 

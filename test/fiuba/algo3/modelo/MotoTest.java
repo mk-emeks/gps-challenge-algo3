@@ -6,7 +6,7 @@ import org.junit.Test;
 public class MotoTest {
 
     @Test
-    public void testDeberiaCrearLaMotoConLaPosicionIndicada() {
+    public void testDeberiaCrearLaMotoConLaPosicionIndicada() throws LaCasillaNoEsAlojable {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
         Moto moto = new Moto(direccion,posicion);
@@ -15,7 +15,7 @@ public class MotoTest {
     }
 
     @Test
-    public void testDeberiaCrearLaMotoConLaDireccionIndicada() {
+    public void testDeberiaCrearLaMotoConLaDireccionIndicada() throws LaCasillaNoEsAlojable {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
         Moto moto = new Moto(direccion,posicion);
@@ -24,7 +24,7 @@ public class MotoTest {
     }
 
     @Test
-    public void testDeberiaColocarElVehiculoEnElTablero() {
+    public void testDeberiaColocarElVehiculoEnElTablero() throws LaCasillaNoEsAlojable {
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
         Moto moto = new Moto(direccion,posicion);
@@ -37,23 +37,23 @@ public class MotoTest {
     }
 
     @Test
-    public void testNoDeberiaColocarElVehiculoEnElTableroPorSerCasillaCuadra() {
+    public void testNoDeberiaColocarElVehiculoEnElTableroPorSerCasillaCuadra() throws LaCasillaNoEsAlojable {
         Posicion posicion = new Posicion(0,0);
         Direccion direccion = new DireccionDerecha();
         Moto moto = new Moto(direccion,posicion);
         Tablero unTablero = new Tablero(12,11);
         Pintor unPintor = new Pintor();
         unPintor.pintarTableroSimple(unTablero);
-        moto.ponerEn(unTablero);
 
-        Assert.assertFalse(unTablero.getCasilla(0, 0).contiene(moto));
+        moto.ponerEn(unTablero); // la excepcion se captura
+        Assert.assertFalse(unTablero.getCasilla(0,0).contiene(moto));
     }
 
     /** test de movimiento **/
     @Test
-    public void testDeberiaMoverseEnLaDireccionRequerida() {
+    public void testDeberiaMoverseEnLaDireccionRequerida() throws LaCasillaNoEsAlojable {
         Posicion posicion = new Posicion(1,2);
-        Direccion direccion = new DireccionDerecha();
+        Direccion direccion = new DireccionAbajo();
         Moto moto = new Moto(direccion,posicion);
         Tablero unTablero = new Tablero(4,4);
         EditorTablero unEditor = new EditorTablero();
@@ -63,9 +63,28 @@ public class MotoTest {
         Assert.assertTrue(unTablero.getCasilla(1,2).contiene(moto));
         Assert.assertFalse(unTablero.getCasilla(1,3).estaOcupada());
 
-        moto.moverEn(unTablero, new DireccionAbajo());
+        moto.moverEn(unTablero);
         Assert.assertTrue(unTablero.getCasilla(1,3).contiene(moto));
         Assert.assertFalse(unTablero.getCasilla(1,2).estaOcupada());
+    }
+
+    @Test
+    public void testNoDeberiaMoverseEnLaDireccionRequeridaYaQueLaCasillaNoEsAlojable() throws LaCasillaNoEsAlojable {
+        Posicion posicion = new Posicion(1,2);
+        Direccion direccion = new DireccionDerecha();
+        Moto moto = new Moto(direccion,posicion);
+        Tablero unTablero = new Tablero(4,4);
+        EditorTablero unEditor = new EditorTablero();
+        unEditor.darFormatoSimpleA(unTablero);
+
+        moto.ponerEn(unTablero);
+        Assert.assertTrue(unTablero.getCasilla(1,2).contiene(moto));
+        Assert.assertFalse(unTablero.getCasilla(2,2).estaOcupada());
+
+        moto.moverEn(unTablero);  // la excepcion se captura
+        Assert.assertTrue(unTablero.getCasilla(1,2).contiene(moto));
+        Assert.assertFalse(unTablero.getCasilla(2,2).estaOcupada());
+
     }
 
 }
