@@ -1,11 +1,5 @@
 package fiuba.algo3.modelo;
 
-/** ver el tema de las dimensiones requeridas para un correcto funcionamiento
- *  probar con ciertos rectangulos anda mal
- *  Igualmente no es importante por el momento, con tableros cuadradros anda bien,
- *  (ojo que hay un par de pruebas que tiene tamaño distinto y corren bien igual)
- * **/
-
 public class Pintor {
 
     private EstadoCuadra pinturaCuadra = new EstadoCuadra();

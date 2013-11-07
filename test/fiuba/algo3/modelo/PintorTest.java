@@ -30,7 +30,7 @@ public class PintorTest {
 
     @Test
     public void testDeberiaPintarUnTableroSimple() {
-        Tablero unTablero = new Tablero(4,4);
+        Tablero unTablero = new Tablero(4,20);
         Pintor unPintor = new Pintor();
 
         unPintor.pintarTableroSimple(unTablero);

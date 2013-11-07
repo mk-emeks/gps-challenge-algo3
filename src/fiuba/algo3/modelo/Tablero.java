@@ -20,7 +20,7 @@ public class Tablero {
     }
 
     public boolean coordenadaDentroDelTablero(int x, int y) {
-        return (x >= 0 && x < this.tamanioFila && y >= 0 && y < this.tamanioFila);
+        return ((x >= 0) && (x < this.tamanioFila) && (y >= 0) && (y < this.tamanioColumna));
     }
 
 
