@@ -61,9 +61,4 @@ public class Posicion {
         }
         return iguales;
     }
-
-
-
-
-
 }
