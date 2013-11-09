@@ -30,6 +30,10 @@ public abstract class Vehiculo implements Movible, Interceptable {
 
     }
 
+    public void ponerEn(Mapa unMapa) {
+
+    }
+
 
 
 
