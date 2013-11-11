@@ -26,31 +26,19 @@ public class Mapa {
 
     }
 
-    public void agregar(Posicionable posicionable) throws ElPosicionableYaEstaUbicadoEnElMapaException, LaPosicionNoExisteEnElMapaException {
 
-        if ( !this.estaUbicado(posicionable) ) {
+    public void ubicar(Posicionable posicionable) throws LaPosicionNoExisteEnElMapaException {
 
-            if ( this.existe(posicionable.getPosicion()) ) {
+        if ( this.existe(posicionable.getPosicion()) ) {
+
+            if ( !this.estaUbicado(posicionable) ) {
 
                 this.contenido.add(posicionable);
-
-            }  else  {
-
-                throw new LaPosicionNoExisteEnElMapaException();
             }
+            /** si existe la posicion donde se quiere ubicar el posicionable, y el mismo ya fue agregado a
+            * la lista de contenidos no se tiene que hacer nada mas **/
 
-        } else {
-
-            throw new ElPosicionableYaEstaUbicadoEnElMapaException();
-        }
-
-    }
-
-    public void mover(Movible movil) throws LaPosicionNoExisteEnElMapaException {
-
-        if ( !this.existe(movil.getPosicion()) ) {
-            throw new LaPosicionNoExisteEnElMapaException();
-        }
+        } else { throw new LaPosicionNoExisteEnElMapaException(); }
     }
 
     /** informadores **/

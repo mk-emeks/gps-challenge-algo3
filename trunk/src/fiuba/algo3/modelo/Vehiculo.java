@@ -39,9 +39,10 @@ public class Vehiculo implements Movible, Interceptable {
         this.setPosicion(this.getPosicion().sumar(avance));
 
         try {
-            unMapa.mover(this);
 
-        } catch (LaPosicionNoExisteEnElMapaException excepcionPosicionNoExiste) {
+            unMapa.ubicar(this);
+
+        } catch (LaPosicionNoExisteEnElMapaException e) {
 
             this.setPosicion(this.getPosicion().restar(avance));
             throw new NoSePuedeMoverEnElMapaElMovibleException("la direccion es invalida para la posicion actual") ;
@@ -58,18 +59,16 @@ public class Vehiculo implements Movible, Interceptable {
         return this.direccion;
     }
 
-    /**no si andara esto dle doble catch con las excepciones puestas**/
-    public void ponerEn(Mapa unMapa) throws NoSePuedeAgregarEnElMapaElPosicionableException {
+
+    public void ponerEn(Mapa unMapa) throws NoSePuedeUbicarEnElMapaElPosicionableException {
 
         try {
-            unMapa.agregar(this);
 
-        } catch (ElPosicionableYaEstaUbicadoEnElMapaException excepcionYaUbicado) {
-            throw new NoSePuedeAgregarEnElMapaElPosicionableException("el posicionable ya fue puesto");
-        }
-        catch (LaPosicionNoExisteEnElMapaException excepcionPosicionNoExiste)
-        {
-            throw new NoSePuedeAgregarEnElMapaElPosicionableException("la posicion en la cual se quiere ubicar es invalida");
+            unMapa.ubicar(this);
+
+        } catch (LaPosicionNoExisteEnElMapaException e) {
+
+            throw new NoSePuedeUbicarEnElMapaElPosicionableException("la posicion en la cual se quiere ubicar es invalida");
         }
 
     }
@@ -81,10 +80,5 @@ public class Vehiculo implements Movible, Interceptable {
     public void setPosicion(Posicion nuevaPosicion) {
         this.posicion = nuevaPosicion;
     }
-
-    /**implementacion por ser Interceptable**/
-
-
-
 
 }
