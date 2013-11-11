@@ -68,7 +68,7 @@ public class vehiculoTest {
         Direccion derecha = new DireccionDerecha();
         Vehiculo unVehiculo = new Vehiculo(unaPosicion , derecha);
 
-        thrown.expect(NoSePuedeUbicarEnElMapaElPosicionableException.class);
+        thrown.expect(NoSePuedePonerEnElMapaElPosicionableException.class);
         unVehiculo.ponerEn(map);
 
     }

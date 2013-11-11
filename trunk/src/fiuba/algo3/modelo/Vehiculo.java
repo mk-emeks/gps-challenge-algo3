@@ -60,7 +60,7 @@ public class Vehiculo implements Movible, Interceptable {
     }
 
 
-    public void ponerEn(Mapa unMapa) throws NoSePuedeUbicarEnElMapaElPosicionableException {
+    public void ponerEn(Mapa unMapa) throws NoSePuedePonerEnElMapaElPosicionableException {
 
         try {
 
@@ -68,7 +68,7 @@ public class Vehiculo implements Movible, Interceptable {
 
         } catch (LaPosicionNoExisteEnElMapaException e) {
 
-            throw new NoSePuedeUbicarEnElMapaElPosicionableException("la posicion en la cual se quiere ubicar es invalida");
+            throw new NoSePuedePonerEnElMapaElPosicionableException("la posicion en la cual se quiere ubicar es invalida");
         }
 
     }
