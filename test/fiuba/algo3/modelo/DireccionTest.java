@@ -66,4 +66,14 @@ public class DireccionTest {
 
         Assert.assertFalse(direccionIzquierda1.equals(direccionIzquierda2));
     }
+
+    @Test
+    public void testDeberiaInvertirseLaDireccion() {
+        DireccionArriba unaDireccionArriba = new DireccionArriba();
+        unaDireccionArriba.invertir();
+        Posicion unaPosicion = unaDireccionArriba.devolverComoPosicion();
+
+        Assert.assertEquals(0, unaPosicion.getPosicionX());
+        Assert.assertEquals(1, unaPosicion.getPosicionY());
+    }
 }
