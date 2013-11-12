@@ -11,12 +11,6 @@ public class MapaTest {
 
     Mapa map;
 
-    /**protected void setUp() throws Exception {
-
-    map = new Mapa();
-
-    }**/
-
     @Before
     public void setUp() {
         map = Mapa.getMapa();
@@ -28,9 +22,8 @@ public class MapaTest {
     }
 
     @Test
-    public void TestDeberiaAgregarUnaPosicion() throws Exception {
+    public void testDeberiaAgregarUnaPosicion() throws Exception {
 
-        //this.setUp();
         Posicion unaPosicion = new Posicion(1,1);
         map.agregar(unaPosicion);
 
@@ -42,9 +35,8 @@ public class MapaTest {
     @Rule
     public  ExpectedException thrown = ExpectedException.none();
     @Test
-    public void TestDeberiaLanzarExcepcionAlAgregarDeVueltaLaMismaUnaPosicion() throws Exception {
+    public void testDeberiaLanzarExcepcionAlAgregarDeVueltaLaMismaUnaPosicion() throws Exception {
 
-        //this.setUp();
         Posicion unaPosicion = new Posicion(1,1);
         map.agregar(unaPosicion);
         Assert.assertTrue(map.existe(unaPosicion));
@@ -55,9 +47,8 @@ public class MapaTest {
     }
 
     @Test
-    public void TestDeberiaUbicarUnPosicionable() throws Exception {
+    public void testDeberiaUbicarUnPosicionable() throws Exception {
 
-        //this.setUp();
         Posicion unaPosicion = new Posicion(1,1);
         map.agregar(unaPosicion);
         Assert.assertTrue(map.existe(unaPosicion));
@@ -71,9 +62,8 @@ public class MapaTest {
     @Rule
     public  ExpectedException thrown2 = ExpectedException.none();
     @Test
-    public void TestDeberiaLanzarExcepcionAlUbicarUnPosicionableEnUnPosicionQueNoExisteEnElMapa() throws Exception {
+    public void testDeberiaLanzarExcepcionAlUbicarUnPosicionableEnUnPosicionQueNoExisteEnElMapa() throws Exception {
 
-        //this.setUp();
         Vehiculo auto = new Vehiculo(new Posicion(1,1),new DireccionDerecha());
 
         thrown2.expect(LaPosicionNoExisteEnElMapaException.class);

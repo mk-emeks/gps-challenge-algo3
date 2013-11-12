@@ -7,6 +7,7 @@ public class Vehiculo implements Movible, Interceptable {
     private Posicion posicion;
     private Direccion direccion;
     private EstadoVehiculo estado;
+    private Mapa unMapa = Mapa.getMapa();
 
     /**Constructores**/
 
@@ -33,7 +34,7 @@ public class Vehiculo implements Movible, Interceptable {
 
     /**implementacion por ser movible**/
 
-    public void moverEn(Mapa unMapa) throws NoSePuedeMoverEnElMapaElMovibleException {
+    public void mover() throws NoSePuedeMoverEnElMapaElMovibleException {
 
         Posicion avance = this.getDireccion().devolverComoPosicion();
         this.setPosicion(this.getPosicion().sumar(avance));
@@ -60,7 +61,7 @@ public class Vehiculo implements Movible, Interceptable {
     }
 
 
-    public void ponerEn(Mapa unMapa) throws NoSePuedePonerEnElMapaElPosicionableException {
+    public void poner() throws NoSePuedePonerEnElMapaElPosicionableException {
 
         try {
 
