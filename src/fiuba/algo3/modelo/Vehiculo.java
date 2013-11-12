@@ -1,35 +1,17 @@
 package fiuba.algo3.modelo;
 
-public class Vehiculo implements Movible, Interceptable {
+public abstract class Vehiculo implements Movible {
 
     /** atributos **/
 
     private Posicion posicion;
     private Direccion direccion;
-    private EstadoVehiculo estado;
-    private Mapa unMapa = Mapa.getMapa();
 
     /**Constructores**/
 
     public Vehiculo(Posicion unaPosicion , Direccion unaDireccion) {
         this.posicion = unaPosicion;
         this.direccion = unaDireccion;
-    }
-
-    public Vehiculo(Posicion unaPosicion , Direccion unaDireccion , EstadoVehiculo unEstado) {
-        this.posicion = unaPosicion;
-        this.direccion = unaDireccion;
-        this.estado = unEstado;
-    }
-
-    /**Comportamiento**/
-
-    public void setEstado (EstadoVehiculo unEstado) {
-        this.estado = unEstado;
-    }
-
-    public EstadoVehiculo getEstado () {
-        return this.estado;
     }
 
     /**implementacion por ser movible**/
@@ -41,7 +23,7 @@ public class Vehiculo implements Movible, Interceptable {
 
         try {
 
-            unMapa.ubicar(this);
+            Mapa.getMapa().ubicar(this);
 
         } catch (LaPosicionNoExisteEnElMapaException e) {
 
@@ -65,7 +47,7 @@ public class Vehiculo implements Movible, Interceptable {
 
         try {
 
-            unMapa.ubicar(this);
+            Mapa.getMapa().ubicar(this);
 
         } catch (LaPosicionNoExisteEnElMapaException e) {
 
