@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 
-public class vehiculoTest {
+public class VehiculoTest {
 
     @Test
     public void TestDeberiaQuedarCreadoVehiculoConPosicionYDireccion() {
