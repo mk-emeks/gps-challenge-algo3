@@ -21,4 +21,9 @@ public class Direccion {
         return iguales;
     }
 
+    public void invertir() {
+        this.versorDirector.setPosicionX(this.versorDirector.getPosicionX()*(-1));
+        this.versorDirector.setPosicionY(this.versorDirector.getPosicionY()*(-1));
+    }
+
 }
