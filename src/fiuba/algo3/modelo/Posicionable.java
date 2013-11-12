@@ -3,7 +3,7 @@ package fiuba.algo3.modelo;
 
 public interface Posicionable {
 
-    void ponerEn(Mapa unMapa) throws NoSePuedePonerEnElMapaElPosicionableException;
+    void poner() throws NoSePuedePonerEnElMapaElPosicionableException;
 
     Posicion getPosicion();
 

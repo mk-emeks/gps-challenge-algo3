@@ -2,31 +2,33 @@ package fiuba.algo3.modelo;
 
 public class EditorMapa {
 
+    private Mapa unMapa = Mapa.getMapa();
+
     /** temporal: uso para probar el mapa plantiado en la consigna inicial **/
 
-    public void editarMapaSimple(Mapa map, int columnas, int filas) throws LaPosicionYaExisteEnElMapaException {
+    public void editarMapaSimple(int ancho, int largo) throws LaPosicionYaExisteEnElMapaException {
 
-        this.agregarCallesPares(map, columnas , filas);
-        this.agregarCallesImpares(map, columnas , filas);
+        this.agregarCallesPares(ancho,largo);
+        this.agregarCallesImpares(ancho,largo);
 
     }
 
-    private void agregarCallesImpares(Mapa map, int columnas, int filas) throws LaPosicionYaExisteEnElMapaException {
+    private void agregarCallesImpares(int ancho, int largo) throws LaPosicionYaExisteEnElMapaException {
 
-        for(int i = 1; i <= filas; i=i+2) {
-            for(int j = 2; j <= columnas; j=j+2) {
+        for(int i = 1; i <= largo; i=i+2) {
+            for(int j = 2; j <= ancho; j=j+2) {
 
-                map.agregar(new Posicion(j,i));  /**!**/
+                unMapa.agregar(new Posicion(j,i));  /**!**/
             }
         }
     }
 
-    private void agregarCallesPares(Mapa map, int columnas, int filas) throws LaPosicionYaExisteEnElMapaException {
+    private void agregarCallesPares(int ancho, int largo) throws LaPosicionYaExisteEnElMapaException {
 
-        for(int i = 2; i <= filas; i=i+2) {
-            for(int j = 1; j <= columnas; j++) {
+        for(int i = 2; i <= largo; i=i+2) {
+            for(int j = 1; j <= ancho; j++) {
 
-                map.agregar(new Posicion(j,i));  /**!**/
+                unMapa.agregar(new Posicion(j,i));  /**!**/
             }
         }
     }
