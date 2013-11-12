@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo;
+/**package fiuba.algo3.modelo;
 
 import junit.framework.Assert;
 import org.junit.Test;
@@ -34,7 +34,7 @@ public class VehiculoTest {
         Assert.assertEquals(unVehiculo.getEstado(),soyAuto);
     }
 
-    /** ! **/
+
     private Mapa mapaDePrueba() throws Exception {
 
         Mapa map = new Mapa();
@@ -110,3 +110,4 @@ public class VehiculoTest {
 
     }
 }
+   **/

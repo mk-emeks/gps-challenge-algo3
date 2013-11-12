@@ -7,13 +7,26 @@ public class Mapa {
 
     private ArrayList<Posicionable> contenido;
     private ArrayList<Posicion> posicionesValidas;
+    private static Mapa elMapa;
 
-    // constructor de mapa vacio
-    public Mapa() {
+    /** Para lograr hace un Singleton**/
+    private Mapa() {
         this.posicionesValidas = new ArrayList<Posicion>();
         this.contenido = new ArrayList<Posicionable>();
-
     }
+
+    public static Mapa getMapa() {
+        if (elMapa == null) {
+
+            elMapa = new Mapa();
+        }
+        return elMapa;
+    }
+
+    public static void limpiar() {
+        elMapa = null;
+    }
+    /** ============================================== **/
 
     public void agregar(Posicion unaPosicion) throws LaPosicionYaExisteEnElMapaException {
 
