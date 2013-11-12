@@ -1,6 +1,8 @@
 package fiuba.algo3.modelo;
 
 import junit.framework.Assert;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
@@ -9,16 +11,26 @@ public class MapaTest {
 
     Mapa map;
 
-    protected void setUp() throws Exception {
+    /**protected void setUp() throws Exception {
 
     map = new Mapa();
 
+    }**/
+
+    @Before
+    public void setUp() {
+        map = Mapa.getMapa();
+    }
+
+    @After
+    public void limpiezaMapa() {
+        Mapa.limpiar();
     }
 
     @Test
     public void TestDeberiaAgregarUnaPosicion() throws Exception {
 
-        this.setUp();
+        //this.setUp();
         Posicion unaPosicion = new Posicion(1,1);
         map.agregar(unaPosicion);
 
@@ -32,7 +44,7 @@ public class MapaTest {
     @Test
     public void TestDeberiaLanzarExcepcionAlAgregarDeVueltaLaMismaUnaPosicion() throws Exception {
 
-        this.setUp();
+        //this.setUp();
         Posicion unaPosicion = new Posicion(1,1);
         map.agregar(unaPosicion);
         Assert.assertTrue(map.existe(unaPosicion));
@@ -45,7 +57,7 @@ public class MapaTest {
     @Test
     public void TestDeberiaUbicarUnPosicionable() throws Exception {
 
-        this.setUp();
+        //this.setUp();
         Posicion unaPosicion = new Posicion(1,1);
         map.agregar(unaPosicion);
         Assert.assertTrue(map.existe(unaPosicion));
@@ -61,12 +73,12 @@ public class MapaTest {
     @Test
     public void TestDeberiaLanzarExcepcionAlUbicarUnPosicionableEnUnPosicionQueNoExisteEnElMapa() throws Exception {
 
-        this.setUp();
+        //this.setUp();
         Vehiculo auto = new Vehiculo(new Posicion(1,1),new DireccionDerecha());
 
         thrown2.expect(LaPosicionNoExisteEnElMapaException.class);
         map.ubicar(auto);
-
     }
+
 
 }
