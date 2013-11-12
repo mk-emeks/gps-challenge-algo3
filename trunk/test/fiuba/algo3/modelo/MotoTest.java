@@ -51,7 +51,7 @@ public class MotoTest {
 
         unVehiculo.poner();
 
-        Assert.assertTrue(map.estaUbicado(unVehiculo));
+        Assert.assertEquals(map.getVehiculo(),unVehiculo);
     }
 
     @Rule
@@ -77,10 +77,10 @@ public class MotoTest {
         Vehiculo unVehiculo = new Moto(unaPosicion , derecha);
 
         unVehiculo.poner();
-        Assert.assertTrue(map.estaUbicado(unVehiculo));
+        Assert.assertEquals(map.getVehiculo(),unVehiculo);
 
         unVehiculo.mover();
-        Assert.assertTrue(map.estaUbicado(unVehiculo));
+        Assert.assertEquals(map.getVehiculo(),unVehiculo);
         Assert.assertTrue(unVehiculo.getPosicion().equals(new Posicion(2,2)));
     }
 
@@ -95,7 +95,7 @@ public class MotoTest {
         Vehiculo unVehiculo = new Moto(unaPosicion , arriba);
 
         unVehiculo.poner();
-        Assert.assertTrue(map.estaUbicado(unVehiculo));
+        Assert.assertEquals(map.getVehiculo(),unVehiculo);
 
         thrown1.expect(NoSePuedeMoverEnElMapaElMovibleException.class);
         unVehiculo.mover();

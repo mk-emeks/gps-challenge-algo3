@@ -5,14 +5,18 @@ import java.util.ArrayList;
 
 public class Mapa {
 
-    private ArrayList<Posicionable> contenido;
     private ArrayList<Posicion> posicionesValidas;
-    private static Mapa elMapa;
 
+    private Vehiculo vehiculo;
+    private Posicion llegada;
+    private ArrayList<Aplicable> aplicables;
+
+
+    private static Mapa elMapa;
     /** Para lograr hace un Singleton**/
     private Mapa() {
         this.posicionesValidas = new ArrayList<Posicion>();
-        this.contenido = new ArrayList<Posicionable>();
+        this.aplicables = new ArrayList<Aplicable>();
     }
 
     public static Mapa getMapa() {
@@ -39,14 +43,34 @@ public class Mapa {
 
     }
 
+    public void ubicar(Vehiculo unVehiculo) throws LaPosicionNoExisteEnElMapaException {
 
-    public void ubicar(Posicionable posicionable) throws LaPosicionNoExisteEnElMapaException {
+        if ( this.posicionesValidas.contains(unVehiculo.getPosicion()) ) {
 
-        if ( this.existe(posicionable.getPosicion()) ) {
+           this.vehiculo = unVehiculo;
 
-            if ( !this.estaUbicado(posicionable) ) {
+        } else { throw new LaPosicionNoExisteEnElMapaException(); }
 
-                this.contenido.add(posicionable);
+
+    }
+
+    public void ubicar(Posicion laLlegada) throws LaPosicionNoExisteEnElMapaException {
+
+        if ( this.posicionesValidas.contains(laLlegada) ) {
+
+            this.llegada = laLlegada;
+
+        } else { throw new LaPosicionNoExisteEnElMapaException(); }
+
+    }
+
+    public void ubicar(Aplicable aplicable) throws LaPosicionNoExisteEnElMapaException {
+
+        if ( this.existe(aplicable.getPosicion()) ) {
+
+            if ( !this.estaUbicado(aplicable) ) {
+
+                this.aplicables.add(aplicable);
             }
             /** si existe la posicion donde se quiere ubicar el posicionable, y el mismo ya fue agregado a
             * la lista de contenidos no se tiene que hacer nada mas **/
@@ -56,9 +80,9 @@ public class Mapa {
 
     /** informadores **/
     // deberian ser private? los hacemos public para poder hacer tests con comodidad
-    public boolean estaUbicado(Posicionable unPosicionable) {
+    public boolean estaUbicado(Aplicable unAplicable) {
 
-        return contenido.contains(unPosicionable);
+        return aplicables.contains(unAplicable);
 
     }
 
@@ -68,5 +92,17 @@ public class Mapa {
     }
     /** fin **/
 
+
+    public Vehiculo getVehiculo() {
+        return this.vehiculo;
+    }
+
+    public Posicion getLlegada() {
+        return this.llegada;
+    }
+
+    public ArrayList<Aplicable> getAplicables() {
+        return this.aplicables;
+    }
 
 }

@@ -1,7 +1,7 @@
 package fiuba.algo3.modelo;
 
 
-public interface Aplicable {
+public interface Aplicable extends Posicionable {
 
     void aplicarA(Interactuable unInteractuable);
     void aplicarA(Interactuable unInteractuable, Auto unAuto);

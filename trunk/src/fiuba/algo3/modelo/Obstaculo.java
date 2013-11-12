@@ -1,7 +1,7 @@
 package fiuba.algo3.modelo;
 
 
-public abstract class Obstaculo implements Posicionable, Aplicable {
+public abstract class Obstaculo implements Aplicable {
 
     private int tiempoPenalizado;
     private Posicion posicion;
@@ -13,7 +13,7 @@ public abstract class Obstaculo implements Posicionable, Aplicable {
 
     public void poner() throws NoSePuedePonerEnElMapaElPosicionableException {
 
-        try {
+       try {
 
             Mapa.getMapa().ubicar(this);
 
