@@ -38,9 +38,17 @@ public class Partida {
         editor.editarMapaSimple(3,3);
         // agregar el vehiculo y la llegada! editor aun no lo hace! vehiculo<=>posVehiculo :Z
 
+        /** inicializar posicion y direccion del vehiculo en la partida **/
+        Posicion posicionDeInicioDelVehiculo = new Posicion (1,2);
+        Direccion direccionDeInicioDelVehiculo = new DireccionDerecha();
+
+        /** elegir vehiculo **/
+        Vehiculo miVehiculo = new Moto(posicionDeInicioDelVehiculo,direccionDeInicioDelVehiculo);
+        miVehiculo.posicionarEnElMapa();   /** (!) clave **/
+
         /** configurando piloto **/
-        this.pilotin.asignarVehiculo(Mapa.getMapa().getVehiculo());
-        this.pilotin.arrancar();
+        this.pilotin.asignarVehiculo(miVehiculo);
+        this.pilotin.arrancarVehiculo();
         //this.pilotin.getCronometro().iniciar();
 
         /** comienza la accion **/

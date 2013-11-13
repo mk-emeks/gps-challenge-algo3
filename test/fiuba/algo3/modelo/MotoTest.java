@@ -49,7 +49,7 @@ public class MotoTest {
         Direccion derecha = new DireccionDerecha();
         Vehiculo unVehiculo = new Moto(unaPosicion , derecha);
 
-        unVehiculo.poner();
+        unVehiculo.posicionarEnElMapa();
 
         Assert.assertEquals(map.getVehiculo(),unVehiculo);
     }
@@ -65,7 +65,7 @@ public class MotoTest {
         Vehiculo unVehiculo = new Moto(unaPosicion , derecha);
 
         thrown.expect(NoSePuedePonerEnElMapaElPosicionableException.class);
-        unVehiculo.poner();
+        unVehiculo.posicionarEnElMapa();
     }
 
     @Test
@@ -76,7 +76,7 @@ public class MotoTest {
         Direccion derecha = new DireccionDerecha();
         Vehiculo unVehiculo = new Moto(unaPosicion , derecha);
 
-        unVehiculo.poner();
+        unVehiculo.posicionarEnElMapa();
         Assert.assertEquals(map.getVehiculo(),unVehiculo);
 
         unVehiculo.mover();
@@ -94,7 +94,7 @@ public class MotoTest {
         Direccion arriba = new DireccionArriba();
         Vehiculo unVehiculo = new Moto(unaPosicion , arriba);
 
-        unVehiculo.poner();
+        unVehiculo.posicionarEnElMapa();
         Assert.assertEquals(map.getVehiculo(),unVehiculo);
 
         thrown1.expect(NoSePuedeMoverEnElMapaElMovibleException.class);

@@ -22,7 +22,7 @@ public class EditorMapaTest {
     /** ======== Tests Felices Mapa Simple ======== **/
 
     @Test
-    public void testDeberiaPoderEditarUnMapaSimpleCuadrado() throws LaPosicionYaExisteEnElMapaException {
+    public void testDeberiaPoderEditarUnMapaSimpleCuadrado() throws Exception {
         EditorMapa unEditor = new EditorMapa();
         int anchoDelMapa=7;
         int largoDelMapa=7;
@@ -48,7 +48,7 @@ public class EditorMapaTest {
     }
 
     @Test
-    public void testDeberiaPoderEditarUnMapaSimpleRectangular1() throws LaPosicionYaExisteEnElMapaException {
+    public void testDeberiaPoderEditarUnMapaSimpleRectangular1() throws Exception  {
         EditorMapa unEditor = new EditorMapa();
         int anchoDelMapa=19;
         int largoDelMapa=6;
@@ -74,7 +74,7 @@ public class EditorMapaTest {
     }
 
     @Test
-    public void testDeberiaPoderEditarUnMapaSimpleRectangular2() throws LaPosicionYaExisteEnElMapaException {
+    public void testDeberiaPoderEditarUnMapaSimpleRectangular2() throws Exception  {
         EditorMapa unEditor = new EditorMapa();
         int anchoDelMapa=2;
         int largoDelMapa=20;
@@ -104,7 +104,7 @@ public class EditorMapaTest {
     /** ======== Tests Malos Mapa Simple ======== **/
 
     @Test
-    public void testNoDebertiaHaberCuadrasAlEditarUnMapaSimpleCuadrado() throws LaPosicionYaExisteEnElMapaException {
+    public void testNoDebertiaHaberCuadrasAlEditarUnMapaSimpleCuadrado() throws Exception  {
         EditorMapa unEditor = new EditorMapa();
         int anchoDelMapa=6;
         int largoDelMapa=6;
@@ -122,7 +122,7 @@ public class EditorMapaTest {
     }
 
     @Test
-     public void testNoDebertiaHaberCuadrasAlEditarUnMapaSimpleRectangular1() throws LaPosicionYaExisteEnElMapaException {
+     public void testNoDebertiaHaberCuadrasAlEditarUnMapaSimpleRectangular1() throws Exception  {
         EditorMapa unEditor = new EditorMapa();
         int anchoDelMapa=14;
         int largoDelMapa=3;
@@ -140,7 +140,7 @@ public class EditorMapaTest {
     }
 
     @Test
-    public void testNoDebertiaHaberCuadrasAlEditarUnMapaSimpleRectangular2() throws LaPosicionYaExisteEnElMapaException {
+    public void testNoDebertiaHaberCuadrasAlEditarUnMapaSimpleRectangular2() throws Exception  {
         EditorMapa unEditor = new EditorMapa();
         int anchoDelMapa=5;
         int largoDelMapa=30;

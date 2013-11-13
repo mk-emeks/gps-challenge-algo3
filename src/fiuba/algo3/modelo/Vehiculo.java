@@ -43,7 +43,7 @@ public abstract class Vehiculo implements Movible {
     }
 
 
-    public void poner() throws NoSePuedePonerEnElMapaElPosicionableException {
+    public void posicionarEnElMapa() throws NoSePuedePonerEnElMapaElPosicionableException {
 
         try {
 

@@ -6,10 +6,11 @@ public class EditorMapa {
 
     /** temporal: uso para probar el mapa plantiado en la consigna inicial **/
 
-    public void editarMapaSimple(int ancho, int largo) throws LaPosicionYaExisteEnElMapaException {
+    public void editarMapaSimple(int ancho, int largo) throws Exception {
 
         this.agregarCallesPares(ancho,largo);
         this.agregarCallesImpares(ancho,largo);
+        /** agregarLLegada() **/
 
     }
 

@@ -43,24 +43,24 @@ public class Mapa {
 
     }
 
-    public void ubicar(Vehiculo unVehiculo) throws LaPosicionNoExisteEnElMapaException {
-
-        if ( this.posicionesValidas.contains(unVehiculo.getPosicion()) ) {
-
-           this.vehiculo = unVehiculo;
-
-        } else { throw new LaPosicionNoExisteEnElMapaException(); }
-
-
-    }
-
-    public void ubicar(Posicion laLlegada) throws LaPosicionNoExisteEnElMapaException {
+    public void ubicarPosicionDeLlegada(Posicion laLlegada) throws LaPosicionNoExisteEnElMapaException {
 
         if ( this.posicionesValidas.contains(laLlegada) ) {
 
             this.llegada = laLlegada;
 
         } else { throw new LaPosicionNoExisteEnElMapaException(); }
+
+    }
+
+    public void ubicar(Vehiculo unVehiculo) throws LaPosicionNoExisteEnElMapaException {
+
+        if ( this.posicionesValidas.contains(unVehiculo.getPosicion()) ) {
+
+            this.vehiculo = unVehiculo;
+
+        } else { throw new LaPosicionNoExisteEnElMapaException(); }
+
 
     }
 
@@ -92,7 +92,7 @@ public class Mapa {
     }
     /** fin **/
 
-
+    /** no deberia usarlo nadie **/
     public Vehiculo getVehiculo() {
         return this.vehiculo;
     }

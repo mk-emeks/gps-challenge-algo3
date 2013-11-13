@@ -11,7 +11,7 @@ public abstract class Obstaculo implements Aplicable {
         this.posicion = unaPosicion;
     }
 
-    public void poner() throws NoSePuedePonerEnElMapaElPosicionableException {
+    public void posicionarEnElMapa() throws NoSePuedePonerEnElMapaElPosicionableException {
 
        try {
 
