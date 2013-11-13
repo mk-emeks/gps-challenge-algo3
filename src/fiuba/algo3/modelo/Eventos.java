@@ -30,13 +30,9 @@ public class Eventos {
         // eficiencia: break, si suponemos que no hay 2 aplicables en la misma posicion
         while (iterador.hasNext()) {
 
-
             Aplicable aplicable = iterador.next();
-            if ( pilotoAVerificar.getVehiculo().getPosicion() == aplicable.getPosicion() ) {
+            aplicable.actualizarInteraccion(pilotoAVerificar);
 
-                pilotoAVerificar.interactuarCon(aplicable);
-
-            }
         }
 
     }
