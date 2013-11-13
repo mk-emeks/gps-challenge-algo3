@@ -17,17 +17,34 @@ public class CronometroTest {
         cronometroDePueba = new Cronometro();
     }
 
+    public int RandomInt012() {
+
+        int randomInt = 0;
+        double randomDouble = Math.random();
+
+        if ( randomDouble < 0.33)  {
+            randomInt = 0;
+        }
+        if ( (randomDouble>= 0.33) && (randomDouble < 0.66)) {
+            randomInt = 1;
+        }
+        if ( randomDouble >= 0.66)  {
+            randomInt = 2;
+        }
+        return randomInt;
+    }
+
     @Test
-    public void testDeberiaMarcar5Segundos() {
+    public void testDeberiaMarcarLosSegundosQuePasen() throws Exception {
 
+        int numeroRandom = this.RandomInt012();
         this.cronometroDePueba.iniciar();
-        try
-        {
-            Thread.currentThread().sleep(5000);
-        } catch (Exception e) {}
+        Thread.currentThread().sleep(numeroRandom*1000);
+        this.cronometroDePueba.pausar();
 
-        this.cronometroDePueba.devolverTiempoComoString();
+        Assert.assertEquals(numeroRandom,this.cronometroDePueba.tiempoEnSegundos());
 
     }
+
 
 }
