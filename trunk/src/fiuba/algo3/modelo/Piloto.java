@@ -64,14 +64,14 @@ public class Piloto implements Interactuable {
     }
 
     /** implementacion interactuable **/
-    /*public void interactuarCon(Aplicable unAplicable) {
 
-
-    } */
     public void interactuarCon(Pozo pozo) {
+
+            System.out.print("funciona");
 
 
     }
+
     public void interactuarCon(Piquete piquete) {
 
     }

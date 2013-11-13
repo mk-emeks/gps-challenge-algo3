@@ -81,7 +81,7 @@ public class PilotoTest {
         piloto.arrancarVehiculo();
         piloto.conducir();
 
-        Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion.sumar(direccion.devolverComoPosicion()));
+        Assert.assertEquals(piloto.getVehiculo().getPosicion(), posicion.sumar(direccion.devolverComoPosicion()));
 
         piloto.detenerVehiculo();
         piloto.conducir();

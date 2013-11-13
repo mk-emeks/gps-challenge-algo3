@@ -5,11 +5,23 @@ public class Piquete extends Obstaculo {
 
     private static final int penalizacion = 2;
 
+
     public Piquete(Posicion unaPosicion) {
         super(penalizacion,unaPosicion);
     }
 
     //---Implementacion de Aplicable---//
+
+    public void actualizarInteraccion(Piloto piloto) {
+
+        Vehiculo vehiculoDelCandidatoAInteractuar = piloto.getVehiculo();
+
+        if ( vehiculoDelCandidatoAInteractuar.getPosicion() == this.getPosicion() )
+        {
+            piloto.interactuarCon(this);
+        }
+
+    }
 
     public void aplicarA(Interactuable unInteractuable) {
 
@@ -24,4 +36,9 @@ public class Piquete extends Obstaculo {
     public void aplicarA(Interactuable unInteractuable, CuatroPorCuatro cuatroPorCuatro) {
         cuatroPorCuatro.getDireccion().invertir();
     }
+
+
+
+
+
 }
