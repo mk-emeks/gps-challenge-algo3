@@ -13,35 +13,49 @@ public class Cronometro implements Runnable {
 
     public Cronometro() {
 
-        this.reset();
-    }
-
-    public void pausar() {
-
-        pausa = true;
-    }
-
-    public void reanudar() {
-        pausa = false;
-    }
-
-    private void reset() {
-
         segundos = 0;
         minutos = 0;
         horas = 0;
-        this.pausar();
+        this.pausa = true;
     }
+
+    /** no usar estos metodos antes de iniciar cronometro, porque lo vas a romper **/
+    public void pausar() throws Exception {
+
+        hilo.interrupt(); //mata el proceso? consecuencia en reanudar. Asi tmb es el finalizar
+        pausa = true;
+    }
+
+    public void reanudar() throws Exception {
+
+        /*hilo.interrupt();
+        pausa = false;*/
+        this.iniciar();
+    }
+
+    public void reset() throws Exception {
+
+        //hilo.interrupt();
+        //this.pausa = true;
+        this.pausar();
+        segundos = 0;
+        minutos = 0;
+        horas = 0;
+
+    }
+
+    /** fin **/
 
     public void iniciar() {
 
-        this.reanudar();
+        this.pausa = false;
         hilo = new Thread (this);
         hilo.start();
 
     }
 
     public void run(){
+
         try {
 
             while (!pausa) {
@@ -68,7 +82,7 @@ public class Cronometro implements Runnable {
             }
         }  catch(Exception e) {
 
-            this.reset();
+            //this.reset(); peligroso?
         }
 
     }
