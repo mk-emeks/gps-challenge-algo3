@@ -34,17 +34,11 @@ public class MotoTest {
         Assert.assertTrue(unVehiculo.getDireccion().equals(derecha));
     }
 
-    private void mapaDePrueba() throws Exception {
-
-        EditorMapa editor = new EditorMapa();
-        editor.editarMapaSimple(3,3); // creo mapa de prueba de 3x3
-
-    }
-
     @Test
     public void testDeberiaPonerAlVehiculoEnUnMapa() throws Exception {
 
-        this.mapaDePrueba();
+        EditorMapa editor = new EditorMapa();
+        editor.editarMapaMinimoJugable();
         Posicion unaPosicion = new Posicion(1,2);
         Direccion derecha = new DireccionDerecha();
         Vehiculo unVehiculo = new Moto(unaPosicion , derecha);
@@ -59,7 +53,8 @@ public class MotoTest {
     @Test
     public void testNoDeberiaPonerAlVehiculoEnUnMapaYaQueLaPosicionEsInvalida() throws Exception {
 
-        this.mapaDePrueba();
+        EditorMapa editor = new EditorMapa();
+        editor.editarMapaMinimoJugable();
         Posicion unaPosicion = new Posicion(1,1);
         Direccion derecha = new DireccionDerecha();
         Vehiculo unVehiculo = new Moto(unaPosicion , derecha);
@@ -71,7 +66,8 @@ public class MotoTest {
     @Test
     public void testDeberiaMoverAlVehiculoEnUnMapa() throws Exception {
 
-        this.mapaDePrueba();
+        EditorMapa editor = new EditorMapa();
+        editor.editarMapaMinimoJugable();
         Posicion unaPosicion = new Posicion(1,2);
         Direccion derecha = new DireccionDerecha();
         Vehiculo unVehiculo = new Moto(unaPosicion , derecha);
@@ -89,7 +85,8 @@ public class MotoTest {
     @Test
     public void testNoDeberiaMoverAlVehiculoEnUnMapaYaQueLaDireccionEsInvalidadRespectoALaPosicionDondeSeEncuentra() throws Exception {
 
-        this.mapaDePrueba();
+        EditorMapa editor = new EditorMapa();
+        editor.editarMapaMinimoJugable();
         Posicion unaPosicion = new Posicion(1,2);
         Direccion arriba = new DireccionArriba();
         Vehiculo unVehiculo = new Moto(unaPosicion , arriba);
