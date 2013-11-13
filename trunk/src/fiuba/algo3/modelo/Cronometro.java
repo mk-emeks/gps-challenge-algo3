@@ -1,13 +1,13 @@
 package fiuba.algo3.modelo;
 
-
 public class Cronometro implements Runnable {
 
-    Thread hilo;
+    private Thread hilo;
 
-    private int milesimas;
     private int segundos;
     private int minutos;
+    private int horas;
+
 
     private boolean pausa;
 
@@ -17,6 +17,7 @@ public class Cronometro implements Runnable {
     }
 
     public void pausar() {
+
         pausa = true;
     }
 
@@ -24,12 +25,11 @@ public class Cronometro implements Runnable {
         pausa = false;
     }
 
-    public void reset() {
+    private void reset() {
 
-        milesimas = 0;
         segundos = 0;
         minutos = 0;
-
+        horas = 0;
         this.pausar();
     }
 
@@ -43,35 +43,50 @@ public class Cronometro implements Runnable {
 
     public void run(){
         try {
+
             while (!pausa) {
 
-                Thread.sleep((long)1000);
-                this.milesimas++;
-                if (milesimas == 1000) {
+                /** calibrar espera:
+                 *  no es exactamente un segundo(1000 milesimas) porque al llamar
+                 *  asincronicamente un metodo del cronometro corta antes. ver tests!
+                 * **/
+                Thread.sleep(850); // espera un 1 segundo y despues contalo
 
-                    segundos++;
-                    milesimas = 0;
+                segundos++;
+                if (segundos == 60) {
 
-                    if (segundos == 60) {
+                    minutos++;
+                    segundos = 0;
+                    if (minutos == 60) {
 
-                        minutos++;
-                        segundos = 0;
+                        horas++;
+                        minutos = 0;
                     }
                 }
+                System.out.println(this.devolverTiempoComoString());  // despues se borra, se usa en testing
 
-                System.out.println(this.devolverTiempoComoString());
             }
         }  catch(Exception e) {
 
+            this.reset();
         }
 
     }
 
+    public String devolverTiempoComoString() throws Exception {
 
-    public String devolverTiempoComoString() {
+        return ("horas: " + horas + " " + "minutos: " + minutos + " " + "segundos: " + segundos);
 
-        return ("minutos: " + minutos + " " + "segundos: " + segundos + " " + "milesimas: " + milesimas);
     }
+
+    public int tiempoEnSegundos() {
+
+        return ( this.segundos + this.minutosEnSegundos() + this.horasEnSegundos() );
+
+    }
+
+    private int minutosEnSegundos() {return this.minutos*60; }
+    private int horasEnSegundos() {return this.horas*3600; }
 
     //public void agregarTiempo()
 
