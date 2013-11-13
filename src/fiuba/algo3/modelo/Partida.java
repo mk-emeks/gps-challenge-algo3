@@ -35,7 +35,7 @@ public class Partida {
 
         /** configurando mapa **/
         EditorMapa editor = new EditorMapa();
-        editor.editarMapaSimple(3,3);
+        editor.editarMapaMinimoJugable();
         // agregar el vehiculo y la llegada! editor aun no lo hace! vehiculo<=>posVehiculo :Z
 
         /** inicializar posicion y direccion del vehiculo en la partida **/
@@ -49,7 +49,7 @@ public class Partida {
         /** configurando piloto **/
         this.pilotin.asignarVehiculo(miVehiculo);
         this.pilotin.arrancarVehiculo();
-        //this.pilotin.getCronometro().iniciar();
+        this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
 
         /** comienza la accion **/
         // si aca agregamos un while (enJuego) {} tenemos el game loop; por ahora esta manual.
@@ -76,5 +76,10 @@ public class Partida {
 
     }
 
-    /** faltaria una especie de metodo estaFinalizado() para realmente poder jugarlo manualmente **/
+    public boolean estaFinalizada() {
+
+        if (enJuego) return false;
+        else return true;
+    }
+
 }
