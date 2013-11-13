@@ -34,7 +34,7 @@ public class Eventos {
             Aplicable aplicable = iterador.next();
             if ( pilotoAVerificar.getVehiculo().getPosicion() == aplicable.getPosicion() ) {
 
-                //pilotoAVerificar.interactuarCon(aplicable);
+                pilotoAVerificar.interactuarCon(aplicable);
 
             }
         }

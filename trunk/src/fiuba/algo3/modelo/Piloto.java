@@ -1,22 +1,22 @@
 package fiuba.algo3.modelo;
 
 
-public class Piloto {
+public class Piloto implements Interactuable {
 
     private Vehiculo vehiculo;
     private Boolean enMovimiento;
-    //private Cronometro cronometro;
+    private Cronometro cronometro;
 
     public Piloto() {
 
-        //cronometro = new Cronometro();
+        cronometro = new Cronometro();
         enMovimiento = false;
 
     }
 
     public Piloto(Vehiculo unVehiculo) {
 
-        //cronometro = new Cronometro();
+        cronometro = new Cronometro();
         this.vehiculo = unVehiculo;
         enMovimiento = false;
 
@@ -58,10 +58,28 @@ public class Piloto {
 
     }
 
-    /*public Cronometro getCronometro() {
+    public Cronometro getCronometro() {
 
         return this.cronometro;
+    }
+
+    /** implementacion interactuable **/
+    /*public void interactuarCon(Aplicable unAplicable) {
+
+
     } */
+    public void interactuarCon(Pozo pozo) {
+
+
+    }
+    public void interactuarCon(Piquete piquete) {
+
+    }
+
+    public void interactuarCon(Sorpresa sorpresa) {
+
+    }
+
 
 
 }
