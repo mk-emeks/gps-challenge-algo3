@@ -1,7 +1,7 @@
 package fiuba.algo3.modelo;
 
 
-public class Piloto implements Interactuable {
+public class Piloto {
 
     private Vehiculo vehiculo;
     private Boolean enMovimiento;
@@ -66,9 +66,6 @@ public class Piloto implements Interactuable {
     /** implementacion interactuable **/
 
     public void interactuarCon(Pozo pozo) {
-
-            System.out.print("funciona");
-
 
     }
 
