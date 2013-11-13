@@ -24,14 +24,6 @@ public class Posicion {
         return this.posicionY;
     }
 
-    public void setPosicionX(int unaPosicionX) {
-        this.posicionX = unaPosicionX;
-    }
-
-    public void setPosicionY(int unaPosicionY) {
-        this.posicionY = unaPosicionY;
-    }
-
     public Posicion sumar(Posicion unaPosicion){
 
         int posicionFinalX = (this.getPosicionX() + unaPosicion.getPosicionX());

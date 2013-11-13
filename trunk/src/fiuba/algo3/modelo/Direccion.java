@@ -22,8 +22,7 @@ public class Direccion {
     }
 
     public void invertir() {
-        this.versorDirector.setPosicionX(this.versorDirector.getPosicionX()*(-1));
-        this.versorDirector.setPosicionY(this.versorDirector.getPosicionY()*(-1));
+        this.versorDirector = this.devolverComoPosicion().multiplicarPorEscalar(-1);
     }
 
 }
