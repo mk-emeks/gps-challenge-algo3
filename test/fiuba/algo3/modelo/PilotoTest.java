@@ -22,17 +22,11 @@ public class PilotoTest {
         Mapa.limpiar();
     }
 
-    private void mapaDePrueba() throws Exception {
-
-        EditorMapa editor = new EditorMapa();
-        editor.editarMapaSimple(3,3); // creo mapa de prueba de 3x3
-
-    }
-
     @Test
     public void TestDeberiaConducirUnVehiculoHaciaOtraPosicion() throws Exception {
 
-        this.mapaDePrueba();
+        EditorMapa editor = new EditorMapa();
+        editor.editarMapaMinimoJugable();
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
         Vehiculo auto = new Auto(posicion,direccion);
@@ -40,27 +34,29 @@ public class PilotoTest {
 
         piloto.arrancarVehiculo();
         piloto.conducir();
-        Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion.sumar(direccion.devolverComoPosicion()));
 
+        Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion.sumar(direccion.devolverComoPosicion()));
     }
 
     @Test
     public void TestNoDeberiaConducirUnVehiculoHaciaOtraPosicionYaQueAunNoArranco() throws Exception {
 
-        this.mapaDePrueba();
+        EditorMapa editor = new EditorMapa();
+        editor.editarMapaMinimoJugable();
         Posicion posicion = new Posicion(1,2);
         Vehiculo auto = new Auto(posicion,new DireccionDerecha());
         piloto.asignarVehiculo(auto);
 
         piloto.conducir();
-        Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion);
 
+        Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion);
     }
 
     @Test
     public void TestNoDeberiaConducirUnVehiculoHaciaOtraPosicionYaQueLaPosicionSiguienteEsInvalida() throws Exception {
 
-        this.mapaDePrueba();
+        EditorMapa editor = new EditorMapa();
+        editor.editarMapaMinimoJugable();
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionArriba();
         Vehiculo auto = new Auto(posicion,direccion);
@@ -68,14 +64,15 @@ public class PilotoTest {
 
         piloto.arrancarVehiculo();
         piloto.conducir();
-        Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion);
 
+        Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion);
     }
 
     @Test
     public void TestNoDeberiaConducirUnVehiculoHaciaOtraPosicionUnaVezDetenidoElMismo() throws Exception {
 
-        this.mapaDePrueba();
+        EditorMapa editor = new EditorMapa();
+        editor.editarMapaMinimoJugable();
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
         Vehiculo auto = new Auto(posicion,direccion);
@@ -83,12 +80,13 @@ public class PilotoTest {
 
         piloto.arrancarVehiculo();
         piloto.conducir();
+
         Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion.sumar(direccion.devolverComoPosicion()));
 
         piloto.detenerVehiculo();
         piloto.conducir();
-        Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion.sumar(direccion.devolverComoPosicion()));
 
+        Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion.sumar(direccion.devolverComoPosicion()));
     }
 
 }
