@@ -68,7 +68,7 @@ public class MapaTest {
         Assert.assertTrue(map.existe(unaPosicion));
 
         Posicion llegada = new Posicion(1,1);
-        map.ubicar(unaPosicion);
+        map.ubicarPosicionDeLlegada(unaPosicion);
         Assert.assertEquals(map.getLlegada(),llegada);
 
     }
@@ -85,7 +85,7 @@ public class MapaTest {
         Posicion llegada = new Posicion(1,3);
 
         thrown2.expect(LaPosicionNoExisteEnElMapaException.class);
-        map.ubicar(llegada);
+        map.ubicarPosicionDeLlegada(llegada);
 
 
     }
@@ -93,11 +93,11 @@ public class MapaTest {
     @Test
     public void testDeberiaUbicarAlVehiculo() throws Exception {
 
-        Posicion unaPosicion = new Posicion(1,1);
+        Posicion unaPosicion = new Posicion(1,2);
         map.agregar(unaPosicion);
         Assert.assertTrue(map.existe(unaPosicion));
 
-        Vehiculo auto = new Auto(new Posicion(1,1),new DireccionDerecha());
+        Vehiculo auto = new Auto(unaPosicion ,new DireccionDerecha());
         map.ubicar(auto);
         Assert.assertEquals(map.getVehiculo(),auto);
 

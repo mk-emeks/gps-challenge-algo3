@@ -38,7 +38,7 @@ public class PilotoTest {
         Vehiculo auto = new Auto(posicion,direccion);
         piloto.asignarVehiculo(auto);
 
-        piloto.arrancar();
+        piloto.arrancarVehiculo();
         piloto.conducir();
         Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion.sumar(direccion.devolverComoPosicion()));
 
@@ -66,7 +66,7 @@ public class PilotoTest {
         Vehiculo auto = new Auto(posicion,direccion);
         piloto.asignarVehiculo(auto);
 
-        piloto.arrancar();
+        piloto.arrancarVehiculo();
         piloto.conducir();
         Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion);
 
@@ -81,11 +81,11 @@ public class PilotoTest {
         Vehiculo auto = new Auto(posicion,direccion);
         piloto.asignarVehiculo(auto);
 
-        piloto.arrancar();
+        piloto.arrancarVehiculo();
         piloto.conducir();
         Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion.sumar(direccion.devolverComoPosicion()));
 
-        piloto.detener();
+        piloto.detenerVehiculo();
         piloto.conducir();
         Assert.assertEquals(piloto.getVehiculo().getPosicion(),posicion.sumar(direccion.devolverComoPosicion()));
 

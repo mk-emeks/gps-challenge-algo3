@@ -32,11 +32,11 @@ public class Piloto {
         return this.vehiculo;
     }
 
-    public void detener() {
+    public void detenerVehiculo() {
         this.enMovimiento = false;
     }
 
-    public void arrancar() {
+    public void arrancarVehiculo() {
         this.enMovimiento = true;
     }
 
