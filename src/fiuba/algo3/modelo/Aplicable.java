@@ -5,11 +5,11 @@ public interface Aplicable extends Posicionable {
 
     public void actualizarInteraccion(Piloto piloto);
 
-    public void aplicarA(Interactuable unInteractuable);
+    public void aplicarA(Piloto piloto);
 
-    public void aplicarA(Interactuable unInteractuable, Auto auto);
-    public void aplicarA(Interactuable unInteractuable, Moto unaMoto);
-    public void aplicarA(Interactuable unInteractuable, CuatroPorCuatro cuatroPorCuatro);
+    public void aplicarA(Piloto piloto, Auto auto);
+    public void aplicarA(Piloto piloto, Moto unaMoto);
+    public void aplicarA(Piloto piloto, CuatroPorCuatro cuatroPorCuatro);
 
 
 }

@@ -14,26 +14,26 @@ public class Piquete extends Obstaculo {
 
     public void actualizarInteraccion(Piloto piloto) {
 
-        Vehiculo vehiculoDelCandidatoAInteractuar = piloto.getVehiculo();
+        Vehiculo vehiculoDelCandidatoASerAplicar = piloto.getVehiculo();
 
-        if ( vehiculoDelCandidatoAInteractuar.getPosicion() == this.getPosicion() )
+        if ( vehiculoDelCandidatoASerAplicar.getPosicion() == this.getPosicion() )
         {
             piloto.interactuarCon(this);
         }
 
     }
 
-    public void aplicarA(Interactuable unInteractuable) {
+    public void aplicarA(Piloto piloto) {
 
     }
 
-    public void aplicarA(Interactuable unInteractuable, Auto unAuto){
+    public void aplicarA(Piloto piloto, Auto unAuto){
         unAuto.getDireccion().invertir();
     }
-    public void aplicarA(Interactuable unInteractuable, Moto unaMoto) {
+    public void aplicarA(Piloto piloto, Moto unaMoto) {
         //se necesita Piloto
     }
-    public void aplicarA(Interactuable unInteractuable, CuatroPorCuatro cuatroPorCuatro) {
+    public void aplicarA(Piloto piloto, CuatroPorCuatro cuatroPorCuatro) {
         cuatroPorCuatro.getDireccion().invertir();
     }
 
