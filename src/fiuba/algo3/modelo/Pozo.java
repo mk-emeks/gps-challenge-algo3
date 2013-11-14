@@ -26,11 +26,11 @@ public class Pozo extends Obstaculo {
 
     /** ahorrando codigo **/
 
-    public void aplicarA(Piloto piloto, EstadoAuto EstadoAuto){
+    public void aplicarA(Piloto piloto, EstadoAuto estadoAuto){
         this.aplicar(piloto);
     }
 
-    public void aplicarA(Piloto piloto, EstadoMoto EstadoAuto) {
+    public void aplicarA(Piloto piloto, EstadoMoto estadoAuto) {
         this.aplicar(piloto);
     }
 

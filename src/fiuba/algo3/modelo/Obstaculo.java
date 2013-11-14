@@ -34,7 +34,7 @@ public abstract class Obstaculo implements Aplicable {
 
     /** implementacion **/
 
-    private int cantidadDeTurnosPenalizado() {
+    public int cantidadDeTurnosPenalizado() {
 
         return this.turnosPenalizado;
     }
