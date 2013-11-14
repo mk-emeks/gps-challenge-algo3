@@ -22,10 +22,7 @@ public class Pozo extends Obstaculo {
 
     }
 
-    public void aplicarA(Piloto piloto) {
-        //No hace nada.
-    }
-
+    public void aplicarA(Piloto piloto) { /** No hace nada **/ }
 
     /** ahorrando codigo **/
 
@@ -37,7 +34,6 @@ public class Pozo extends Obstaculo {
         this.aplicar(piloto);
     }
 
-    public void aplicarA(Piloto piloto, Estado4x4 estado4x4) {
-        //No hace nada.
-    }
+    public void aplicarA(Piloto piloto, Estado4x4 estado4x4) { /** No hace nada **/ }
+
 }

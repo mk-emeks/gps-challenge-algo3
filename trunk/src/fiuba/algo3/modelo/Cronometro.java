@@ -132,7 +132,7 @@ public class Cronometro implements Runnable {
 
     }
 
-    public void incrementarEnPorcentaje(int unPorcentaje) {
+    public void variarPorcentaje(int unPorcentaje) {
         int segundosASumar = ((this.tiempoEnSegundos() * unPorcentaje) / 100);
         this.agregarSegundos(segundosASumar);
     }

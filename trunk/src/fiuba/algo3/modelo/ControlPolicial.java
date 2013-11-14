@@ -25,9 +25,8 @@ public class ControlPolicial extends Obstaculo {
 
     }
 
-    public void aplicarA(Piloto piloto) {
-        //no hace nada
-    }
+    public void aplicarA(Piloto piloto) { /** No hace nada **/ }
+
 
     public void aplicarA(Piloto piloto, EstadoAuto estadoAuto){
 
