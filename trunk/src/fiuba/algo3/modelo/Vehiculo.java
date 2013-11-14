@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo;
 
-public abstract class Vehiculo implements Movible {
+public class Vehiculo implements Movible {
 
     /** atributos **/
 

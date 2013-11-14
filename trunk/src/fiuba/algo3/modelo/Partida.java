@@ -38,12 +38,13 @@ public class Partida {
         editor.editarMapaMinimoJugable();
         // agregar el vehiculo y la llegada! editor aun no lo hace! vehiculo<=>posVehiculo :Z
 
-        /** inicializar posicion y direccion del vehiculo en la partida **/
+        /** inicializar posicion, direccion y estado del vehiculo en la partida **/
         Posicion posicionDeInicioDelVehiculo = new Posicion (1,2);
         Direccion direccionDeInicioDelVehiculo = new DireccionDerecha();
+        EstadoMoto estadoDeInicioDelVehiculo = new EstadoMoto();
 
         /** elegir vehiculo **/
-        Vehiculo miVehiculo = new Moto(posicionDeInicioDelVehiculo,direccionDeInicioDelVehiculo);
+        Vehiculo miVehiculo = new Vehiculo(posicionDeInicioDelVehiculo,direccionDeInicioDelVehiculo,estadoDeInicioDelVehiculo);
         miVehiculo.posicionarEnElMapa();   /** (!) clave **/
 
         /** configurando piloto **/

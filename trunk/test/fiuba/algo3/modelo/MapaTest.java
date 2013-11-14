@@ -97,7 +97,7 @@ public class MapaTest {
         map.agregar(unaPosicion);
         Assert.assertTrue(map.existe(unaPosicion));
 
-        Vehiculo auto = new Auto(unaPosicion ,new DireccionDerecha());
+        Vehiculo auto = new Vehiculo(unaPosicion ,new DireccionDerecha(),new EstadoAuto());
         map.ubicar(auto);
         Assert.assertEquals(map.getVehiculo(),auto);
 
@@ -108,7 +108,7 @@ public class MapaTest {
     @Test
     public void testDeberiaLanzarExcepcionAlUbicarUnPosicionableEnUnPosicionQueNoExisteEnElMapa() throws Exception {
 
-        Vehiculo auto = new Auto(new Posicion(1,1),new DireccionDerecha());
+        Vehiculo auto = new Vehiculo(new Posicion(1,1),new DireccionDerecha(),new EstadoAuto());
 
         thrown3.expect(LaPosicionNoExisteEnElMapaException.class);
         map.ubicar(auto);

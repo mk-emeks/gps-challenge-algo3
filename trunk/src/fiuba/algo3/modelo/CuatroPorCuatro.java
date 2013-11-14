@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo;
+/**package fiuba.algo3.modelo;
 
 public class CuatroPorCuatro extends Vehiculo {
 
@@ -12,3 +12,4 @@ public class CuatroPorCuatro extends Vehiculo {
     }
 
 }
+            */
