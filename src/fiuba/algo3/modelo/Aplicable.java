@@ -3,6 +3,7 @@ package fiuba.algo3.modelo;
 
 public interface Aplicable extends Posicionable {
 
+    /** es igual en todos, son distintos los this ver() **/
     public void actualizar(Piloto piloto);
 
     public void aplicarA(Piloto piloto);

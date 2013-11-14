@@ -23,9 +23,7 @@ public class Piquete extends Obstaculo {
 
     }
 
-    public void aplicarA(Piloto piloto) {
-
-    }
+    public void aplicarA(Piloto piloto) { /** No hace nada **/ }
 
     public void aplicarA(Piloto piloto, EstadoAuto estadoAuto){
         piloto.getVehiculo().getDireccion().invertir();
