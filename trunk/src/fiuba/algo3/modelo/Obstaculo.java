@@ -32,12 +32,25 @@ public abstract class Obstaculo implements Aplicable {
         this.posicion = unaPosicion;
     }
 
-    protected int cantidadDeTurnosPenalizado() {
+    /** implementacion **/
+
+    private int cantidadDeTurnosPenalizado() {
 
         return this.turnosPenalizado;
     }
-    protected void restarCantidadDeTurnosPenalizado() {
+    private void restarCantidadDeTurnosPenalizado() {
 
         this.turnosPenalizado = this.turnosPenalizado-1;
+    }
+
+    protected void aplicar (Piloto piloto) {
+
+        if ( (this.cantidadDeTurnosPenalizado()) > 0 ) {
+            piloto.detenerVehiculo();
+        } else {
+            piloto.arrancarVehiculo();
+        }
+        this.restarCantidadDeTurnosPenalizado();
+
     }
 }
