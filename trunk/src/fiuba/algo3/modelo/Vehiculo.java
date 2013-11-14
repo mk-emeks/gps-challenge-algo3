@@ -6,12 +6,14 @@ public abstract class Vehiculo implements Movible {
 
     private Posicion posicion;
     private Direccion direccion;
+    private Estado estado;
 
     /**Constructores**/
 
-    public Vehiculo(Posicion unaPosicion , Direccion unaDireccion) {
+    public Vehiculo(Posicion unaPosicion , Direccion unaDireccion, Estado unEstado) {
         this.posicion = unaPosicion;
         this.direccion = unaDireccion;
+        this.estado = unEstado;
     }
 
     /**implementacion por ser movible**/
@@ -62,5 +64,13 @@ public abstract class Vehiculo implements Movible {
 
     public void setPosicion(Posicion nuevaPosicion) {
         this.posicion = nuevaPosicion;
+    }
+
+    public Estado getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(Estado unEstado) {
+        this.estado = unEstado;
     }
 }
