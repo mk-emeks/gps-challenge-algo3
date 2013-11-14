@@ -7,4 +7,8 @@ public class Auto extends Vehiculo {
         super(posicion,direccion);
     }
 
+    public CuatroPorCuatro obtenerTransformacion() {
+        return ( new CuatroPorCuatro(this.getPosicion(),this.getDireccion()));
+    }
+
 }

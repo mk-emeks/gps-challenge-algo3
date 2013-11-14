@@ -3,7 +3,7 @@ package fiuba.algo3.modelo;
 
 public class Piquete extends Obstaculo {
 
-    private static final int penalizacion = 2;
+    private static final int penalizacion = 5;
 
 
     public Piquete(Posicion unaPosicion) {
@@ -30,9 +30,11 @@ public class Piquete extends Obstaculo {
     public void aplicarA(Piloto piloto, Auto unAuto){
         unAuto.getDireccion().invertir();
     }
+
     public void aplicarA(Piloto piloto, Moto unaMoto) {
-        //se necesita Piloto
+        piloto.getCronometro().sumarSegundos(penalizacion);
     }
+
     public void aplicarA(Piloto piloto, CuatroPorCuatro cuatroPorCuatro) {
         cuatroPorCuatro.getDireccion().invertir();
     }

@@ -7,4 +7,8 @@ public class CuatroPorCuatro extends Vehiculo {
 
     }
 
+    public Moto obtenerTransformacion() {
+        return ( new Moto(this.getPosicion(),this.getDireccion()));
+    }
+
 }

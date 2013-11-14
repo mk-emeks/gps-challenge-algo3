@@ -3,7 +3,7 @@ package fiuba.algo3.modelo;
 
 public class Pozo extends Obstaculo {
 
-    private static final int penalizacion = 3;
+    private static final int penalizacion = 4;
 
     public Pozo(Posicion unaPosicion) {
         super(penalizacion,unaPosicion);
@@ -31,14 +31,12 @@ public class Pozo extends Obstaculo {
     }
 
     public void aplicarA(Piloto piloto, Auto unAuto){
-        //se necesita Piloto
+        piloto.getCronometro().sumarSegundos(penalizacion);
     }
     public void aplicarA(Piloto piloto, Moto unaMoto) {
-        //se necesita Piloto
+        piloto.getCronometro().sumarSegundos(penalizacion);
     }
     public void aplicarA(Piloto piloto, CuatroPorCuatro cuatroPorCuatro) {
         //No hace nada.
     }
-
-
 }
