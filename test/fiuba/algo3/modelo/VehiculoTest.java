@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 
-public class MotoTest {
+public class VehiculoTest {
 
     Mapa map;
 
@@ -23,15 +23,17 @@ public class MotoTest {
     }
 
     @Test
-    public void testDeberiaQuedarCreadoVehiculoConPosicionYDireccion() {
+    public void testDeberiaQuedarCreadoVehiculoConPosicionDireccionYEstado() {
 
         Posicion unaPosicion = new Posicion(1,1);
         Direccion derecha = new DireccionDerecha();
+        EstadoMoto unEstadoMoto = new EstadoMoto();
 
-        Vehiculo unVehiculo = new Moto(unaPosicion , derecha);
+        Vehiculo unVehiculo = new Vehiculo(unaPosicion,derecha,unEstadoMoto);
 
         Assert.assertTrue(unVehiculo.getPosicion().equals(unaPosicion));
         Assert.assertTrue(unVehiculo.getDireccion().equals(derecha));
+        Assert.assertEquals(unEstadoMoto,unVehiculo.getEstado());
     }
 
     @Test
@@ -41,7 +43,8 @@ public class MotoTest {
         editor.editarMapaMinimoJugable();
         Posicion unaPosicion = new Posicion(1,2);
         Direccion derecha = new DireccionDerecha();
-        Vehiculo unVehiculo = new Moto(unaPosicion , derecha);
+        EstadoAuto unEstadoAuto = new EstadoAuto();
+        Vehiculo unVehiculo = new Vehiculo(unaPosicion,derecha,unEstadoAuto);
 
         unVehiculo.posicionarEnElMapa();
 
@@ -57,7 +60,8 @@ public class MotoTest {
         editor.editarMapaMinimoJugable();
         Posicion unaPosicion = new Posicion(1,1);
         Direccion derecha = new DireccionDerecha();
-        Vehiculo unVehiculo = new Moto(unaPosicion , derecha);
+        EstadoAuto unEstadoAuto = new EstadoAuto();
+        Vehiculo unVehiculo = new Vehiculo(unaPosicion,derecha,unEstadoAuto);
 
         thrown.expect(NoSePuedePonerEnElMapaElPosicionableException.class);
         unVehiculo.posicionarEnElMapa();
@@ -70,7 +74,8 @@ public class MotoTest {
         editor.editarMapaMinimoJugable();
         Posicion unaPosicion = new Posicion(1,2);
         Direccion derecha = new DireccionDerecha();
-        Vehiculo unVehiculo = new Moto(unaPosicion , derecha);
+        Estado4x4 unEstado4x4 = new Estado4x4();
+        Vehiculo unVehiculo = new Vehiculo(unaPosicion,derecha,unEstado4x4);
 
         unVehiculo.posicionarEnElMapa();
         Assert.assertEquals(map.getVehiculo(),unVehiculo);
@@ -89,7 +94,8 @@ public class MotoTest {
         editor.editarMapaMinimoJugable();
         Posicion unaPosicion = new Posicion(1,2);
         Direccion arriba = new DireccionArriba();
-        Vehiculo unVehiculo = new Moto(unaPosicion , arriba);
+        EstadoAuto unEstadoAuto = new EstadoAuto();
+        Vehiculo unVehiculo = new Vehiculo(unaPosicion,arriba,unEstadoAuto);
 
         unVehiculo.posicionarEnElMapa();
         Assert.assertEquals(map.getVehiculo(),unVehiculo);

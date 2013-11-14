@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo;
+/**package fiuba.algo3.modelo;
 
 public class Moto extends Vehiculo {
 
@@ -9,4 +9,4 @@ public class Moto extends Vehiculo {
     public Auto obtenerTransformacion() {
         return ( new Auto(this.getPosicion(),this.getDireccion()));
     }
-}
+} **/

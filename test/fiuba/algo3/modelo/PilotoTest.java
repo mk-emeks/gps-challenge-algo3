@@ -29,7 +29,8 @@ public class PilotoTest {
         editor.editarMapaMinimoJugable();
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        Vehiculo auto = new Auto(posicion,direccion);
+        EstadoAuto estadoAuto = new EstadoAuto();
+        Vehiculo auto = new Vehiculo(posicion,direccion,estadoAuto);
         piloto.asignarVehiculo(auto);
 
         piloto.arrancarVehiculo();
@@ -44,7 +45,8 @@ public class PilotoTest {
         EditorMapa editor = new EditorMapa();
         editor.editarMapaMinimoJugable();
         Posicion posicion = new Posicion(1,2);
-        Vehiculo auto = new Auto(posicion,new DireccionDerecha());
+
+        Vehiculo auto = new Vehiculo(posicion,new DireccionDerecha(),new EstadoAuto());
         piloto.asignarVehiculo(auto);
 
         piloto.conducir();
@@ -59,7 +61,8 @@ public class PilotoTest {
         editor.editarMapaMinimoJugable();
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionArriba();
-        Vehiculo auto = new Auto(posicion,direccion);
+        EstadoAuto estadoAuto = new EstadoAuto();
+        Vehiculo auto = new Vehiculo(posicion,direccion,estadoAuto);
         piloto.asignarVehiculo(auto);
 
         piloto.arrancarVehiculo();
@@ -75,7 +78,8 @@ public class PilotoTest {
         editor.editarMapaMinimoJugable();
         Posicion posicion = new Posicion(1,2);
         Direccion direccion = new DireccionDerecha();
-        Vehiculo auto = new Auto(posicion,direccion);
+        EstadoAuto estadoAuto = new EstadoAuto();
+        Vehiculo auto = new Vehiculo(posicion,direccion,estadoAuto);
         piloto.asignarVehiculo(auto);
 
         piloto.arrancarVehiculo();
