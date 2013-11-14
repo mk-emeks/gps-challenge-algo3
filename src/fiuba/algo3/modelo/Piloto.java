@@ -63,7 +63,7 @@ public class Piloto {
         return this.cronometro;
     }
 
-
+    /** agarrate catalina **/
     public void interactuarCon(Pozo pozo) {
 
         this.getVehiculo().getEstado().interactuarCon(this,pozo);
@@ -72,6 +72,12 @@ public class Piloto {
     public void interactuarCon(Piquete piquete) {
 
         this.getVehiculo().getEstado().interactuarCon(this,piquete);
+
+    }
+
+    public void interactuarCon(ControlPolicial layuta) {
+
+        this.getVehiculo().getEstado().interactuarCon(this,layuta);
 
     }
 

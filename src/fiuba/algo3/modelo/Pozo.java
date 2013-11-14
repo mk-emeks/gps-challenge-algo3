@@ -3,7 +3,7 @@ package fiuba.algo3.modelo;
 
 public class Pozo extends Obstaculo {
 
-    private static final int penalizacion = 4;
+    private static final int penalizacion = 3;
 
     public Pozo(Posicion unaPosicion) {
         super(penalizacion,unaPosicion);
@@ -28,23 +28,15 @@ public class Pozo extends Obstaculo {
 
 
     /** ahorrando codigo **/
-    private void aplicar (Piloto piloto) {
-
-        if ( (this.cantidadDeTurnosPenalizado()) > 0 ) {
-            piloto.detenerVehiculo();
-        } else {
-            piloto.arrancarVehiculo();
-        }
-        this.restarCantidadDeTurnosPenalizado();
-
-    }
 
     public void aplicarA(Piloto piloto, EstadoAuto EstadoAuto){
-        aplicar(piloto);
+        this.aplicar(piloto);
     }
+
     public void aplicarA(Piloto piloto, EstadoMoto EstadoAuto) {
-        aplicar(piloto);
+        this.aplicar(piloto);
     }
+
     public void aplicarA(Piloto piloto, Estado4x4 estado4x4) {
         //No hace nada.
     }
