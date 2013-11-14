@@ -16,6 +16,15 @@ public abstract class Vehiculo implements Movible {
         this.estado = unEstado;
     }
 
+    public Estado getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(Estado unEstado) {
+        this.estado = unEstado;
+    }
+
+
     /**implementacion por ser movible**/
 
     public void mover() throws NoSePuedeMoverEnElMapaElMovibleException {
@@ -66,11 +75,4 @@ public abstract class Vehiculo implements Movible {
         this.posicion = nuevaPosicion;
     }
 
-    public Estado getEstado() {
-        return this.estado;
-    }
-
-    public void setEstado(Estado unEstado) {
-        this.estado = unEstado;
-    }
 }
