@@ -18,4 +18,17 @@ public class EstadoMoto extends Estado {
         layuta.aplicarA(piloto,this);
 
     }
+
+    public void interactuarCon(Piloto piloto, SorpresaFavorable sorpresa) {
+        sorpresa.aplicarA(piloto);
+    }
+
+    public void interactuarCon(Piloto piloto, SorpresaDesfavorable sorpresa) {
+        sorpresa.aplicarA(piloto);
+
+    }
+    public void interactuarCon(Piloto piloto, SorpresaCambioDeVehiculo sorpresa) {
+        sorpresa.aplicarA(piloto);
+
+    }
 }

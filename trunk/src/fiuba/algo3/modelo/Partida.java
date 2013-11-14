@@ -1,7 +1,7 @@
 package fiuba.algo3.modelo;
 
 
-public class Partida {
+public class    Partida {
 
     private Piloto pilotin;
     private Boolean enJuego;
@@ -35,7 +35,7 @@ public class Partida {
 
         /** configurando mapa **/
         EditorMapa editor = new EditorMapa();
-        editor.editarMapaMinimoJugable();
+        editor.editarMapaNivel();
         // agregar el vehiculo y la llegada! editor aun no lo hace! vehiculo<=>posVehiculo :Z
 
         /** inicializar posicion, direccion y estado del vehiculo en la partida **/

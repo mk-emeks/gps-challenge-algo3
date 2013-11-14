@@ -6,7 +6,9 @@ public abstract class Estado {
     public abstract void interactuarCon(Piloto piloto, Pozo pozo);
     public abstract void interactuarCon(Piloto piloto, Piquete piquete);
     public abstract void interactuarCon(Piloto piloto, ControlPolicial layuta);
-
+    public abstract void interactuarCon(Piloto piloto, SorpresaFavorable sorpresaFavorable);
+    public abstract void interactuarCon(Piloto piloto, SorpresaDesfavorable sorpresaDesfavorable);
+    public abstract void interactuarCon(Piloto piloto, SorpresaCambioDeVehiculo sorpresaCambioDeVehiculo);
 
     /** deberia tener esto para probarlo: no se me ocurre mas para las pruebas **/
 
