@@ -4,7 +4,9 @@ package fiuba.algo3.modelo;
 import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class PozoTest {
 
@@ -38,6 +40,32 @@ public class PozoTest {
         unPozo.posicionarEnElMapa();
 
         Assert.assertTrue(unMapa.estaUbicado(unPozo));
+    }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+    @Test
+    public void testDeberiaLanzarUnaExceptionAlQuererUbicarUnPozoEnUnaPosicionFueraDelMapa() throws Exception {
+        EditorMapa unEditor = new EditorMapa();
+        unEditor.editarMapaMinimoJugable();
+
+        Pozo unPozo = new Pozo(new Posicion(4,4));
+
+        thrown.expect(NoSePuedePonerEnElMapaElPosicionableException.class);
+        unPozo.posicionarEnElMapa();
+    }
+
+    @Rule
+    public ExpectedException thrown1 = ExpectedException.none();
+    @Test
+    public void testDeberiaLanzarUnaExceptionAlQuererUbicarUnPozoEnUnaPosicionCuadra() throws Exception {
+        EditorMapa unEditor = new EditorMapa();
+        unEditor.editarMapaMinimoJugable();
+
+        Pozo unPozo = new Pozo(new Posicion(1,1));
+
+        thrown1.expect(NoSePuedePonerEnElMapaElPosicionableException.class);
+        unPozo.posicionarEnElMapa();
     }
 
     @Test
@@ -104,7 +132,7 @@ public class PozoTest {
     public void testDeberiaPoderPenalizarAunVehiculo4x4() throws Exception{
         EditorMapa unEditor = new EditorMapa();
         //Creo un mapa mas grande
-        unEditor.editarMapaSimple(6,3);
+        unEditor.editarMapaSimple(6, 3);
 
         Posicion posicionInicial = new Posicion(6,2);
         Direccion direccion = new DireccionIzquierda();
