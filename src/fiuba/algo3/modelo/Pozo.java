@@ -3,7 +3,7 @@ package fiuba.algo3.modelo;
 
 public class Pozo extends Obstaculo {
 
-    private static final int penalizacion = 3;
+    private static final int penalizacion = 3;  /** cambiar aca si se quiere modificar la clase -> para calibrar**/
 
     public Pozo(Posicion unaPosicion) {
         super(penalizacion,unaPosicion);
