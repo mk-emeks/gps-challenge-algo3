@@ -92,6 +92,7 @@ public class Cronometro implements Runnable {
         return ("horas: " + horas + " " + "minutos: " + minutos + " " + "segundos: " + segundos);
     }
 
+    /** por testing es public **/
     public int tiempoEnSegundos() {
         return ( this.segundos + this.minutosEnSegundos() + this.horasEnSegundos() );
     }
@@ -112,6 +113,7 @@ public class Cronometro implements Runnable {
         this.minutos = this.minutos + unoMinutos;
     }
 
+    /** por testing es public **/
     public void sumarSegundos(int unosSegundos) {
         this.segundos = this.segundos + unosSegundos;
     }
