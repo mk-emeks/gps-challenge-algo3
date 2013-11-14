@@ -11,7 +11,6 @@ public class SorpresaCambioDeVehiculoTest {
         Mapa.limpiar();
     }
 
-
     @Test
     public void testDeberiaCrearLaSorpresaConUnaPosicion() {
         Posicion unaPosicion = new Posicion(2,2);
