@@ -81,9 +81,21 @@ public class Piloto {
 
     }
 
-    public void interactuarCon(Sorpresa sorpresa) {
+    public void interactuarCon(SorpresaFavorable sorpresa) {
 
+        this.getVehiculo().getEstado().interactuarCon(this,sorpresa);
     }
+
+    public void interactuarCon(SorpresaDesfavorable sorpresa) {
+
+        this.getVehiculo().getEstado().interactuarCon(this,sorpresa);
+    }
+
+    public void interactuarCon(SorpresaCambioDeVehiculo sorpresa) {
+
+        this.getVehiculo().getEstado().interactuarCon(this,sorpresa);
+    }
+
 
 
 

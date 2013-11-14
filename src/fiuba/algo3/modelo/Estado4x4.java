@@ -21,4 +21,18 @@ public class Estado4x4 extends Estado {
 
     }
 
+    public void interactuarCon(Piloto piloto, SorpresaFavorable sorpresa) {
+        sorpresa.aplicarA(piloto);
+    }
+
+    public void interactuarCon(Piloto piloto, SorpresaDesfavorable sorpresa) {
+        sorpresa.aplicarA(piloto);
+
+    }
+    public void interactuarCon(Piloto piloto, SorpresaCambioDeVehiculo sorpresa) {
+        sorpresa.aplicarA(piloto);
+
+    }
+
+
 }

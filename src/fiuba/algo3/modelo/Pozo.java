@@ -30,7 +30,7 @@ public class Pozo extends Obstaculo {
         this.aplicar(piloto);
     }
 
-    public void aplicarA(Piloto piloto, EstadoMoto estadoAuto) {
+    public void aplicarA(Piloto piloto, EstadoMoto estadoMoto) {
         this.aplicar(piloto);
     }
 

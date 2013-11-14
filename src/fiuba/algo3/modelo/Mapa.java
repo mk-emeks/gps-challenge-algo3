@@ -7,7 +7,7 @@ public class Mapa {
 
     private ArrayList<Posicion> posicionesValidas;
 
-    private Vehiculo vehiculo;
+    private Vehiculo vehiculo;  /** dudoso uso **/
     private Posicion llegada;
     private ArrayList<Aplicable> aplicables;
 
@@ -78,7 +78,16 @@ public class Mapa {
         } else { throw new LaPosicionNoExisteEnElMapaException(); }
     }
 
-    /** informadores **/
+
+    public Posicion getLlegada() {
+        return this.llegada;
+    }
+
+    public ArrayList<Aplicable> getAplicables() {
+        return this.aplicables;
+    }
+
+    /** testing **/
     // deberian ser private? los hacemos public para poder hacer tests con comodidad
     public boolean estaUbicado(Aplicable unAplicable) {
 
@@ -90,19 +99,11 @@ public class Mapa {
 
         return posicionesValidas.contains(unaPosicion);
     }
-    /** fin **/
 
-    /** no deberia usarlo nadie **/
     public Vehiculo getVehiculo() {
         return this.vehiculo;
     }
 
-    public Posicion getLlegada() {
-        return this.llegada;
-    }
-
-    public ArrayList<Aplicable> getAplicables() {
-        return this.aplicables;
-    }
+    /** fin **/
 
 }
