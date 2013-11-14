@@ -45,7 +45,7 @@ public class Mapa {
 
     public void ubicarPosicionDeLlegada(Posicion laLlegada) throws LaPosicionNoExisteEnElMapaException {
 
-        if ( this.posicionesValidas.contains(laLlegada) ) {
+        if ( this.existe(laLlegada) ) {
 
             this.llegada = laLlegada;
 
@@ -55,7 +55,7 @@ public class Mapa {
 
     public void ubicar(Vehiculo unVehiculo) throws LaPosicionNoExisteEnElMapaException {
 
-        if ( this.posicionesValidas.contains(unVehiculo.getPosicion()) ) {
+        if ( this.existe(unVehiculo.getPosicion()) ) {
 
             this.vehiculo = unVehiculo;
 
