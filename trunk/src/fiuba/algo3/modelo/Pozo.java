@@ -11,7 +11,7 @@ public class Pozo extends Obstaculo {
 
     //---Implementacion de Aplicable---//
 
-    public void actualizarInteraccion(Piloto piloto) {
+    public void actualizar(Piloto piloto) {
 
         Vehiculo vehiculoDelCandidatoASerAplicar = piloto.getVehiculo();
 
@@ -23,20 +23,29 @@ public class Pozo extends Obstaculo {
     }
 
     public void aplicarA(Piloto piloto) {
+        //No hace nada.
+    }
+
+
+    /** ahorrando codigo **/
+    private void aplicar (Piloto piloto) {
+
+        if ( (this.cantidadDeTurnosPenalizado()) > 0 ) {
+            piloto.detenerVehiculo();
+        } else {
+            piloto.arrancarVehiculo();
+        }
+        this.restarCantidadDeTurnosPenalizado();
 
     }
 
-    public void aplicarA(Piloto piloto, Vehiculo vehiculo){
-        //se necesita Piloto
+    public void aplicarA(Piloto piloto, EstadoAuto EstadoAuto){
+        aplicar(piloto);
     }
-
-    public void aplicarA(Piloto piloto, Auto unAuto){
-        piloto.getCronometro().sumarSegundos(penalizacion);
+    public void aplicarA(Piloto piloto, EstadoMoto EstadoAuto) {
+        aplicar(piloto);
     }
-    public void aplicarA(Piloto piloto, Moto unaMoto) {
-        piloto.getCronometro().sumarSegundos(penalizacion);
-    }
-    public void aplicarA(Piloto piloto, CuatroPorCuatro cuatroPorCuatro) {
+    public void aplicarA(Piloto piloto, Estado4x4 estado4x4) {
         //No hace nada.
     }
 }

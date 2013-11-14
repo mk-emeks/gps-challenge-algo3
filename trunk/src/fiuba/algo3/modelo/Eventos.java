@@ -31,7 +31,7 @@ public class Eventos {
         while (iterador.hasNext()) {
 
             Aplicable aplicable = iterador.next();
-            aplicable.actualizarInteraccion(pilotoAVerificar);
+            aplicable.actualizar(pilotoAVerificar);
 
         }
 

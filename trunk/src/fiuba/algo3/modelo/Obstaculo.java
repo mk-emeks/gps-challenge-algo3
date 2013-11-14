@@ -3,11 +3,11 @@ package fiuba.algo3.modelo;
 
 public abstract class Obstaculo implements Aplicable {
 
-    private int tiempoPenalizado;
+    private int turnosPenalizado;
     private Posicion posicion;
 
     public Obstaculo(int penalizacion, Posicion unaPosicion) {
-        this.tiempoPenalizado = penalizacion;
+        this.turnosPenalizado = penalizacion;
         this.posicion = unaPosicion;
     }
 
@@ -32,4 +32,12 @@ public abstract class Obstaculo implements Aplicable {
         this.posicion = unaPosicion;
     }
 
+    protected int cantidadDeTurnosPenalizado() {
+
+        return this.turnosPenalizado;
+    }
+    protected void restarCantidadDeTurnosPenalizado() {
+
+        this.turnosPenalizado = this.turnosPenalizado-1;
+    }
 }

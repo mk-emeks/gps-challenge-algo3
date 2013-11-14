@@ -63,15 +63,15 @@ public class Piloto {
         return this.cronometro;
     }
 
-    /** implementacion interactuable **/
 
     public void interactuarCon(Pozo pozo) {
 
-        pozo.aplicarA(this,this.vehiculo);
+        this.getVehiculo().getEstado().interactuarCon(this,pozo);
     }
 
     public void interactuarCon(Piquete piquete) {
-        piquete.aplicarA(this,this.vehiculo);
+
+        this.getVehiculo().getEstado().interactuarCon(this,piquete);
 
     }
 

@@ -12,7 +12,7 @@ public class Piquete extends Obstaculo {
 
     //---Implementacion de Aplicable---//
 
-    public void actualizarInteraccion(Piloto piloto) {
+    public void actualizar(Piloto piloto) {
 
         Vehiculo vehiculoDelCandidatoASerAplicar = piloto.getVehiculo();
 
@@ -38,9 +38,6 @@ public class Piquete extends Obstaculo {
     public void aplicarA(Piloto piloto, CuatroPorCuatro cuatroPorCuatro) {
         cuatroPorCuatro.getDireccion().invertir();
     }
-
-
-
 
 
 }
