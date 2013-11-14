@@ -3,6 +3,7 @@ package fiuba.algo3.modelo;
 
 public class ControlPolicial extends Obstaculo {
 
+    /** cambiar aca si se quiere modificar la clase -> para calibrar **/
     private static final int penalizacion = 3;
     private static final double probabilidadAuto = 0.5;
     private static final double probabilidad4x4 = 0.3;

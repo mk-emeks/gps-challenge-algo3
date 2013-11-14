@@ -2,7 +2,6 @@ package fiuba.algo3.modelo;
 
 
 import junit.framework.Assert;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -102,7 +101,7 @@ public class CronometroTest {
        this.cronometroDePueba.iniciar();
        Thread.currentThread().sleep(numeroRandom*1000);
 
-        this.cronometroDePueba.incrementarEnPorcentaje(20);
+        this.cronometroDePueba.variarPorcentaje(20);
 
         Assert.assertEquals(numeroRandom+((numeroRandom*20)/100),this.cronometroDePueba.tiempoEnSegundos());
     }

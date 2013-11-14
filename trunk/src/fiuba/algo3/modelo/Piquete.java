@@ -3,7 +3,7 @@ package fiuba.algo3.modelo;
 
 public class Piquete extends Obstaculo {
 
-    private static final int penalizacion = 2;
+    private static final int penalizacion = 2;  /** cambiar aca si se quiere modificar la clase -> para calibrar**/
 
 
     public Piquete(Posicion unaPosicion) {
