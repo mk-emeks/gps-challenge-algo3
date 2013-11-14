@@ -112,7 +112,7 @@ public class Cronometro implements Runnable {
         this.minutos = this.minutos + unoMinutos;
     }
 
-    private void sumarSegundos(int unosSegundos) {
+    public void sumarSegundos(int unosSegundos) {
         this.segundos = this.segundos + unosSegundos;
     }
 

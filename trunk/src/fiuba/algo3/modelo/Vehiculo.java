@@ -63,5 +63,4 @@ public abstract class Vehiculo implements Movible {
     public void setPosicion(Posicion nuevaPosicion) {
         this.posicion = nuevaPosicion;
     }
-
 }

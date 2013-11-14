@@ -67,9 +67,11 @@ public class Piloto {
 
     public void interactuarCon(Pozo pozo) {
 
+        pozo.aplicarA(this,this.vehiculo);
     }
 
     public void interactuarCon(Piquete piquete) {
+        piquete.aplicarA(this,this.vehiculo);
 
     }
 
