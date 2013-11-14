@@ -12,6 +12,22 @@ public class EditorMapa {
         this.editarMapaSimple(3,3);
     }
 
+    public void editarMapaNivel() throws Exception {
+
+        this.editarMapaSimple(6,6);
+
+        /** Obstaculos**/
+        unMapa.ubicar(new ControlPolicial(new Posicion(2,2)));
+        unMapa.ubicar(new Piquete(new Posicion(2,6)));
+        unMapa.ubicar(new Pozo(new Posicion(4,4)));
+
+        /**Sorpresas**/
+        unMapa.ubicar(new SorpresaDesfavorable(new Posicion(4,2)));
+        unMapa.ubicar(new SorpresaFavorable((new Posicion(6,4))));
+        unMapa.ubicar(new SorpresaFavorable((new Posicion(4,6))));
+
+    }
+
 
     public void editarMapaSimple(int ancho, int largo) throws Exception {
 
