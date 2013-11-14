@@ -2,13 +2,14 @@ package fiuba.algo3.modelo;
 
 
 import junit.framework.Assert;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 
 public class CronometroTest {
+
+    /**Clase complicada de testear, al parecer anda bastante bien para el uso que necesitamos
+     * El resultado global puede variar con diferentes tiempos por la calibracion, error de segundos (+-1, +--2 aprox)
+     */
 
     Cronometro cronometroDePueba;
 
@@ -90,10 +91,21 @@ public class CronometroTest {
         this.cronometroDePueba.reset();
         Thread.currentThread().sleep(1000);
         Assert.assertEquals(0,this.cronometroDePueba.tiempoEnSegundos());
-
-
     }
 
+
+   @Test
+    public void testDeberiaPoderIncrementarUnPorcentajeDeTiempo() throws Exception {
+
+       int numeroRandom = this.RandomInt012();
+       this.cronometroDePueba.iniciar();
+       Thread.currentThread().sleep(numeroRandom*1000);
+
+        this.cronometroDePueba.incrementarEnPorcentaje(20);
+
+        Assert.assertEquals(numeroRandom+((numeroRandom*20)/100),this.cronometroDePueba.tiempoEnSegundos());
+
+    }
 
 
 }
