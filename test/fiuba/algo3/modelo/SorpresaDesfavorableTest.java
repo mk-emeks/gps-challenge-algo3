@@ -2,9 +2,15 @@ package fiuba.algo3.modelo;
 
 
 import junit.framework.Assert;
+import org.junit.After;
 import org.junit.Test;
 
 public class SorpresaDesfavorableTest {
+
+    @After
+    public void limpiezaMapa() {
+        Mapa.limpiar();
+    }
 
     @Test
     public void testDeberiaCrearLaSorpresaConUnaPosicion() {
