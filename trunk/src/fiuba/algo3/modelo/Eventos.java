@@ -16,7 +16,7 @@ public class Eventos {
      private void actualizarElEstadoDeLaPartida( Partida unaPartida) {
 
         Vehiculo vehiculoAVerificar = unaPartida.getPiloto().getVehiculo();
-        if (vehiculoAVerificar.getPosicion() == Mapa.getMapa().getLlegada()) {
+        if ( vehiculoAVerificar.getPosicion().equals(Mapa.getMapa().getLlegada()) ) {
             unaPartida.finalizar();
         }
 
