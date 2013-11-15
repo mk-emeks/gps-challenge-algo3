@@ -7,6 +7,7 @@ public class Cronometro implements Runnable {
     private int segundos;
     private int minutos;
     private int horas;
+    private int errorEnSegundos;
 
 
     private boolean pausa;
@@ -16,6 +17,7 @@ public class Cronometro implements Runnable {
         segundos = 0;
         minutos = 0;
         horas = 0;
+        errorEnSegundos = 2;
         this.pausa = true;
     }
 
@@ -77,7 +79,7 @@ public class Cronometro implements Runnable {
                  *  no es exactamente un segundo(1000 milesimas) porque al llamar
                  *  asincronicamente un metodo del cronometro corta antes. ver tests!
                  * **/
-                Thread.sleep(850); // espera un 1 segundo y despues contalo, verificar tiene un error de -1s/-2s
+                Thread.sleep(980); // espera un 1 segundo y despues contalo, verificar tiene un error de -1s/-2s
                 this.contar();
                 System.out.println(this.devolverTiempoComoString());  // despues se borra, se usa en testing
 
@@ -137,5 +139,9 @@ public class Cronometro implements Runnable {
     public void variarPorcentaje(int unPorcentaje) {
         int segundosASumar = ((this.tiempoEnSegundos() * unPorcentaje) / 100);
         this.agregarSegundos(segundosASumar);
+    }
+
+    public int errorEnSegundos() {
+        return this.errorEnSegundos;
     }
 }
