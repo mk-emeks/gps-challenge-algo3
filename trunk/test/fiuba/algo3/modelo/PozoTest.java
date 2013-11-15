@@ -23,7 +23,7 @@ public class PozoTest {
     }
 
     @Test
-    public void testDeberiaCrearUnPozoConUnaDeterminadaPosicion() throws Exception{
+    public void testDeberiaCrearUnPozoConUnaDeterminadaPosicion() {
         Posicion unaPosicion = new Posicion(3,15);
         Pozo unPozo = new Pozo(new Posicion(3,15));
 
@@ -69,7 +69,7 @@ public class PozoTest {
     }
 
     @Test
-    public void testDeberiaPoderPenalizarAunVehiculoAuto() throws Exception{
+    public void testDeberiaPoderPenalizarAUnVehiculoAuto() throws Exception{
         EditorMapa unEditor = new EditorMapa();
         unEditor.editarMapaMinimoJugable();
 
@@ -88,18 +88,18 @@ public class PozoTest {
         int numeroPenalizacion = unPozo.cantidadDeTurnosPenalizado();
 
         for(int i =1; i<=numeroPenalizacion;i++) {
-            unPozo.aplicarA(schumacher, (EstadoAuto)unaFerrari.getEstado()); //Le Aseguro que es un EstadoAuto
+            unPozo.aplicarA(schumacher, (EstadoAuto)unaFerrari.getEstado()); //Le aseguro al compilador que es un EstadoAuto
             schumacher.conducir();
-            Assert.assertTrue(unaFerrari.getPosicion().equals(posicionInicial));
+            Assert.assertTrue(schumacher.getVehiculo().getPosicion().equals(posicionInicial));
         }
         /**Ahora no deberia afectarme el pozo **/
         unPozo.aplicarA(schumacher, (EstadoAuto)unaFerrari.getEstado());
         schumacher.conducir();
-        Assert.assertTrue(unaFerrari.getPosicion().equals(new Posicion(2,2)));
+        Assert.assertTrue(schumacher.getVehiculo().getPosicion().equals(new Posicion(2,2)));
     }
 
     @Test
-    public void testDeberiaPoderPenalizarAunVehiculoMoto() throws Exception{
+    public void testDeberiaPoderPenalizarAUnVehiculoMoto() throws Exception{
         EditorMapa unEditor = new EditorMapa();
         unEditor.editarMapaMinimoJugable();
 
@@ -118,18 +118,18 @@ public class PozoTest {
         int numeroPenalizacion = unPozo.cantidadDeTurnosPenalizado();
 
         for(int i =1; i<=numeroPenalizacion;i++) {
-            unPozo.aplicarA(metalero, (EstadoMoto)unaChopper.getEstado()); //Le Aseguro que es un EstadoAuto
+            unPozo.aplicarA(metalero, (EstadoMoto)unaChopper.getEstado()); //Le aseguro al compilador que es un EstadoMoto
             metalero.conducir();
-            Assert.assertTrue(unaChopper.getPosicion().equals(posicionInicial));
+            Assert.assertTrue(metalero.getVehiculo().getPosicion().equals(posicionInicial));
         }
         /**Ahora no deberia afectarme el pozo **/
         unPozo.aplicarA(metalero, (EstadoMoto)unaChopper.getEstado());
         metalero.conducir();
-        Assert.assertTrue(unaChopper.getPosicion().equals(new Posicion(2,2)));
+        Assert.assertTrue(metalero.getVehiculo().getPosicion().equals(new Posicion(2,2)));
     }
 
     @Test
-    public void testDeberiaPoderPenalizarAunVehiculo4x4() throws Exception{
+    public void testDeberiaPoderPenalizarAUnVehiculo4x4() throws Exception{
         EditorMapa unEditor = new EditorMapa();
         //Creo un mapa mas grande
         unEditor.editarMapaSimple(6, 3);
@@ -149,16 +149,16 @@ public class PozoTest {
         int numeroPenalizacion = unPozo.cantidadDeTurnosPenalizado();
 
         for(int i =1; i<=numeroPenalizacion;i++) {
-            unPozo.aplicarA(unPiloto, (Estado4x4)unaCamioneta.getEstado()); //Le Aseguro que es un EstadoAuto
+            unPozo.aplicarA(unPiloto, (Estado4x4)unaCamioneta.getEstado()); //Le aseguro al compilador que es un Estado4x4
             unPiloto.conducir();
             /**Nunca le afectan la penalizacion del Pozo**/
-            Assert.assertFalse(unaCamioneta.getPosicion().equals(posicionInicial));
+            Assert.assertFalse(unPiloto.getVehiculo().getPosicion().equals(posicionInicial));
         }
 
         /**Y sigo avanzando**/
         unPozo.aplicarA(unPiloto, (Estado4x4)unaCamioneta.getEstado());
         unPiloto.conducir();
-        Assert.assertTrue(unaCamioneta.getPosicion().equals(new Posicion(2,2)));
+        Assert.assertTrue(unPiloto.getVehiculo().getPosicion().equals(new Posicion(2,2)));
     }
 
 
