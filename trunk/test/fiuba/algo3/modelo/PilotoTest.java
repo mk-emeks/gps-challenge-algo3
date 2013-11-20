@@ -9,6 +9,7 @@ import org.junit.Test;
 public class PilotoTest {
 
     Mapa map;
+    String nombrePiloto = "Pilotin";
     Piloto piloto = new Piloto();
 
 

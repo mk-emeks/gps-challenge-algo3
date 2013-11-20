@@ -45,7 +45,8 @@ public class SorpresaCambioDeVehiculoTest {
 
 
         Vehiculo unVehiculo = new Vehiculo(unaPosicion,new DireccionDerecha(),estadoInicial);
-        Piloto pilotin = new Piloto(unVehiculo);
+        String nombrePiloto = "Pilotin";
+        Piloto pilotin = new Piloto(unVehiculo,nombrePiloto);
 
         unaSorpresa.aplicarA(pilotin ,(EstadoAuto)pilotin.getVehiculo().getEstado());
         Assert.assertEquals(estadoFinal,pilotin.getVehiculo().getEstado());
@@ -62,7 +63,8 @@ public class SorpresaCambioDeVehiculoTest {
 
 
         Vehiculo unVehiculo = new Vehiculo(unaPosicion,new DireccionDerecha(),estadoInicial);
-        Piloto pilotin = new Piloto(unVehiculo);
+        String nombrePiloto = "Pilotin";
+        Piloto pilotin = new Piloto(unVehiculo,nombrePiloto);
 
         unaSorpresa.aplicarA(pilotin ,(EstadoMoto)pilotin.getVehiculo().getEstado());
         Assert.assertEquals(estadoFinal,pilotin.getVehiculo().getEstado());
@@ -79,7 +81,8 @@ public class SorpresaCambioDeVehiculoTest {
 
 
         Vehiculo unVehiculo = new Vehiculo(unaPosicion,new DireccionDerecha(),estadoInicial);
-        Piloto pilotin = new Piloto(unVehiculo);
+        String nombrePiloto = "Pilotin";
+        Piloto pilotin = new Piloto(unVehiculo,nombrePiloto);
 
         unaSorpresa.aplicarA(pilotin ,(Estado4x4)pilotin.getVehiculo().getEstado());
         Assert.assertEquals(estadoFinal,pilotin.getVehiculo().getEstado());

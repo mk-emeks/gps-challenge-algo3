@@ -78,7 +78,8 @@ public class PozoTest {
         EstadoAuto unEstadoAuto = new EstadoAuto();
 
         Vehiculo unaFerrari = new Vehiculo(posicionInicial, direccion, unEstadoAuto);
-        Piloto schumacher = new Piloto(unaFerrari);
+        String nombrePiloto = "Schumacher";
+        Piloto schumacher = new Piloto(unaFerrari,nombrePiloto);
         unaFerrari.posicionarEnElMapa();
         schumacher.arrancarVehiculo();
 
@@ -108,7 +109,8 @@ public class PozoTest {
         EstadoMoto unEstadoMoto = new EstadoMoto();
 
         Vehiculo unaChopper = new Vehiculo(posicionInicial, direccion, unEstadoMoto);
-        Piloto metalero = new Piloto(unaChopper);
+        String nombrePiloto = "Metalero";
+        Piloto metalero = new Piloto(unaChopper,nombrePiloto);
         unaChopper.posicionarEnElMapa();
         metalero.arrancarVehiculo();
 
@@ -139,7 +141,8 @@ public class PozoTest {
         Estado4x4 unEstado4x4 = new Estado4x4();
 
         Vehiculo unaCamioneta = new Vehiculo(posicionInicial, direccion, unEstado4x4);
-        Piloto unPiloto = new Piloto(unaCamioneta);
+        String nombrePiloto = "Pilotin";
+        Piloto unPiloto = new Piloto(unaCamioneta,nombrePiloto);
         unaCamioneta.posicionarEnElMapa();
         unPiloto.arrancarVehiculo();
 

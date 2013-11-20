@@ -78,7 +78,8 @@ public class PiqueteTest {
         EstadoAuto unEstadoAuto = new EstadoAuto();
 
         Vehiculo unAuto = new Vehiculo(posicionInicial, direccion, unEstadoAuto);
-        Piloto unPiloto = new Piloto(unAuto);
+        String nombrePiloto = "Pilotin";
+        Piloto unPiloto = new Piloto(unAuto,nombrePiloto);
         unAuto.posicionarEnElMapa();
         unPiloto.arrancarVehiculo();
 
@@ -101,7 +102,8 @@ public class PiqueteTest {
         Estado4x4 unEstado4x4 = new Estado4x4();
 
         Vehiculo unaCamioneta = new Vehiculo(posicionInicial, direccion, unEstado4x4);
-        Piloto unPiloto = new Piloto(unaCamioneta);
+        String nombrePiloto = "Pilotin";
+        Piloto unPiloto = new Piloto(unaCamioneta,nombrePiloto);
         unaCamioneta.posicionarEnElMapa();
         unPiloto.arrancarVehiculo();
 
@@ -124,7 +126,8 @@ public class PiqueteTest {
         EstadoMoto unEstadoMoto = new EstadoMoto();
 
         Vehiculo unaMoto = new Vehiculo(posicionInicial, direccion, unEstadoMoto);
-        Piloto unMotoquero = new Piloto(unaMoto);
+        String nombrePiloto = "Pilotin";
+        Piloto unMotoquero = new Piloto(unaMoto,nombrePiloto);
         unaMoto.posicionarEnElMapa();
         unMotoquero.arrancarVehiculo();
 
