@@ -3,22 +3,23 @@ package fiuba.algo3.modelo;
 
 public class Piloto {
 
+    private String nombre;
     private Vehiculo vehiculo;
     private Boolean enMovimiento;
     private Cronometro cronometro;
 
     public Piloto() {
 
-        cronometro = new Cronometro();
-        enMovimiento = false;
-
+        this.cronometro = new Cronometro();
+        this.enMovimiento = false;
     }
 
-    public Piloto(Vehiculo unVehiculo) {
+    public Piloto(Vehiculo unVehiculo, String unNombre) {
 
-        cronometro = new Cronometro();
+        this.cronometro = new Cronometro();
         this.vehiculo = unVehiculo;
-        enMovimiento = false;
+        this.enMovimiento = false;
+        this.nombre = unNombre;
 
     }
 
@@ -26,6 +27,14 @@ public class Piloto {
 
         this.vehiculo = unVehiculo;
 
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String unNombre) {
+        this.nombre = unNombre;
     }
 
     public Vehiculo getVehiculo() {
