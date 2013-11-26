@@ -1,7 +1,9 @@
 package fiuba.algo3.modelo;
 
 
-public class Piloto {
+import fiuba.algo3.titiritero.modelo.ObjetoVivo;
+
+public class Piloto implements ObjetoVivo {
 
     private String nombre;
     private Vehiculo vehiculo;
@@ -49,7 +51,7 @@ public class Piloto {
         this.enMovimiento = true;
     }
 
-    public void conducir() throws Exception {
+    public void conducir() {
 
         if (enMovimiento) {
 
@@ -73,6 +75,7 @@ public class Piloto {
     }
 
     /** agarrate catalina **/
+
     public void interactuarCon(Pozo pozo) {
 
         this.getVehiculo().getEstado().interactuarCon(this,pozo);
@@ -103,6 +106,14 @@ public class Piloto {
     public void interactuarCon(SorpresaCambioDeVehiculo sorpresa) {
 
         this.getVehiculo().getEstado().interactuarCon(this,sorpresa);
+    }
+
+    /** por implementar ObjetoVivo **/
+
+    public void vivir() {
+
+        this.conducir();
+
     }
 
 

@@ -8,6 +8,7 @@ public class Mapa {
     private ArrayList<Posicion> posicionesValidas;
 
     private Vehiculo vehiculo;  /** dudoso uso **/
+    private Posicion inicio; /** new  -> ESTA SIN TESTIAR, PERO ES LO MISMO QUE LA LLEGADA **/
     private Posicion llegada;
     private ArrayList<Aplicable> aplicables;
 
@@ -53,6 +54,17 @@ public class Mapa {
 
     }
 
+    /** new **/
+    public void ubicarPosicionDeInicio(Posicion elInicio) throws LaPosicionNoExisteEnElMapaException {
+
+        if ( this.existe(elInicio) ) {
+
+            this.inicio = elInicio;
+
+        } else { throw new LaPosicionNoExisteEnElMapaException(); }
+
+    }
+
     public void ubicar(Vehiculo unVehiculo) throws LaPosicionNoExisteEnElMapaException {
 
         if ( this.existe(unVehiculo.getPosicion()) ) {
@@ -81,6 +93,11 @@ public class Mapa {
 
     public Posicion getLlegada() {
         return this.llegada;
+    }
+
+    /** new **/
+    public Posicion getInicio() {
+        return this.inicio;
     }
 
     public ArrayList<Aplicable> getAplicables() {
