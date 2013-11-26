@@ -22,20 +22,20 @@ public class Cronometro implements Runnable {
     }
 
     /** no usar estos metodos antes de iniciar cronometro, porque lo vas a romper **/
-    public void pausar() throws Exception {
+    public void pausar() {
 
         hilo.interrupt(); //mata el proceso? consecuencia en reanudar. Asi tmb es el finalizar
         pausa = true;
     }
 
-    public void reanudar() throws Exception {
+    public void reanudar() {
 
         /*hilo.interrupt();
         pausa = false;*/
         this.iniciar();
     }
 
-    public void reset() throws Exception {
+    public void reset() {
 
         //hilo.interrupt();
         //this.pausa = true;
