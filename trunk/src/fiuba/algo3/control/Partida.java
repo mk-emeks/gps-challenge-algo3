@@ -129,7 +129,9 @@ public class Partida {
 
         /** COMIENZA LA ACCION **/
         this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
-        this.gameLoop.comenzarJuego();
+        this.gameLoop.comenzarJuego(6);
+        this.pilotin.getVehiculo().setDireccion(new DireccionAbajo());
+        this.gameLoop.comenzarJuego(5);
 
     }
 
