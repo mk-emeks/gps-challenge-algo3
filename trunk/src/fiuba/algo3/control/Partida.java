@@ -92,9 +92,9 @@ public class Partida {
         Iterator<Posicion> iterador = posicionDeLasCalles.iterator();
         while (iterador.hasNext()) {
             Posicionable unaCalle = new RepresentacionDeCalle(iterador.next());
-            Figura unaVistaCalle = new Cuadrado(50,50);
+            Dibujable unaVistaCalle = new VistaCalle();
             unaVistaCalle.setPosicionable(unaCalle);
-            unaVistaCalle.setColor(Color.GREEN);
+            //unaVistaCalle.setColor(Color.GREEN);
             this.gameLoop.agregarDibujable(unaVistaCalle);
         }
 
