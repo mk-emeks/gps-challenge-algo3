@@ -8,7 +8,7 @@ public class VistaCalle extends Imagen {
 
     public VistaCalle () {
 
-        this.setNombreArchivoImagen("/resources/img/calle.jpg");
+        this.setNombreArchivoImagen("imagenes/calle.jpg");
 
     }
 }

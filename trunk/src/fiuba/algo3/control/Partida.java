@@ -13,6 +13,7 @@ import ar.uba.fi.algo3.titiritero.vista.Panel;
 import fiuba.algo3.modelo.*;
 import fiuba.algo3.vista.RepresentacionDeCalle;
 import fiuba.algo3.vista.VistaCalle;
+import fiuba.algo3.vista.VistaLlegada;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -94,7 +95,6 @@ public class Partida {
             Posicionable unaCalle = new RepresentacionDeCalle(iterador.next());
             Dibujable unaVistaCalle = new VistaCalle();
             unaVistaCalle.setPosicionable(unaCalle);
-            //unaVistaCalle.setColor(Color.GREEN);
             this.gameLoop.agregarDibujable(unaVistaCalle);
         }
 
@@ -105,9 +105,8 @@ public class Partida {
         this.gameLoop.agregarDibujable(vistaInicio);
 
         Posicionable llegada = new RepresentacionDeCalle(Mapa.getMapa().getLlegada());
-        Figura vistaLlegada = new Cuadrado(50,50);
+        Dibujable vistaLlegada = new VistaLlegada();
         vistaLlegada.setPosicionable(llegada);
-        vistaLlegada.setColor(Color.BLACK);
         this.gameLoop.agregarDibujable(vistaLlegada);
 
         Figura unaVistaAuto = new Circulo(20);
@@ -129,9 +128,7 @@ public class Partida {
 
         /** COMIENZA LA ACCION **/
         this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
-        this.gameLoop.comenzarJuego(6);
-        this.pilotin.getVehiculo().setDireccion(new DireccionAbajo());
-        this.gameLoop.comenzarJuego(5);
+        this.gameLoop.comenzarJuego();
 
     }
 
