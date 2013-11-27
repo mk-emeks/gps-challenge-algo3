@@ -1,13 +1,13 @@
 package fiuba.algo3.vista;
 
 
-import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
+import ar.uba.fi.algo3.titiritero.Posicionable;
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 public class VistaVehiculo extends Imagen {
 
-    public VistaVehiculo (ObjetoPosicionable posicionable) {
+    public VistaVehiculo (Posicionable posicionable) {
 
-        super(posicionable);
         this.setNombreArchivoImagen("/imagenes/calle.jpg");
 
     }
