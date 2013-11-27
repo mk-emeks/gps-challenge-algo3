@@ -1,8 +1,6 @@
 package fiuba.algo3.vista;
 
 
-
-//import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +8,7 @@ import java.awt.event.ActionListener;
 
 
 public class VistaMenuPrincipal {
-    /*
+
     private JPanel panelBotonesPrincipales;
 
     public VistaMenuPrincipal(final JFrame unMarco) {
@@ -18,17 +16,17 @@ public class VistaMenuPrincipal {
         unMarco.getContentPane().removeAll();
 
         panelBotonesPrincipales = new JPanel();
-        panelBotonesPrincipales.setBackground(Color.DARK_GRAY);
+        //panelBotonesPrincipales.setBackground(Color.DARK_GRAY);
         panelBotonesPrincipales.setBounds(0,0,unMarco.getWidth(),unMarco.getHeight());
-        panelBotonesPrincipales.repaint();
+        // panelBotonesPrincipales.repaint();
         panelBotonesPrincipales.setLayout(null);
 
 
-        //JLabel fondo = new JLabel(new ImageIcon());
-        //fondo.setBounds(0,0,unMarco.getWidth(),unMarco.getHeight());
-        //fondo.repaint();
+        JLabel fondo = new JLabel(new ImageIcon("fondo.png"));
+        fondo.setBounds(0,0,1440,900);
+        fondo.repaint();
 
-        /** Creo botones con las diferentes opciones **/ /*
+        /** Creo botones con las diferentes opciones **/
         JButton botonComenzarPartida = new JButton("Comenzar Partida");
         botonComenzarPartida.setBounds(0,0,300,75);
         botonComenzarPartida.repaint();
@@ -36,7 +34,7 @@ public class VistaMenuPrincipal {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                VistaDesarrolloJuego unBoton = new VistaDesarrolloJuego(unMarco);
+                //VistaDesarrolloJuego unBoton = new VistaDesarrolloJuego(unMarco);
 
             }
         });
@@ -50,20 +48,22 @@ public class VistaMenuPrincipal {
         botonVerPuntajes.repaint();
         /** ======================================================================= **/
 
-        /*
+
         panelBotonesPrincipales.add(botonComenzarPartida);
         panelBotonesPrincipales.add(botonRetomarPartida);
         panelBotonesPrincipales.add(botonVerPuntajes);
+        panelBotonesPrincipales.add(fondo);
+
         unMarco.getContentPane().add(panelBotonesPrincipales);
 
         unMarco.revalidate();
         unMarco.repaint();
     }
 
-    /*
+
     public static void main(String[] argv) {
 
-        // Esta primera parte deberia estar creada en el control si uno quiere
+        /** Esta primera parte deberia estar creada en el control si uno quiere **/
         JFrame marcoPrincipal = new JFrame();
         marcoPrincipal.setTitle("GPS Challenge");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -72,14 +72,10 @@ public class VistaMenuPrincipal {
         marcoPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         marcoPrincipal.setLayout(null);
         marcoPrincipal.setVisible(true);
-        // =======================================================================
+        /** ======================================================================= **/
 
         VistaMenuPrincipal ventana = new VistaMenuPrincipal(marcoPrincipal);
 
 
-    }   */
-
-
-
-
+    }
 }
