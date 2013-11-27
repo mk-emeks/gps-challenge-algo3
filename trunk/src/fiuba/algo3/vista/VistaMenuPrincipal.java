@@ -1,6 +1,7 @@
 package fiuba.algo3.vista;
 
 
+
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import javax.swing.*;
 import java.awt.*;
@@ -16,15 +17,18 @@ public class VistaMenuPrincipal {
 
         unMarco.getContentPane().removeAll();
 
-        panelBotonesPrincipales = new JPanel();//SuperficiePanel();
+        panelBotonesPrincipales = new JPanel();
         panelBotonesPrincipales.setBackground(Color.DARK_GRAY);
+        panelBotonesPrincipales.setBounds(0,0,unMarco.getWidth(),unMarco.getHeight());
+        panelBotonesPrincipales.repaint();
         panelBotonesPrincipales.setLayout(null);
+
 
         //JLabel fondo = new JLabel(new ImageIcon());
         //fondo.setBounds(0,0,unMarco.getWidth(),unMarco.getHeight());
         //fondo.repaint();
 
-        /** Creo un boton que cuando se lo toca, limpia el frame y agrega contenido nuevo **/
+        /** Creo botones con las diferentes opciones **/
         JButton botonComenzarPartida = new JButton("Comenzar Partida");
         botonComenzarPartida.setBounds(0,0,300,75);
         botonComenzarPartida.repaint();
@@ -32,7 +36,7 @@ public class VistaMenuPrincipal {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                VistaBotoncitos unBoton = new VistaBotoncitos(unMarco);
+                VistaDesarrolloJuego unBoton = new VistaDesarrolloJuego(unMarco);
 
             }
         });
@@ -66,7 +70,7 @@ public class VistaMenuPrincipal {
         marcoPrincipal.setBounds(0, 0, screenSize.width, screenSize.height);
         marcoPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
         marcoPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //marcoPrincipal.setLayout(null);
+        marcoPrincipal.setLayout(null);
         marcoPrincipal.setVisible(true);
         /** ======================================================================= **/
 
