@@ -1,6 +1,8 @@
 package fiuba.algo3.vista;
 
-//import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
+
+import ar.uba.fi.algo3.titiritero.vista.Panel;
+import fiuba.algo3.control.VentanaPrincipal;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,23 +10,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class VistaDesarrolloJuego {
-    /*
+
     private JPanel panelDesarrolloJuego;
-    private JPanel panelDeMapa;
+    private Panel panelDeMapa;
 
     public VistaDesarrolloJuego(final JFrame unMarco) {
-        /*
+
         unMarco.getContentPane().removeAll();
 
-        /** Creo panel para el menu **/   /*
+        /** Creo panel para el menu **/
         panelDesarrolloJuego = new JPanel();
-        panelDesarrolloJuego.setBackground(Color.BLACK);
+        //panelDesarrolloJuego.setBackground(Color.BLACK);
         panelDesarrolloJuego.setBounds(0,0,unMarco.getWidth(),unMarco.getHeight());
-        panelDesarrolloJuego.repaint();
+       // panelDesarrolloJuego.repaint();
         panelDesarrolloJuego.setLayout(null);
 
-        JButton botonVolver = new JButton("Volver Al Menu");
-        botonVolver.setBounds(0,0,300,75);
+        JLabel fondo = new JLabel(new ImageIcon("src/fiuba/algo3/vista/imagenes/fondoMenuPrincipal.png"));
+        fondo.setBounds(0,0,1440,900);
+        fondo.repaint();
+
+        JButton botonVolver = new JButton();
+        botonVolver.setIcon(new ImageIcon("src/fiuba/algo3/vista/imagenes/Botones/botonVolver.png"));
+        botonVolver.setBounds(5,20,300,75);
         botonVolver.repaint();
         botonVolver.addActionListener(new ActionListener() {
 
@@ -33,24 +40,25 @@ public class VistaDesarrolloJuego {
                 VistaMenuPrincipal sosUnBoton = new VistaMenuPrincipal(unMarco);
 
             }
-        });     */
+        });
         /** ======================================================================= **/
 
         /** Creo panel donde se desarrolla el juego **/
-        /*
-        panelDeMapa = new SuperficiePanel();
+
+        panelDeMapa = new ar.uba.fi.algo3.titiritero.vista.Panel(800, 600);
         panelDeMapa.setBackground(Color.ORANGE);
-        panelDeMapa.setBounds(panelDesarrolloJuego.getWidth()-1000,panelDesarrolloJuego.getHeight()-800, 800, 600);
+        panelDeMapa.setBounds(panelDesarrolloJuego.getWidth()-900,panelDesarrolloJuego.getHeight()-650, 800, 600);
         panelDeMapa.repaint();
         panelDeMapa.setLayout(null);
 
-        /** Agrego cosas al frame **/   /*
+        /** Agrego cosas al frame **/
         panelDesarrolloJuego.add(botonVolver);
         panelDesarrolloJuego.add(panelDeMapa);
+        panelDesarrolloJuego.add(fondo);
         unMarco.add(panelDesarrolloJuego);
 
         unMarco.revalidate();
         unMarco.repaint();
 
-    }  */
+    }
 }
