@@ -2,7 +2,7 @@ package fiuba.algo3.vista;
 
 
 
-import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
+//import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 
 public class VistaMenuPrincipal {
-
+    /*
     private JPanel panelBotonesPrincipales;
 
     public VistaMenuPrincipal(final JFrame unMarco) {
@@ -28,7 +28,7 @@ public class VistaMenuPrincipal {
         //fondo.setBounds(0,0,unMarco.getWidth(),unMarco.getHeight());
         //fondo.repaint();
 
-        /** Creo botones con las diferentes opciones **/
+        /** Creo botones con las diferentes opciones **/ /*
         JButton botonComenzarPartida = new JButton("Comenzar Partida");
         botonComenzarPartida.setBounds(0,0,300,75);
         botonComenzarPartida.repaint();
@@ -50,7 +50,7 @@ public class VistaMenuPrincipal {
         botonVerPuntajes.repaint();
         /** ======================================================================= **/
 
-
+        /*
         panelBotonesPrincipales.add(botonComenzarPartida);
         panelBotonesPrincipales.add(botonRetomarPartida);
         panelBotonesPrincipales.add(botonVerPuntajes);
@@ -60,10 +60,10 @@ public class VistaMenuPrincipal {
         unMarco.repaint();
     }
 
-
+    /*
     public static void main(String[] argv) {
 
-        /** Esta primera parte deberia estar creada en el control si uno quiere **/
+        // Esta primera parte deberia estar creada en el control si uno quiere
         JFrame marcoPrincipal = new JFrame();
         marcoPrincipal.setTitle("GPS Challenge");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -72,12 +72,12 @@ public class VistaMenuPrincipal {
         marcoPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         marcoPrincipal.setLayout(null);
         marcoPrincipal.setVisible(true);
-        /** ======================================================================= **/
+        // =======================================================================
 
         VistaMenuPrincipal ventana = new VistaMenuPrincipal(marcoPrincipal);
 
 
-    }
+    }   */
 
 
 
