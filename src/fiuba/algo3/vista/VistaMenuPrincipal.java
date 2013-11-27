@@ -22,13 +22,14 @@ public class VistaMenuPrincipal {
         panelBotonesPrincipales.setLayout(null);
 
 
-        JLabel fondo = new JLabel(new ImageIcon("fondo.png"));
+        JLabel fondo = new JLabel(new ImageIcon("src/fiuba/algo3/vista/imagenes/fondoMenuPrincipal.png"));
         fondo.setBounds(0,0,1440,900);
         fondo.repaint();
 
         /** Creo botones con las diferentes opciones **/
-        JButton botonComenzarPartida = new JButton("Comenzar Partida");
-        botonComenzarPartida.setBounds(0,0,300,75);
+        JButton botonComenzarPartida = new JButton();//new ImageIcon("botonPartidaNueva.png"));
+        botonComenzarPartida.setIcon(new ImageIcon("src/fiuba/algo3/vista/imagenes/Botones/botonPartidaNueva.png"));
+        botonComenzarPartida.setBounds(panelBotonesPrincipales.getWidth()-900,300,369,80);
         botonComenzarPartida.repaint();
         botonComenzarPartida.addActionListener(new ActionListener() {
 
@@ -39,12 +40,13 @@ public class VistaMenuPrincipal {
             }
         });
 
-        JButton botonRetomarPartida = new JButton("Retomar Partida Guardada");
-        botonRetomarPartida.setBounds(0,300,300,75);
+
+        JButton botonRetomarPartida = new JButton(new ImageIcon("src/fiuba/algo3/vista/imagenes/Botones/botonAbrirPartida.png"));
+        botonRetomarPartida.setBounds(panelBotonesPrincipales.getWidth()-900,450,369,80);
         botonRetomarPartida.repaint();
 
-        JButton botonVerPuntajes = new JButton("Ver Puntajes");
-        botonVerPuntajes.setBounds(0,150,300,75);
+        JButton botonVerPuntajes = new JButton(new ImageIcon("src/fiuba/algo3/vista/imagenes/Botones/botonVerPuntajes.png"));
+        botonVerPuntajes.setBounds(panelBotonesPrincipales.getWidth()-900,600,369,80);
         botonVerPuntajes.repaint();
         /** ======================================================================= **/
 
