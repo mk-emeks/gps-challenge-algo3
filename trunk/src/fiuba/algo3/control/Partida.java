@@ -6,13 +6,13 @@ import ar.uba.fi.algo3.titiritero.vista.*;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.Dibujable;
 import ar.uba.fi.algo3.titiritero.Posicionable;
+import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
 import ar.uba.fi.algo3.titiritero.vista.Panel;
 
 /** por ahora **/
 import fiuba.algo3.modelo.*;
 import fiuba.algo3.vista.RepresentacionDeCalle;
 import fiuba.algo3.vista.VistaCalle;
-import fiuba.algo3.vista.VistaInicio;
 import fiuba.algo3.vista.VistaLlegada;
 
 import java.awt.*;
@@ -99,8 +99,9 @@ public class Partida {
         }
 
         Posicionable inicio = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
-        Dibujable vistaInicio = new VistaInicio();
+        Figura vistaInicio = new Cuadrado(50,50);
         vistaInicio.setPosicionable(inicio);
+        vistaInicio.setColor(Color.RED);
         this.gameLoop.agregarDibujable(vistaInicio);
 
         Posicionable llegada = new RepresentacionDeCalle(Mapa.getMapa().getLlegada());
