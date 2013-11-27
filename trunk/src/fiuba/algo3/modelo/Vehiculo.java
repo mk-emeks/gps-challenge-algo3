@@ -31,13 +31,8 @@ public class Vehiculo implements Movible , Posicionable {
 
     public void mover() throws NoSePuedeMoverEnElMapaElMovibleException {
 
-        System.out.println("(" +this.getPosicion().getPosicionX()+" , "+ this.getPosicion().getPosicionY()+")");
-        System.out.println("(" +this.getDireccion().devolverComoPosicion().getPosicionX()+" , "+ this.getDireccion().devolverComoPosicion().getPosicionY()+")");
         Posicion avance = this.getDireccion().devolverComoPosicion();
         this.setPosicion(this.getPosicion().sumar(avance));
-        System.out.println("(" +this.getPosicion().getPosicionX()+" , "+ this.getPosicion().getPosicionY()+")");
-        System.out.println("(" +this.getDireccion().devolverComoPosicion().getPosicionX()+" , "+ this.getDireccion().devolverComoPosicion().getPosicionY()+")");
-
         try {
 
             Mapa.getMapa().ubicar(this);
@@ -45,9 +40,6 @@ public class Vehiculo implements Movible , Posicionable {
         } catch (LaPosicionNoExisteEnElMapaException e) {
 
             this.setPosicion(this.getPosicion().restar(avance));
-            System.out.println("caca");
-            System.out.println("(" +this.getPosicion().getPosicionX()+" , "+ this.getPosicion().getPosicionY()+")");
-            System.out.println("(" +this.getDireccion().devolverComoPosicion().getPosicionX()+" , "+ this.getDireccion().devolverComoPosicion().getPosicionY()+")");
             throw new NoSePuedeMoverEnElMapaElMovibleException("la direccion es invalida para la posicion actual") ;
 
         }
