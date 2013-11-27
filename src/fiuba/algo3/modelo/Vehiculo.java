@@ -1,6 +1,8 @@
 package fiuba.algo3.modelo;
 
-public class Vehiculo implements Movible {
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
+
+public class Vehiculo implements Movible , ObjetoPosicionable {
 
     /** atributos **/
 
@@ -73,6 +75,20 @@ public class Vehiculo implements Movible {
 
     public void setPosicion(Posicion nuevaPosicion) {
         this.posicion = nuevaPosicion;
+    }
+
+    /** Por implementar ObjetoPosicionable **/
+
+    public int getX() {
+
+        return (30*this.posicion.getPosicionX());
+
+    }
+
+    public int getY() {
+
+        return (30*this.posicion.getPosicionY());
+
     }
 
 }

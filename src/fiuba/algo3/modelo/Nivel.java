@@ -5,15 +5,31 @@ package fiuba.algo3.modelo;
  *  el nodo xml
  */
 
+
+
 public class Nivel {
 
-    public void cargarMapa(/** nodo xml **/)  {
+    // NodoXml nodo;
+    private EditorMapa editor;
+
+    public Nivel(/** NodoXml unNodo **/) {
+
+        editor = new EditorMapa();
+        // this.nodo = unNodo;
+
+    }
+
+    public void cargarMapa() {
+
+        this.editor.editarMapaNivel();
 
         /** deberia cargar el xml correspondiente (PASADO POR PARAMETRO) , segun el sea nivel facil, normal, dificil
          *  esto se lo designarar en el momento que el player eliga la dificultad.
          */
 
-    //iniciarMapa() lo deja jugable
-
     }
+
+
+
+
 }

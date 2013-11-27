@@ -3,10 +3,14 @@ package fiuba.algo3.control;
 import fiuba.algo3.modelo.*;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.vista.*;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.net.URL;
 
 public class VentanaPrincipal extends JFrame implements ActionListener {
 
@@ -18,33 +22,44 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private SuperficiePanel zonaDeJuego;
 
     public VentanaPrincipal() {
+
+        /** Configuracion de la ventana **/
+
         setLayout(null);
         setTitle("GPS Challenge");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, screenSize.width, screenSize.height);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        /** Menu **/
         crearMenuBar();
+
+        /** Zona de Juego **/
+
         zonaDeJuego = new SuperficiePanel();
         zonaDeJuego.setLayout(null);
         zonaDeJuego.setBounds(390, 0, screenSize.width - 400, screenSize.height);
+        zonaDeJuego.setBackground(Color.DARK_GRAY);
+
+        BufferedImage miImagen = new BufferedImage(screenSize.width - 400,screenSize.height,1);
+        zonaDeJuego.setImagen(miImagen);
+
         //El boton es para que veas donde esta la zona de juego, se puede borrar
-        JButton boton = new JButton("ZONA DE JUEGO");
+        /*JButton boton = new JButton("ZONA DE JUEGO");
         boton.setBounds(0, 0, screenSize.width - 400, screenSize.height);
-        zonaDeJuego.add(boton);
-        zonaDeJuego.setVisible(true);
-        add(zonaDeJuego);
+        zonaDeJuego.add(boton);   */
+
+
+        //this.zonaDeJuego.setVisible(true);
+        this.add(this.zonaDeJuego);
+
+        /** mostrate **/
         setVisible(true);
-        /**No se si esto va aca, te queria preguntar y te habias ido mirko**/
-        Nivel nivel = new Nivel();
-        Posicion posicion = new Posicion(500,screenSize.height/2);
-        DireccionDerecha direccion = new DireccionDerecha();
-        EstadoAuto estado = new EstadoAuto();
-        Vehiculo vehiculo = new Vehiculo(posicion,direccion,estado);
-        Piloto piloto = new Piloto(vehiculo,"pilotin");
-        Partida partida = new Partida(zonaDeJuego,nivel,piloto);
+
     }
 
     public void crearMenuBar() {
+
         labelAcercaDe = new AcercaDe();
         historial = new HistorialJugadores();
         menu = new JMenuBar();
@@ -75,6 +90,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+
         if (e.getSource() == acercaDe) {
             labelAcercaDe.setVisible(true);
         } else if ( e.getSource() == salir ) {
@@ -84,8 +100,26 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         }
     }
 
+    public void crearPartida() {
+
+        /** Eleccion Nivel **/
+        Nivel nivel = new Nivel();
+
+        /** Eleccion Nombre del Jugador **/
+        Piloto piloto = new Piloto("pilotin");
+
+        /** Nueva Partida **/
+        Partida partida = new Partida(this.zonaDeJuego,nivel,piloto);
+        partida.iniciar();
+
+
+    }
+
     public static void main(String[] argv) {
+
         VentanaPrincipal ventana = new VentanaPrincipal();
+        ventana.crearPartida();
+
 
     }
 
