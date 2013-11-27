@@ -1,8 +1,8 @@
 package fiuba.algo3.modelo;
 
-import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
+import ar.uba.fi.algo3.titiritero.Posicionable;
 
-public class Vehiculo implements Movible , ObjetoPosicionable {
+public class Vehiculo implements Movible , Posicionable {
 
     /** atributos **/
 
@@ -81,13 +81,15 @@ public class Vehiculo implements Movible , ObjetoPosicionable {
 
     public int getX() {
 
-        return (2*this.posicion.getPosicionX());
+        return (54*this.posicion.getPosicionX());
+        //return (this.posicion.getPosicionX());
 
     }
 
     public int getY() {
 
-        return (2*this.posicion.getPosicionY());
+        return (60*this.posicion.getPosicionY());
+        //return (this.posicion.getPosicionY());
 
     }
 

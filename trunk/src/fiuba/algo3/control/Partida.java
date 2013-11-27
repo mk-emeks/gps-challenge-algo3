@@ -1,13 +1,13 @@
 package fiuba.algo3.control;
 
-import fiuba.algo3.titiritero.dibujables.Circulo;
-import fiuba.algo3.titiritero.dibujables.Cuadrado;
-import fiuba.algo3.titiritero.dibujables.Figura;
+import ar.uba.fi.algo3.titiritero.vista.*;
 
-import fiuba.algo3.titiritero.modelo.GameLoop;
-import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
-import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
-import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
+
+import ar.uba.fi.algo3.titiritero.ControladorJuego;
+import ar.uba.fi.algo3.titiritero.Dibujable;
+import ar.uba.fi.algo3.titiritero.Posicionable;
+import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
+import ar.uba.fi.algo3.titiritero.vista.Panel;
 
 /** por ahora **/
 import fiuba.algo3.modelo.*;
@@ -27,15 +27,26 @@ import fiuba.algo3.modelo.Nivel;
 
 public class Partida {
 
-    private GameLoop gameLoop;
+    private ControladorJuego gameLoop;
     private Nivel  nivelAjugar;
     private Piloto pilotin;
     private ControlDeEventos controlDeEventos;
+    private Panel zonaDeJuego;
 
     /** el primer parametro por ahora tiene nombre explicativo **/
-    public Partida(SuperficieDeDibujo zonaDeJuego , Nivel nivel , Piloto unPiloto) {
+    public Partida(VentanaPrincipal ventana, Nivel nivel , Piloto unPiloto) {
 
-        this.gameLoop = new GameLoop(zonaDeJuego); /** se podria cambiar frecuencia tmb **/
+        this.gameLoop = new ControladorJuego(false);
+        this.gameLoop.setIntervaloSimulacion(90);
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.zonaDeJuego = new ar.uba.fi.algo3.titiritero.vista.Panel(screenSize.width - 400, screenSize.height, this.gameLoop );
+        this.zonaDeJuego.setLayout(null);
+        this.zonaDeJuego.setBounds(390, 0, screenSize.width - 400, screenSize.height);
+        ventana.add(this.zonaDeJuego);
+
+        this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
+
         this.nivelAjugar = nivel;
         this.pilotin = unPiloto;
         this.controlDeEventos = new ControlDeEventos(this);
@@ -56,7 +67,7 @@ public class Partida {
 
 
         /** INICIAR VEHICULO **/
-        Direccion direccionDeInicioDelVehiculo = new DireccionDerecha(); /** una cualquiera, no cambia mucho **/
+        Direccion direccionDeInicioDelVehiculo = new DireccionIzquierda(); /** una cualquiera, no cambia mucho **/
         EstadoMoto estadoDeInicioDelVehiculo = new EstadoMoto(); /** el usuario elegi el tipo **/
         Vehiculo miVehiculo = new Vehiculo(Mapa.getMapa().getInicio(),direccionDeInicioDelVehiculo,estadoDeInicioDelVehiculo);
 
@@ -75,55 +86,34 @@ public class Partida {
         /** to-do lo del loop podria hacerlo una clase, o un metodo de partida **/
         /** agregar dibujables **/
 
-        ObjetoPosicionable inicio = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
-        Figura vistaInicio = new Cuadrado(50,50,inicio);
-        vistaInicio.setColor(Color.RED);
-        this.gameLoop.agregar(vistaInicio);
 
-        ObjetoPosicionable llegada = new RepresentacionDeCalle(Mapa.getMapa().getLlegada());
-        Figura vistaLlegada = new Cuadrado(50,50,llegada);
-        vistaLlegada.setColor(Color.BLACK);
-        this.gameLoop.agregar(vistaLlegada);
 
         ArrayList<Posicion> posicionDeLasCalles = Mapa.getMapa().getPosicionesValidas();
         Iterator<Posicion> iterador = posicionDeLasCalles.iterator();
         while (iterador.hasNext()) {
-            ObjetoPosicionable unaCalle = new RepresentacionDeCalle(iterador.next());
-            Figura unaVistaCalle = new Cuadrado(50,50,unaCalle);
+            Posicionable unaCalle = new RepresentacionDeCalle(iterador.next());
+            Figura unaVistaCalle = new Cuadrado(50,50);
+            unaVistaCalle.setPosicionable(unaCalle);
             unaVistaCalle.setColor(Color.GREEN);
-            this.gameLoop.agregar(unaVistaCalle);
+            this.gameLoop.agregarDibujable(unaVistaCalle);
         }
 
+        Posicionable inicio = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
+        Figura vistaInicio = new Cuadrado(50,50);
+        vistaInicio.setPosicionable(inicio);
+        vistaInicio.setColor(Color.RED);
+        this.gameLoop.agregarDibujable(vistaInicio);
 
+        Posicionable llegada = new RepresentacionDeCalle(Mapa.getMapa().getLlegada());
+        Figura vistaLlegada = new Cuadrado(50,50);
+        vistaLlegada.setPosicionable(llegada);
+        vistaLlegada.setColor(Color.BLACK);
+        this.gameLoop.agregarDibujable(vistaLlegada);
 
-        /*ObjetoPosicionable unaCalle2 = new RepresentacionDeCalle(iterador.next());
-        Figura unaVistaCalle2 = new Cuadrado(50,50,unaCalle2);
-        unaVistaCalle2.setColor(Color.GREEN);
-        this.gameLoop.agregar(unaVistaCalle2);
-
-        ObjetoPosicionable unaCalle3 = new RepresentacionDeCalle(iterador.next());
-        Figura unaVistaCalle3 = new Cuadrado(50,50,unaCalle3);
-        unaVistaCalle3.setColor(Color.RED);
-        this.gameLoop.agregar(unaVistaCalle3);
-
-        ObjetoPosicionable unaCalle4 = new RepresentacionDeCalle(iterador.next());
-        Figura unaVistaCalle4 = new Cuadrado(50,50,unaCalle4);
-        unaVistaCalle4.setColor(Color.GREEN);
-        this.gameLoop.agregar(unaVistaCalle4); */
-
-
-
-        /*ObjetoPosicionable unaCalle = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
-        Figura unaVistaCalle = new Cuadrado(50,50,unaCalle);
-        unaVistaCalle.setColor(Color.GRAY);
-        this.gameLoop.agregar(unaVistaCalle);*/
-
-        //ObjetoDibujable unaVistaCalle = new Cuadrado(50,50,unaCalle);
-
-
-        Figura unaVistaAuto = new Circulo(20,this.pilotin.getVehiculo());
+        Figura unaVistaAuto = new Circulo(20);
+        unaVistaAuto.setPosicionable(this.pilotin.getVehiculo());
         unaVistaAuto.setColor(Color.BLUE);
-        this.gameLoop.agregar(unaVistaAuto);
+        this.gameLoop.agregarDibujable(unaVistaAuto);
 
 
 
@@ -133,32 +123,32 @@ public class Partida {
 
         /** agregar objetos vivos al game loop **/
 
-        this.gameLoop.agregar(this.pilotin);
-        this.gameLoop.agregar(this.controlDeEventos);
+        this.gameLoop.agregarObjetoVivo(this.pilotin);
+        this.gameLoop.agregarObjetoVivo(this.controlDeEventos);
 
 
         /** COMIENZA LA ACCION **/
         this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
-        this.gameLoop.iniciarEjecucion();
+        this.gameLoop.comenzarJuego();
 
     }
 
     public void pausar() {
 
-        if (this.gameLoop.estaEjecutando()) {
+        if (this.gameLoop.estaEnEjecucion()) {
 
             this.pilotin.getCronometro().pausar(); /** el cronometro es un tipo independiente; A no olvidarselo **/
-            this.gameLoop.detenerEjecucion();
+            this.gameLoop.detenerJuego();
         }
 
     }
 
     public void reanudar() {
 
-        if ( !(this.gameLoop.estaEjecutando()) ) {
+        if ( !(this.gameLoop.estaEnEjecucion()) ) {
 
             this.pilotin.getCronometro().reanudar();  /** el cronometro es un tipo independiente; A no olvidarselo **/
-            this.gameLoop.iniciarEjecucion();
+            this.gameLoop.comenzarJuego();
         }
 
     }
@@ -166,14 +156,14 @@ public class Partida {
     public void finalizar() {
 
         this.pilotin.getCronometro().pausar();  /** el cronometro es un tipo independiente; A no olvidarselo **/
-        this.gameLoop.detenerEjecucion();
+        this.gameLoop.detenerJuego();
         System.out.println("la partida finalizo");
 
     }
 
     public boolean estaFinalizada() {
 
-        if (this.gameLoop.estaEjecutando()) return false;
+        if (this.gameLoop.estaEnEjecucion()) return false;
         else return true;
     }
 

@@ -1,7 +1,8 @@
 package fiuba.algo3.control;
 
+import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import fiuba.algo3.modelo.*;
-import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
+import ar.uba.fi.algo3.titiritero.vista.Panel;
 import fiuba.algo3.vista.*;
 
 import javax.imageio.ImageIO;
@@ -19,7 +20,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private JMenuItem juegoNuevo,guardarPartida,cargarPartida,itemHistorial,salir,acercaDe;
     private AcercaDe labelAcercaDe;
     private HistorialJugadores historial;
-    private SuperficiePanel zonaDeJuego;
+    private Panel zonaDeJuego;
 
     public VentanaPrincipal() {
 
@@ -36,13 +37,15 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
         /** Zona de Juego **/
 
-        zonaDeJuego = new SuperficiePanel();
-        zonaDeJuego.setLayout(null);
-        zonaDeJuego.setBounds(390, 0, screenSize.width - 400, screenSize.height);
-        zonaDeJuego.setBackground(Color.DARK_GRAY);
 
-        BufferedImage miImagen = new BufferedImage(screenSize.width - 400,screenSize.height,1);
-        zonaDeJuego.setImagen(miImagen);
+        /*zonaDeJuego = new Panel(screenSize.width - 400, screenSize.height, new ControladorJuego(false) );
+        zonaDeJuego.setLayout(null);
+        zonaDeJuego.setBounds(390, 0, screenSize.width - 400, screenSize.height);*/
+        //zonaDeJuego.setBackground(Color.DARK_GRAY);
+
+
+        /*BufferedImage miImagen = new BufferedImage(screenSize.width - 400,screenSize.height,1);
+        zonaDeJuego.setImagen(miImagen); */
 
         //El boton es para que veas donde esta la zona de juego, se puede borrar
         /*JButton boton = new JButton("ZONA DE JUEGO");
@@ -51,7 +54,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
 
         //this.zonaDeJuego.setVisible(true);
-        this.add(this.zonaDeJuego);
+        //this.add(this.zonaDeJuego);
 
         /** mostrate **/
         setVisible(true);
@@ -112,7 +115,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
         /** Nueva Partida **/
 
-        Partida partida = new Partida(this.zonaDeJuego,nivel,piloto);
+        Partida partida = new Partida(this,nivel,piloto);
         partida.iniciar();
 
 
