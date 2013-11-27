@@ -13,5 +13,7 @@ public class Nivel {
          *  esto se lo designarar en el momento que el player eliga la dificultad.
          */
 
+    //iniciarMapa() lo deja jugable
+
     }
 }
