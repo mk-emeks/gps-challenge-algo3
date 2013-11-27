@@ -103,12 +103,15 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     public void crearPartida() {
 
         /** Eleccion Nivel **/
+        Mapa.limpiar();
         Nivel nivel = new Nivel();
+
 
         /** Eleccion Nombre del Jugador **/
         Piloto piloto = new Piloto("pilotin");
 
         /** Nueva Partida **/
+
         Partida partida = new Partida(this.zonaDeJuego,nivel,piloto);
         partida.iniciar();
 

@@ -2,7 +2,14 @@ package fiuba.algo3.modelo;
 
 public class EditorMapa {
 
-    private Mapa unMapa = Mapa.getMapa();
+    /** toquetiado **/
+    private Mapa unMapa;
+
+    public EditorMapa() {
+
+        this.unMapa = Mapa.getMapa();
+
+    }
 
 
     /** temporal: uso para probar el mapa plantiado en la consigna inicial **/
@@ -17,18 +24,18 @@ public class EditorMapa {
         this.editarMapaSimple(6,6);
 
         /** Obstaculos**/
-        try{
-        unMapa.ubicar(new ControlPolicial(new Posicion(2,2)));
-        unMapa.ubicar(new Piquete(new Posicion(2,6)));
-        unMapa.ubicar(new Pozo(new Posicion(4,4)));
-        } catch (Exception e) { System.out.println("no se pudo ubicar obstaculos");}
+        //try{
+        //unMapa.ubicar(new ControlPolicial(new Posicion(2,2)));
+        //unMapa.ubicar(new Piquete(new Posicion(2,6)));
+        //unMapa.ubicar(new Pozo(new Posicion(4,4)));
+        //} catch (Exception e) { System.out.println("no se pudo ubicar obstaculos");}
 
         /**Sorpresas**/
-        try{
-        unMapa.ubicar(new SorpresaDesfavorable(new Posicion(4,2)));
-        unMapa.ubicar(new SorpresaFavorable((new Posicion(6,4))));
-        unMapa.ubicar(new SorpresaFavorable((new Posicion(4,6))));
-        } catch (Exception e) { System.out.println("no se pudo ubicar sorpresas");}
+        //try{
+        //unMapa.ubicar(new SorpresaDesfavorable(new Posicion(4,2)));
+        //unMapa.ubicar(new SorpresaFavorable((new Posicion(6,4))));
+        //unMapa.ubicar(new SorpresaFavorable((new Posicion(4,6))));
+        //} catch (Exception e) { System.out.println("no se pudo ubicar sorpresas");}
     }
 
 

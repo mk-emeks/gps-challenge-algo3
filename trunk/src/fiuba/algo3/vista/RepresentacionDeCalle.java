@@ -19,13 +19,13 @@ public class RepresentacionDeCalle implements ObjetoPosicionable {
 
     public int getX() {
 
-        return (25*this.posicion.getPosicionX());
+        return (50*this.posicion.getPosicionX());
 
     }
 
     public int getY() {
 
-        return (25*this.posicion.getPosicionY());
+        return (50*this.posicion.getPosicionY());
 
     }
 }
