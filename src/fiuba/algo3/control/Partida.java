@@ -74,26 +74,29 @@ public class Partida {
 
         /** to-do lo del loop podria hacerlo una clase, o un metodo de partida **/
         /** agregar dibujables **/
+
+        ObjetoPosicionable inicio = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
+        Figura vistaInicio = new Cuadrado(50,50,inicio);
+        vistaInicio.setColor(Color.RED);
+        this.gameLoop.agregar(vistaInicio);
+
+        ObjetoPosicionable llegada = new RepresentacionDeCalle(Mapa.getMapa().getLlegada());
+        Figura vistaLlegada = new Cuadrado(50,50,llegada);
+        vistaLlegada.setColor(Color.BLACK);
+        this.gameLoop.agregar(vistaLlegada);
+
         ArrayList<Posicion> posicionDeLasCalles = Mapa.getMapa().getPosicionesValidas();
         Iterator<Posicion> iterador = posicionDeLasCalles.iterator();
-        /*while (iterador.hasNext()) {
+        while (iterador.hasNext()) {
             ObjetoPosicionable unaCalle = new RepresentacionDeCalle(iterador.next());
             Figura unaVistaCalle = new Cuadrado(50,50,unaCalle);
             unaVistaCalle.setColor(Color.GREEN);
             this.gameLoop.agregar(unaVistaCalle);
-        } */
+        }
 
-        ObjetoPosicionable unaCalle = new RepresentacionDeCalle(iterador.next());
-        Figura unaVistaCalle = new Cuadrado(50,50,unaCalle);
-        unaVistaCalle.setColor(Color.GREEN);
-        this.gameLoop.agregar(unaVistaCalle);
 
-        ObjetoPosicionable unaCalle1 = new RepresentacionDeCalle(iterador.next());
-        Figura unaVistaCalle1 = new Cuadrado(50,50,unaCalle1);
-        unaVistaCalle1.setColor(Color.RED);
-        this.gameLoop.agregar(unaVistaCalle1);
 
-        ObjetoPosicionable unaCalle2 = new RepresentacionDeCalle(iterador.next());
+        /*ObjetoPosicionable unaCalle2 = new RepresentacionDeCalle(iterador.next());
         Figura unaVistaCalle2 = new Cuadrado(50,50,unaCalle2);
         unaVistaCalle2.setColor(Color.GREEN);
         this.gameLoop.agregar(unaVistaCalle2);
@@ -106,7 +109,7 @@ public class Partida {
         ObjetoPosicionable unaCalle4 = new RepresentacionDeCalle(iterador.next());
         Figura unaVistaCalle4 = new Cuadrado(50,50,unaCalle4);
         unaVistaCalle4.setColor(Color.GREEN);
-        this.gameLoop.agregar(unaVistaCalle4);
+        this.gameLoop.agregar(unaVistaCalle4); */
 
 
 
