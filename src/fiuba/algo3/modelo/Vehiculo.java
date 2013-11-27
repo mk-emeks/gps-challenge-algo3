@@ -81,13 +81,13 @@ public class Vehiculo implements Movible , ObjetoPosicionable {
 
     public int getX() {
 
-        return (30*this.posicion.getPosicionX());
+        return (2*this.posicion.getPosicionX());
 
     }
 
     public int getY() {
 
-        return (30*this.posicion.getPosicionY());
+        return (2*this.posicion.getPosicionY());
 
     }
 

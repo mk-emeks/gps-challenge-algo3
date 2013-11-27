@@ -76,12 +76,39 @@ public class Partida {
         /** agregar dibujables **/
         ArrayList<Posicion> posicionDeLasCalles = Mapa.getMapa().getPosicionesValidas();
         Iterator<Posicion> iterador = posicionDeLasCalles.iterator();
-        while (iterador.hasNext()) {
+        /*while (iterador.hasNext()) {
             ObjetoPosicionable unaCalle = new RepresentacionDeCalle(iterador.next());
             Figura unaVistaCalle = new Cuadrado(50,50,unaCalle);
             unaVistaCalle.setColor(Color.GREEN);
             this.gameLoop.agregar(unaVistaCalle);
-        }
+        } */
+
+        ObjetoPosicionable unaCalle = new RepresentacionDeCalle(iterador.next());
+        Figura unaVistaCalle = new Cuadrado(50,50,unaCalle);
+        unaVistaCalle.setColor(Color.GREEN);
+        this.gameLoop.agregar(unaVistaCalle);
+
+        ObjetoPosicionable unaCalle1 = new RepresentacionDeCalle(iterador.next());
+        Figura unaVistaCalle1 = new Cuadrado(50,50,unaCalle1);
+        unaVistaCalle1.setColor(Color.RED);
+        this.gameLoop.agregar(unaVistaCalle1);
+
+        ObjetoPosicionable unaCalle2 = new RepresentacionDeCalle(iterador.next());
+        Figura unaVistaCalle2 = new Cuadrado(50,50,unaCalle2);
+        unaVistaCalle2.setColor(Color.GREEN);
+        this.gameLoop.agregar(unaVistaCalle2);
+
+        ObjetoPosicionable unaCalle3 = new RepresentacionDeCalle(iterador.next());
+        Figura unaVistaCalle3 = new Cuadrado(50,50,unaCalle3);
+        unaVistaCalle3.setColor(Color.RED);
+        this.gameLoop.agregar(unaVistaCalle3);
+
+        ObjetoPosicionable unaCalle4 = new RepresentacionDeCalle(iterador.next());
+        Figura unaVistaCalle4 = new Cuadrado(50,50,unaCalle4);
+        unaVistaCalle4.setColor(Color.GREEN);
+        this.gameLoop.agregar(unaVistaCalle4);
+
+
 
         /*ObjetoPosicionable unaCalle = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
         Figura unaVistaCalle = new Cuadrado(50,50,unaCalle);
