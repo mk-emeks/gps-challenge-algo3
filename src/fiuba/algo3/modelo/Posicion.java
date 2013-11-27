@@ -34,10 +34,11 @@ public class Posicion {
     }
 
     public Posicion multiplicarPorEscalar(int unEscalar) {
-        this.posicionX = unEscalar*this.posicionX;
-        this.posicionY = unEscalar*this.posicionY;
+        /** exceso de prolijidad..o sutil descuido: shit happens **/
+        //this.posicionX = unEscalar*this.posicionX;
+        //this.posicionY = unEscalar*this.posicionY;
 
-        Posicion posicionMultiplicadaPorEscalar = new Posicion(this.posicionX, this.posicionY);
+        Posicion posicionMultiplicadaPorEscalar = new Posicion(unEscalar*this.posicionX, unEscalar*this.posicionY);
 
         return posicionMultiplicadaPorEscalar;
     }

@@ -67,7 +67,7 @@ public class Partida {
 
 
         /** INICIAR VEHICULO **/
-        Direccion direccionDeInicioDelVehiculo = new DireccionIzquierda(); /** una cualquiera, no cambia mucho **/
+        Direccion direccionDeInicioDelVehiculo = new DireccionDerecha(); /** una cualquiera, no cambia mucho **/
         EstadoMoto estadoDeInicioDelVehiculo = new EstadoMoto(); /** el usuario elegi el tipo **/
         Vehiculo miVehiculo = new Vehiculo(Mapa.getMapa().getInicio(),direccionDeInicioDelVehiculo,estadoDeInicioDelVehiculo);
 
