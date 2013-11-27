@@ -20,9 +20,9 @@ public class Partida {
     private ControlDeEventos controlDeEventos;
 
     /** el primer parametro por ahora tiene nombre explicativo **/
-    public Partida(SuperficieDeDibujo lugarEspacialDondeSeDesarrollaraLaPartida , Nivel nivel , Piloto unPiloto) {
+    public Partida(SuperficieDeDibujo zonaDeJuego , Nivel nivel , Piloto unPiloto) {
 
-        this.gameLoop = new GameLoop(lugarEspacialDondeSeDesarrollaraLaPartida); /** se podria cambiar frecuencia tmb **/
+        this.gameLoop = new GameLoop(zonaDeJuego); /** se podria cambiar frecuencia tmb **/
         this.nivelAjugar = nivel;
         this.pilotin = unPiloto;
         this.controlDeEventos = new ControlDeEventos(this);
