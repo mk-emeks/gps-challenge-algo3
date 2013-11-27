@@ -7,7 +7,7 @@ public class VistaInicio extends Imagen {
 
     public VistaInicio() {
 
-        this.setNombreArchivoImagen("imagenes/largada.png");
+        this.setNombreArchivoImagen("imagenes/inicio.png");
 
     }
 }
