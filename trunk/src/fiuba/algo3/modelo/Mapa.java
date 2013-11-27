@@ -100,8 +100,13 @@ public class Mapa {
         return this.inicio;
     }
 
+    /** new **/
     public ArrayList<Aplicable> getAplicables() {
         return this.aplicables;
+    }
+
+    public ArrayList<Posicion> getPosicionesValidas() {
+        return this.posicionesValidas;
     }
 
     /** testing **/

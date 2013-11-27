@@ -1,10 +1,23 @@
 package fiuba.algo3.control;
 
+import fiuba.algo3.titiritero.dibujables.Circulo;
+import fiuba.algo3.titiritero.dibujables.Cuadrado;
+import fiuba.algo3.titiritero.dibujables.Figura;
+
 import fiuba.algo3.titiritero.modelo.GameLoop;
-import fiuba.algo3.titiritero.modelo.ObjetoVivo;
+import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
-import fiuba.algo3.modelo.*; /** por ahora **/
+/** por ahora **/
+import fiuba.algo3.modelo.*;
+import fiuba.algo3.vista.RepresentacionDeCalle;
+import fiuba.algo3.vista.VistaCalle;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 
 /**  ver las dependencias necesarias cuando este listo
 import fiuba.algo3.modelo.Piloto;
@@ -33,17 +46,26 @@ public class Partida {
         return this.pilotin;
     }
 
-    public void iniciar() throws Exception {
+    public void iniciar() {
 
 
         /** configurando mapa **/
         nivelAjugar.cargarMapa();
 
+
+
+
         /** INICIAR VEHICULO **/
         Direccion direccionDeInicioDelVehiculo = new DireccionDerecha(); /** una cualquiera, no cambia mucho **/
         EstadoMoto estadoDeInicioDelVehiculo = new EstadoMoto(); /** el usuario elegi el tipo **/
         Vehiculo miVehiculo = new Vehiculo(Mapa.getMapa().getInicio(),direccionDeInicioDelVehiculo,estadoDeInicioDelVehiculo);
-        miVehiculo.posicionarEnElMapa();   /** (!) clave **/
+
+        try {
+            miVehiculo.posicionarEnElMapa();   /** (!) clave **/
+        } catch (Exception exception) {System.out.println( "no se posicionar el vehiculo en el mapa");}
+
+
+
 
         /** configurando piloto **/
         this.pilotin.asignarVehiculo(miVehiculo);
@@ -52,6 +74,29 @@ public class Partida {
 
         /** to-do lo del loop podria hacerlo una clase, o un metodo de partida **/
         /** agregar dibujables **/
+        ArrayList<Posicion> posicionDeLasCalles = Mapa.getMapa().getPosicionesValidas();
+        Iterator<Posicion> iterador = posicionDeLasCalles.iterator();
+        while (iterador.hasNext()) {
+            ObjetoPosicionable unaCalle = new RepresentacionDeCalle(iterador.next());
+            Figura unaVistaCalle = new Cuadrado(50,50,unaCalle);
+            unaVistaCalle.setColor(Color.GREEN);
+            this.gameLoop.agregar(unaVistaCalle);
+        }
+
+        /*ObjetoPosicionable unaCalle = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
+        Figura unaVistaCalle = new Cuadrado(50,50,unaCalle);
+        unaVistaCalle.setColor(Color.GRAY);
+        this.gameLoop.agregar(unaVistaCalle);*/
+
+        //ObjetoDibujable unaVistaCalle = new Cuadrado(50,50,unaCalle);
+
+
+        Figura unaVistaAuto = new Circulo(20,this.pilotin.getVehiculo());
+        unaVistaAuto.setColor(Color.BLUE);
+        this.gameLoop.agregar(unaVistaAuto);
+
+
+
         //vista calles
         //vista aplicables
         //vista auto
@@ -61,7 +106,8 @@ public class Partida {
         this.gameLoop.agregar(this.pilotin);
         this.gameLoop.agregar(this.controlDeEventos);
 
-        /** comienza la accion **/
+
+        /** COMIENZA LA ACCION **/
         this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
         this.gameLoop.iniciarEjecucion();
 

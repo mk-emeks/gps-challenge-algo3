@@ -10,10 +10,20 @@ public class Piloto implements ObjetoVivo {
     private Boolean enMovimiento;
     private Cronometro cronometro;
 
+    /** limpiar contructores que no sirven **/
+
     public Piloto() {
 
         this.cronometro = new Cronometro();
         this.enMovimiento = false;
+    }
+
+    public Piloto(String unNombre) {   /** el que se usa! **/
+
+        this.cronometro = new Cronometro();
+        this.enMovimiento = false;
+        this.nombre = unNombre;
+
     }
 
     public Piloto(Vehiculo unVehiculo, String unNombre) {
@@ -24,6 +34,8 @@ public class Piloto implements ObjetoVivo {
         this.nombre = unNombre;
 
     }
+
+    /**  **/
 
     public void asignarVehiculo(Vehiculo unVehiculo) {
 
