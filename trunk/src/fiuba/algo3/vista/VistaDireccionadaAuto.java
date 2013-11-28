@@ -6,15 +6,16 @@ import fiuba.algo3.modelo.Direccionable;
 
 public class VistaDireccionadaAuto extends VistaDireccionada {
 
-    public VistaDireccionadaAuto(Vehiculo auto) {
+    public VistaDireccionadaAuto(Direccionable auto) {
 
         super(auto);
 
         this.vistaArriba.setNombreArchivoImagen("imagenes/Vehiculos/Auto/autoArriba.png");
         this.vistaAbajo.setNombreArchivoImagen("imagenes/Vehiculos/Auto/autoAbajo.png");
         this.vistaDerecha.setNombreArchivoImagen("imagenes/Vehiculos/Auto/autoDerecha.png");
-        this.vistaIzquierda.setNombreArchivoImagen("imagenes/Vehiculos/Auto/autoIzquiera.png");
+        this.vistaIzquierda.setNombreArchivoImagen("imagenes/Vehiculos/Auto/autoSurda.png");
 
+        System.out.println("asigno Imagenes");
     }
 
 }
