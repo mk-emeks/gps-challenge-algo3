@@ -39,6 +39,9 @@ public class VentanaPrincipal extends Ventana {
         this.unMarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
+
+        //this.unMarco.addMouseListener(new MouseClickController(control));
+
       /**  this.unControlDeClicks = new ControlDeClicks();
         control.agregarMouseClickObservador(this.unControlDeClicks);
         this.unMarco.addMouseListener(new MouseClickController(control));  **/
@@ -46,7 +49,8 @@ public class VentanaPrincipal extends Ventana {
 
 
         /** Menu **/
-        crearMenuBar(this.unMarco);
+        //crearMenuBar(this.unMarco);
+
 
         /** mostrate **/
         this.unMarco.setVisible(true);
@@ -63,24 +67,24 @@ public class VentanaPrincipal extends Ventana {
         menu.add(juego);
         juegoNuevo = new JMenuItem("Nuevo");
         juego.add(juegoNuevo);
-        juegoNuevo.addActionListener(this);
+        //juegoNuevo.addActionListener(unMarco);
         guardarPartida = new JMenuItem("Guardar");
         juego.add(guardarPartida);
-        guardarPartida.addActionListener(this);
+        //guardarPartida.addActionListener(this);
         cargarPartida = new JMenuItem("Cargar");
         juego.add(cargarPartida);
-        cargarPartida.addActionListener(this);
+        //cargarPartida.addActionListener(this);
         itemHistorial = new JMenuItem("Historial de jugadores");
-        itemHistorial.addActionListener(this);
+        //itemHistorial.addActionListener(this);
         juego.add(itemHistorial);
         salir = new JMenuItem("Salir");
-        salir.addActionListener(this);
+        //salir.addActionListener(this);
         juego.add(salir);
         ayuda = new JMenu("Ayuda");
         menu.add(ayuda);
         acercaDe = new JMenuItem("Acerca de...");
         ayuda.add(acercaDe);
-        acercaDe.addActionListener(this);
+        //acercaDe.addActionListener(this);
 
     }
 

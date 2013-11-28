@@ -9,6 +9,7 @@ import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Panel;
 import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
 import ar.uba.fi.algo3.titiritero.vista.KeyPressedController;
+import ar.uba.fi.algo3.titiritero.vista.Ventana;
 
 
 import fiuba.algo3.modelo.*;
@@ -30,29 +31,32 @@ public class Partida {
     private ControlDeEventos controlDeEventos;
     private Panel zonaDeJuego;
 
-    public Panel getPanel() {
+    /*public Panel getPanel() {
         return this.zonaDeJuego;
-    }
+    } */
 
 
     /** VentanaPrincipal -> replace for: JPanel Unmarco **/
-    public Partida(Panel panel , Nivel nivel , Piloto unPiloto) {
+    public Partida(Ventana ventanaJuego, ControladorJuego controladorDeJuego , Nivel nivel , Piloto unPiloto) {
 
-        this.gameLoop = new ControladorJuego(false);
-        this.gameLoop.setIntervaloSimulacion(90);
-
-        this.zonaDeJuego = panel;
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.zonaDeJuego = new ar.uba.fi.algo3.titiritero.vista.Panel(screenSize.width - 400, screenSize.height, this.gameLoop );
-        this.zonaDeJuego.setLayout(null);
-        this.zonaDeJuego.setBounds(390, 0, screenSize.width - 400, screenSize.height);
-        //ventana.add(this.zonaDeJuego);
-
-        this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
-
+        /** asignaciones **/
+        this.gameLoop = controladorDeJuego;
         this.nivelAjugar = nivel;
         this.pilotin = unPiloto;
         this.controlDeEventos = new ControlDeEventos(this);
+
+        /** calibramos zona de juego **/
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.zonaDeJuego = new Panel(0,0, this.gameLoop );
+        this.zonaDeJuego.setLayout(null);
+        this.zonaDeJuego.setBounds(400, 10, screenSize.width - 550, screenSize.height - 10); /** calibrar **/
+        ventanaJuego.add(this.zonaDeJuego);
+
+        /** la agregamos al gameLoop el panel de la zona de juego **/
+        this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
+
+
+
 
     }
 
@@ -151,7 +155,7 @@ public class Partida {
 
         /** COMIENZA LA ACCION **/
         this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
-        this.gameLoop.comenzarJuego(15);
+        this.gameLoop.comenzarJuego();
         //this.pilotin.getVehiculo().setDireccion(new DireccionAbajo());
         //this.gameLoop.comenzarJuego(6);
         //this.pilotin.getVehiculo().setDireccion(new DireccionArriba());
