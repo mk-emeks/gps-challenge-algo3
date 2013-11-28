@@ -1,6 +1,7 @@
 package fiuba.algo3.control;
 
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
+import ar.uba.fi.algo3.titiritero.vista.MouseClickController;
 import fiuba.algo3.modelo.*;
 import ar.uba.fi.algo3.titiritero.vista.Panel;
 import ar.uba.fi.algo3.titiritero.vista.Ventana;
@@ -22,32 +23,42 @@ public class VentanaPrincipal extends Ventana {
     private AcercaDe labelAcercaDe;
     private HistorialJugadores historial;
     private Panel zonaDeJuego;
+    private JFrame unMarco;
+    //private ControlDeClicks unControlDeClicks;
 
     public VentanaPrincipal( ControladorJuego control) {
 
         super(control);
         /** Configuracion de la ventana **/
 
-        setLayout(null);
-        setTitle("GPS Challenge");
+        this.unMarco = new JFrame();
+        this.unMarco.setLayout(null);
+        this.unMarco.setTitle("GPS Challenge");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds(0, 0, screenSize.width, screenSize.height);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.unMarco.setBounds(0, 0, screenSize.width, screenSize.height);
+        this.unMarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+      /**  this.unControlDeClicks = new ControlDeClicks();
+        control.agregarMouseClickObservador(this.unControlDeClicks);
+        this.unMarco.addMouseListener(new MouseClickController(control));  **/
+
+
 
         /** Menu **/
-        crearMenuBar();
+        crearMenuBar(this.unMarco);
 
         /** mostrate **/
-        setVisible(true);
+        this.unMarco.setVisible(true);
 
     }
 
-    public void crearMenuBar() {
+    public void crearMenuBar(JFrame unMarco) {
 
         labelAcercaDe = new AcercaDe();
         historial = new HistorialJugadores();
         menu = new JMenuBar();
-        setJMenuBar(menu);
+        unMarco.setJMenuBar(menu);
         juego = new JMenu("Juego...");
         menu.add(juego);
         juegoNuevo = new JMenuItem("Nuevo");
