@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 public class MenuPrincipal {
 
     /** los control de cada "stage" donde el usuario elige **/
-    //private ControlInicioPiloto controlInicioPiloto;
     //private ControlInicioNivel  controlInicioNivel;
     //private ControlInicioPartida controlInicioPartida;
 
