@@ -25,9 +25,9 @@ public class gpsChallenge {
         /** Configuracion Ventana **/
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Ventana ventana = new Ventana(0,0, controlDeJuego); // el 0,0 sino no anda el cerrar ?
+        Ventana ventana = new Ventana(screenSize.width,screenSize.height,controlDeJuego);
         ventana.setLayout(null);
-        ventana.setBounds(0, 0, screenSize.width, screenSize.height);
+        //ventana.setBounds(0, 0, screenSize.width, screenSize.height);
         ventana.setVisible(true);
 
         /** agregamos observador de mouse **/
