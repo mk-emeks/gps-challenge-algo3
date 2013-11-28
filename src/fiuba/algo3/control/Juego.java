@@ -69,8 +69,8 @@ public class Juego {
 
         Juego juego = new Juego();
 
-        /** cargamos menu principal **/
-        //juego.getMenuEleccionUsuario().cargarMenuPrincipal(marcoPrincipal,juego);
+        /** cargamos menu eleccio usuario **/
+        juego.getMenuEleccionUsuario().cargarMenuSeleccionUsuario(marcoPrincipal,juego);
 
 
 
