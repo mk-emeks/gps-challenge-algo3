@@ -6,6 +6,6 @@ public class VistaPolicia extends Imagen {
 
     public VistaPolicia() {
 
-        this.setNombreArchivoImagen("imagenes/Obstaculos/poli.jpg");
+        this.setNombreArchivoImagen("imagenes/Obstaculos/poli.png");
     }
 }
