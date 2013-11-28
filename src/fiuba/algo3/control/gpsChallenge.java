@@ -23,8 +23,9 @@ public class gpsChallenge {
         controlDeJuego.setIntervaloSimulacion(90);
 
         /** Configuracion Ventana **/
-        Ventana ventana = new Ventana(controlDeJuego);
+
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Ventana ventana = new Ventana(0,0, controlDeJuego); // el 0,0 sino no anda el cerrar ?
         ventana.setLayout(null);
         ventana.setBounds(0, 0, screenSize.width, screenSize.height);
         ventana.setVisible(true);
