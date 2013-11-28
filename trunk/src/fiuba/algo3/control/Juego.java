@@ -70,8 +70,13 @@ public class Juego {
         Juego juego = new Juego();
 
         /** cargamos menu eleccio usuario **/
-        juego.getMenuEleccionUsuario().cargarMenuSeleccionUsuario(marcoPrincipal,juego);
+        //juego.getMenuEleccionUsuario().cargarMenuSeleccionUsuario(marcoPrincipal,juego);
 
+
+
+        /** NOOOOOOOOOOOOOOOOOOOOOO */
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.cargarMenuPrincipal(marcoPrincipal,juego);
 
 
     }
