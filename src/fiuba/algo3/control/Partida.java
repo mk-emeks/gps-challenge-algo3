@@ -136,9 +136,9 @@ public class Partida {
         vistaLlegada.setPosicionable(llegada);
         this.gameLoop.agregarDibujable(vistaLlegada);
 
-        Figura unaVistaAuto = new Circulo(20);
-        unaVistaAuto.setPosicionable(this.pilotin.getVehiculo());
-        unaVistaAuto.setColor(Color.BLUE);
+        //Figura unaVistaAuto = new Circulo(20);
+        //unaVistaAuto.setPosicionable(this.pilotin.getVehiculo());
+        VistaVehiculo unaVistaAuto = new VistaVehiculo(this.pilotin.getVehiculo());
         this.gameLoop.agregarDibujable(unaVistaAuto);
 
 
@@ -155,7 +155,9 @@ public class Partida {
 
         /** COMIENZA LA ACCION **/
         this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
-        this.gameLoop.comenzarJuego();
+        this.gameLoop.comenzarJuego(6);
+        this.pilotin.getVehiculo().setDireccion(new DireccionAbajo());
+        this.gameLoop.comenzarJuego(5);
         /*this.pilotin.getVehiculo().setDireccion(new DireccionAbajo());
         this.gameLoop.comenzarJuego(4);*/
 
