@@ -18,7 +18,7 @@ public class MenuPrincipal {
 
     private JPanel panelBotonesPrincipales;
 
-    public void cargarMenuPrincipal( final JFrame unMarco , Partida unaPartida , Piloto unJugador , Nivel unNivel ) {
+    public void cargarMenuPrincipal( final JFrame unMarco , Juego unJuego) {
 
         unMarco.getContentPane().removeAll();
 

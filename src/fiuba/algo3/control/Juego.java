@@ -13,6 +13,18 @@ public class Juego {
     private Partida partida;
     private MenuPrincipal menuPrincipal;
 
+    public void setPiloto(Piloto unPiloto) {
+        this.piloto = unPiloto;
+    }
+
+    public void setNivel(Nivel unNivel) {
+        this.nivel = unNivel;
+    }
+
+    public void setPartida(Partida unaPartida) {
+        this.partida = unaPartida;
+    }
+
     public Piloto getPiloto() {
 
         return  this.piloto;
@@ -39,9 +51,6 @@ public class Juego {
 
     }
 
-    private JPanel panelBotonesPrincipales;
-
-
 
     public static void main(String[] argv) {
 
@@ -60,14 +69,8 @@ public class Juego {
 
         Juego juego = new Juego();
 
-        /** ojo **/
-
-        Partida partida = juego.getPartida();
-        Piloto  piloto = juego.getPiloto();
-        Nivel   nivel = juego.getNivel();
-
         /** cargamos menu principal **/
-        juego.getMenuPrincipal().cargarMenuPrincipal(marcoPrincipal,partida,piloto,nivel);
+        juego.getMenuPrincipal().cargarMenuPrincipal(marcoPrincipal,juego);
 
 
 
