@@ -1,6 +1,7 @@
 package fiuba.algo3.control;
 
 
+import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.vista.Panel;
 
 /**no**/
@@ -12,7 +13,7 @@ import fiuba.algo3.modelo.Piloto;
 public class ControlInicioPartida {
 
 
-   public void iniciarPartida( Panel panelDeMapa , Juego juego ) {
+   public void cargarPartida(Panel panelDeMapa, Juego juego) {
 
        /**no deberian estar **/
        Mapa.limpiar();
@@ -22,5 +23,15 @@ public class ControlInicioPartida {
 
        juego.setPartida(new Partida(panelDeMapa,juego.getNivel(),juego.getPiloto()));
 
+       //juego.getPartida().iniciar();  /**!!**/
+
    }
+
+    public void iniciarPartida(Juego unJuego) {
+
+        unJuego.getPartida().iniciar();
+
+    }
+
 }
+
