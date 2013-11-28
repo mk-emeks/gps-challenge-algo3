@@ -3,6 +3,7 @@ package fiuba.algo3.control;
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import fiuba.algo3.modelo.*;
 import ar.uba.fi.algo3.titiritero.vista.Panel;
+import ar.uba.fi.algo3.titiritero.vista.Ventana;
 import fiuba.algo3.vista.*;
 
 import javax.imageio.ImageIO;
@@ -13,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 
-public class VentanaPrincipal extends JFrame implements ActionListener {
+public class VentanaPrincipal extends Ventana {
 
     private JMenuBar menu;
     private JMenu juego, ayuda;
@@ -22,8 +23,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private HistorialJugadores historial;
     private Panel zonaDeJuego;
 
-    public VentanaPrincipal() {
+    public VentanaPrincipal( ControladorJuego control) {
 
+        super(control);
         /** Configuracion de la ventana **/
 
         setLayout(null);
@@ -34,27 +36,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
         /** Menu **/
         crearMenuBar();
-
-        /** Zona de Juego **/
-
-
-        /*zonaDeJuego = new Panel(screenSize.width - 400, screenSize.height, new ControladorJuego(false) );
-        zonaDeJuego.setLayout(null);
-        zonaDeJuego.setBounds(390, 0, screenSize.width - 400, screenSize.height);*/
-        //zonaDeJuego.setBackground(Color.DARK_GRAY);
-
-
-        /*BufferedImage miImagen = new BufferedImage(screenSize.width - 400,screenSize.height,1);
-        zonaDeJuego.setImagen(miImagen); */
-
-        //El boton es para que veas donde esta la zona de juego, se puede borrar
-        /*JButton boton = new JButton("ZONA DE JUEGO");
-        boton.setBounds(0, 0, screenSize.width - 400, screenSize.height);
-        zonaDeJuego.add(boton);   */
-
-
-        //this.zonaDeJuego.setVisible(true);
-        //this.add(this.zonaDeJuego);
 
         /** mostrate **/
         setVisible(true);
@@ -101,32 +82,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         } else if (e.getSource() == itemHistorial) {
             historial.setVisible(true);
         }
-    }
-
-    public void crearPartida() {
-
-        /** Eleccion Nivel **/
-        Mapa.limpiar();
-        Nivel nivel = new Nivel();
-
-
-        /** Eleccion Nombre del Jugador **/
-        Piloto piloto = new Piloto("pilotin");
-
-        /** Nueva Partida **/
-
-        //Partida partida = new Partida(this,nivel,piloto);
-        //partida.iniciar();
-
-
-    }
-
-    public static void main(String[] argv) {
-
-        VentanaPrincipal ventana = new VentanaPrincipal();
-        ventana.crearPartida();
-
-
     }
 
 }
