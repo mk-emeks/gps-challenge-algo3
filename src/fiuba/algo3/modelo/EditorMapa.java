@@ -25,20 +25,19 @@ public class EditorMapa {
 
         /** Obstaculos**/
         try{
-            unMapa.ubicar(new Pozo(new Posicion(3,2)));
-            //unMapa.ubicar(new ControlPolicial(new Posicion(5,6)));
-            //unMapa.ubicar(new Piquete(new Posicion(2,6)));
-            //unMapa.ubicar(new ControlPolicial(new Posicion(4,4)));
+            unMapa.ubicar(new Pozo(new Posicion(12,3)));
+            unMapa.ubicar(new Piquete(new Posicion(2,6)));
+            unMapa.ubicar(new ControlPolicial(new Posicion(9,8)));
 
         } catch (Exception e) { System.out.println("no se pudo ubicar obstaculos");}
 
         /**Sorpresas**/
-        /*try{
-            unMapa.ubicar(new SorpresaDesfavorable(new Posicion(4,2)));
-            unMapa.ubicar(new SorpresaFavorable((new Posicion(6,4))));
-            unMapa.ubicar(new SorpresaFavorable((new Posicion(4,6))));
+        try{
+            unMapa.ubicar(new SorpresaDesfavorable(new Posicion(11,6)));
+            unMapa.ubicar(new SorpresaFavorable((new Posicion(2,11))));
+            unMapa.ubicar(new SorpresaFavorable((new Posicion(11,14))));
         } catch (Exception e) { System.out.println("no se pudo ubicar sorpresas");}
-        */
+
     }
 
 
