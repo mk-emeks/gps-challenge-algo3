@@ -11,10 +11,7 @@ import ar.uba.fi.algo3.titiritero.vista.Panel;
 
 /** por ahora **/
 import fiuba.algo3.modelo.*;
-import fiuba.algo3.vista.RepresentacionDeCalle;
-import fiuba.algo3.vista.VistaCalle;
-import fiuba.algo3.vista.VistaInicio;
-import fiuba.algo3.vista.VistaLlegada;
+import fiuba.algo3.vista.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -89,7 +86,7 @@ public class Partida {
         /** agregar dibujables **/
 
 
-
+        /**Se agregan las vistas de las calles **/
         ArrayList<Posicion> posicionDeLasCalles = Mapa.getMapa().getPosicionesValidas();
         Iterator<Posicion> iterador = posicionDeLasCalles.iterator();
         while (iterador.hasNext()) {
@@ -97,6 +94,34 @@ public class Partida {
             Dibujable unaVistaCalle = new VistaCalle();
             unaVistaCalle.setPosicionable(unaCalle);
             this.gameLoop.agregarDibujable(unaVistaCalle);
+        }
+
+        /**Se agregan los aplicables**/
+        ArrayList<Aplicable> aplicables = Mapa.getMapa().getAplicables();
+        Iterator<Aplicable> it = aplicables.iterator();
+        while (it.hasNext()) {
+            Aplicable unAplicable = it.next();
+            if (unAplicable instanceof ControlPolicial) {
+                Posicionable policia = new RepresentacionDeCalle(unAplicable.getPosicion());
+                Dibujable vistaPolicia = new VistaPolicia();
+                vistaPolicia.setPosicionable(policia);
+                this.gameLoop.agregarDibujable(vistaPolicia);
+            } else if (unAplicable instanceof Sorpresa) {
+                Posicionable sorpresa = new RepresentacionDeCalle(unAplicable.getPosicion());
+                Dibujable vistaSorpresa = new VistaSorpresa();
+                vistaSorpresa.setPosicionable(sorpresa);
+                this.gameLoop.agregarDibujable(vistaSorpresa);
+            } else if (unAplicable instanceof Piquete) {
+                Posicionable piquete = new RepresentacionDeCalle(unAplicable.getPosicion());
+                Dibujable vistaPiquete = new VistaPiquete();
+                vistaPiquete.setPosicionable(piquete);
+                this.gameLoop.agregarDibujable(vistaPiquete);
+            } else if (unAplicable instanceof Pozo) {
+                Posicionable pozo = new RepresentacionDeCalle(unAplicable.getPosicion());
+                Dibujable vistaPozo = new VistaPozo();
+                vistaPozo.setPosicionable(pozo);
+                this.gameLoop.agregarDibujable(vistaPozo);
+            }
         }
 
         Posicionable inicio = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
@@ -131,6 +156,8 @@ public class Partida {
         /** COMIENZA LA ACCION **/
         this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
         this.gameLoop.comenzarJuego();
+        /*this.pilotin.getVehiculo().setDireccion(new DireccionAbajo());
+        this.gameLoop.comenzarJuego(4);*/
 
     }
 
