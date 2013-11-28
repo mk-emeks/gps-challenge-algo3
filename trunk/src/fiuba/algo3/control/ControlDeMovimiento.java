@@ -1,61 +1,51 @@
 package fiuba.algo3.control;
 
-
+import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
 import fiuba.algo3.modelo.*;
-import fiuba.algo3.modelo.Vehiculo;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class ControlDeMovimiento {
+public class ControlDeMovimiento implements KeyPressedObservador {
 
-    public KeyListener unKey;
+    private Vehiculo vehiculo;
 
-    public KeyListener devolverKey(final Vehiculo unVehiculo) {
+    public ControlDeMovimiento(Vehiculo unVehiculo) {
 
+        this.vehiculo = unVehiculo;
 
-         this.unKey = new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-
-            @Override
-            public void keyPressed(KeyEvent keyEvent) {
-                int tecla = keyEvent.getKeyCode();
-
-                switch (tecla) {
-
-                    case KeyEvent.VK_RIGHT:
-                        DireccionDerecha unaDireccionDerecha = new DireccionDerecha();
-                        unVehiculo.setDireccion(unaDireccionDerecha);
-                        System.out.println("Me muevo para la derecha");
-                        break;
-
-                    case KeyEvent.VK_LEFT:
-                        DireccionIzquierda unaDireccionIzquierda = new DireccionIzquierda();
-                        unVehiculo.setDireccion(unaDireccionIzquierda);
-                        System.out.println("Me muevo para la izquierda");
-                        break;
-
-                    case KeyEvent.VK_UP:
-                        DireccionArriba unaDireccionArriba = new DireccionArriba();
-                        unVehiculo.setDireccion(unaDireccionArriba);
-                        System.out.println("Me muevo para la arriba");
-                        break;
-
-                    case KeyEvent.VK_DOWN:
-                        DireccionAbajo unaDireccionAbajo = new DireccionAbajo();
-                        unVehiculo.setDireccion(unaDireccionAbajo);
-                        System.out.println("Me muevo para la abajo");
-                        break;
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        };
-
-        return unKey;
     }
 
-}
+    public void keyPressed(KeyEvent keyEvent) {
+        int tecla = keyEvent.getKeyCode();
 
+        switch (tecla) {
+
+            case KeyEvent.VK_RIGHT:
+                DireccionDerecha unaDireccionDerecha = new DireccionDerecha();
+                this.vehiculo.setDireccion(unaDireccionDerecha);
+                System.out.println("Me muevo para la derecha");
+                break;
+
+            case KeyEvent.VK_LEFT:
+                DireccionIzquierda unaDireccionIzquierda = new DireccionIzquierda();
+                this.vehiculo.setDireccion(unaDireccionIzquierda);
+                System.out.println("Me muevo para la izquierda");
+                break;
+
+            case KeyEvent.VK_UP:
+                DireccionArriba unaDireccionArriba = new DireccionArriba();
+                this.vehiculo.setDireccion(unaDireccionArriba);
+                System.out.println("Me muevo para la arriba");
+                break;
+
+            case KeyEvent.VK_DOWN:
+                DireccionAbajo unaDireccionAbajo = new DireccionAbajo();
+                this.vehiculo.setDireccion(unaDireccionAbajo);
+                System.out.println("Me muevo para la abajo");
+                break;
+        }
+    }
+
+    public void keyRelease(KeyEvent e) {}
+
+}

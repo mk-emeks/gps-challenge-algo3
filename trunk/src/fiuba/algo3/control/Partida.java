@@ -1,15 +1,16 @@
 package fiuba.algo3.control;
 
-import ar.uba.fi.algo3.titiritero.vista.*;
+
 
 
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.Dibujable;
 import ar.uba.fi.algo3.titiritero.Posicionable;
-import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
 import ar.uba.fi.algo3.titiritero.vista.Panel;
+import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
+import ar.uba.fi.algo3.titiritero.vista.KeyPressedController;
 
-/** por ahora **/
+
 import fiuba.algo3.modelo.*;
 import fiuba.algo3.vista.*;
 
@@ -18,17 +19,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 
-/**  ver las dependencias necesarias cuando este listo
-import fiuba.algo3.modelo.Piloto;
-import fiuba.algo3.modelo.EditorMapa;
-import fiuba.algo3.modelo.Nivel;
-**/
 
 public class Partida {
 
     private ControladorJuego gameLoop;
     private Nivel  nivelAjugar;
     private Piloto pilotin;
+    private ControlDeMovimiento controlDeMovimiento;
     private ControlDeEventos controlDeEventos;
     private Panel zonaDeJuego;
 
@@ -63,8 +60,6 @@ public class Partida {
         nivelAjugar.cargarMapa();
 
 
-
-
         /** INICIAR VEHICULO **/
         Direccion direccionDeInicioDelVehiculo = new DireccionDerecha(); /** una cualquiera, no cambia mucho **/
         Estado estadoDeInicioDelVehiculo = new EstadoMoto(); /** el usuario elegi el tipo **/
@@ -75,15 +70,9 @@ public class Partida {
         } catch (Exception exception) {System.out.println( "no se posicionar el vehiculo en el mapa");}
 
 
-
-
         /** configurando piloto **/
         this.pilotin.asignarVehiculo(miVehiculo);
         this.pilotin.arrancarVehiculo();
-
-
-        /** to-do lo del loop podria hacerlo una clase, o un metodo de partida **/
-        /** agregar dibujables **/
 
 
         /**Se agregan las vistas de las calles **/
@@ -124,45 +113,44 @@ public class Partida {
             }
         }
 
+        /** se agrega vista inicio **/
         Posicionable inicio = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
         Dibujable vistaInicio = new VistaInicio();
-        //Figura vistaInicio = new Cuadrado(50,50);
         vistaInicio.setPosicionable(inicio);
-        //vistaInicio.setColor(Color.RED);
         this.gameLoop.agregarDibujable(vistaInicio);
 
+        /** se agrega vista llegada **/
         Posicionable llegada = new RepresentacionDeCalle(Mapa.getMapa().getLlegada());
         Dibujable vistaLlegada = new VistaLlegada();
         vistaLlegada.setPosicionable(llegada);
         this.gameLoop.agregarDibujable(vistaLlegada);
 
-        //Figura unaVistaAuto = new Circulo(20);
-        //unaVistaAuto.setPosicionable(this.pilotin.getVehiculo());
+        /** se agrega vista auto **/
+
         VistaVehiculo unaVistaAuto = new VistaVehiculo(this.pilotin.getVehiculo());
-        //VistaDireccionadaAuto unaVistaAuto = new VistaDireccionadaAuto(this.pilotin.getVehiculo());
         this.gameLoop.agregarDibujable(unaVistaAuto);
-
-
-
-        //vista calles
-        //vista aplicables
-        //vista auto
 
         /** agregar objetos vivos al game loop **/
 
         this.gameLoop.agregarObjetoVivo(this.pilotin);
         this.gameLoop.agregarObjetoVivo(this.controlDeEventos);
 
+        /** se agregan los controles de teclado **/
+
+        this.controlDeMovimiento = new ControlDeMovimiento(this.pilotin.getVehiculo());
+        this.gameLoop.agregarKeyPressObservador(this.controlDeMovimiento);
+        this.zonaDeJuego.addKeyListener( new KeyPressedController(this.gameLoop) );
+
 
         /** COMIENZA LA ACCION **/
         this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
-        this.gameLoop.comenzarJuego(7);
-        this.pilotin.getVehiculo().setDireccion(new DireccionAbajo());
-        this.gameLoop.comenzarJuego(6);
-        this.pilotin.getVehiculo().setDireccion(new DireccionArriba());
-        this.gameLoop.comenzarJuego(6);
-        this.pilotin.getVehiculo().setDireccion(new DireccionIzquierda());
-        this.gameLoop.comenzarJuego(6);
+        this.gameLoop.comenzarJuego();
+        //this.pilotin.getVehiculo().setDireccion(new DireccionAbajo());
+        //this.gameLoop.comenzarJuego(6);
+        //this.pilotin.getVehiculo().setDireccion(new DireccionArriba());
+        //this.gameLoop.comenzarJuego(6);
+        //this.pilotin.getVehiculo().setDireccion(new DireccionIzquierda());
+        //this.gameLoop.comenzarJuego(6);
 
     }
 
