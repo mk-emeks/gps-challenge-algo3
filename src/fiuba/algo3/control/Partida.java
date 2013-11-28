@@ -30,17 +30,23 @@ public class Partida {
     private ControlDeEventos controlDeEventos;
     private Panel zonaDeJuego;
 
+    public Panel getPanel() {
+        return this.zonaDeJuego;
+    }
+
+
     /** VentanaPrincipal -> replace for: JPanel Unmarco **/
-    public Partida(Panel ventana , Nivel nivel , Piloto unPiloto) {
+    public Partida(Panel panel , Nivel nivel , Piloto unPiloto) {
 
         this.gameLoop = new ControladorJuego(false);
         this.gameLoop.setIntervaloSimulacion(90);
 
+        this.zonaDeJuego = panel;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.zonaDeJuego = new ar.uba.fi.algo3.titiritero.vista.Panel(screenSize.width - 400, screenSize.height, this.gameLoop );
         this.zonaDeJuego.setLayout(null);
         this.zonaDeJuego.setBounds(390, 0, screenSize.width - 400, screenSize.height);
-        ventana.add(this.zonaDeJuego);
+        //ventana.add(this.zonaDeJuego);
 
         this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
 
@@ -145,7 +151,7 @@ public class Partida {
 
         /** COMIENZA LA ACCION **/
         this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
-        this.gameLoop.comenzarJuego();
+        this.gameLoop.comenzarJuego(15);
         //this.pilotin.getVehiculo().setDireccion(new DireccionAbajo());
         //this.gameLoop.comenzarJuego(6);
         //this.pilotin.getVehiculo().setDireccion(new DireccionArriba());

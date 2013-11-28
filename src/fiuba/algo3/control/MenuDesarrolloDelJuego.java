@@ -2,10 +2,8 @@ package fiuba.algo3.control;
 
 
 import ar.uba.fi.algo3.titiritero.vista.Panel;
-import fiuba.algo3.control.VentanaPrincipal;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -56,19 +54,27 @@ public class MenuDesarrolloDelJuego {
 
         /** Creo panel donde se desarrolla el juego **/
 
-        panelDeMapa = new ar.uba.fi.algo3.titiritero.vista.Panel(800, 600);
-        panelDeMapa.setBackground(Color.ORANGE);
+
+
+        //panelDeMapa = new Panel(800, 600,unJuego.getPartida().getControlJuego());  /**!!!**/
+        /*panelDeMapa.setBackground(Color.ORANGE);
         panelDeMapa.setBounds(panelDesarrolloJuego.getWidth()-900,panelDesarrolloJuego.getHeight()-650, 800, 600);
         panelDeMapa.repaint();
-        panelDeMapa.setLayout(null);
+        panelDeMapa.setLayout(null);*/
 
-        controlInicioPartida.iniciarPartida(panelDeMapa,unJuego);  /*** clave!! inicia partida  **/
+        controlInicioPartida.cargarPartida(panelDeMapa, unJuego);  /*** clave!! inicia partida  **/
+
+
 
         /** Agrego cosas al frame **/
         panelDesarrolloJuego.add(botonVolver);
-        panelDesarrolloJuego.add(panelDeMapa);
+        panelDesarrolloJuego.add(unJuego.getPartida().getPanel());
         panelDesarrolloJuego.add(fondo);
         unMarco.add(panelDesarrolloJuego);
+
+
+        controlInicioPartida.iniciarPartida(unJuego);
+        //unJuego.getPartida().iniciar();   /** inicia realmente **/
 
         unMarco.revalidate();
         unMarco.repaint();
