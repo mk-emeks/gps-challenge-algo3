@@ -12,8 +12,8 @@ public class VistaDireccionada4x4 extends VistaDireccionada {
         this.vistaArriba.setNombreArchivoImagen("imagenes/Vehiculos/4x4/4x4Arriba.png");
         this.vistaAbajo.setNombreArchivoImagen("imagenes/Vehiculos/4x4/4x4Abajo.png");
         this.vistaDerecha.setNombreArchivoImagen("imagenes/Vehiculos/4x4/4x4Derecha.png");
-        this.vistaIzquierda.setNombreArchivoImagen("imagenes/Vehiculos/4x4/4x4Izquiera.png");
-
+        this.vistaIzquierda.setNombreArchivoImagen("imagenes/Vehiculos/4x4/4x4Surda.png");
+        System.out.println("asigno Imagenes");
     }
 
 }

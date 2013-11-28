@@ -3,7 +3,7 @@ package fiuba.algo3.modelo;
 
 public interface Direccionable extends Posicionable {
 
-    Direccion getDireccion();
-    void setDireccion(Direccion nuevaDireccion);
+    public Direccion getDireccion();
+    public void setDireccion(Direccion nuevaDireccion);
 
 }

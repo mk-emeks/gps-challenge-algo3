@@ -67,7 +67,7 @@ public class Partida {
 
         /** INICIAR VEHICULO **/
         Direccion direccionDeInicioDelVehiculo = new DireccionDerecha(); /** una cualquiera, no cambia mucho **/
-        EstadoMoto estadoDeInicioDelVehiculo = new EstadoMoto(); /** el usuario elegi el tipo **/
+        Estado estadoDeInicioDelVehiculo = new EstadoMoto(); /** el usuario elegi el tipo **/
         Vehiculo miVehiculo = new Vehiculo(Mapa.getMapa().getInicio(),direccionDeInicioDelVehiculo,estadoDeInicioDelVehiculo);
 
         try {
@@ -139,6 +139,7 @@ public class Partida {
         //Figura unaVistaAuto = new Circulo(20);
         //unaVistaAuto.setPosicionable(this.pilotin.getVehiculo());
         VistaVehiculo unaVistaAuto = new VistaVehiculo(this.pilotin.getVehiculo());
+        //VistaDireccionadaAuto unaVistaAuto = new VistaDireccionadaAuto(this.pilotin.getVehiculo());
         this.gameLoop.agregarDibujable(unaVistaAuto);
 
 
@@ -155,11 +156,13 @@ public class Partida {
 
         /** COMIENZA LA ACCION **/
         this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
-        this.gameLoop.comenzarJuego(6);
+        this.gameLoop.comenzarJuego(7);
         this.pilotin.getVehiculo().setDireccion(new DireccionAbajo());
-        this.gameLoop.comenzarJuego(5);
-        /*this.pilotin.getVehiculo().setDireccion(new DireccionAbajo());
-        this.gameLoop.comenzarJuego(4);*/
+        this.gameLoop.comenzarJuego(6);
+        this.pilotin.getVehiculo().setDireccion(new DireccionArriba());
+        this.gameLoop.comenzarJuego(6);
+        this.pilotin.getVehiculo().setDireccion(new DireccionIzquierda());
+        this.gameLoop.comenzarJuego(6);
 
     }
 

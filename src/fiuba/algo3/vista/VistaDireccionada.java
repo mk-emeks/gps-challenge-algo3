@@ -15,24 +15,27 @@ import fiuba.algo3.modelo.Direccionable;
 
 public abstract class VistaDireccionada extends Imagen {
 
-    protected Imagen vistaArriba = new Imagen();
-    protected Imagen vistaAbajo = new Imagen();
-    protected Imagen vistaDerecha = new Imagen();
-    protected Imagen vistaIzquierda = new Imagen();
+    protected VistaArriba vistaArriba = new VistaArriba();
+    protected VistaAbajo vistaAbajo = new VistaAbajo();
+    protected VistaDerecha vistaDerecha = new VistaDerecha();
+    protected VistaIzquierda vistaIzquierda = new VistaIzquierda();
 
-    private Direccionable direccionable;
+    protected Direccionable direccionable;
 
     public VistaDireccionada( Direccionable unDireccionable) {
 
-       /** LOS DIRECCIONABLES QUE PASEMOS DEBEN IMPLEMENTAR POSICIONABLE(TITIRITERO) **/
-       Posicionable unPosicionable = (Posicionable)unDireccionable;
 
-       this.vistaArriba.setPosicionable(unPosicionable);
-       this.vistaAbajo.setPosicionable(unPosicionable);
-       this.vistaDerecha.setPosicionable(unPosicionable);
-       this.vistaIzquierda.setPosicionable(unPosicionable);
+       /** LOS DIRECCIONABLES QUE PASEMOS DEBEN IMPLEMENTAR POSICIONABLE(TITIRITERO) **/
+       //Posicionable unPosicionable = (Posicionable)unDireccionable;
 
        this.direccionable = unDireccionable;
+
+       this.vistaArriba.setPosicionable((Posicionable)this.direccionable);
+       this.vistaAbajo.setPosicionable((Posicionable)this.direccionable);
+       this.vistaDerecha.setPosicionable((Posicionable)this.direccionable);
+       this.vistaIzquierda.setPosicionable((Posicionable)this.direccionable);
+       System.out.println("asigno Posiciones");
+
 
     }
 
@@ -58,6 +61,7 @@ public abstract class VistaDireccionada extends Imagen {
         if  ( (this.direccionable.getDireccion()).equals(derecha) ) {
 
             this.vistaDerecha.dibujar(superficeDeDibujo);
+
         }
 
         if  ( (this.direccionable.getDireccion()).equals(izquierda) ) {
