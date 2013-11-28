@@ -24,19 +24,19 @@ public class EditorMapa {
         this.editarMapaSimple(15,15);
 
         /** Obstaculos**/
-        try{
+        /*try{
             unMapa.ubicar(new ControlPolicial(new Posicion(2,2)));
             unMapa.ubicar(new ControlPolicial(new Posicion(5,6)));
             unMapa.ubicar(new Piquete(new Posicion(2,6)));
             unMapa.ubicar(new Pozo(new Posicion(4,4)));
         } catch (Exception e) { System.out.println("no se pudo ubicar obstaculos");}
-
+        */
         /**Sorpresas**/
-        try{
+        /*try{
             unMapa.ubicar(new SorpresaDesfavorable(new Posicion(4,2)));
             unMapa.ubicar(new SorpresaFavorable((new Posicion(6,4))));
             unMapa.ubicar(new SorpresaFavorable((new Posicion(4,6))));
-        } catch (Exception e) { System.out.println("no se pudo ubicar sorpresas");}
+        } catch (Exception e) { System.out.println("no se pudo ubicar sorpresas");}   */
     }
 
 
