@@ -11,7 +11,7 @@ public class Juego {
     private Piloto piloto;
     private Nivel  nivel;
     private Partida partida;
-    private MenuPrincipal menuPrincipal;
+    private MenuEleccionUsuario menuEleccionUsuario;
 
     public void setPiloto(Piloto unPiloto) {
         this.piloto = unPiloto;
@@ -40,14 +40,14 @@ public class Juego {
         return this.partida;
     }
 
-    public MenuPrincipal getMenuPrincipal() {
+    public MenuEleccionUsuario getMenuEleccionUsuario() {
 
-        return this.menuPrincipal;
+        return this.menuEleccionUsuario;
     }
 
     public Juego() {
 
-        this.menuPrincipal = new MenuPrincipal();
+        this.menuEleccionUsuario = new MenuEleccionUsuario();
 
     }
 
@@ -70,7 +70,7 @@ public class Juego {
         Juego juego = new Juego();
 
         /** cargamos menu principal **/
-        juego.getMenuPrincipal().cargarMenuPrincipal(marcoPrincipal,juego);
+        //juego.getMenuEleccionUsuario().cargarMenuPrincipal(marcoPrincipal,juego);
 
 
 
