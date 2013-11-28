@@ -6,6 +6,6 @@ public class VistaPozo extends Imagen {
 
     public VistaPozo() {
 
-        this.setNombreArchivoImagen("imagenes/Obstaculos/pozo.jpg");
+        this.setNombreArchivoImagen("imagenes/Obstaculos/pozo.png");
     }
 }

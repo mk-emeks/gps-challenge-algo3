@@ -7,6 +7,6 @@ public class VistaPiquete extends Imagen {
 
     public VistaPiquete() {
 
-        this.setNombreArchivoImagen("imagenes/Obstaculos/piquete.jpg");
+        this.setNombreArchivoImagen("imagenes/Obstaculos/piquete.png");
     }
 }
