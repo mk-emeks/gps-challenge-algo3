@@ -14,6 +14,7 @@ import ar.uba.fi.algo3.titiritero.vista.KeyPressedController;
 import fiuba.algo3.modelo.*;
 import fiuba.algo3.vista.*;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,7 +30,7 @@ public class Partida {
     private ControlDeEventos controlDeEventos;
     private Panel zonaDeJuego;
 
-    /** el primer parametro por ahora tiene nombre explicativo **/
+    /** VentanaPrincipal -> replace for: JPanel Unmarco **/
     public Partida(VentanaPrincipal ventana, Nivel nivel , Piloto unPiloto) {
 
         this.gameLoop = new ControladorJuego(false);
