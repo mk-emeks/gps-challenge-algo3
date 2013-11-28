@@ -1,17 +1,24 @@
-package fiuba.algo3.vista;
+package fiuba.algo3.control;
 
+
+import fiuba.algo3.modelo.Nivel;
+import fiuba.algo3.modelo.Piloto;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class VistaMenuPrincipal {
+public class MenuPrincipal {
+
+    /** los control de cada "stage" donde el usuario elige **/
+    //private ControlInicioPiloto controlInicioPiloto;
+    //private ControlInicioNivel  controlInicioNivel;
+    //private ControlInicioPartida controlInicioPartida;
 
     private JPanel panelBotonesPrincipales;
 
-    public VistaMenuPrincipal(final JFrame unMarco) {
+    public void cargarMenuPrincipal( final JFrame unMarco , Partida unaPartida , Piloto unJugador , Nivel unNivel ) {
 
         unMarco.getContentPane().removeAll();
 
@@ -29,14 +36,14 @@ public class VistaMenuPrincipal {
         /** Creo botones con las diferentes opciones **/
         JButton botonComenzarPartida = new JButton();//new ImageIcon("botonPartidaNueva.png"));
         botonComenzarPartida.setIcon(new ImageIcon("src/fiuba/algo3/vista/imagenes/Botones/botonPartidaNueva.png"));
-        botonComenzarPartida.setBounds(panelBotonesPrincipales.getWidth()-900,300,369,80);
+        botonComenzarPartida.setBounds(panelBotonesPrincipales.getWidth() - 900, 300, 369, 80);
         botonComenzarPartida.repaint();
         botonComenzarPartida.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                VistaDesarrolloJuego unBoton = new VistaDesarrolloJuego(unMarco);
-
+                MenuDesarrolloDelJuego unBoton = new MenuDesarrolloDelJuego(unMarco); /** no deberia estar **/
+                /** controlInicioPartida.iniciarPartida(unMarco,unaPartida,unJugador,unNivel); **/
             }
         });
 
@@ -62,22 +69,4 @@ public class VistaMenuPrincipal {
         unMarco.repaint();
     }
 
-
-    public static void main(String[] argv) {
-
-        /** Esta primera parte deberia estar creada en el control si uno quiere **/
-        JFrame marcoPrincipal = new JFrame();
-        marcoPrincipal.setTitle("GPS Challenge");
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        marcoPrincipal.setBounds(0, 0, screenSize.width, screenSize.height);
-        marcoPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        marcoPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        marcoPrincipal.setLayout(null);
-        marcoPrincipal.setVisible(true);
-        /** ======================================================================= **/
-
-        VistaMenuPrincipal ventana = new VistaMenuPrincipal(marcoPrincipal);
-
-
-    }
 }

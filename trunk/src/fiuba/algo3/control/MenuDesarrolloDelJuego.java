@@ -1,4 +1,4 @@
-package fiuba.algo3.vista;
+package fiuba.algo3.control;
 
 
 import ar.uba.fi.algo3.titiritero.vista.Panel;
@@ -9,12 +9,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VistaDesarrolloJuego {
+/** no le cambie nada: -> aca se deberia comenzar la partida: relacion con la clase ControlInicioPartida  **/
+
+public class MenuDesarrolloDelJuego {
 
     private JPanel panelDesarrolloJuego;
     private Panel panelDeMapa;
 
-    public VistaDesarrolloJuego(final JFrame unMarco) {
+    public MenuDesarrolloDelJuego(final JFrame unMarco) {
 
         unMarco.getContentPane().removeAll();
 
@@ -37,7 +39,7 @@ public class VistaDesarrolloJuego {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                VistaMenuPrincipal sosUnBoton = new VistaMenuPrincipal(unMarco);
+                //VistaMenuPrincipal sosUnBoton = new VistaMenuPrincipal(unMarco);   !!!!!!
 
             }
         });
