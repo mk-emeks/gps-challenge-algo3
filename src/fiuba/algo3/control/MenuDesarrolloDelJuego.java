@@ -15,8 +15,17 @@ public class MenuDesarrolloDelJuego {
 
     private JPanel panelDesarrolloJuego;
     private Panel panelDeMapa;
+    private ControlInicioPartida controlInicioPartida = new ControlInicioPartida();
 
-    public MenuDesarrolloDelJuego(final JFrame unMarco) {
+    /*private ControlInicioPartida controlInicioPartida;
+
+    public MenuDesarrolloDelJuego() {
+
+        this.controlInicioPartida = new ControlInicioPartida();
+
+    }*/
+
+    public void cargarMenuDesarrolloDelJuego( JFrame unMarco, Juego unJuego) {
 
         unMarco.getContentPane().removeAll();
 
@@ -52,6 +61,8 @@ public class MenuDesarrolloDelJuego {
         panelDeMapa.setBounds(panelDesarrolloJuego.getWidth()-900,panelDesarrolloJuego.getHeight()-650, 800, 600);
         panelDeMapa.repaint();
         panelDeMapa.setLayout(null);
+
+        controlInicioPartida.iniciarPartida(panelDeMapa,unJuego);  /*** clave!! inicia partida  **/
 
         /** Agrego cosas al frame **/
         panelDesarrolloJuego.add(botonVolver);

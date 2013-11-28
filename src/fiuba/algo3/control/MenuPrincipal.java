@@ -13,11 +13,14 @@ public class MenuPrincipal {
 
     /** los control de cada "stage" donde el usuario elige **/
     //private ControlInicioNivel  controlInicioNivel;
-    //private ControlInicioPartida controlInicioPartida;
+    private MenuDesarrolloDelJuego menuDesarrolloDelJuego = new MenuDesarrolloDelJuego();
+
+    //private MenuDesarrolloDelJuego menuDesarrolloDelJuego;
 
     private JPanel panelBotonesPrincipales;
 
-    public void cargarMenuPrincipal( final JFrame unMarco , Juego unJuego) {
+
+    public void cargarMenuPrincipal( final JFrame unMarco , final Juego unJuego) {
 
         unMarco.getContentPane().removeAll();
 
@@ -41,8 +44,11 @@ public class MenuPrincipal {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                MenuDesarrolloDelJuego unBoton = new MenuDesarrolloDelJuego(unMarco); /** no deberia estar **/
-                /** controlInicioPartida.iniciarPartida(unMarco,unaPartida,unJugador,unNivel); **/
+
+                //MenuDesarrolloDelJuego unBoton = new MenuDesarrolloDelJuego(unMarco); /** no deberia estar **/
+
+                 //menuDesarrolloDelJuego = new MenuDesarrolloDelJuego();
+                 menuDesarrolloDelJuego.cargarMenuDesarrolloDelJuego(unMarco,unJuego);
             }
         });
 

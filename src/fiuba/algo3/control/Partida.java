@@ -31,7 +31,7 @@ public class Partida {
     private Panel zonaDeJuego;
 
     /** VentanaPrincipal -> replace for: JPanel Unmarco **/
-    public Partida(VentanaPrincipal ventana, Nivel nivel , Piloto unPiloto) {
+    public Partida(Panel ventana , Nivel nivel , Piloto unPiloto) {
 
         this.gameLoop = new ControladorJuego(false);
         this.gameLoop.setIntervaloSimulacion(90);

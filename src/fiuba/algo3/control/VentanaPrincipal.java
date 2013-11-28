@@ -115,8 +115,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
         /** Nueva Partida **/
 
-        Partida partida = new Partida(this,nivel,piloto);
-        partida.iniciar();
+        //Partida partida = new Partida(this,nivel,piloto);
+        //partida.iniciar();
 
 
     }
