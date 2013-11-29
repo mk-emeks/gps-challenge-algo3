@@ -1,7 +1,7 @@
 package fiuba.algo3.modelo;
 
 
-import ar.uba.fi.algo3.titiritero.ObjetoVivo;
+import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
 public class Piloto implements ObjetoVivo {
 
