@@ -1,13 +1,13 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.modelo.Posicion;
-import ar.uba.fi.algo3.titiritero.Posicionable;
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
 /** Esta clase es un artilugio, que cumple con el fin de adaptar la vista de calles, con el modelo presentado;
  *  Ya que el framework usado (titiritero) para mostrar objetos necesita de ObjetoPosicionables y no solo coordenadas.
  */
 
-public class RepresentacionDeCalle implements Posicionable {
+public class RepresentacionDeCalle implements ObjetoPosicionable {
 
     private Posicion posicion;
 

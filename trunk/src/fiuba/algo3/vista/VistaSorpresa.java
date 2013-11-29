@@ -1,12 +1,32 @@
 package fiuba.algo3.vista;
 
+import fiuba.algo3.titiritero.dibujables.Imagen;
+import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
+import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
+import java.net.URL;
 
-public class VistaSorpresa extends Imagen {
+public class VistaSorpresa implements ObjetoDibujable {
 
-    public VistaSorpresa() {
+    private Imagen imagen;
 
-        this.setNombreArchivoImagen("imagenes/Obstaculos/sorpresa.png");
+    public VistaSorpresa(ObjetoPosicionable unPosicionable) {
+
+        try {
+            URL urlSorpresa = this.getClass().getResource("imagenes/Obstaculos/sorpresa.png");
+            this.imagen = new Imagen(urlSorpresa,unPosicionable);
+
+        } catch (Exception e) {
+            System.out.println("no se cargo el archivo de la imagen");
+        }
+
+    }
+
+
+    public void dibujar(SuperficieDeDibujo unaSuperficeDeDibujo) {
+
+        this.imagen.dibujar(unaSuperficeDeDibujo);
+
     }
 }
