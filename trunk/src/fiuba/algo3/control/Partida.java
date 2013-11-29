@@ -1,22 +1,12 @@
 package fiuba.algo3.control;
 
-
-
-
-import ar.uba.fi.algo3.titiritero.ControladorJuego;
-import ar.uba.fi.algo3.titiritero.Dibujable;
-import ar.uba.fi.algo3.titiritero.Posicionable;
-import ar.uba.fi.algo3.titiritero.vista.Panel;
-import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
-import ar.uba.fi.algo3.titiritero.vista.KeyPressedController;
-import ar.uba.fi.algo3.titiritero.vista.Ventana;
-
-
 import fiuba.algo3.modelo.*;
+import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
+import fiuba.algo3.titiritero.modelo.GameLoop;
+import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
+import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 import fiuba.algo3.vista.*;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -24,57 +14,79 @@ import java.util.Iterator;
 
 public class Partida {
 
-    private ControladorJuego gameLoop;
+
+    private GameLoop gameLoop;
+    private SuperficieDeDibujo zonaDeJuego;
+
     private Nivel  nivelAjugar;
     private Piloto pilotin;
-    private ControlDeMovimiento controlDeMovimiento;
+    private Estado carroceria;
+
     private ControlDeEventos controlDeEventos;
-    private Panel zonaDeJuego;
 
-    /*public Panel getPanel() {
-        return this.zonaDeJuego;
-    } */
+    public void crearPiloto (String nombreDelPiloto) {
 
-
-    /** VentanaPrincipal -> replace for: JPanel Unmarco **/
-    public Partida(Ventana ventanaJuego, ControladorJuego controladorDeJuego , Nivel nivel , Piloto unPiloto) {
-
-        /** asignaciones **/
-        this.gameLoop = controladorDeJuego;
-        this.nivelAjugar = nivel;
-        this.pilotin = unPiloto;
-        this.controlDeEventos = new ControlDeEventos(this);
-
-        /** calibramos zona de juego **/
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.zonaDeJuego = new Panel(0,0, this.gameLoop );
-        this.zonaDeJuego.setLayout(null);
-        this.zonaDeJuego.setBounds(400, 10, screenSize.width - 550, screenSize.height - 10); /** calibrar **/
-        ventanaJuego.add(this.zonaDeJuego);
-
-        /** la agregamos al gameLoop el panel de la zona de juego **/
-        this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
-
-
-
+        this.pilotin = new Piloto(nombreDelPiloto);
 
     }
 
     public Piloto getPiloto() {
+
         return this.pilotin;
+
     }
 
+    public void asignarNivel (Nivel unNivel) {
+
+        this.nivelAjugar = unNivel;
+    }
+
+    public void asignarCarroceriaDelVehiculo ( Estado unaCarroceria) {
+
+        this.carroceria = unaCarroceria;
+
+    }
+
+    /** CONSTRUCTOR **/
+
+    /* public Partida( SuperficiePanel unaZonaDeJuego) {
+
+        this.zonaDeJuego = unaZonaDeJuego;
+        this.gameLoop = new GameLoop(90,this.zonaDeJuego);
+
+    } */
+
+    public void asignarZonaDeJuego( SuperficiePanel unaZonaDeJuego) {
+
+        this.zonaDeJuego = unaZonaDeJuego;
+
+    }
+
+    /** PRE: Se deben haber invocado los metodos crearPiloto, asignarNivel y asignarCarroceriaDelVehiculo y asignarZonaDeJuego **/
     public void iniciar() {
 
+        this.gameLoop = new GameLoop(90,this.zonaDeJuego);
 
-        /** configurando mapa **/
+        this.cargarMapa();
+        this.cargarVehiculoParaElPiloto();
+        this.cargarGameLoop();
+        this.comenzar();
+    }
+
+
+    /** METODOS PRIVATE **/
+
+    private void cargarMapa() {
+
         nivelAjugar.cargarMapa();
 
+    }
 
-        /** INICIAR VEHICULO **/
+    private void cargarVehiculoParaElPiloto() {
+
         Direccion direccionDeInicioDelVehiculo = new DireccionDerecha(); /** una cualquiera, no cambia mucho **/
-        Estado estadoDeInicioDelVehiculo = new EstadoMoto(); /** el usuario elegi el tipo **/
-        Vehiculo miVehiculo = new Vehiculo(Mapa.getMapa().getInicio(),direccionDeInicioDelVehiculo,estadoDeInicioDelVehiculo);
+        Vehiculo miVehiculo = new Vehiculo(Mapa.getMapa().getInicio(),direccionDeInicioDelVehiculo,this.carroceria);
+
 
         try {
             miVehiculo.posicionarEnElMapa();   /** (!) clave **/
@@ -85,118 +97,150 @@ public class Partida {
         this.pilotin.asignarVehiculo(miVehiculo);
         this.pilotin.arrancarVehiculo();
 
+    }
 
-        /**Se agregan las vistas de las calles **/
+    private void cargarGameLoop() {
+
+        this.agregarVistasAlGameLoop();
+        this.agregarObjetosVivosAlGameLoop();
+
+    }
+
+    private void comenzar() {
+
+        this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
+        this.gameLoop.iniciarEjecucion();
+
+    }
+
+    /** submetodos private (son todos para cargarGameloop) **/
+
+    private void agregarVistasAlGameLoop() {
+
+        this.agregarVistasDeCallesAlGameLoop();
+        this.agregarVistaInicioAlGameLoop();
+        this.agregarVistaLlegadaAlGameLoop();
+        this.agregarVistasDeAplicablesAlGameLoop();
+        this.agregarVistaAutoAlGameLoop();
+
+    }
+
+    private void agregarVistasDeCallesAlGameLoop() {
+
         ArrayList<Posicion> posicionDeLasCalles = Mapa.getMapa().getPosicionesValidas();
         Iterator<Posicion> iterador = posicionDeLasCalles.iterator();
+
         while (iterador.hasNext()) {
+
             Posicionable unaCalle = new RepresentacionDeCalle(iterador.next());
-            Dibujable unaVistaCalle = new VistaCalle();
-            unaVistaCalle.setPosicionable(unaCalle);
-            this.gameLoop.agregarDibujable(unaVistaCalle);
+            ObjetoDibujable unaVistaCalle = new VistaCalle(unCalle);
+            this.gameLoop.agregar(unaVistaCalle);
         }
 
-        /**Se agregan los aplicables**/
+    }
+
+    private void agregarVistaInicioAlGameLoop() {
+
+        Posicionable inicio = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
+        ObjetoDibujable  vistaInicio = new VistaInicio(inicio);
+        this.gameLoop.agregar(vistaInicio);
+
+    }
+
+    private void agregarVistaLlegadaAlGameLoop() {
+
+        Posicionable llegada = new RepresentacionDeCalle(Mapa.getMapa().getLlegada());
+        ObjetoDibujable  vistaLlegada = new VistaLlegada(llegada);
+        this.gameLoop.agregar(vistaLlegada);
+
+    }
+
+    private void agregarVistasDeAplicablesAlGameLoop() {
+
         ArrayList<Aplicable> aplicables = Mapa.getMapa().getAplicables();
         Iterator<Aplicable> it = aplicables.iterator();
         while (it.hasNext()) {
             Aplicable unAplicable = it.next();
+
             if (unAplicable instanceof ControlPolicial) {
+
                 Posicionable policia = new RepresentacionDeCalle(unAplicable.getPosicion());
-                Dibujable vistaPolicia = new VistaPolicia();
-                vistaPolicia.setPosicionable(policia);
-                this.gameLoop.agregarDibujable(vistaPolicia);
+                ObjetoDibujable  vistaPolicia = new VistaPolicia(policia);
+                this.gameLoop.agregar(vistaPolicia);
+
             } else if (unAplicable instanceof Sorpresa) {
+
                 Posicionable sorpresa = new RepresentacionDeCalle(unAplicable.getPosicion());
-                Dibujable vistaSorpresa = new VistaSorpresa();
-                vistaSorpresa.setPosicionable(sorpresa);
-                this.gameLoop.agregarDibujable(vistaSorpresa);
+                ObjetoDibujable  vistaSorpresa = new VistaSorpresa(sorpresa);
+                this.gameLoop.agregar(vistaSorpresa);
+
             } else if (unAplicable instanceof Piquete) {
+
                 Posicionable piquete = new RepresentacionDeCalle(unAplicable.getPosicion());
-                Dibujable vistaPiquete = new VistaPiquete();
-                vistaPiquete.setPosicionable(piquete);
-                this.gameLoop.agregarDibujable(vistaPiquete);
+                ObjetoDibujable  vistaPiquete = new VistaPiquete(piquete);
+                this.gameLoop.agregar(vistaPiquete);
+
             } else if (unAplicable instanceof Pozo) {
+
                 Posicionable pozo = new RepresentacionDeCalle(unAplicable.getPosicion());
-                Dibujable vistaPozo = new VistaPozo();
-                vistaPozo.setPosicionable(pozo);
-                this.gameLoop.agregarDibujable(vistaPozo);
+                ObjetoDibujable  vistaPozo = new VistaPozo(pozo);
+                this.gameLoop.agregar(vistaPozo);
             }
         }
 
-        /** se agrega vista inicio **/
-        Posicionable inicio = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
-        Dibujable vistaInicio = new VistaInicio();
-        vistaInicio.setPosicionable(inicio);
-        this.gameLoop.agregarDibujable(vistaInicio);
+    }
 
-        /** se agrega vista llegada **/
-        Posicionable llegada = new RepresentacionDeCalle(Mapa.getMapa().getLlegada());
-        Dibujable vistaLlegada = new VistaLlegada();
-        vistaLlegada.setPosicionable(llegada);
-        this.gameLoop.agregarDibujable(vistaLlegada);
+    private void agregarObjetosVivosAlGameLoop() {
 
-        /** se agrega vista auto **/
+        this.gameLoop.agregar(this.pilotin);
 
-        VistaVehiculo unaVistaAuto = new VistaVehiculo(this.pilotin.getVehiculo());
-        this.gameLoop.agregarDibujable(unaVistaAuto);
-
-        /** agregar objetos vivos al game loop **/
-
-        this.gameLoop.agregarObjetoVivo(this.pilotin);
-        this.gameLoop.agregarObjetoVivo(this.controlDeEventos);
-
-        /** se agregan los controles de teclado **/
-
-        this.controlDeMovimiento = new ControlDeMovimiento(this.pilotin.getVehiculo());
-        this.gameLoop.agregarKeyPressObservador(this.controlDeMovimiento);
-        this.zonaDeJuego.addKeyListener( new KeyPressedController(this.gameLoop) );
-
-
-        /** COMIENZA LA ACCION **/
-        this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
-        this.gameLoop.comenzarJuego();
-        //this.pilotin.getVehiculo().setDireccion(new DireccionAbajo());
-        //this.gameLoop.comenzarJuego(6);
-        //this.pilotin.getVehiculo().setDireccion(new DireccionArriba());
-        //this.gameLoop.comenzarJuego(6);
-        //this.pilotin.getVehiculo().setDireccion(new DireccionIzquierda());
-        //this.gameLoop.comenzarJuego(6);
+        this.controlDeEventos = new ControlDeEventos(this);
+        this.gameLoop.agregar(this.controlDeEventos);
 
     }
 
-    public void pausar() {
+    private void agregarVistaAutoAlGameLoop() {
+
+        VistaVehiculo unaVistaVehiculo = new VistaVehiculo(this.pilotin.getVehiculo());
+        this.gameLoop.agregar(unaVistaVehiculo);
+    }
+
+    /** fin submetodos private **/
+
+    /** METODOS DE CONTROL **/
+
+    /* public void pausar() {
 
         if (this.gameLoop.estaEnEjecucion()) {
 
-            this.pilotin.getCronometro().pausar(); /** el cronometro es un tipo independiente; A no olvidarselo **/
-            this.gameLoop.detenerJuego();
+            this.pilotin.getCronometro().pausar();  // el cronometro es un tipo independiente; A no olvidarselo
+            this.gameLoop.detenerEjecucion();
         }
 
-    }
+    } */
 
-    public void reanudar() {
+    /* public void reanudar() {
 
         if ( !(this.gameLoop.estaEnEjecucion()) ) {
 
-            this.pilotin.getCronometro().reanudar();  /** el cronometro es un tipo independiente; A no olvidarselo **/
-            this.gameLoop.comenzarJuego();
+            this.pilotin.getCronometro().reanudar();  // el cronometro es un tipo independiente; A no olvidarselo
+            this.gameLoop.iniciarEjecucion();
         }
 
-    }
+    } */
 
     public void finalizar() {
 
         this.pilotin.getCronometro().pausar();  /** el cronometro es un tipo independiente; A no olvidarselo **/
-        this.gameLoop.detenerJuego();
+        this.gameLoop.detenerEjecucion();
         System.out.println("la partida finalizo");
 
     }
 
-    public boolean estaFinalizada() {
+    /* public boolean estaFinalizada() {
 
         if (this.gameLoop.estaEnEjecucion()) return false;
         else return true;
-    }
+    } */
 
 }

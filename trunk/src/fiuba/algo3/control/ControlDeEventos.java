@@ -5,7 +5,7 @@ import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Aplicable;
 import fiuba.algo3.modelo.Piloto;
 import fiuba.algo3.modelo.Vehiculo;
-import ar.uba.fi.algo3.titiritero.ObjetoVivo;
+import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
