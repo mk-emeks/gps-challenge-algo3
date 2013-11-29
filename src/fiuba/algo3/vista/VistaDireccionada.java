@@ -1,24 +1,22 @@
 package fiuba.algo3.vista;
 
 
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
-import ar.uba.fi.algo3.titiritero.Posicionable;
-
 import fiuba.algo3.modelo.Direccion;
 import fiuba.algo3.modelo.DireccionArriba;
 import fiuba.algo3.modelo.DireccionAbajo;
 import fiuba.algo3.modelo.DireccionDerecha;
 import fiuba.algo3.modelo.DireccionIzquierda;
-
 import fiuba.algo3.modelo.Direccionable;
+import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
+import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
-public abstract class VistaDireccionada extends Imagen {
+public abstract class VistaDireccionada implements ObjetoDibujable {
 
-    protected VistaArriba vistaArriba = new VistaArriba();
-    protected VistaAbajo vistaAbajo = new VistaAbajo();
-    protected VistaDerecha vistaDerecha = new VistaDerecha();
-    protected VistaIzquierda vistaIzquierda = new VistaIzquierda();
+    protected VistaOrientada vistaArriba = new VistaOrientada();
+    protected VistaOrientada vistaOrientada = new VistaOrientada();
+    protected VistaOrientada vistaDerecha = new VistaOrientada();
+    protected VistaOrientada vistaIzquierda = new VistaOrientada();
 
     protected Direccionable direccionable;
 
@@ -30,17 +28,17 @@ public abstract class VistaDireccionada extends Imagen {
 
        this.direccionable = unDireccionable;
 
-       this.vistaArriba.setPosicionable((Posicionable)this.direccionable);
-       this.vistaAbajo.setPosicionable((Posicionable)this.direccionable);
-       this.vistaDerecha.setPosicionable((Posicionable)this.direccionable);
-       this.vistaIzquierda.setPosicionable((Posicionable)this.direccionable);
+       this.vistaArriba.setObjetoPosicionable((ObjetoPosicionable) this.direccionable);
+       this.vistaOrientada.setObjetoPosicionable((ObjetoPosicionable) this.direccionable);
+       this.vistaDerecha.setObjetoPosicionable((ObjetoPosicionable) this.direccionable);
+       this.vistaIzquierda.setObjetoPosicionable((ObjetoPosicionable) this.direccionable);
        System.out.println("asigno Posiciones");
 
 
     }
 
-    @Override
-    public void dibujar(SuperficieDeDibujo superficeDeDibujo) {
+     @Override
+     public void dibujar(SuperficieDeDibujo superficieDeDibujo) {
 
         Direccion arriba = new DireccionArriba();
         Direccion abajo = new DireccionAbajo();
@@ -50,23 +48,23 @@ public abstract class VistaDireccionada extends Imagen {
         /** sumamente horrible, pero no hay tiempo, despues se refactoriza **/
         if  ( (this.direccionable.getDireccion()).equals(arriba) ) {
 
-            this.vistaArriba.dibujar(superficeDeDibujo);
+            this.vistaArriba.dibujar(superficieDeDibujo);
         }
 
         if  ( (this.direccionable.getDireccion()).equals(abajo) ) {
 
-            this.vistaAbajo.dibujar(superficeDeDibujo);
+            this.vistaOrientada.dibujar(superficieDeDibujo);
         }
 
         if  ( (this.direccionable.getDireccion()).equals(derecha) ) {
 
-            this.vistaDerecha.dibujar(superficeDeDibujo);
+            this.vistaDerecha.dibujar(superficieDeDibujo);
 
         }
 
         if  ( (this.direccionable.getDireccion()).equals(izquierda) ) {
 
-            this.vistaIzquierda.dibujar(superficeDeDibujo);
+            this.vistaIzquierda.dibujar(superficieDeDibujo);
         }
 
     }

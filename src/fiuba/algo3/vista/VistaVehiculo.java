@@ -1,16 +1,15 @@
 package fiuba.algo3.vista;
 
-import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
 import fiuba.algo3.modelo.Estado;
 import fiuba.algo3.modelo.EstadoAuto;
 import fiuba.algo3.modelo.EstadoMoto;
 import fiuba.algo3.modelo.Estado4x4;
 
 import fiuba.algo3.modelo.Vehiculo;
+import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
+import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
-public class VistaVehiculo extends Imagen {
+public class VistaVehiculo implements ObjetoDibujable {
 
     private VistaDireccionada vistaDireccionada;
     private Vehiculo vehiculo;
@@ -18,43 +17,35 @@ public class VistaVehiculo extends Imagen {
     public VistaVehiculo (Vehiculo unVehiculo ) {
 
         this.vehiculo = unVehiculo;
-
     }
 
-    //@Override
-    public void dibujar(SuperficieDeDibujo superficeDeDibujo) {
+    @Override
+    public void dibujar(SuperficieDeDibujo superficieDeDibujo) {
 
         Estado estadoAuto = new EstadoAuto();
         Estado estadoMoto = new EstadoMoto();
         Estado estado4x4 = new Estado4x4();
 
-        /** nuevamente muy horrible, fontela lloraria**/
+    /** nuevamente muy horrible, fontela lloraria**/
         if (vehiculo.getEstado().equals(estadoAuto)) {
 
             System.out.println("soy auto");
             this.vistaDireccionada = new VistaDireccionadaAuto(this.vehiculo);
-            this.vistaDireccionada.dibujar(superficeDeDibujo);
-
-
+            this.vistaDireccionada.dibujar(superficieDeDibujo);
         }
 
         if (vehiculo.getEstado().equals(estadoMoto)) {
 
             System.out.println("soy moto");
             this.vistaDireccionada = new VistaDireccionadaMoto(this.vehiculo);
-            this.vistaDireccionada.dibujar(superficeDeDibujo);
-
-
+            this.vistaDireccionada.dibujar(superficieDeDibujo);
         }
 
         if (vehiculo.getEstado().equals(estado4x4)) {
 
             System.out.println("soy 4x4");
             this.vistaDireccionada = new VistaDireccionada4x4(this.vehiculo);
-            this.vistaDireccionada.dibujar(superficeDeDibujo);
-
-
+            this.vistaDireccionada.dibujar(superficieDeDibujo);
         }
-
     }
 }
