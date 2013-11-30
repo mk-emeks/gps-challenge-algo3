@@ -1,16 +1,13 @@
 package fiuba.algo3.control;
 
 import fiuba.algo3.masterOfPuppets.GameLoop;
-import fiuba.algo3.masterOfPuppets.KeyPressedObservable;
 import fiuba.algo3.modelo.*;
 
-import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 import fiuba.algo3.vista.*;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -22,12 +19,11 @@ public class Partida {
     private GameLoop gameLoop;
     private SuperficieDeDibujo zonaDeJuego;
 
-    private Nivel  nivelAjugar;
     private Piloto pilotin;
     private Estado carroceria;
 
     private ControlDeEventos controlDeEventos;
-    //private ControlDeMovimiento controlDeMovimiento;
+    private ControlDeMovimiento controlDeMovimiento;
 
 
     public void crearPiloto (String nombreDelPiloto) {
@@ -42,9 +38,9 @@ public class Partida {
 
     }
 
-    public void asignarNivel (Nivel unNivel) {
+    public void cargarNivel (Nivel unNivel) {
 
-        this.nivelAjugar = unNivel;
+        unNivel.cargarMapa();
     }
 
     public void asignarCarroceriaDelVehiculo ( Estado unaCarroceria) {
@@ -75,7 +71,7 @@ public class Partida {
         this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
         this.gameLoop.setIntervaloSimulacion(90);
 
-        this.cargarMapa();
+
         this.cargarVehiculoParaElPiloto();
         this.cargarGameLoop();
         this.comenzar();
@@ -83,12 +79,6 @@ public class Partida {
 
 
     /** METODOS PRIVATE **/
-
-    private void cargarMapa() {
-
-        nivelAjugar.cargarMapa();
-
-    }
 
     private void cargarVehiculoParaElPiloto() {
 
@@ -111,7 +101,6 @@ public class Partida {
 
         this.agregarVistasAlGameLoop();
         this.agregarObjetosVivosAlGameLoop();
-        //this.agregarControlDeTecladoAlGameLoop();
 
     }
 
@@ -213,15 +202,6 @@ public class Partida {
         VistaVehiculo unaVistaVehiculo = new VistaVehiculo(this.pilotin.getVehiculo());
         this.gameLoop.agregar(unaVistaVehiculo);
     }
-
-    /*private void agregarControlDeTecladoAlGameLoop() {
-
-        this.controlDeMovimiento = new ControlDeMovimiento(this.pilotin.getVehiculo());
-        this.gameLoop.agregar(this.controlDeMovimiento);
-        ((SuperficiePanel)(this.zonaDeJuego)).addKeyListener(new KeyPressedObservable(this.gameLoop));
-
-
-    } */
 
     /** fin submetodos private **/
 

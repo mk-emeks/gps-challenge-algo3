@@ -1,10 +1,12 @@
 package fiuba.algo3.control;
 
+
 import fiuba.algo3.modelo.EstadoMoto;
 import fiuba.algo3.modelo.Nivel;
 import fiuba.algo3.modelo.Piloto;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
+
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
 import javax.swing.*;
@@ -30,7 +32,7 @@ public class gpsChallenge {
         unMarco.setVisible(true);
 
         SuperficiePanel zonaDeJuego = new SuperficiePanel();
-        zonaDeJuego.setBounds(400,0,screenSize.width - 400,screenSize.height);
+        zonaDeJuego.setBounds(400, 0, screenSize.width - 400, screenSize.height);
         zonaDeJuego.setBackground(Color.black);
 
         zonaDeJuego.setVisible(true);
@@ -45,10 +47,12 @@ public class gpsChallenge {
 
 
         unaPartida.crearPiloto("pilotin");
-        unaPartida.asignarNivel(nivel);
+        unaPartida.cargarNivel(nivel);
         unaPartida.asignarCarroceriaDelVehiculo(new EstadoMoto());
 
         unaPartida.iniciar();
+
+
 
 
 
