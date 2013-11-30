@@ -1,9 +1,10 @@
 package fiuba.algo3.masterOfPuppets;
 
+
+
 import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
-
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,8 +19,9 @@ import java.util.List;
 
 public class GameLoop implements Runnable {
 
-
-
+    private Thread hilo;
+    private long intervaloSimulacion;
+    private boolean estaEnEjecucion;
 
     /** Constructor **/
     public GameLoop(){
@@ -28,58 +30,35 @@ public class GameLoop implements Runnable {
 
     }
 
-    /**  Control del gameLoop **/
-
-    private long intervaloSimulacion;
-    private boolean estaEnEjecucion;
-
-
     public boolean estaEnEjecucion(){
         return this.estaEnEjecucion;
     }
 
-    public void comenzarJuego(){
-        estaEnEjecucion = true;
-        try{
-            while(estaEnEjecucion){
-                simular();
-                dibujar();
-
-                Thread.sleep(intervaloSimulacion);
-                System.out.println("DEBERIA HABER DESCANZADO"+intervaloSimulacion);
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void comenzarJuego() {
+        this.estaEnEjecucion = true;
+        this.hilo = new Thread(this);
+        this.hilo.start();
     }
 
-    /**
-     * Detiene el juego provocando la salida del gameloop.
-     */
-    public void detenerJuego(){
+    public void detenerJuego() {
         this.estaEnEjecucion = false;
-        /*if(reproductor!=null)
-            this.reproductor.apagar();*/
+        this.hilo.interrupt();
     }
 
-    /*public void comenzarJuegoAsyn(){
-        Thread thread = new Thread(this);
-        thread.start();
-        if(this.estaReproductorActivo){
-            this.reproductor.encender();
-            this.hiloAudio =  new Thread(this.reproductor);
-            this.hiloAudio.start();
-        }
-    }*/
-
-    /** (!) CONCURRENCIA **/
-    //private Thread hiloAudio;
-    //private boolean estaReproductorActivo;
-
+    /** la posta **/
     public void run() {
 
-        this.comenzarJuego();
+        estaEnEjecucion = true;
+        while(estaEnEjecucion) {
+            simular();
+            dibujar();
+            try {
+                hilo.sleep(this.intervaloSimulacion);
+            } catch (InterruptedException e) {
+                System.out.println("interrupcion al gameloop");
+                e.printStackTrace();
+            }
+        }
     }
 
     /** Para manejar la frecuencia de simulacion del gameLoop **/
@@ -92,26 +71,21 @@ public class GameLoop implements Runnable {
         this.intervaloSimulacion = intervaloSimulacion;
     }
 
-    /**
-     * Le da comienzo al juego poniendo en marcha el gameloop.
-     * @param cantidadDeCiclos cantidad de ciclos que debe correr el gameloop..
-     */
-    public  void comenzarJuego(int cantidadDeCiclos){
+    /*public void comenzarJuego(int cantidadDeCiclos){
         int contador = 0;
         estaEnEjecucion = true;
         try{
             while(contador < cantidadDeCiclos && estaEnEjecucion){
-
                 simular();
                 dibujar();
-                Thread.currentThread().sleep(intervaloSimulacion);
+                Thread.sleep(intervaloSimulacion);
                 contador++;
             }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    } */
 
     /** Objetos vivos y Dibujables del gameLoop **/
 
@@ -137,22 +111,12 @@ public class GameLoop implements Runnable {
 
     private void dibujar() {
 
-        //try {
-            SuperficiePanel superficiePanelAuxiliar = (SuperficiePanel)this.superficieDeDibujo;
-            superficiePanelAuxiliar.update(superficiePanelAuxiliar.getGraphics());    /** ojo cuando se borren **/
-            //Thread.sleep(1000);
-        //}catch (Exception epa) {
-        //    System.out.println("JODETE");
-        //}
-
         Iterator<ObjetoDibujable> iterador = dibujables.iterator();
         while(iterador.hasNext()){
             ObjetoDibujable dibujable = iterador.next();
             dibujable.dibujar(this.superficieDeDibujo);
         }
-
-        this.superficieDeDibujo.actualizar(); /**!**/
-
+        this.superficieDeDibujo.actualizar();
     }
 
     /**
@@ -176,6 +140,7 @@ public class GameLoop implements Runnable {
 
     public void setSuperficieDeDibujo(SuperficieDeDibujo superficieDeDibujo) {
         this.superficieDeDibujo = superficieDeDibujo;
+        //this.superficiePanel = (SuperficiePanel)superficieDeDibujo; /**!**/
     }
 
 }

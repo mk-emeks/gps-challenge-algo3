@@ -48,6 +48,7 @@ public class ControlDeMovimiento implements KeyListener {
                 this.vehiculo.setDireccion(unaDireccionAbajo);
                 System.out.println("Me muevo para la abajo");
                 break;
+
         }
     }
 
