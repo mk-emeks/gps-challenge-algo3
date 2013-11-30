@@ -1,13 +1,10 @@
 package fiuba.algo3.masterOfPuppets;
 
-
-
 import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
 
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -26,7 +23,6 @@ public class GameLoop implements Runnable {
     public GameLoop(){
         this.objetosVivos = new ArrayList<ObjetoVivo>();
         this.dibujables = new ArrayList<ObjetoDibujable>();
-        this.keyPressedObservadores = new ArrayList<KeyPressedObservador>();
 
     }
 
@@ -164,25 +160,6 @@ public class GameLoop implements Runnable {
     public void setSuperficieDeDibujo(SuperficieDeDibujo superficieDeDibujo) {
         this.superficieDeDibujo = superficieDeDibujo;
         //this.superficiePanel = (SuperficiePanel)superficieDeDibujo; /**!**/
-    }
-
-
-    /** Para controlar el teclado **/
-
-    private List<KeyPressedObservador> keyPressedObservadores;
-
-    public void despacharKeyPress(KeyEvent event){
-        for (KeyPressedObservador observador : this.keyPressedObservadores){
-            observador.keyPressed(event);
-        }
-    }
-
-    public void agregar(KeyPressedObservador unMouseClickObservador){
-        this.keyPressedObservadores.add(unMouseClickObservador);
-    }
-
-    public void remover(KeyPressedObservador unMouseClickObservador){
-        this.keyPressedObservadores.remove(unMouseClickObservador);
     }
 
 }
