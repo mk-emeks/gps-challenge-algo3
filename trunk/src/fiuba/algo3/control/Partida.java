@@ -18,14 +18,13 @@ public class Partida {
 
 
     private GameLoop gameLoop;
-   // private SuperficieDeDibujo zonaDeJuego;
-    private JPanel zonaDeJuego;
+    private SuperficieDeDibujo zonaDeJuego;
+    //private JPanel zonaDeJuego;
 
     private Piloto pilotin;
     private Estado carroceria;
 
     private ControlDeEventos controlDeEventos;
-    private ControlDeMovimiento controlDeMovimiento;
 
 
     public void crearPiloto (String nombreDelPiloto) {
@@ -77,8 +76,8 @@ public class Partida {
 
     } */
 
-    //public void asignarZonaDeJuego(SuperficieDeDibujo unaZonaDeJuego) {
-      public void asignarZonaDeJuego(JPanel unaZonaDeJuego) {
+    public void asignarZonaDeJuego(SuperficieDeDibujo unaZonaDeJuego) {
+      //public void asignarZonaDeJuego(JPanel unaZonaDeJuego) {
         this.zonaDeJuego = unaZonaDeJuego;
 
     }
@@ -88,8 +87,8 @@ public class Partida {
     public void iniciar() {
 
         this.gameLoop = new GameLoop();
-        //this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
-        this.gameLoop.setSuperficieDeDibujo((SuperficieDeDibujo)this.zonaDeJuego);
+        this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
+        //this.gameLoop.setSuperficieDeDibujo((SuperficieDeDibujo)this.zonaDeJuego);
         this.gameLoop.setIntervaloSimulacion(90);
 
         this.cargarGameLoop();
@@ -122,6 +121,7 @@ public class Partida {
         this.agregarVistasDeAplicablesAlGameLoop();
         this.agregarVistaAutoAlGameLoop();
 
+
     }
 
     private void agregarVistasDeCallesAlGameLoop() {
@@ -131,7 +131,7 @@ public class Partida {
 
         while (iterador.hasNext()) {
 
-            ObjetoPosicionable unaCalle = new RepresentacionDeCalle(iterador.next());
+            ObjetoPosicionable unaCalle = new RepresentacionDePosicionable(iterador.next());
             ObjetoDibujable unaVistaCalle = new VistaCalle(unaCalle);
             this.gameLoop.agregar(unaVistaCalle);
         }
@@ -140,7 +140,7 @@ public class Partida {
 
     private void agregarVistaInicioAlGameLoop() {
 
-        ObjetoPosicionable inicio = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
+        ObjetoPosicionable inicio = new RepresentacionDePosicionable(Mapa.getMapa().getInicio());
         ObjetoDibujable  vistaInicio = new VistaInicio(inicio);
         this.gameLoop.agregar(vistaInicio);
 
@@ -148,7 +148,7 @@ public class Partida {
 
     private void agregarVistaLlegadaAlGameLoop() {
 
-        ObjetoPosicionable llegada = new RepresentacionDeCalle(Mapa.getMapa().getLlegada());
+        ObjetoPosicionable llegada = new RepresentacionDePosicionable(Mapa.getMapa().getLlegada());
         ObjetoDibujable  vistaLlegada = new VistaLlegada(llegada);
         this.gameLoop.agregar(vistaLlegada);
 
@@ -163,25 +163,25 @@ public class Partida {
 
             if (unAplicable instanceof ControlPolicial) {
 
-                ObjetoPosicionable policia = new RepresentacionDeCalle(unAplicable.getPosicion());
+                ObjetoPosicionable policia = new RepresentacionDePosicionable(unAplicable.getPosicion());
                 ObjetoDibujable  vistaPolicia = new VistaPolicia(policia);
                 this.gameLoop.agregar(vistaPolicia);
 
             } else if (unAplicable instanceof Sorpresa) {
 
-                ObjetoPosicionable sorpresa = new RepresentacionDeCalle(unAplicable.getPosicion());
+                ObjetoPosicionable sorpresa = new RepresentacionDePosicionable(unAplicable.getPosicion());
                 ObjetoDibujable  vistaSorpresa = new VistaSorpresa(sorpresa);
                 this.gameLoop.agregar(vistaSorpresa);
 
             } else if (unAplicable instanceof Piquete) {
 
-                ObjetoPosicionable piquete = new RepresentacionDeCalle(unAplicable.getPosicion());
+                ObjetoPosicionable piquete = new RepresentacionDePosicionable(unAplicable.getPosicion());
                 ObjetoDibujable  vistaPiquete = new VistaPiquete(piquete);
                 this.gameLoop.agregar(vistaPiquete);
 
             } else if (unAplicable instanceof Pozo) {
 
-                ObjetoPosicionable pozo = new RepresentacionDeCalle(unAplicable.getPosicion());
+                ObjetoPosicionable pozo = new RepresentacionDePosicionable(unAplicable.getPosicion());
                 ObjetoDibujable  vistaPozo = new VistaPozo(pozo);
                 this.gameLoop.agregar(vistaPozo);
             }
@@ -208,25 +208,25 @@ public class Partida {
 
     /** METODOS DE CONTROL **/
 
-    /* public void pausar() {
+     public void pausar() {
 
         if (this.gameLoop.estaEnEjecucion()) {
 
             this.pilotin.getCronometro().pausar();  // el cronometro es un tipo independiente; A no olvidarselo
-            this.gameLoop.detenerEjecucion();
+            this.gameLoop.detenerJuego();
         }
 
-    } */
+    }
 
-    /* public void reanudar() {
+     public void reanudar() {
 
         if ( !(this.gameLoop.estaEnEjecucion()) ) {
 
             this.pilotin.getCronometro().reanudar();  // el cronometro es un tipo independiente; A no olvidarselo
-            this.gameLoop.iniciarEjecucion();
+            this.gameLoop.comenzarJuego();
         }
 
-    } */
+    }
 
     public void finalizar() {
 
@@ -236,10 +236,10 @@ public class Partida {
 
     }
 
-    /* public boolean estaFinalizada() {
+     public boolean estaFinalizada() {
 
         if (this.gameLoop.estaEnEjecucion()) return false;
         else return true;
-    } */
+    }
 
 }

@@ -7,11 +7,11 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
  *  Ya que el framework usado (titiritero) para mostrar objetos necesita de ObjetoPosicionables y no solo coordenadas.
  */
 
-public class RepresentacionDeCalle implements ObjetoPosicionable {
+public class RepresentacionDePosicionable implements ObjetoPosicionable {
 
     private Posicion posicion;
 
-    public RepresentacionDeCalle (Posicion unaPosicion) {
+    public RepresentacionDePosicionable(Posicion unaPosicion) {
 
         this.posicion = unaPosicion;
 
