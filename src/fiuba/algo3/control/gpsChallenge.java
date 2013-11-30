@@ -45,48 +45,13 @@ public class gpsChallenge {
         /** VAMOS A JUGAR**/
         Mapa.limpiar();
         Nivel nivel = new Nivel();
-
-
-        zonaDeJuego.setFocusable(true);
-
-        unaPartida.crearPiloto("pilotin");
         unaPartida.cargarNivel(nivel);
+        unaPartida.crearPiloto("pilotin");
         unaPartida.asignarCarroceriaDelVehiculo(new EstadoMoto());
         unaPartida.cargarVehiculoParaElPiloto();
 
-
-        zonaDeJuego.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-
-                int tecla = e.getKeyCode();
-
-                switch (tecla){
-                    case KeyEvent.VK_RIGHT:
-                        System.out.println("Me muevo para la Derecha");
-                        break;
-
-                    case KeyEvent.VK_LEFT:
-                        System.out.println("Me muevo para la Izquierda");
-                        break;
-
-                    case KeyEvent.VK_UP:
-                        System.out.println("Me muevo para la Arriba");
-                        break;
-
-                    case KeyEvent.VK_DOWN:
-                        System.out.println("Me muevo para la Abajo");
-                        break;
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-
+        zonaDeJuego.setFocusable(true);
+        zonaDeJuego.addKeyListener(new ControlDeMovimiento(unaPartida.getPiloto().getVehiculo()));
 
         unaPartida.iniciar();
 
