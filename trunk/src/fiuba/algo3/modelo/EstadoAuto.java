@@ -28,7 +28,7 @@ public class EstadoAuto extends Estado {
 
     }
     public void interactuarCon(Piloto piloto, SorpresaCambioDeVehiculo sorpresa) {
-        sorpresa.aplicarA(piloto);
+        sorpresa.aplicarA(piloto,this);
 
     }
 
