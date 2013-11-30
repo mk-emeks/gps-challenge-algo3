@@ -22,11 +22,9 @@ public class VistaMenuPrincipal {
         panelBotonesPrincipales.setLayout(null);
 
 
-        JLabel fondo = new JLabel(new ImageIcon("src/fiuba/algo3/vista/imagenes/fondoMenuPrincipal.png"));
-        fondo.setBounds(0,0,1440,900);
-        fondo.repaint();
 
-        /** Creo botones con las diferentes opciones **/
+        /**
+         //Creo botones con las diferentes opciones
         JButton botonComenzarPartida = new JButton();//new ImageIcon("botonPartidaNueva.png"));
         botonComenzarPartida.setIcon(new ImageIcon("src/fiuba/algo3/vista/imagenes/Botones/botonPartidaNueva.png"));
         botonComenzarPartida.setBounds(panelBotonesPrincipales.getWidth()-900,300,369,80);
@@ -47,14 +45,14 @@ public class VistaMenuPrincipal {
 
         JButton botonVerPuntajes = new JButton(new ImageIcon("src/fiuba/algo3/vista/imagenes/Botones/botonVerPuntajes.png"));
         botonVerPuntajes.setBounds(panelBotonesPrincipales.getWidth()-900,600,369,80);
-        botonVerPuntajes.repaint();
+        botonVerPuntajes.repaint(); **/
         /** ======================================================================= **/
 
 
-        panelBotonesPrincipales.add(botonComenzarPartida);
-        panelBotonesPrincipales.add(botonRetomarPartida);
-        panelBotonesPrincipales.add(botonVerPuntajes);
-        panelBotonesPrincipales.add(fondo);
+        //panelBotonesPrincipales.add(botonComenzarPartida);
+        //panelBotonesPrincipales.add(botonRetomarPartida);
+        //panelBotonesPrincipales.add(botonVerPuntajes);
+        //panelBotonesPrincipales.add(fondo);
 
         unMarco.getContentPane().add(panelBotonesPrincipales);
 
@@ -63,21 +61,32 @@ public class VistaMenuPrincipal {
     }
 
 
-    public static void main(String[] argv) {
+    /**public static void main(String[] argv) {
 
         /** Esta primera parte deberia estar creada en el control si uno quiere **/
-        JFrame marcoPrincipal = new JFrame();
+      /**  JFrame marcoPrincipal = new JFrame();
         marcoPrincipal.setTitle("GPS Challenge");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         marcoPrincipal.setBounds(0, 0, screenSize.width, screenSize.height);
         marcoPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
         marcoPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         marcoPrincipal.setLayout(null);
-        marcoPrincipal.setVisible(true);
+        marcoPrincipal.setVisible(true);   **/
         /** ======================================================================= **/
 
-        VistaMenuPrincipal ventana = new VistaMenuPrincipal(marcoPrincipal);
+        /**VistaMenuPrincipal ventana = new VistaMenuPrincipal(marcoPrincipal);
 
 
+    }     **/
+    public JPanel getPanel() {
+        return panelBotonesPrincipales;
+    }
+
+    public void activarFondo() {
+        JLabel fondo = new JLabel(new ImageIcon("src/fiuba/algo3/vista/imagenes/fondoMenuPrincipal.png"));
+        fondo.setBounds(0,0,1440,900);
+        fondo.repaint();
+        panelBotonesPrincipales.add(fondo);
+        panelBotonesPrincipales.repaint();
     }
 }

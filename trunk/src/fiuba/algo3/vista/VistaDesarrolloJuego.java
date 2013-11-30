@@ -34,7 +34,7 @@ public class VistaDesarrolloJuego {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                VistaMenuPrincipal sosUnBoton = new VistaMenuPrincipal(unMarco);
+                //VistaMenuPrincipal sosUnBoton = new VistaMenuPrincipal(unMarco);
 
             }
         });
