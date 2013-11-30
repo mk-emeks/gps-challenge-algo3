@@ -26,6 +26,10 @@ public class Partida {
 
     private ControlDeEventos controlDeEventos;
 
+    /** borrar */
+    public GameLoop getGameLoop() {
+        return this.gameLoop;
+    }
 
     public void crearPiloto (String nombreDelPiloto) {
 
@@ -76,9 +80,10 @@ public class Partida {
 
     } */
 
-    public void asignarZonaDeJuego(SuperficieDeDibujo unaZonaDeJuego) {
-      //public void asignarZonaDeJuego(JPanel unaZonaDeJuego) {
-        this.zonaDeJuego = unaZonaDeJuego;
+    //public void asignarZonaDeJuego(SuperficieDeDibujo unaZonaDeJuego) {
+      public void asignarZonaDeJuego(JPanel unaZonaDeJuego) {
+        //this.zonaDeJuego = unaZonaDeJuego;
+          this.zonaDeJuego = (SuperficieDeDibujo)unaZonaDeJuego;
 
     }
 
@@ -106,8 +111,11 @@ public class Partida {
 
     private void comenzar() {
 
-        this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
+        //this.gameLoop.comenzarJuego(1);
+        //this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
         this.gameLoop.comenzarJuego();
+
+
 
     }
 
