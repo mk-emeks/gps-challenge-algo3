@@ -32,6 +32,7 @@ public class gpsChallenge {
         SuperficiePanel zonaDeJuego = new SuperficiePanel();
         zonaDeJuego.setBounds(400,0,screenSize.width - 400,screenSize.height);
         zonaDeJuego.setBackground(Color.black);
+
         zonaDeJuego.setVisible(true);
 
         unaPartida.asignarZonaDeJuego(zonaDeJuego);
@@ -50,6 +51,8 @@ public class gpsChallenge {
 
 
         unaPartida.iniciar();
+        zonaDeJuego.addKeyListener(new ControlDeMovimiento(unaPartida.getPiloto().getVehiculo()));
+
 
     }
 

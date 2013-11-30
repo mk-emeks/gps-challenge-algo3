@@ -1,11 +1,11 @@
-/**package fiuba.algo3.control;
+package fiuba.algo3.control;
 
-import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
 import fiuba.algo3.modelo.*;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class ControlDeMovimiento implements KeyPressedObservador {
+public class ControlDeMovimiento implements KeyListener {
 
     private Vehiculo vehiculo;
 
@@ -13,6 +13,11 @@ public class ControlDeMovimiento implements KeyPressedObservador {
 
         this.vehiculo = unVehiculo;
 
+    }
+
+    @Override
+    public void keyTyped(KeyEvent keyEvent) {
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public void keyPressed(KeyEvent keyEvent) {
@@ -46,6 +51,10 @@ public class ControlDeMovimiento implements KeyPressedObservador {
         }
     }
 
-    public void keyRelease(KeyEvent e) {}
+    @Override
+    public void keyReleased(KeyEvent keyEvent) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 
-}     **/
+
+}

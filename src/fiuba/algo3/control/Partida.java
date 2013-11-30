@@ -66,7 +66,7 @@ public class Partida {
     /** PRE: Se deben haber invocado los metodos crearPiloto, asignarNivel y asignarCarroceriaDelVehiculo y asignarZonaDeJuego **/
     public void iniciar() {
 
-        this.gameLoop = new GameLoop(this.zonaDeJuego);
+        this.gameLoop = new GameLoop(90,this.zonaDeJuego);
 
         this.cargarMapa();
         this.cargarVehiculoParaElPiloto();
