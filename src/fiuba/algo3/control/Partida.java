@@ -8,6 +8,7 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 import fiuba.algo3.vista.*;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -17,7 +18,8 @@ public class Partida {
 
 
     private GameLoop gameLoop;
-    private SuperficieDeDibujo zonaDeJuego;
+   // private SuperficieDeDibujo zonaDeJuego;
+    private JPanel zonaDeJuego;
 
     private Piloto pilotin;
     private Estado carroceria;
@@ -75,8 +77,8 @@ public class Partida {
 
     } */
 
-    public void asignarZonaDeJuego(SuperficieDeDibujo unaZonaDeJuego) {
-
+    //public void asignarZonaDeJuego(SuperficieDeDibujo unaZonaDeJuego) {
+      public void asignarZonaDeJuego(JPanel unaZonaDeJuego) {
         this.zonaDeJuego = unaZonaDeJuego;
 
     }
@@ -86,7 +88,8 @@ public class Partida {
     public void iniciar() {
 
         this.gameLoop = new GameLoop();
-        this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
+        //this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
+        this.gameLoop.setSuperficieDeDibujo((SuperficieDeDibujo)this.zonaDeJuego);
         this.gameLoop.setIntervaloSimulacion(90);
 
         this.cargarGameLoop();
