@@ -11,6 +11,8 @@ import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
 public class gpsChallenge {
@@ -43,6 +45,44 @@ public class gpsChallenge {
         /** VAMOS A JUGAR**/
         Mapa.limpiar();
         Nivel nivel = new Nivel();
+
+
+        zonaDeJuego.setFocusable(true);
+
+        zonaDeJuego.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+                int tecla = e.getKeyCode();
+
+                switch (tecla){
+                    case KeyEvent.VK_RIGHT:
+                        System.out.println("Me muevo para la Derecha");
+                        break;
+
+                    case KeyEvent.VK_LEFT:
+                        System.out.println("Me muevo para la Izquierda");
+                        break;
+
+                    case KeyEvent.VK_UP:
+                        System.out.println("Me muevo para la Arriba");
+                        break;
+
+                    case KeyEvent.VK_DOWN:
+                        System.out.println("Me muevo para la Abajo");
+                        break;
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+
+
+
 
 
 

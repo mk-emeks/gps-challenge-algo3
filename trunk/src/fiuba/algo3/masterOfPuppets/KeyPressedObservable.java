@@ -1,4 +1,4 @@
-package fiuba.algo3.masterOfPuppets;
+/**package fiuba.algo3.masterOfPuppets;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -22,4 +22,4 @@ public class KeyPressedObservable extends KeyAdapter implements KeyListener {
 		this.gameLoop.despacharKeyPress(e);
 	}
 
-}
+}       **/
