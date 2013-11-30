@@ -19,17 +19,12 @@ public class Partida {
 
     private GameLoop gameLoop;
     private SuperficieDeDibujo zonaDeJuego;
-    //private JPanel zonaDeJuego;
 
     private Piloto pilotin;
     private Estado carroceria;
 
     private ControlDeEventos controlDeEventos;
 
-    /** borrar */
-    public GameLoop getGameLoop() {
-        return this.gameLoop;
-    }
 
     public void crearPiloto (String nombreDelPiloto) {
 
@@ -93,11 +88,13 @@ public class Partida {
 
         this.gameLoop = new GameLoop();
         this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
-        //this.gameLoop.setSuperficieDeDibujo((SuperficieDeDibujo)this.zonaDeJuego);
         this.gameLoop.setIntervaloSimulacion(90);
 
         this.cargarGameLoop();
         this.comenzar();
+        //  this.pausar();
+
+
     }
 
     /** METODOS PRIVATE **/
@@ -109,13 +106,11 @@ public class Partida {
 
     }
 
+    /**!"**/
     private void comenzar() {
 
-        //this.gameLoop.comenzarJuego(1);
-        //this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
+        this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
         this.gameLoop.comenzarJuego();
-
-
 
     }
 
