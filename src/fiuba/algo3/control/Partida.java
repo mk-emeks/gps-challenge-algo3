@@ -4,6 +4,7 @@ import fiuba.algo3.modelo.*;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.titiritero.modelo.GameLoop;
 import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 import fiuba.algo3.vista.*;
 
@@ -132,8 +133,8 @@ public class Partida {
 
         while (iterador.hasNext()) {
 
-            Posicionable unaCalle = new RepresentacionDeCalle(iterador.next());
-            ObjetoDibujable unaVistaCalle = new VistaCalle(unCalle);
+            ObjetoPosicionable unaCalle = new RepresentacionDeCalle(iterador.next());
+            ObjetoDibujable unaVistaCalle = new VistaCalle(unaCalle);
             this.gameLoop.agregar(unaVistaCalle);
         }
 
@@ -141,7 +142,7 @@ public class Partida {
 
     private void agregarVistaInicioAlGameLoop() {
 
-        Posicionable inicio = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
+        ObjetoPosicionable inicio = new RepresentacionDeCalle(Mapa.getMapa().getInicio());
         ObjetoDibujable  vistaInicio = new VistaInicio(inicio);
         this.gameLoop.agregar(vistaInicio);
 
@@ -149,7 +150,7 @@ public class Partida {
 
     private void agregarVistaLlegadaAlGameLoop() {
 
-        Posicionable llegada = new RepresentacionDeCalle(Mapa.getMapa().getLlegada());
+        ObjetoPosicionable llegada = new RepresentacionDeCalle(Mapa.getMapa().getLlegada());
         ObjetoDibujable  vistaLlegada = new VistaLlegada(llegada);
         this.gameLoop.agregar(vistaLlegada);
 
@@ -164,25 +165,25 @@ public class Partida {
 
             if (unAplicable instanceof ControlPolicial) {
 
-                Posicionable policia = new RepresentacionDeCalle(unAplicable.getPosicion());
+                ObjetoPosicionable policia = new RepresentacionDeCalle(unAplicable.getPosicion());
                 ObjetoDibujable  vistaPolicia = new VistaPolicia(policia);
                 this.gameLoop.agregar(vistaPolicia);
 
             } else if (unAplicable instanceof Sorpresa) {
 
-                Posicionable sorpresa = new RepresentacionDeCalle(unAplicable.getPosicion());
+                ObjetoPosicionable sorpresa = new RepresentacionDeCalle(unAplicable.getPosicion());
                 ObjetoDibujable  vistaSorpresa = new VistaSorpresa(sorpresa);
                 this.gameLoop.agregar(vistaSorpresa);
 
             } else if (unAplicable instanceof Piquete) {
 
-                Posicionable piquete = new RepresentacionDeCalle(unAplicable.getPosicion());
+                ObjetoPosicionable piquete = new RepresentacionDeCalle(unAplicable.getPosicion());
                 ObjetoDibujable  vistaPiquete = new VistaPiquete(piquete);
                 this.gameLoop.agregar(vistaPiquete);
 
             } else if (unAplicable instanceof Pozo) {
 
-                Posicionable pozo = new RepresentacionDeCalle(unAplicable.getPosicion());
+                ObjetoPosicionable pozo = new RepresentacionDeCalle(unAplicable.getPosicion());
                 ObjetoDibujable  vistaPozo = new VistaPozo(pozo);
                 this.gameLoop.agregar(vistaPozo);
             }
