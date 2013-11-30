@@ -1,4 +1,4 @@
-package fiuba.algo3.control;
+/**package fiuba.algo3.control;
 
 import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
 import fiuba.algo3.modelo.*;
@@ -48,4 +48,4 @@ public class ControlDeMovimiento implements KeyPressedObservador {
 
     public void keyRelease(KeyEvent e) {}
 
-}
+}     **/

@@ -1,8 +1,9 @@
 package fiuba.algo3.modelo;
 
-import ar.uba.fi.algo3.titiritero.Posicionable;
+//import ar.uba.fi.algo3.titiritero.Posicionable;
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
-public class Vehiculo implements Movible , Posicionable {
+public class Vehiculo implements Movible , ObjetoPosicionable {
 
     /** atributos **/
 

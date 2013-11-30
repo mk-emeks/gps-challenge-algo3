@@ -1,4 +1,4 @@
-package fiuba.algo3.control;
+/**package fiuba.algo3.control;
 
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.vista.MouseClickController;
@@ -30,14 +30,14 @@ public class VentanaPrincipal extends Ventana {
 
         super(control);
         /** Configuracion de la ventana **/
-
+/**
         this.unMarco = new JFrame();
         this.unMarco.setLayout(null);
         this.unMarco.setTitle("GPS Challenge");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.unMarco.setBounds(0, 0, screenSize.width, screenSize.height);
         this.unMarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+                                                                          **/
 
 
         //this.unMarco.addMouseListener(new MouseClickController(control));
@@ -53,7 +53,7 @@ public class VentanaPrincipal extends Ventana {
 
 
         /** mostrate **/
-        this.unMarco.setVisible(true);
+ /**       this.unMarco.setVisible(true);
 
     }
 
@@ -99,4 +99,4 @@ public class VentanaPrincipal extends Ventana {
         }
     }
 
-}
+} **/
