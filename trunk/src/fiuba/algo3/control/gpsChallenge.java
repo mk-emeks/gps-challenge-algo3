@@ -8,14 +8,13 @@ import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
-import fiuba.algo3.vista.VistaDesarrolloJuego;
-import fiuba.algo3.vista.VistaMenuPrincipal;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
 public class gpsChallenge {
@@ -26,9 +25,9 @@ public class gpsChallenge {
 
 
         /** Configuracion Ventana **/
-        //final Partida unaPartida = new Partida();
 
-        JFrame unMarco = new JFrame();
+
+        final JFrame unMarco = new JFrame();
         unMarco.setLayout(null);
         unMarco.setTitle("GPS Challenge");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -36,53 +35,43 @@ public class gpsChallenge {
         unMarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         unMarco.setVisible(true);
 
+        final JButton unBotonComenzar = new JButton();
+        unBotonComenzar.setIcon(new ImageIcon("src/fiuba/algo3/vista/imagenes/Botones/botonPartidaNueva.png"));
+        unBotonComenzar.setBounds(0,300,369,80);
+
+        unMarco.getContentPane().add(unBotonComenzar);
+
+        unBotonComenzar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                SuperficiePanel zonaDeJuego = new SuperficiePanel();
+                zonaDeJuego.setBounds(400, 0, unMarco.getWidth() - 400, unMarco.getHeight());
+                zonaDeJuego.setBackground(Color.black);
+                zonaDeJuego.setVisible(true);
+                zonaDeJuego.repaint();
+                unMarco.getContentPane().add(zonaDeJuego);
 
 
-         VistaMenuPrincipal unMenuPrincipal = new VistaMenuPrincipal(unMarco);
+                /** VAMOS A JUGAR**/
 
+                Partida unaPartida = new Partida();
+                unaPartida.asignarZonaDeJuego(zonaDeJuego);
 
-        JButton botonComenzarPartida = new JButton();//new ImageIcon("botonPartidaNueva.png"));
-        botonComenzarPartida.setIcon(new ImageIcon("src/fiuba/algo3/vista/imagenes/Botones/botonPartidaNueva.png"));
-        botonComenzarPartida.setBounds(/**unMenuPrincipal.getPanel().getWidth()-900**/0, 300, 369, 80);
-        botonComenzarPartida.repaint();
+                Mapa.limpiar();
+                Nivel nivel = new Nivel();
+                unaPartida.cargarNivel(nivel);
+                unaPartida.crearPiloto("pilotin");
+                unaPartida.asignarCarroceriaDelVehiculo(new EstadoMoto());
+                unaPartida.cargarVehiculoParaElPiloto();
 
-
-        botonComenzarPartida.addActionListener(new ControlDeClick(unMarco));
-
-
-        JButton botonRetomarPartida = new JButton(new ImageIcon("src/fiuba/algo3/vista/imagenes/Botones/botonAbrirPartida.png"));
-        botonRetomarPartida.setBounds(0,450,369,80);
-        botonRetomarPartida.repaint();
-
-        JButton botonVerPuntajes = new JButton(new ImageIcon("src/fiuba/algo3/vista/imagenes/Botones/botonVerPuntajes.png"));
-        botonVerPuntajes.setBounds(0,600,369,80);
-        botonVerPuntajes.repaint();
-
-        unMenuPrincipal.getPanel().add(botonComenzarPartida);
-        unMenuPrincipal.getPanel().add(botonRetomarPartida);
-        unMenuPrincipal.getPanel().add(botonVerPuntajes);
-        unMenuPrincipal.activarFondo();
-
-        /**
-        unaPartida.asignarZonaDeJuego(zonaDeJuego);
-        unMarco.getContentPane().add(zonaDeJuego);
-
-        //VAMOS A JUGAR
-        Mapa.limpiar();
-        Nivel nivel = new Nivel();
-        unaPartida.cargarNivel(nivel);
-        unaPartida.crearPiloto("pilotin");
-        unaPartida.asignarCarroceriaDelVehiculo(new EstadoMoto());
-        unaPartida.cargarVehiculoParaElPiloto();
-
-        zonaDeJuego.setFocusable(true);
-        zonaDeJuego.addKeyListener(new ControlDeMovimiento(unaPartida.getPiloto().getVehiculo()));
-
-        unaPartida.iniciar();   **/
-
-
-
-
+                zonaDeJuego.setFocusable(true);
+                unBotonComenzar.setFocusable(false);
+                zonaDeJuego.addKeyListener(new ControlDeMovimiento(unaPartida.getPiloto().getVehiculo()));
+                /**
+                unaPartida.iniciar();  **/
+            }
+        });
 
     }
 
