@@ -16,6 +16,18 @@ public abstract class SorpresaCambioDeTiempo extends Sorpresa {
         return this.porcentajeTiempo;
     }
 
+    /** no deberia tener el actualizar ? **/
+    /*public void actualizar(Piloto piloto) {
+
+        Vehiculo vehiculoDelCandidatoASerAplicar = piloto.getVehiculo();
+
+        if ( vehiculoDelCandidatoASerAplicar.getPosicion().equals(this.getPosicion()) )
+        {
+            piloto.interactuarCon(this);
+        }
+
+    } */
+
 }
 
 
