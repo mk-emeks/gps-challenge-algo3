@@ -1,14 +1,13 @@
 package fiuba.algo3.control;
 
-
-import ar.uba.fi.algo3.titiritero.ControladorJuego;
-import ar.uba.fi.algo3.titiritero.vista.MouseClickController;
-import ar.uba.fi.algo3.titiritero.vista.Panel;
-import ar.uba.fi.algo3.titiritero.vista.Ventana;
+import fiuba.algo3.modelo.EstadoMoto;
 import fiuba.algo3.modelo.Nivel;
 import fiuba.algo3.modelo.Piloto;
 import fiuba.algo3.modelo.Mapa;
+import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
+import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
+import javax.swing.*;
 import java.awt.*;
 
 
@@ -18,29 +17,36 @@ public class gpsChallenge {
 
     public static void main(String[] argv) {
 
-        /** creamos el control de juego **/
-        ControladorJuego controlDeJuego = new ControladorJuego(false);
-        controlDeJuego.setIntervaloSimulacion(90);
 
         /** Configuracion Ventana **/
 
+        JFrame unMarco = new JFrame();
+        unMarco.setLayout(null);
+        unMarco.setTitle("GPS Challenge");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Ventana ventana = new Ventana(screenSize.width,screenSize.height,controlDeJuego);
-        ventana.setLayout(null);
-        //ventana.setBounds(0, 0, screenSize.width, screenSize.height);
-        ventana.setVisible(true);
+        unMarco.setBounds(0, 0, screenSize.width, screenSize.height);
+        unMarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        unMarco.setVisible(true);
 
-        /** agregamos observador de mouse **/
-        ventana.addMouseListener(new MouseClickController(controlDeJuego));
+        SuperficiePanel zonaDeJuego = new SuperficiePanel();
+        zonaDeJuego.setBounds(400,0,screenSize.width - 400,screenSize.height);
+        zonaDeJuego.setBackground(Color.black);
+        zonaDeJuego.setVisible(true);
+        unMarco.add(zonaDeJuego);
 
-        /** vamos a jugar **/
+        /** VAMOS A JUGAR**/
         Mapa.limpiar();
         Nivel nivel = new Nivel();
-        Piloto piloto = new Piloto("pilotin");
-        Partida partida = new Partida(ventana,controlDeJuego,nivel,piloto);
 
-        partida.iniciar();
+        Partida unaPartida = new Partida();
 
+        unaPartida.crearPiloto("pilotin");
+        unaPartida.asignarNivel(nivel);
+        unaPartida.asignarCarroceriaDelVehiculo(new EstadoMoto());
+
+        unaPartida.asignarZonaDeJuego(zonaDeJuego);
+
+        unaPartida.iniciar();
 
     }
 
