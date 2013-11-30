@@ -19,6 +19,8 @@ import java.util.List;
 public class GameLoop implements Runnable {
 
 
+
+
     /** Constructor **/
     public GameLoop(){
         this.objetosVivos = new ArrayList<ObjetoVivo>();
@@ -42,7 +44,9 @@ public class GameLoop implements Runnable {
             while(estaEnEjecucion){
                 simular();
                 dibujar();
+
                 Thread.sleep(intervaloSimulacion);
+                System.out.println("DEBERIA HABER DESCANZADO"+intervaloSimulacion);
             }
         }
         catch (Exception e) {
@@ -67,13 +71,14 @@ public class GameLoop implements Runnable {
             this.hiloAudio =  new Thread(this.reproductor);
             this.hiloAudio.start();
         }
-    } */
+    }*/
 
     /** (!) CONCURRENCIA **/
-    private Thread hiloAudio;
-    private boolean estaReproductorActivo;
+    //private Thread hiloAudio;
+    //private boolean estaReproductorActivo;
 
     public void run() {
+
         this.comenzarJuego();
     }
 
@@ -91,21 +96,22 @@ public class GameLoop implements Runnable {
      * Le da comienzo al juego poniendo en marcha el gameloop.
      * @param cantidadDeCiclos cantidad de ciclos que debe correr el gameloop..
      */
-    /*public void comenzarJuego(int cantidadDeCiclos){
+    public  void comenzarJuego(int cantidadDeCiclos){
         int contador = 0;
         estaEnEjecucion = true;
         try{
             while(contador < cantidadDeCiclos && estaEnEjecucion){
+
                 simular();
                 dibujar();
-                Thread.sleep(intervaloSimulacion);
+                Thread.currentThread().sleep(intervaloSimulacion);
                 contador++;
             }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-    } */
+    }
 
     /** Objetos vivos y Dibujables del gameLoop **/
 
@@ -130,19 +136,30 @@ public class GameLoop implements Runnable {
     }
 
     private void dibujar() {
+
+        //try {
+            SuperficiePanel superficiePanelAuxiliar = (SuperficiePanel)this.superficieDeDibujo;
+            superficiePanelAuxiliar.update(superficiePanelAuxiliar.getGraphics());    /** ojo cuando se borren **/
+            //Thread.sleep(1000);
+        //}catch (Exception epa) {
+        //    System.out.println("JODETE");
+        //}
+
         Iterator<ObjetoDibujable> iterador = dibujables.iterator();
         while(iterador.hasNext()){
             ObjetoDibujable dibujable = iterador.next();
             dibujable.dibujar(this.superficieDeDibujo);
         }
-        this.superficieDeDibujo.actualizar();
+
+        this.superficieDeDibujo.actualizar(); /**!**/
+
     }
 
     /**
      * Ejecuta la simulacion recorriendo la coleccion de objetivos vivos.
      */
     private void simular() {
-        //this.superficieDeDibujo.limpiar();       /** ojo cuando se borren **/
+
         Iterator<ObjetoVivo> iterador = objetosVivos.iterator();
         while(iterador.hasNext()){
             iterador.next().vivir();
@@ -159,7 +176,6 @@ public class GameLoop implements Runnable {
 
     public void setSuperficieDeDibujo(SuperficieDeDibujo superficieDeDibujo) {
         this.superficieDeDibujo = superficieDeDibujo;
-        //this.superficiePanel = (SuperficiePanel)superficieDeDibujo; /**!**/
     }
 
 }
