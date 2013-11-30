@@ -49,6 +49,12 @@ public class gpsChallenge {
 
         zonaDeJuego.setFocusable(true);
 
+        unaPartida.crearPiloto("pilotin");
+        unaPartida.cargarNivel(nivel);
+        unaPartida.asignarCarroceriaDelVehiculo(new EstadoMoto());
+        unaPartida.cargarVehiculoParaElPiloto();
+
+
         zonaDeJuego.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -81,14 +87,6 @@ public class gpsChallenge {
             public void keyReleased(KeyEvent e) {}
         });
 
-
-
-
-
-
-        unaPartida.crearPiloto("pilotin");
-        unaPartida.cargarNivel(nivel);
-        unaPartida.asignarCarroceriaDelVehiculo(new EstadoMoto());
 
         unaPartida.iniciar();
 

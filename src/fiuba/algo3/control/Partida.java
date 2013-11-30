@@ -49,38 +49,7 @@ public class Partida {
 
     }
 
-    /** CONSTRUCTOR **/
-
-    /* public Partida( SuperficiePanel unaZonaDeJuego) {
-
-        this.zonaDeJuego = unaZonaDeJuego;
-        this.gameLoop = new GameLoop(90,this.zonaDeJuego);
-
-    } */
-
-    public void asignarZonaDeJuego(SuperficieDeDibujo unaZonaDeJuego) {
-
-        this.zonaDeJuego = unaZonaDeJuego;
-
-    }
-
-    /** PRE: Se deben haber invocado los metodos crearPiloto, asignarNivel y asignarCarroceriaDelVehiculo y asignarZonaDeJuego **/
-    public void iniciar() {
-
-        this.gameLoop = new GameLoop();
-        this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
-        this.gameLoop.setIntervaloSimulacion(90);
-
-
-        this.cargarVehiculoParaElPiloto();
-        this.cargarGameLoop();
-        this.comenzar();
-    }
-
-
-    /** METODOS PRIVATE **/
-
-    private void cargarVehiculoParaElPiloto() {
+    public void cargarVehiculoParaElPiloto() {
 
         Direccion direccionDeInicioDelVehiculo = new DireccionDerecha(); /** una cualquiera, no cambia mucho **/
         Vehiculo miVehiculo = new Vehiculo(Mapa.getMapa().getInicio(),direccionDeInicioDelVehiculo,this.carroceria);
@@ -96,6 +65,35 @@ public class Partida {
         this.pilotin.arrancarVehiculo();
 
     }
+
+    /** CONSTRUCTOR **/
+
+    /* public Partida( SuperficiePanel unaZonaDeJuego) {
+
+        this.zonaDeJuego = unaZonaDeJuego;
+        this.gameLoop = new GameLoop(90,this.zonaDeJuego);
+
+    } */
+
+    public void asignarZonaDeJuego(SuperficieDeDibujo unaZonaDeJuego) {
+
+        this.zonaDeJuego = unaZonaDeJuego;
+
+    }
+
+
+    /** PRE: Se deben haber invocado los metodos crearPiloto, asignarNivel y asignarCarroceriaDelVehiculo y asignarZonaDeJuego **/
+    public void iniciar() {
+
+        this.gameLoop = new GameLoop();
+        this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
+        this.gameLoop.setIntervaloSimulacion(90);
+
+        this.cargarGameLoop();
+        this.comenzar();
+    }
+
+    /** METODOS PRIVATE **/
 
     private void cargarGameLoop() {
 
