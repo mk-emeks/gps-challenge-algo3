@@ -19,6 +19,7 @@ public class gpsChallenge {
 
 
         /** Configuracion Ventana **/
+        Partida unaPartida = new Partida();
 
         JFrame unMarco = new JFrame();
         unMarco.setLayout(null);
@@ -32,19 +33,21 @@ public class gpsChallenge {
         zonaDeJuego.setBounds(400,0,screenSize.width - 400,screenSize.height);
         zonaDeJuego.setBackground(Color.black);
         zonaDeJuego.setVisible(true);
-        unMarco.add(zonaDeJuego);
+
+        unaPartida.asignarZonaDeJuego(zonaDeJuego);
+        unMarco.getContentPane().add(zonaDeJuego);
 
         /** VAMOS A JUGAR**/
         Mapa.limpiar();
         Nivel nivel = new Nivel();
 
-        Partida unaPartida = new Partida();
+
 
         unaPartida.crearPiloto("pilotin");
         unaPartida.asignarNivel(nivel);
         unaPartida.asignarCarroceriaDelVehiculo(new EstadoMoto());
 
-        unaPartida.asignarZonaDeJuego(zonaDeJuego);
+
 
         unaPartida.iniciar();
 
