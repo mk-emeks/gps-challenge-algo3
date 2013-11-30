@@ -1,13 +1,16 @@
 package fiuba.algo3.control;
 
+import fiuba.algo3.masterOfPuppets.GameLoop;
+import fiuba.algo3.masterOfPuppets.KeyPressedObservable;
 import fiuba.algo3.modelo.*;
+
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
-import fiuba.algo3.titiritero.modelo.GameLoop;
 import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 import fiuba.algo3.vista.*;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -24,6 +27,8 @@ public class Partida {
     private Estado carroceria;
 
     private ControlDeEventos controlDeEventos;
+    //private ControlDeMovimiento controlDeMovimiento;
+
 
     public void crearPiloto (String nombreDelPiloto) {
 
@@ -66,7 +71,9 @@ public class Partida {
     /** PRE: Se deben haber invocado los metodos crearPiloto, asignarNivel y asignarCarroceriaDelVehiculo y asignarZonaDeJuego **/
     public void iniciar() {
 
-        this.gameLoop = new GameLoop(90,this.zonaDeJuego);
+        this.gameLoop = new GameLoop();
+        this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
+        this.gameLoop.setIntervaloSimulacion(90);
 
         this.cargarMapa();
         this.cargarVehiculoParaElPiloto();
@@ -104,13 +111,14 @@ public class Partida {
 
         this.agregarVistasAlGameLoop();
         this.agregarObjetosVivosAlGameLoop();
+        //this.agregarControlDeTecladoAlGameLoop();
 
     }
 
     private void comenzar() {
 
         this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
-        this.gameLoop.iniciarEjecucion();
+        this.gameLoop.comenzarJuego();
 
     }
 
@@ -206,6 +214,15 @@ public class Partida {
         this.gameLoop.agregar(unaVistaVehiculo);
     }
 
+    /*private void agregarControlDeTecladoAlGameLoop() {
+
+        this.controlDeMovimiento = new ControlDeMovimiento(this.pilotin.getVehiculo());
+        this.gameLoop.agregar(this.controlDeMovimiento);
+        ((SuperficiePanel)(this.zonaDeJuego)).addKeyListener(new KeyPressedObservable(this.gameLoop));
+
+
+    } */
+
     /** fin submetodos private **/
 
     /** METODOS DE CONTROL **/
@@ -233,7 +250,7 @@ public class Partida {
     public void finalizar() {
 
         this.pilotin.getCronometro().pausar();  /** el cronometro es un tipo independiente; A no olvidarselo **/
-        this.gameLoop.detenerEjecucion();
+        this.gameLoop.detenerJuego();
         System.out.println("la partida finalizo");
 
     }
