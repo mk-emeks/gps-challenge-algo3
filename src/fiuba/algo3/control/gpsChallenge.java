@@ -48,10 +48,8 @@ public class gpsChallenge {
         unaPartida.asignarNivel(nivel);
         unaPartida.asignarCarroceriaDelVehiculo(new EstadoMoto());
 
-
-
         unaPartida.iniciar();
-        zonaDeJuego.addKeyListener(new ControlDeMovimiento(unaPartida.getPiloto().getVehiculo()));
+
 
 
     }
