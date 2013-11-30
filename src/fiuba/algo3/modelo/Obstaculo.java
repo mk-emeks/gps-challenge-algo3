@@ -4,10 +4,12 @@ package fiuba.algo3.modelo;
 public abstract class Obstaculo implements Aplicable {
 
     private int turnosPenalizado;
+    private int turnosPenalizadosMomentaneos;
     private Posicion posicion;
 
     public Obstaculo(int penalizacion, Posicion unaPosicion) {
         this.turnosPenalizado = penalizacion;
+        this.turnosPenalizadosMomentaneos = this.turnosPenalizado;
         this.posicion = unaPosicion;
     }
 
@@ -40,16 +42,20 @@ public abstract class Obstaculo implements Aplicable {
     }
     private void restarCantidadDeTurnosPenalizado() {
 
-        this.turnosPenalizado = this.turnosPenalizado-1;
+        this.turnosPenalizadosMomentaneos = this.turnosPenalizadosMomentaneos-1;
     }
 
     protected void aplicar (Piloto piloto) {
 
-        if ( (this.cantidadDeTurnosPenalizado()) > 0 ) {
-            piloto.detenerVehiculo();
-        } else {
-            piloto.arrancarVehiculo();
+        if (this.turnosPenalizadosMomentaneos == -1) {
+            this.turnosPenalizadosMomentaneos = this.turnosPenalizado;
+
         }
+        if ( (this.turnosPenalizadosMomentaneos) > 0 ) {
+           piloto.detenerVehiculo();
+        } else {
+           piloto.arrancarVehiculo();
+           }
         this.restarCantidadDeTurnosPenalizado();
 
     }
