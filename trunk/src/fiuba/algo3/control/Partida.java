@@ -18,7 +18,8 @@ public class Partida {
 
 
     private GameLoop gameLoop;
-    private SuperficieDeDibujo zonaDeJuego;
+    //private SuperficieDeDibujo zonaDeJuego;
+    private JPanel zonaDeJuego;
 
     private Piloto pilotin;
     private Estado carroceria;
@@ -77,8 +78,8 @@ public class Partida {
 
     //public void asignarZonaDeJuego(SuperficieDeDibujo unaZonaDeJuego) {
       public void asignarZonaDeJuego(JPanel unaZonaDeJuego) {
-        //this.zonaDeJuego = unaZonaDeJuego;
-          this.zonaDeJuego = (SuperficieDeDibujo)unaZonaDeJuego;
+          this.zonaDeJuego = unaZonaDeJuego;
+          //this.zonaDeJuego = (SuperficieDeDibujo)unaZonaDeJuego;
 
     }
 
@@ -87,7 +88,7 @@ public class Partida {
     public void iniciar() {
 
         this.gameLoop = new GameLoop();
-        this.gameLoop.setSuperficieDeDibujo(this.zonaDeJuego);
+        this.gameLoop.setSuperficieDeDibujo((SuperficieDeDibujo)this.zonaDeJuego);
         this.gameLoop.setIntervaloSimulacion(90);
 
         this.cargarGameLoop();
