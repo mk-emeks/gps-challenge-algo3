@@ -1,6 +1,7 @@
 package fiuba.algo3.control;
 
 
+import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -8,9 +9,13 @@ import java.awt.event.MouseListener;
 public class ControlDeClick implements MouseListener {
 
     Partida partidaAControlar;
+    JLabel jLabelAsociado;
 
-    public ControlDeClick(Partida unaPartida) {
+    public ControlDeClick(Partida unaPartida, JLabel unJLabel) {
+
         this.partidaAControlar = unaPartida;
+        this.jLabelAsociado = unJLabel;
+
 
     }
 
@@ -18,6 +23,7 @@ public class ControlDeClick implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         this.partidaAControlar.iniciar();
+        this.jLabelAsociado.setVisible(false);
     }
 
     @Override

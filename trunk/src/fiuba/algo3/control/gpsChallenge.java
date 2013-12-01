@@ -23,7 +23,7 @@ public class gpsChallenge {
 
 
         /** Configuracion Ventana **/
-        final Partida unaPartida = new Partida();
+
 
         JFrame unMarco = new JFrame("GPS Challenge");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -41,9 +41,9 @@ public class gpsChallenge {
         /** zona de juego **/
         JPanel zonaDeJuego = new SuperficiePanel();
         zonaDeJuego.setBounds(400, 0, screenSize.width - 400, screenSize.height);
-        zonaDeJuego.setBackground(Color.black);
+        zonaDeJuego.setBackground(Color.GRAY);
         unMarco.add(zonaDeJuego);
-        unaPartida.asignarZonaDeJuego(zonaDeJuego);
+
 
 
         /**Creo Fondo **/
@@ -58,6 +58,9 @@ public class gpsChallenge {
 
 
         /** VAMOS A JUGAR**/
+        Partida unaPartida = new Partida();
+        unaPartida.asignarZonaDeJuego(zonaDeJuego);
+
         Mapa.limpiar();
         Nivel nivel = new Nivel();
         unaPartida.cargarNivel(nivel);
@@ -73,7 +76,7 @@ public class gpsChallenge {
 
 
         /** Control del boton**/
-        botonComenzar.addMouseListener(new ControlDeClick(unaPartida));
+        botonComenzar.addMouseListener(new ControlDeClick(unaPartida,botonComenzar));
 
     }
 }
