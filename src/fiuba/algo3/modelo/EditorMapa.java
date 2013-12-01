@@ -21,7 +21,7 @@ public class EditorMapa {
 
     public void editarMapaNivel() {
 
-        this.editarMapaSimple(15,15);
+        this.editarMapaSimple(20,14); /** el maximo **/
 
         /** Obstaculos**/
         try{

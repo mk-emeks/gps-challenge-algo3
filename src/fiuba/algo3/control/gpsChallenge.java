@@ -40,7 +40,7 @@ public class gpsChallenge {
 
         /** zona de juego **/
         JPanel zonaDeJuego = new SuperficiePanel();
-        zonaDeJuego.setBounds(400, 0, screenSize.width - 400, screenSize.height);
+        zonaDeJuego.setBounds(440,50,870, 620); /** lo que mejor le queda? **/
         zonaDeJuego.setBackground(Color.GRAY);
         unMarco.add(zonaDeJuego);
 

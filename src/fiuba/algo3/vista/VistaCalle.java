@@ -14,7 +14,7 @@ public class VistaCalle implements ObjetoDibujable {
     public VistaCalle(ObjetoPosicionable unPosicionable) {
 
         try {
-            URL urlCalle = this.getClass().getResource("imagenes/calle.jpg");
+            URL urlCalle = this.getClass().getResource("imagenes/calle.png");
             this.imagen = new Imagen(urlCalle,unPosicionable);
 
         } catch (Exception e) {

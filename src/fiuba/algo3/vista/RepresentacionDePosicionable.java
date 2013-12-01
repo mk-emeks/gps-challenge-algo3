@@ -19,13 +19,13 @@ public class RepresentacionDePosicionable implements ObjetoPosicionable {
 
     public int getX() {
 
-        return (50*this.posicion.getPosicionX());
+        return (40*this.posicion.getPosicionX());
 
     }
 
     public int getY() {
 
-        return (50*this.posicion.getPosicionY());
+        return (40*this.posicion.getPosicionY());
 
     }
 }
