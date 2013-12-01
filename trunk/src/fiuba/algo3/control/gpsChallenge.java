@@ -25,15 +25,13 @@ public class gpsChallenge {
         /** Configuracion Ventana **/
         final Partida unaPartida = new Partida();
 
-        final JFrame unMarco = new JFrame("GPS Challenge");
-
-
+        JFrame unMarco = new JFrame("GPS Challenge");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         unMarco.setBounds(0, 0, screenSize.width, screenSize.height);
         unMarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         unMarco.setLayout(null);
 
-
+        /** Creo el falso boton **/
         JLabel botonComenzar = new JLabel();
         botonComenzar.setIcon(new ImageIcon("src/fiuba/algo3/vista/imagenes/Botones/botonPartidaNueva.png"));
         botonComenzar.setBounds(0,0,369,80);
@@ -44,36 +42,19 @@ public class gpsChallenge {
         JPanel zonaDeJuego = new SuperficiePanel();
         zonaDeJuego.setBounds(400, 0, screenSize.width - 400, screenSize.height);
         zonaDeJuego.setBackground(Color.black);
-
-        zonaDeJuego.setVisible(true);
-
+        unMarco.add(zonaDeJuego);
         unaPartida.asignarZonaDeJuego(zonaDeJuego);
-        unMarco.getContentPane().add(zonaDeJuego);
+
+
+        /**Creo Fondo **/
+        JLabel fondo = new JLabel();
+        fondo.setIcon(new ImageIcon("src/fiuba/algo3/vista/imagenes/fondoMenuPrincipal.png"));
+        fondo.setBounds(0,0,unMarco.getWidth(),unMarco.getHeight());
+        unMarco.add(fondo);
+
+
+        /**Una vez que se agrego lo que necesitamos al marco, se lo hace visible**/
         unMarco.setVisible(true);
-
-        botonComenzar.addMouseListener( new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-                unaPartida.iniciar();
-
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {}
-
-            @Override
-            public void mouseReleased(MouseEvent e) {}
-
-            @Override
-            public void mouseEntered(MouseEvent e) {}
-
-            @Override
-            public void mouseExited(MouseEvent e) {}
-        });
-
-
 
 
         /** VAMOS A JUGAR**/
@@ -84,21 +65,15 @@ public class gpsChallenge {
         unaPartida.asignarCarroceriaDelVehiculo(new EstadoMoto());
         unaPartida.cargarVehiculoParaElPiloto();
 
+
+        /**IMPORTANTE, EL MARCO ES EL QUE TIENE EL CONTROL DE MOVIMIENTOS **/
         unMarco.setFocusable(true);
         unMarco.addKeyListener((new Pausa(unaPartida)));
         unMarco.addKeyListener(new ControlDeMovimiento(unaPartida.getPiloto().getVehiculo()));
 
 
-
-
-
-
-
-
+        /** Control del boton**/
+        botonComenzar.addMouseListener(new ControlDeClick(unaPartida));
 
     }
-
-
-
-
 }

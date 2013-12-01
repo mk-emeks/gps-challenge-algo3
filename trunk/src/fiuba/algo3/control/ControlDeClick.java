@@ -1,58 +1,35 @@
 package fiuba.algo3.control;
 
-import fiuba.algo3.modelo.EstadoMoto;
-import fiuba.algo3.modelo.Mapa;
-import fiuba.algo3.modelo.Nivel;
-import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
-public class ControlDeClick implements ActionListener {
+public class ControlDeClick implements MouseListener {
 
-    JFrame marcoAControlar;
+    Partida partidaAControlar;
 
-    public ControlDeClick(JFrame unMarco) {
-        this.marcoAControlar = unMarco;
+    public ControlDeClick(Partida unaPartida) {
+        this.partidaAControlar = unaPartida;
 
     }
 
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-
-        this.marcoAControlar.getContentPane().removeAll();
-
-        Partida unaPartida = new Partida();
-        SuperficiePanel zonaDeJuego = new SuperficiePanel();
-        zonaDeJuego.setBounds(400, 0, this.marcoAControlar.getWidth() - 400, this.marcoAControlar.getHeight());
-        zonaDeJuego.setBackground(Color.black);
-
-        zonaDeJuego.setVisible(true);
-
-        unaPartida.asignarZonaDeJuego(zonaDeJuego);
-        this.marcoAControlar.getContentPane().add(zonaDeJuego);
-
-
-        /** VAMOS A JUGAR**/
-        Mapa.limpiar();
-        Nivel nivel = new Nivel();
-        unaPartida.cargarNivel(nivel);
-        unaPartida.crearPiloto("pilotin");
-        unaPartida.asignarCarroceriaDelVehiculo(new EstadoMoto());
-        unaPartida.cargarVehiculoParaElPiloto();
-
-        zonaDeJuego.setFocusable(true);
-        zonaDeJuego.addKeyListener(new ControlDeMovimiento(unaPartida.getPiloto().getVehiculo()));
-
-        unaPartida.iniciar();
-
-        this.marcoAControlar.revalidate();
-        this.marcoAControlar.repaint();
-
-
+    public void mouseClicked(MouseEvent e) {
+        this.partidaAControlar.iniciar();
     }
+
+    @Override
+    public void mousePressed(MouseEvent e) {}
+
+    @Override
+    public void mouseReleased(MouseEvent e) {}
+
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+
+    @Override
+    public void mouseExited(MouseEvent e) {}
 }
+
