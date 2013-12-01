@@ -3,16 +3,11 @@ package fiuba.algo3.control;
 
 import fiuba.algo3.modelo.EstadoMoto;
 import fiuba.algo3.modelo.Nivel;
-
-import fiuba.algo3.modelo.Mapa;
+ import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
-
-
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
 
 
 public class gpsChallenge {
@@ -41,7 +36,7 @@ public class gpsChallenge {
         /** zona de juego **/
         JPanel zonaDeJuego = new SuperficiePanel();
         zonaDeJuego.setBounds(440,50,870, 620); /** lo que mejor le queda? **/
-        zonaDeJuego.setBackground(Color.GRAY);
+        zonaDeJuego.setBackground(new Color(127, 197, 110));
         unMarco.add(zonaDeJuego);
 
 
