@@ -28,22 +28,11 @@ public class ControlDeClickBotonGuardar extends ControlDeClickBotonConPartida {
             this.partida.crearPiloto(this.areaTexto.getTexto());
             /** falta persistencia! **/
 
-            this.iniciar();
+            this.actualizar();
 
 
         }
 
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {}
-
-    @Override
-    public void mouseReleased(MouseEvent e) {}
-
-    @Override
-    public void mouseEntered(MouseEvent e) {}
-
-    @Override
-    public void mouseExited(MouseEvent e) {}
 }
