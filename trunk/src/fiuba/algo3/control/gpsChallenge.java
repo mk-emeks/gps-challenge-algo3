@@ -45,8 +45,8 @@ public class gpsChallenge {
         /** Stage 1.A : Usuario Nuevo ----------------------------------**/
 
         /** texto **/
-        Texto mensajeParaUsuarioNuevo = new Texto(unMarco,80,200,250,40);
-        mensajeParaUsuarioNuevo.setMensaje("Por favor eliga un nombre (10 caracteres max)");
+        Texto mensajeParaUsuarioNuevo = new Texto(unMarco,40,200,380,40);
+        mensajeParaUsuarioNuevo.setMensaje("Por favor, eliga un nombre (10 caracteres max)");
         // ponerle color, o reemplazar por imagen
         mensajeParaUsuarioNuevo.setVisible(false);
 

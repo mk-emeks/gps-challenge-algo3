@@ -1,7 +1,7 @@
 package fiuba.algo3.vista.VistasMenu;
 
 import javax.swing.*;
-
+import java.awt.*;
 
 
 public class Texto extends VistaMenu {
@@ -28,6 +28,8 @@ public class Texto extends VistaMenu {
     public void setMensaje(String mensajeString) {
 
         this.mensaje.setText(mensajeString);
+        this.mensaje.setFont(new Font(Font.SERIF, Font.BOLD, 18));
+        this.mensaje.setForeground(new Color(197, 125, 0));
 
     }
 
