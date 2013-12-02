@@ -78,15 +78,15 @@ public class gpsChallenge {
         /** Stage 2.A : Eleccion Mapa y Carruaje ----------------------------------**/
 
         /** checkBoxEleccionMapa **/
-        BoxEleccionMapa boxEleccionMapa = new BoxEleccionMapa(unMarco,180,150,215,40);
+        BoxEleccionMapa boxEleccionMapa = new BoxEleccionMapa(unMarco,200,165,100,60);
         boxEleccionMapa.setVisible(false);
 
         /** checkBoxEleccionVehiculo **/
-        BoxEleccionVehiculo boxEleccionVehiculo = new BoxEleccionVehiculo(unMarco,30,150,100,40);
+        BoxEleccionVehiculo boxEleccionVehiculo = new BoxEleccionVehiculo(unMarco,30,165,150,60);
         boxEleccionVehiculo.setVisible(false);
 
         /** botonJugar -> acciona el juego **/
-        Boton botonJugar = new BotonJugar(unMarco,30,350,369,80);
+        Boton botonJugar = new BotonJugar(unMarco,30,370,369,80);
         botonJugar.setVisible(false);
 
         /** botonVolverDesde2Ahacia2 -> stage 2 **/
