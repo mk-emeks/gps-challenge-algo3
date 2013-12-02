@@ -1,4 +1,4 @@
-/** CLASE QUE SIRVE SI TENES LA PC DE LA NASA! :P
+//CLASE QUE SIRVE SI TENES LA PC DE LA NASA! :P
 package fiuba.algo3.vista.VistasMenu;
 
 
@@ -111,5 +111,5 @@ public class BotonAnimadoVehiculo extends VistaMenu {
 
 
 
-} **/
+}
 
