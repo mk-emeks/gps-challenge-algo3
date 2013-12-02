@@ -102,7 +102,7 @@ public class Partida {
 
         this.cargarGameLoop();
         this.comenzar();
-        //  this.pausar();
+
 
 
     }

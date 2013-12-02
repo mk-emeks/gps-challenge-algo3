@@ -19,10 +19,10 @@ public class gpsChallenge {
     public static void main(String[] argv) {
 
         /** creo la partida **/
-        Partida unaPartida = new Partida();
+        final Partida unaPartida = new Partida();
 
         /** Configuracion Ventana Principal **/
-        JFrame unMarco = new JFrame("GPS Challenge");
+        final JFrame unMarco = new JFrame("GPS Challenge");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         unMarco.setBounds(0, 0, screenSize.width, screenSize.height);
         unMarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,6 +38,7 @@ public class gpsChallenge {
 
 
         /** boton Ingresar Usuario -> stage 1.B **/
+        /** todo **/
         Boton botonIngresarUsuario = new BotonIngresarUsuario(unMarco,30,250,369,80);
         botonIngresarUsuario.setVisible(true);
 
@@ -50,6 +51,7 @@ public class gpsChallenge {
         mensajeParaUsuarioNuevo.setVisible(false);
 
         /** area IngresoNombreDelUsuario **/
+        /** todo  (persistencia)**/
         CampoTexto areaIngresoNombreDelUsuario = new CampoTexto(unMarco,140,260,150,30);
         areaIngresoNombreDelUsuario.setVisible(false);
 
@@ -58,6 +60,7 @@ public class gpsChallenge {
         botonGuardar.setVisible(false);
 
         /** Stage 1.B : Cargar Usuario ----------------------------------**/
+        /** todo **/
         // check box elegir usuario existente
         // boton aceptar -> stage 2
 
@@ -68,10 +71,12 @@ public class gpsChallenge {
         botonComenzarPartida.setVisible(false);
 
         /** botonReanudarPartidaGuardada -> carga Xmlmapa y acciona el juego **/
+        /** todo **/
         Boton botonReanudarPartidaGuardada = new BotonReanudarPartidaGuardada(unMarco,30,250,369,80);
         botonReanudarPartidaGuardada.setVisible(false);
 
         /** botonVerPuntajes -> stage 2.B **/
+        /** todo **/
         Boton botonVerPuntajes = new BotonVerPuntajes(unMarco,30,350,369,80);
         botonVerPuntajes.setVisible(false);
 
@@ -85,20 +90,36 @@ public class gpsChallenge {
         BoxEleccionVehiculo boxEleccionVehiculo = new BoxEleccionVehiculo(unMarco,30,165,150,60);
         boxEleccionVehiculo.setVisible(false);
 
-        /** botonJugar -> acciona el juego **/
+        /** botonJugar -> acciona el juego, pasa al stage 3 **/
         Boton botonJugar = new BotonJugar(unMarco,30,370,369,80);
         botonJugar.setVisible(false);
 
         /** botonVolverDesde2Ahacia2 -> stage 2 **/
+        /** todo **/
         // cambiar nombre a la varialble!
         Boton botonVolver = new BotonVolver(unMarco,30,580,369,80);
         botonVolver.setVisible(false);
 
         /** Stage 2.B : Puntajes ----------------------------------**/
+        /** todo **/
         // table puntajes -> se carga Xmlpuntajes
         // botonVolver (juega 2 veces) -> stage 2
 
+        /** Stage 3 : Juego en Accion --------------------------------------------------------------------**/
+        /** todo **/
 
+        /** botonAnimadoCronometro **/
+
+        /** botonAnimadoVehiculo **/
+        BotonAnimadoVehiculo botonAnimadoVehiculo = new BotonAnimadoVehiculo(unaPartida,unMarco,30,150,369,80);
+        botonAnimadoVehiculo.setVisible(false);
+
+        /** botonGuargarPartida **/
+        //Boton botonGuardarPartida = new BotonGuardar()
+
+        /** botonVolverMenuPrincipalDesdeJuegoEnAccion **/
+        Boton botonVolverMenuPrincipalDesdeJuegoEnAccion = new BotonVolver(unMarco,30,580,369,80);
+        botonVolverMenuPrincipalDesdeJuegoEnAccion.setVisible(false);
 
 
 
@@ -161,6 +182,11 @@ public class gpsChallenge {
         stageEleccionMapaYVehiculo.add(botonJugar);
         stageEleccionMapaYVehiculo.add(botonVolver);
 
+        ArrayList<VistaMenu> stageJuegoEnAccion = new ArrayList<VistaMenu>();
+        stageJuegoEnAccion.add(botonAnimadoVehiculo);
+        stageJuegoEnAccion.add(botonVolverMenuPrincipalDesdeJuegoEnAccion);
+
+
         /** controles de los botones **/
 
         /** stage 1 **/
@@ -178,9 +204,9 @@ public class gpsChallenge {
         boxEleccionMapa.getBoxModerado().addMouseListener(new ControlDeClickEleccionMapa(unaPartida /*,xmlMapa*/ , boxEleccionMapa));
         boxEleccionMapa.getBoxDificil().addMouseListener(new ControlDeClickEleccionMapa(unaPartida /*,xmlMapa*/ , boxEleccionMapa));
 
+        /** hasta aca llegue **/
+        botonJugar.addMouseListener(new ControlDeClickBotonJugar(unaPartida,stageJuegoEnAccion,stageEleccionMapaYVehiculo));
 
-        /** por ahora **/
-        botonJugar.addMouseListener(new ControlDeClickBotonJugar(unaPartida,null,stageEleccionMapaYVehiculo));
 
     }
 }

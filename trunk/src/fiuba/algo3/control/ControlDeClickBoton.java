@@ -21,7 +21,7 @@ public class ControlDeClickBoton  implements MouseListener {
 
     }
 
-    protected void iniciar() {
+    protected void actualizar() {
 
         this.ActivarVistas();
         this.DesactivarVistas();
@@ -34,7 +34,7 @@ public class ControlDeClickBoton  implements MouseListener {
 
         while (iterador.hasNext()) {
 
-            VistaMenu vistaOn =iterador.next();
+            VistaMenu vistaOn = iterador.next();
             vistaOn.setVisible(true);
         }
     }
@@ -45,7 +45,7 @@ public class ControlDeClickBoton  implements MouseListener {
 
         while (iterador.hasNext()) {
 
-            VistaMenu vistaOff =iterador.next();
+            VistaMenu vistaOff = iterador.next();
             vistaOff.setVisible(false);
         }
     }
@@ -54,7 +54,7 @@ public class ControlDeClickBoton  implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        this.iniciar();
+        this.actualizar();
 
     }
 
