@@ -5,6 +5,7 @@ import fiuba.algo3.modelo.Estado4x4;
 import fiuba.algo3.modelo.EstadoAuto;
 import fiuba.algo3.modelo.EstadoMoto;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
+import fiuba.algo3.vista.VistaCronometro;
 import fiuba.algo3.vista.VistasMenu.*;
 
 import javax.swing.*;
@@ -18,8 +19,6 @@ public class gpsChallenge {
 
     public static void main(String[] argv) {
 
-        /** creo la partida **/
-        final Partida unaPartida = new Partida();
 
         /** Configuracion Ventana Principal **/
         final JFrame unMarco = new JFrame("GPS Challenge");
@@ -27,6 +26,9 @@ public class gpsChallenge {
         unMarco.setBounds(0, 0, screenSize.width, screenSize.height);
         unMarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         unMarco.setLayout(null);
+
+        /** creo la partida **/
+        final Partida unaPartida = new Partida(unMarco);
 
         /** BOTONES **/
 

@@ -25,6 +25,9 @@ public class Partida {
     private Piloto pilotin;
     private Estado carroceria;
 
+    VistaCronometro unaVistaCronometro;
+
+
     private ControlDeEventos controlDeEventos;
 
 
@@ -69,9 +72,11 @@ public class Partida {
     }
 
     /** CONSTRUCTOR **/
-    public Partida() {
+    public Partida(JFrame unMarco) {
 
         this.pilotin = new Piloto();
+        this.unaVistaCronometro = new VistaCronometro(this.pilotin.getCronometro());
+        unMarco.add(this.unaVistaCronometro.devolverTiempoLabel());
 
     }
 
@@ -119,7 +124,8 @@ public class Partida {
     /**!"**/
     private void comenzar() {
 
-        this.pilotin.getCronometro().iniciar();  /** iniciamos su cronometro **/
+        this.unaVistaCronometro.devolverTiempoLabel().setVisible(true);
+        this.pilotin.getCronometro().iniciar(this.unaVistaCronometro.dameHiloTiempo());  /** iniciamos su cronometro **/
         this.gameLoop.comenzarJuego();
 
     }
@@ -225,7 +231,7 @@ public class Partida {
 
         if (this.gameLoop.estaEnEjecucion()) {
 
-            this.pilotin.getCronometro().pausar();  // el cronometro es un tipo independiente; A no olvidarselo
+            this.pilotin.getCronometro().pausar(this.unaVistaCronometro.dameHiloTiempo());  // el cronometro es un tipo independiente; A no olvidarselo
             this.gameLoop.detenerJuego();
         }
 
@@ -235,7 +241,7 @@ public class Partida {
 
         if ( !(this.gameLoop.estaEnEjecucion()) ) {
 
-            this.pilotin.getCronometro().reanudar();  // el cronometro es un tipo independiente; A no olvidarselo
+            this.pilotin.getCronometro().reanudar(this.unaVistaCronometro.dameHiloTiempo());  // el cronometro es un tipo independiente; A no olvidarselo
             this.gameLoop.comenzarJuego();
         }
 
@@ -243,7 +249,7 @@ public class Partida {
 
     public void finalizar() {
 
-        this.pilotin.getCronometro().pausar();  /** el cronometro es un tipo independiente; A no olvidarselo **/
+        this.pilotin.getCronometro().pausar(this.unaVistaCronometro.dameHiloTiempo());  /** el cronometro es un tipo independiente; A no olvidarselo **/
         this.gameLoop.detenerJuego();
         System.out.println("la partida finalizo");
 

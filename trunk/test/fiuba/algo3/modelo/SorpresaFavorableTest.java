@@ -42,8 +42,8 @@ public class SorpresaFavorableTest {
         Sorpresa unaSorpresa = new SorpresaFavorable(unaPosicion);
 
         Piloto schumy = new Piloto();
-        schumy.getCronometro().iniciar();
-        schumy.getCronometro().pausar();
+        //schumy.getCronometro().iniciar();
+        //schumy.getCronometro().pausar();
 
         int tiempoPrueba = 500;
         int tiempoRestado = (int)(tiempoPrueba*0.2);
