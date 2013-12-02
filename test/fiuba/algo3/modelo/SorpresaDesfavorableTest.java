@@ -43,8 +43,8 @@ public class SorpresaDesfavorableTest {
         Sorpresa unaSorpresa = new SorpresaDesfavorable(unaPosicion);
 
         Piloto schumy = new Piloto();
-        schumy.getCronometro().iniciar();
-        schumy.getCronometro().pausar();
+        //schumy.getCronometro().iniciar();
+        //schumy.getCronometro().pausar();
 
         int tiempoPrueba = 500;
         int tiempoSumado = (int)(tiempoPrueba*0.25);
