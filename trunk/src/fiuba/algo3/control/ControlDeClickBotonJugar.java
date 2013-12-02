@@ -13,11 +13,13 @@ import java.util.ArrayList;
 
 public class ControlDeClickBotonJugar extends ControlDeClickBotonConPartida {
 
+    BotonAnimadoVehiculo botonAnimadoVehiculo;
 
-    public ControlDeClickBotonJugar(Partida unaPartida, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff){
+    public ControlDeClickBotonJugar(BotonAnimadoVehiculo botonAnimadoVehiculo, Partida unaPartida, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff){
 
         super(unaPartida,vistasOn,vistasOff);
-        this.partida = unaPartida;
+        this.botonAnimadoVehiculo = botonAnimadoVehiculo;
+
 
     }
 
@@ -29,6 +31,9 @@ public class ControlDeClickBotonJugar extends ControlDeClickBotonConPartida {
         this.partida.iniciar();
 
         this.actualizar();
+        botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
+
+
 
     }
 

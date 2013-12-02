@@ -118,8 +118,8 @@ public class gpsChallenge {
 
 
         /** botonAnimadoVehiculo **/
-        //BotonAnimadoVehiculo botonAnimadoVehiculo = new BotonAnimadoVehiculo(unaPartida,unMarco,30,150,369,80);
-        //botonAnimadoVehiculo.setVisible(false);
+        BotonAnimadoVehiculo botonAnimadoVehiculo = new BotonAnimadoVehiculo(unaPartida,unMarco,120,330,369,150);
+        botonAnimadoVehiculo.setVisible(false);
 
         /** botonGuargarPartida **/
         //Boton botonGuardarPartida = new BotonGuardar()
@@ -191,7 +191,7 @@ public class gpsChallenge {
 
         ArrayList<VistaMenu> stageJuegoEnAccion = new ArrayList<VistaMenu>();
         stageJuegoEnAccion.add(vistaCronometro);
-        //stageJuegoEnAccion.add(botonAnimadoVehiculo);
+        stageJuegoEnAccion.add(botonAnimadoVehiculo);
         stageJuegoEnAccion.add(botonVolverMenuPrincipalDesdeJuegoEnAccion);
 
 
@@ -213,7 +213,7 @@ public class gpsChallenge {
         boxEleccionMapa.getBoxDificil().addMouseListener(new ControlDeClickEleccionMapa(unaPartida /*,xmlMapa*/ , boxEleccionMapa));
 
         /** hasta aca llegue **/
-        botonJugar.addMouseListener(new ControlDeClickBotonJugar(unaPartida,stageJuegoEnAccion,stageEleccionMapaYVehiculo));
+        botonJugar.addMouseListener(new ControlDeClickBotonJugar(botonAnimadoVehiculo,unaPartida,stageJuegoEnAccion,stageEleccionMapaYVehiculo));
 
 
     }
