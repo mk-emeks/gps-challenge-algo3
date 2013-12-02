@@ -82,8 +82,6 @@ public class Partida {
     public Partida(JFrame unMarco) {
 
         this.pilotin = new Piloto();
-        //this.vistaCronometro = new VistaCronometro(this.pilotin.getCronometro());
-        //unMarco.add(this.vistaCronometro.devolverTiempoLabel());
 
     }
 
@@ -131,7 +129,6 @@ public class Partida {
     /**!"**/
     private void comenzar() {
 
-        //this.vistaCronometro.devolverTiempoLabel().setVisible(true);
         this.pilotin.getCronometro().iniciar(this.vistaCronometro.getThread());  /** iniciamos su cronometro **/
         this.gameLoop.comenzarJuego();
 
