@@ -219,7 +219,7 @@ public class gpsChallenge {
         botonJugar.addMouseListener(new ControlDeClickBotonJugar(unaPartida,stageJuegoEnAccion,stageEleccionMapaYVehiculo));
 
 
-        /** musica de fondo **/
+        /** musica de fondo, tiene que ir al final **/
         MusicaDeFondo.playMusic();
 
 
