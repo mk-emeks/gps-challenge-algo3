@@ -2,7 +2,7 @@ package fiuba.algo3.control;
 
 
 import fiuba.algo3.modelo.EstadoMoto;
-import fiuba.algo3.vista.VistasMenu.BotonAnimadoVehiculo;
+//import fiuba.algo3.vista.VistasMenu.BotonAnimadoVehiculo;
 import fiuba.algo3.vista.VistasMenu.VistaMenu;
 
 import javax.swing.*;
@@ -12,13 +12,20 @@ import java.util.ArrayList;
 
 
 public class ControlDeClickBotonJugar extends ControlDeClickBotonConPartida {
-
+    /**
     BotonAnimadoVehiculo botonAnimadoVehiculo;
 
     public ControlDeClickBotonJugar(BotonAnimadoVehiculo botonAnimadoVehiculo, Partida unaPartida, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff){
 
         super(unaPartida,vistasOn,vistasOff);
         this.botonAnimadoVehiculo = botonAnimadoVehiculo;
+
+
+    }  **/
+
+    public ControlDeClickBotonJugar(Partida unaPartida, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff){
+
+        super(unaPartida,vistasOn,vistasOff);
 
 
     }
@@ -31,7 +38,7 @@ public class ControlDeClickBotonJugar extends ControlDeClickBotonConPartida {
         this.partida.iniciar();
 
         this.actualizar();
-        botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
+       // botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
 
 
 
