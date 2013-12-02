@@ -5,7 +5,6 @@ import fiuba.algo3.modelo.Estado4x4;
 import fiuba.algo3.modelo.EstadoAuto;
 import fiuba.algo3.modelo.EstadoMoto;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
-import fiuba.algo3.vista.VistaCronometro;
 import fiuba.algo3.vista.VistasMenu.*;
 
 import javax.swing.*;
@@ -112,9 +111,15 @@ public class gpsChallenge {
 
         /** botonAnimadoCronometro **/
 
+        /** vistaCronometro **/
+        VistaCronometro vistaCronometro = new VistaCronometro(unaPartida.getPiloto().getCronometro(),unMarco,100,500,300,40);
+        unaPartida.asignarVistaAlCronometro(vistaCronometro);
+        vistaCronometro.setVisible(false);
+
+
         /** botonAnimadoVehiculo **/
-        BotonAnimadoVehiculo botonAnimadoVehiculo = new BotonAnimadoVehiculo(unaPartida,unMarco,30,150,369,80);
-        botonAnimadoVehiculo.setVisible(false);
+        //BotonAnimadoVehiculo botonAnimadoVehiculo = new BotonAnimadoVehiculo(unaPartida,unMarco,30,150,369,80);
+        //botonAnimadoVehiculo.setVisible(false);
 
         /** botonGuargarPartida **/
         //Boton botonGuardarPartida = new BotonGuardar()
@@ -185,7 +190,8 @@ public class gpsChallenge {
         stageEleccionMapaYVehiculo.add(botonVolver);
 
         ArrayList<VistaMenu> stageJuegoEnAccion = new ArrayList<VistaMenu>();
-        stageJuegoEnAccion.add(botonAnimadoVehiculo);
+        stageJuegoEnAccion.add(vistaCronometro);
+        //stageJuegoEnAccion.add(botonAnimadoVehiculo);
         stageJuegoEnAccion.add(botonVolverMenuPrincipalDesdeJuegoEnAccion);
 
 
