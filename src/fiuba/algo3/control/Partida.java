@@ -7,6 +7,7 @@ import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 import fiuba.algo3.vista.*;
+import fiuba.algo3.vista.VistasMenu.RepresentacionDePosicionable;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class Partida {
 
     public void crearPiloto (String nombreDelPiloto) {
 
-        this.pilotin = new Piloto(nombreDelPiloto);
+        this.pilotin.setNombre(nombreDelPiloto);
 
     }
 
@@ -68,6 +69,12 @@ public class Partida {
     }
 
     /** CONSTRUCTOR **/
+    public Partida() {
+
+        this.pilotin = new Piloto();
+
+    }
+
 
     /* public Partida( SuperficiePanel unaZonaDeJuego) {
 
@@ -75,6 +82,8 @@ public class Partida {
         this.gameLoop = new GameLoop(90,this.zonaDeJuego);
 
     } */
+
+    //public JPanel getZonaDeJUego(){ return this.zonaDeJuego;}
 
     //public void asignarZonaDeJuego(SuperficieDeDibujo unaZonaDeJuego) {
       public void asignarZonaDeJuego(JPanel unaZonaDeJuego) {
