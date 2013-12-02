@@ -4,6 +4,7 @@ package fiuba.algo3.control;
 import fiuba.algo3.modelo.Estado4x4;
 import fiuba.algo3.modelo.EstadoAuto;
 import fiuba.algo3.modelo.EstadoMoto;
+import fiuba.algo3.sonido.MusicaDeFondo;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.vista.VistasMenu.*;
 
@@ -17,6 +18,7 @@ public class gpsChallenge {
 
 
     public static void main(String[] argv) {
+
 
 
         /** Configuracion Ventana Principal **/
@@ -112,7 +114,7 @@ public class gpsChallenge {
         /** botonAnimadoCronometro **/
 
         /** vistaCronometro **/
-        VistaCronometro vistaCronometro = new VistaCronometro(unaPartida.getPiloto().getCronometro(),unMarco,100,500,300,40);
+            VistaCronometro vistaCronometro = new VistaCronometro(unaPartida.getPiloto().getCronometro(),unMarco,100,500,300,40);
         unaPartida.asignarVistaAlCronometro(vistaCronometro);
         vistaCronometro.setVisible(false);
 
@@ -215,6 +217,10 @@ public class gpsChallenge {
         /** hasta aca llegue **/
         //botonJugar.addMouseListener(new ControlDeClickBotonJugar(botonAnimadoVehiculo,unaPartida,stageJuegoEnAccion,stageEleccionMapaYVehiculo));
         botonJugar.addMouseListener(new ControlDeClickBotonJugar(unaPartida,stageJuegoEnAccion,stageEleccionMapaYVehiculo));
+
+
+        /** musica de fondo **/
+        MusicaDeFondo.playMusic();
 
 
     }
