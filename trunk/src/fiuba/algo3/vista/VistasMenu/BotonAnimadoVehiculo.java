@@ -1,3 +1,4 @@
+/** CLASE QUE SIRVE SI TENES LA PC DE LA NASA! :P
 package fiuba.algo3.vista.VistasMenu;
 
 
@@ -8,7 +9,7 @@ import fiuba.algo3.modelo.EstadoMoto;
 
 import javax.swing.*;
 
-/** Esta clase se usa creandola y comenzando animacion, su set visible solo la deja invisible **/
+//Esta clase se usa creandola y comenzando animacion, su set visible solo la deja invisible
 
 public class BotonAnimadoVehiculo extends VistaMenu {
 
@@ -23,10 +24,10 @@ public class BotonAnimadoVehiculo extends VistaMenu {
     public BotonAnimadoVehiculo(Partida unaPartida ,JFrame unMarco, int posicionX, int posicionY, int ancho, int largo) {
 
         this.partida = unaPartida;
-        /*foto = new JLabel();
+        //foto = new JLabel();
 
-        foto.setBounds(posicionX, posicionY, ancho, largo);
-        unMarco.add(foto);*/
+        //foto.setBounds(posicionX, posicionY, ancho, largo);
+        //unMarco.add(foto);
 
         fotoAuto = new JLabel();
         fotoAuto.setBounds(posicionX,posicionY,ancho,largo);
@@ -85,7 +86,7 @@ public class BotonAnimadoVehiculo extends VistaMenu {
     };
 
 
-    /** mintiendole al usuario **/
+   //mintiendole al usuario
     public void setVisible ( boolean visibilidad) {
 
         fotoAuto.setVisible(false);
@@ -94,13 +95,13 @@ public class BotonAnimadoVehiculo extends VistaMenu {
         //this.foto.setVisible(visibilidad);
     }
 
-    /** no sirve **/
+    //no sirve
     public boolean isVisible() {
 
         return false;
         //return this.foto.isVisible();
     }
-    /** fin **/
+    // fin
 
     public void comenzarAnimacion() {
 
@@ -110,5 +111,5 @@ public class BotonAnimadoVehiculo extends VistaMenu {
 
 
 
-}
+} **/
 
