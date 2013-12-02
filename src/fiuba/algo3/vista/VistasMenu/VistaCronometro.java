@@ -1,4 +1,4 @@
-package fiuba.algo3.vista;
+package fiuba.algo3.vista.VistasMenu;
 
 
 import fiuba.algo3.modelo.Cronometro;
@@ -6,7 +6,7 @@ import fiuba.algo3.modelo.Cronometro;
 import javax.swing.*;
 import java.awt.*;
 
-public class VistaCronometro {
+public class VistaCronometro extends VistaMenu {
 
     public Cronometro unCronometro = new Cronometro();
     JLabel vistaTiempo;
@@ -24,23 +24,31 @@ public class VistaCronometro {
         }
     };
 
-    public VistaCronometro(Cronometro cronometroPiloto) {
+    public VistaCronometro(Cronometro cronometroPiloto , JFrame unMarco, int posicionX, int posicionY, int ancho, int largo) {
 
         this.unCronometro= cronometroPiloto;
         vistaTiempo = new JLabel("00:00:00");
         vistaTiempo.setFont(new Font(Font.SERIF, Font.BOLD, 50));
         vistaTiempo.setForeground(new Color(197, 104, 13));
-        vistaTiempo.setBounds(100,500,300,40);
-        vistaTiempo.setVisible(false);
+        vistaTiempo.setBounds(posicionX,posicionY,ancho,largo);
+        //vistaTiempo.setBounds(100,500,300,40);
+        unMarco.add(vistaTiempo);
 
 
     }
 
-    public Thread dameHiloTiempo() {
+    public Thread getThread() {
         return hiloTiempo;
     }
 
-    public  JLabel devolverTiempoLabel() {
-        return vistaTiempo;
+    public void setVisible(boolean visibilidad) {
+
+        this.vistaTiempo.setVisible(visibilidad);
+
+    }
+
+    public boolean isVisible() {
+
+        return this.vistaTiempo.isVisible();
     }
 }

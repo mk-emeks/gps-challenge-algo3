@@ -8,6 +8,7 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 import fiuba.algo3.vista.*;
 import fiuba.algo3.vista.VistasMenu.RepresentacionDePosicionable;
+import fiuba.algo3.vista.VistasMenu.VistaCronometro;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class Partida {
     private Piloto pilotin;
     private Estado carroceria;
 
-    VistaCronometro unaVistaCronometro;
+    VistaCronometro vistaCronometro;
 
 
     private ControlDeEventos controlDeEventos;
@@ -71,12 +72,18 @@ public class Partida {
 
     }
 
+    public void asignarVistaAlCronometro( VistaCronometro unaVistaCronometro) {
+
+        this.vistaCronometro = unaVistaCronometro;
+
+    }
+
     /** CONSTRUCTOR **/
     public Partida(JFrame unMarco) {
 
         this.pilotin = new Piloto();
-        this.unaVistaCronometro = new VistaCronometro(this.pilotin.getCronometro());
-        unMarco.add(this.unaVistaCronometro.devolverTiempoLabel());
+        //this.vistaCronometro = new VistaCronometro(this.pilotin.getCronometro());
+        //unMarco.add(this.vistaCronometro.devolverTiempoLabel());
 
     }
 
@@ -124,8 +131,8 @@ public class Partida {
     /**!"**/
     private void comenzar() {
 
-        this.unaVistaCronometro.devolverTiempoLabel().setVisible(true);
-        this.pilotin.getCronometro().iniciar(this.unaVistaCronometro.dameHiloTiempo());  /** iniciamos su cronometro **/
+        //this.vistaCronometro.devolverTiempoLabel().setVisible(true);
+        this.pilotin.getCronometro().iniciar(this.vistaCronometro.getThread());  /** iniciamos su cronometro **/
         this.gameLoop.comenzarJuego();
 
     }
@@ -231,7 +238,7 @@ public class Partida {
 
         if (this.gameLoop.estaEnEjecucion()) {
 
-            this.pilotin.getCronometro().pausar(this.unaVistaCronometro.dameHiloTiempo());  // el cronometro es un tipo independiente; A no olvidarselo
+            this.pilotin.getCronometro().pausar(this.vistaCronometro.getThread());  // el cronometro es un tipo independiente; A no olvidarselo
             this.gameLoop.detenerJuego();
         }
 
@@ -241,7 +248,7 @@ public class Partida {
 
         if ( !(this.gameLoop.estaEnEjecucion()) ) {
 
-            this.pilotin.getCronometro().reanudar(this.unaVistaCronometro.dameHiloTiempo());  // el cronometro es un tipo independiente; A no olvidarselo
+            this.pilotin.getCronometro().reanudar(this.vistaCronometro.getThread());  // el cronometro es un tipo independiente; A no olvidarselo
             this.gameLoop.comenzarJuego();
         }
 
@@ -249,7 +256,7 @@ public class Partida {
 
     public void finalizar() {
 
-        this.pilotin.getCronometro().pausar(this.unaVistaCronometro.dameHiloTiempo());  /** el cronometro es un tipo independiente; A no olvidarselo **/
+        this.pilotin.getCronometro().pausar(this.vistaCronometro.getThread());  /** el cronometro es un tipo independiente; A no olvidarselo **/
         this.gameLoop.detenerJuego();
         System.out.println("la partida finalizo");
 
