@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 
 public class ControlDeClickBotonJugar extends ControlDeClickBotonConPartida {
+
     /**
     BotonAnimadoVehiculo botonAnimadoVehiculo;
 

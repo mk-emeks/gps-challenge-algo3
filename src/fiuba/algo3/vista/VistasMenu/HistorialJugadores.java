@@ -1,4 +1,4 @@
-package fiuba.algo3.vista.VistasMenu;
+/*package fiuba.algo3.vista.VistasMenu;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -120,4 +120,4 @@ public class HistorialJugadores extends JFrame {
         public void mouseReleased(MouseEvent arg0) { }
     }
 
-}
+} */

@@ -2,7 +2,6 @@ package fiuba.algo3.vista.VistasMenu;
 
 import javax.swing.*;
 
-/** son extremadamente parecidos los dos vistaBox..pero a esta altura **/
 
 public class BoxEleccionMapa extends VistaMenu {
 

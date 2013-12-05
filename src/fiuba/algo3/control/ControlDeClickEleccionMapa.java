@@ -7,9 +7,7 @@ import fiuba.algo3.vista.VistasMenu.BoxEleccionMapa;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-
 /** la idea es asignar un control a cada box que se pasa por paramentro, pero con Xml de mapas diferentes **/
-
 
 public class ControlDeClickEleccionMapa implements MouseListener {
 
