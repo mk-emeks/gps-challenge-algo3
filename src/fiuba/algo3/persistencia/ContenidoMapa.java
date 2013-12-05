@@ -27,33 +27,41 @@ public class ContenidoMapa implements Serializable {
     }
 
 
+    public ArrayList<Posicion> getPosicionesValidas() {
+        return this.posicionesValidas;
+    }
+
+
     /** Por ser Serializable **/
 
-    public ContenidoMapa () {}
+    public ContenidoMapa () {
+
+        this.posicionesValidas = new ArrayList<Posicion>(); // para que al serializar exista tal lista
+    }
 
 
     public ContenidoMapa ( Element nodo ) {
+
         this.posicionesValidas = new ArrayList<Posicion>();
+
         List<Element> hijos = nodo.getChildren();
         Iterator<Element> atributos = hijos.iterator();
+
         while (atributos.hasNext()) {
-           Element atributo = atributos.next();
+
+            Element atributo = atributos.next();
+
             if (atributo.getName() == "Posicion") {
+
                 Posicion unaPos = new Posicion(atributo);
                 posicionesValidas.add(unaPos);
+
             } else if (atributo.getName() == "Obstaculo") {
                 //TO-DO
             } else if (atributo.getName() == "Sorpresa") {
                 //TO-DO
             }
         }
-        /*int cantidadDePosiciones = nodo.getContentSize();
-        for ( int i= 0 ; i< cantidadDePosiciones ; i++) {
-
-            Posicion poscionRecuperda = new Posicion((Element)nodo.getContent(i));
-            posicionesValidas.add(poscionRecuperda);
-
-        }*/
 
     }
 
@@ -62,6 +70,7 @@ public class ContenidoMapa implements Serializable {
         Element xmlNode = new Element("Mapa");
 
         Iterator iterator = posicionesValidas.iterator();
+
         while (iterator.hasNext()){
 
             Posicion posicionAgregada = (Posicion) iterator.next();

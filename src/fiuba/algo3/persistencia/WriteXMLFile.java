@@ -1,19 +1,13 @@
 package fiuba.algo3.persistencia;
 
 
-//import fiuba.algo3.modelo.Posicion;
+
 import org.jdom2.Document;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import org.xml.sax.SAXException;
 
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class WriteXMLFile {
 
@@ -24,6 +18,7 @@ public class WriteXMLFile {
         try {
             mapa.agregar(new Posicion(1,2));
             mapa.agregar(new Posicion(3,4));
+            mapa.agregar(new Posicion(3,2));
 
         } catch (Exception e) {}
 
