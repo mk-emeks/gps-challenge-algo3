@@ -31,7 +31,6 @@ public class VistaCronometro extends VistaMenu {
         vistaTiempo.setFont(new Font(Font.SERIF, Font.BOLD, 50));
         vistaTiempo.setForeground(new Color(197, 104, 13));
         vistaTiempo.setBounds(posicionX,posicionY,ancho,largo);
-        //vistaTiempo.setBounds(100,500,300,40);
         unMarco.add(vistaTiempo);
 
 

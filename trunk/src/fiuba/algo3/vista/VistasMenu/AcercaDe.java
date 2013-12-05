@@ -1,4 +1,4 @@
-package fiuba.algo3.vista.VistasMenu;
+/*package fiuba.algo3.vista.VistasMenu;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -49,4 +49,4 @@ public class AcercaDe extends JDialog {
         setModal(true);
         setResizable(false);
     }
-}
+}  */

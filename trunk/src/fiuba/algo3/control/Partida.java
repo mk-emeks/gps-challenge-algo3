@@ -7,7 +7,7 @@ import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 import fiuba.algo3.vista.*;
-import fiuba.algo3.vista.VistasMenu.RepresentacionDePosicionable;
+import fiuba.algo3.vista.RepresentacionDePosicionable;
 import fiuba.algo3.vista.VistasMenu.VistaCronometro;
 
 import javax.swing.*;
@@ -20,6 +20,7 @@ public class Partida {
 
 
     private GameLoop gameLoop;
+
     //private SuperficieDeDibujo zonaDeJuego;
     private JPanel zonaDeJuego;
 
@@ -84,7 +85,6 @@ public class Partida {
         this.pilotin = new Piloto();
 
     }
-
 
     /* public Partida( SuperficiePanel unaZonaDeJuego) {
 

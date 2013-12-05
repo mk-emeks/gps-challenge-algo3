@@ -15,10 +15,7 @@ import java.util.ArrayList;
 
 public class gpsChallenge {
 
-
-
     public static void main(String[] argv) {
-
 
 
         /** Configuracion Ventana Principal **/
@@ -153,6 +150,7 @@ public class gpsChallenge {
         unMarco.setVisible(true);
 
         /** VAMOS A JUGAR**/
+        // viejo, solo de referencia del orden de lo que se deberia hacer.
 
         //Mapa.limpiar();
         //Nivel nivel = new Nivel();
