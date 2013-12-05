@@ -10,6 +10,7 @@ import org.jdom2.input.SAXBuilder;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,6 +22,17 @@ public class ReaderXML {
         Document doc = builder.build(new FileInputStream("mapa.xml"));
         Element raiz = doc.getRootElement();
         ContenidoMapa mapa = new ContenidoMapa(raiz);
+
+
+        /** para que se vea por consola que se pudo levantar **/
+        ArrayList<Posicion> listaPosicionesValidas = mapa.getPosicionesValidas();
+        Iterator<Posicion> iterator = listaPosicionesValidas.iterator();
+
+        while (iterator.hasNext()) {
+
+            Posicion posicionValida = iterator.next();
+            System.out.println("coordX" + posicionValida.getPosicionX() + " " + "coordY" + posicionValida.getPosicionY());
+        }
 
 
     }
