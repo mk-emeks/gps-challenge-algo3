@@ -1,6 +1,6 @@
+
+
 package fiuba.algo3.masterOfPuppets;
-
-
 
 import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
@@ -71,22 +71,6 @@ public class GameLoop implements Runnable {
         this.intervaloSimulacion = intervaloSimulacion;
     }
 
-    /*public void comenzarJuego(int cantidadDeCiclos){
-        int contador = 0;
-        estaEnEjecucion = true;
-        try{
-            while(contador < cantidadDeCiclos && estaEnEjecucion){
-                simular();
-                dibujar();
-                Thread.sleep(intervaloSimulacion);
-                contador++;
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    } */
-
     /** Objetos vivos y Dibujables del gameLoop **/
 
     private List<ObjetoVivo> objetosVivos;
@@ -140,7 +124,6 @@ public class GameLoop implements Runnable {
 
     public void setSuperficieDeDibujo(SuperficieDeDibujo superficieDeDibujo) {
         this.superficieDeDibujo = superficieDeDibujo;
-        //this.superficiePanel = (SuperficiePanel)superficieDeDibujo; /**!**/
     }
 
 }
