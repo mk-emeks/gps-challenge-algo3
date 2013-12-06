@@ -1,10 +1,7 @@
 package fiuba.algo3.control;
 
 /** lo que necesita saber del modelo **/
-import fiuba.algo3.modelo.Mapa;
-import fiuba.algo3.modelo.Aplicable;
-import fiuba.algo3.modelo.Piloto;
-import fiuba.algo3.modelo.Vehiculo;
+import fiuba.algo3.modelo.*;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 import java.util.ArrayList;
 import java.util.ListIterator;
@@ -33,6 +30,8 @@ public class ControlDeEventos implements ObjetoVivo {
     private void actualizarAplicables() {
 
         Piloto pilotoAVerificar = this.partidaControlada.getPiloto();
+
+        //this.borrarAplicablesTemporales(); //actualizamos la lista  //TERMINAR!!
         ListIterator<Aplicable> iterador = aplicables.listIterator();
 
         // eficiencia: break, si suponemos que no hay 2 aplicables en la misma posicion
@@ -44,6 +43,31 @@ public class ControlDeEventos implements ObjetoVivo {
         }
 
     }
+
+    private void borrarAplicablesTemporales() {
+
+        ListIterator<Aplicable> iterador = aplicables.listIterator();
+
+        // eficiencia: break, si suponemos que no hay 2 aplicables en la misma posicion
+        while (iterador.hasNext()) {
+
+            /** fuck necesito diferencia aplicable de aplicable temporales :S **/
+            // RTTI AL PALO GUACHO!
+            //if ( iterador.getClass().AplicableTemporal) {
+
+                Aplicable aplicable = iterador.next();
+                AplicableTemporal aplicableTemporal = (AplicableTemporal)aplicable;
+
+                if (aplicableTemporal.aplicado()) {
+
+                    this.aplicables.remove(aplicable);
+                }
+
+        }
+
+    }
+
+
 
     public void actualizar() {
 

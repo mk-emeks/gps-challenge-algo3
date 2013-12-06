@@ -10,6 +10,7 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 public class RepresentacionDePosicionable implements ObjetoPosicionable {
 
     private Posicion posicion;
+    private static final int factorDeEscala = 40;
 
     public RepresentacionDePosicionable(Posicion unaPosicion) {
 
@@ -19,13 +20,18 @@ public class RepresentacionDePosicionable implements ObjetoPosicionable {
 
     public int getX() {
 
-        return (40*this.posicion.getPosicionX());
+        return (factorDeEscala*this.posicion.getPosicionX());
 
     }
 
     public int getY() {
 
-        return (40*this.posicion.getPosicionY());
+        return (factorDeEscala*this.posicion.getPosicionY());
 
+    }
+
+    public int getFactorDeEscala () {
+
+        return this.factorDeEscala;
     }
 }

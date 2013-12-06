@@ -31,6 +31,7 @@ public class Partida {
 
 
     private ControlDeEventos controlDeEventos;
+    private ControlDeSombras controlDeSombras;
 
 
     public void crearPiloto (String nombreDelPiloto) {
@@ -80,9 +81,10 @@ public class Partida {
     }
 
     /** CONSTRUCTOR **/
-    public Partida(JFrame unMarco) {
+    public Partida() {
 
         this.pilotin = new Piloto();
+        this.controlDeSombras = new ControlDeSombras(this);
 
     }
 
@@ -108,7 +110,7 @@ public class Partida {
 
         this.gameLoop = new GameLoop();
         this.gameLoop.setSuperficieDeDibujo((SuperficieDeDibujo)this.zonaDeJuego);
-        this.gameLoop.setIntervaloSimulacion(90);
+        this.gameLoop.setIntervaloSimulacion(150);
 
         this.cargarGameLoop();
         this.comenzar();
@@ -138,12 +140,30 @@ public class Partida {
 
     private void agregarVistasAlGameLoop() {
 
+
+
         this.agregarVistasDeCallesAlGameLoop();
         this.agregarVistaInicioAlGameLoop();
         this.agregarVistaLlegadaAlGameLoop();
         this.agregarVistasDeAplicablesAlGameLoop();
         this.agregarVistaAutoAlGameLoop();
+        this.agregarVistasDeLasSombrasAlGameLoop();
 
+
+    }
+
+    private void agregarVistasDeLasSombrasAlGameLoop() {
+
+        ArrayList<Posicion> posicionDeLasSombras = Mapa.getMapa().getPosicionesValidas();
+        Iterator<Posicion> iterador = posicionDeLasSombras.iterator();
+
+        while (iterador.hasNext()) {
+
+            ObjetoPosicionable unaSombra = new RepresentacionDePosicionable(iterador.next());
+            ObjetoDibujable unaVistaSombra = new VistaSombra(unaSombra);
+            this.gameLoop.agregar(unaVistaSombra);
+            this.controlDeSombras.getNeblina().agregar((VistaSombra) unaVistaSombra);
+        }
 
     }
 
@@ -216,8 +236,12 @@ public class Partida {
 
         this.gameLoop.agregar(this.pilotin);
 
+        this.gameLoop.agregar(this.controlDeSombras);
+
         this.controlDeEventos = new ControlDeEventos(this);
         this.gameLoop.agregar(this.controlDeEventos);
+
+
 
     }
 

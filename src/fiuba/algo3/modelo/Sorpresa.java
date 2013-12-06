@@ -1,12 +1,14 @@
 package fiuba.algo3.modelo;
 
 
-public abstract class Sorpresa implements Aplicable {
+public abstract class Sorpresa implements AplicableTemporal {
 
+    protected boolean aplicado;
     private Posicion posicion;
 
     public Sorpresa(Posicion unaPosicion) {
 
+        this.aplicado = false;
         this.posicion = unaPosicion;
     }
 
@@ -29,6 +31,13 @@ public abstract class Sorpresa implements Aplicable {
 
     public void setPosicion(Posicion unaPosicion) {
         this.posicion = unaPosicion;
+    }
+
+
+    public boolean aplicado() {
+
+      return  this.aplicado;
+
     }
 
 }
