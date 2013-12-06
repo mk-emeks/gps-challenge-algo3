@@ -79,16 +79,18 @@ public class Vehiculo implements Movible , ObjetoPosicionable {
 
     /** Por implementar ObjetoPosicionable **/
 
+    private static final int factorDeEscala = 40;
+
     public int getX() {
 
-        return (40*this.posicion.getPosicionX());
+        return (factorDeEscala*this.posicion.getPosicionX());
         //return (this.posicion.getPosicionX());
 
     }
 
     public int getY() {
 
-        return (40*this.posicion.getPosicionY());
+        return (factorDeEscala*this.posicion.getPosicionY());
         //return (this.posicion.getPosicionY());
 
     }

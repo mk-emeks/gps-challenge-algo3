@@ -19,6 +19,7 @@ public class SorpresaDesfavorable extends SorpresaCambioDeTiempo {
 
         if ( vehiculoDelCandidatoASerAplicar.getPosicion().equals(this.getPosicion()) )
         {
+            this.aplicado = true;
             piloto.interactuarCon(this);
         }
 

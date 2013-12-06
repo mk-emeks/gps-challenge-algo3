@@ -26,7 +26,7 @@ public class gpsChallenge {
         unMarco.setLayout(null);
 
         /** creo la partida **/
-        final Partida unaPartida = new Partida(unMarco);
+        final Partida unaPartida = new Partida();
 
         /** BOTONES **/
 
@@ -135,7 +135,8 @@ public class gpsChallenge {
         /** zona de juego **/
         JPanel zonaDeJuego = new SuperficiePanel();
         zonaDeJuego.setBounds(440,50,870, 620); /** lo que mejor le queda? **/
-        zonaDeJuego.setBackground(new Color(127, 197, 110));
+        zonaDeJuego.setBackground(Color.BLACK);
+        //zonaDeJuego.setBackground(new Color(127, 197, 110));
         // la agregamos
         unMarco.add(zonaDeJuego);
         unaPartida.asignarZonaDeJuego(zonaDeJuego);

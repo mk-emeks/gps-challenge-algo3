@@ -47,7 +47,9 @@ public abstract class Obstaculo implements Aplicable {
 
     protected void aplicar (Piloto piloto) {
 
+
         if (this.turnosPenalizadosMomentaneos == -1) {
+            // entrado en este if, significa que hay que "refrescar" el obstaculo
             this.turnosPenalizadosMomentaneos = this.turnosPenalizado;
 
         }
