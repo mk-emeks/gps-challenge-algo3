@@ -2,6 +2,7 @@
 
 package fiuba.algo3.masterOfPuppets;
 
+
 import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
@@ -95,12 +96,19 @@ public class GameLoop implements Runnable {
 
     private void dibujar() {
 
+        for (int i = 0 ; i < this.dibujables.size() ; i++) {
+
+            this.dibujables.get(i).dibujar(this.superficieDeDibujo);
+
+        }
+        this.superficieDeDibujo.actualizar();
+        /*
         Iterator<ObjetoDibujable> iterador = dibujables.iterator();
         while(iterador.hasNext()){
             ObjetoDibujable dibujable = iterador.next();
             dibujable.dibujar(this.superficieDeDibujo);
         }
-        this.superficieDeDibujo.actualizar();
+        this.superficieDeDibujo.actualizar();*/
     }
 
     /**

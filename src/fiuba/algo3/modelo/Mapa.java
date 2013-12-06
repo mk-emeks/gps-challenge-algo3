@@ -11,6 +11,7 @@ public class Mapa {
     private Posicion inicio; /** new  -> ESTA SIN TESTIAR, PERO ES LO MISMO QUE LA LLEGADA **/
     private Posicion llegada;
     private ArrayList<Aplicable> aplicables;
+    private ArrayList<AplicableTemporal> aplicablesTemporales;
 
 
     private static Mapa elMapa;
@@ -18,6 +19,7 @@ public class Mapa {
     private Mapa() {
         this.posicionesValidas = new ArrayList<Posicion>();
         this.aplicables = new ArrayList<Aplicable>();
+        this.aplicablesTemporales = new ArrayList<AplicableTemporal>();
     }
 
     public static Mapa getMapa() {
@@ -90,6 +92,21 @@ public class Mapa {
         } else { throw new LaPosicionNoExisteEnElMapaException(); }
     }
 
+    public void ubicar(AplicableTemporal aplicableTemporal) throws LaPosicionNoExisteEnElMapaException {
+
+        if ( this.existe(aplicableTemporal.getPosicion()) ) {
+
+            if ( !this.estaUbicado(aplicableTemporal) ) {
+
+                this.aplicablesTemporales.add(aplicableTemporal);
+            }
+            /** si existe la posicion donde se quiere ubicar el posicionable, y el mismo ya fue agregado a
+             * la lista de contenidos no se tiene que hacer nada mas **/
+
+        } else { throw new LaPosicionNoExisteEnElMapaException(); }
+    }
+
+
 
     public Posicion getLlegada() {
         return this.llegada;
@@ -103,6 +120,10 @@ public class Mapa {
     /** new **/
     public ArrayList<Aplicable> getAplicables() {
         return this.aplicables;
+    }
+
+    public ArrayList<AplicableTemporal> getAplicablesTemporales() {
+        return this.aplicablesTemporales;
     }
 
     public ArrayList<Posicion> getPosicionesValidas() {
