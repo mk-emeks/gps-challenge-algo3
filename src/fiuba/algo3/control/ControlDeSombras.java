@@ -79,11 +79,41 @@ public class ControlDeSombras implements ObjetoVivo {
 
     }
 
+    private void esclarecerAlrededor(Posicion unaPosicion) {
+
+        try {
+
+            this.neblina.getVistaSombra(unaPosicion).quitarNeblina();
+
+        } catch (Exception e) {/*nunca va ser invalida, ya que entro en el if*/}
+
+        this.esclarecerVision(unaPosicion,new DireccionArriba());
+        this.esclarecerVision(unaPosicion,new DireccionAbajo());
+        this.esclarecerVision(unaPosicion,new DireccionDerecha());
+        this.esclarecerVision(unaPosicion,new DireccionIzquierda());
+    }
+
+    private void esclareceInicio() {
+
+        Posicion inicio = Mapa.getMapa().getInicio();
+        this.esclarecerAlrededor(inicio);
+
+    }
+
+    private void esclarecerLLegada() {
+
+        Posicion llegada = Mapa.getMapa().getLlegada();
+        this.esclarecerAlrededor(llegada);
+
+    }
+
+
     public void actualizar() {
 
         this.neblina.nublar();
+        this.esclareceInicio();
+        this.esclarecerLLegada();
         this.esclarecerVisionDelPiloto();
-
 
     }
 
