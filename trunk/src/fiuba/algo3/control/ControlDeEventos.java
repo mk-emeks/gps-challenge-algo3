@@ -1,22 +1,25 @@
 package fiuba.algo3.control;
 
 /** lo que necesita saber del modelo **/
+import fiuba.algo3.masterOfPuppets.GameLoop;
 import fiuba.algo3.modelo.*;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 import fiuba.algo3.vista.VistasMenu.VistaFinalizacion;
 
 import java.util.ArrayList;
-import java.util.ListIterator;
+import java.util.Iterator;
 
 public class ControlDeEventos implements ObjetoVivo {
 
     private ArrayList<Aplicable> aplicables;
+    private ArrayList<AplicableTemporal> aplicablesTemporables;
     private Partida partidaControlada;
 
     public ControlDeEventos(Partida unaPartida) {
 
         this.partidaControlada = unaPartida;
         this.aplicables = Mapa.getMapa().getAplicables();
+        this.aplicablesTemporables = Mapa.getMapa().getAplicablesTemporales();
 
     }
 
@@ -34,14 +37,23 @@ public class ControlDeEventos implements ObjetoVivo {
 
         Piloto pilotoAVerificar = this.partidaControlada.getPiloto();
 
-        //this.borrarAplicablesTemporales(); //actualizamos la lista  //TERMINAR!!
-        ListIterator<Aplicable> iterador = aplicables.listIterator();
-
         // eficiencia: break, si suponemos que no hay 2 aplicables en la misma posicion
-        while (iterador.hasNext()) {
 
-            Aplicable aplicable = iterador.next();
+        Iterator<Aplicable> aplicapleIterador = this.aplicables.iterator();
+        while (aplicapleIterador.hasNext()) {
+
+            Aplicable aplicable = aplicapleIterador.next();
             aplicable.actualizar(pilotoAVerificar);
+
+        }
+
+        this.borrarAplicablesTemporales(); //actualizamos la lista
+
+        Iterator<AplicableTemporal> aplicableTemporalIterador = this.aplicablesTemporables.iterator();
+        while (aplicableTemporalIterador.hasNext()) {
+
+            AplicableTemporal aplicableTemporal = aplicableTemporalIterador.next();
+            aplicableTemporal.actualizar(pilotoAVerificar);
 
         }
 
@@ -49,22 +61,13 @@ public class ControlDeEventos implements ObjetoVivo {
 
     private void borrarAplicablesTemporales() {
 
-        ListIterator<Aplicable> iterador = aplicables.listIterator();
+        /** para remover los iteradores son una verga **/
+        for (int i = 0 ; i<this.aplicablesTemporables.size() ; i++) {
 
-        // eficiencia: break, si suponemos que no hay 2 aplicables en la misma posicion
-        while (iterador.hasNext()) {
+            if (aplicablesTemporables.get(i).aplicado()) {
 
-            /** fuck necesito diferencia aplicable de aplicable temporales :S **/
-            // RTTI AL PALO GUACHO!
-            //if ( iterador.getClass().AplicableTemporal) {
-
-                Aplicable aplicable = iterador.next();
-                AplicableTemporal aplicableTemporal = (AplicableTemporal)aplicable;
-
-                if (aplicableTemporal.aplicado()) {
-
-                    this.aplicables.remove(aplicable);
-                }
+                aplicablesTemporables.remove(i); //lo sacamos del mapa
+            }
 
         }
 

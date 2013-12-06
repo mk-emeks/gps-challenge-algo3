@@ -2,7 +2,6 @@ package fiuba.algo3.control;
 
 
 import fiuba.algo3.modelo.*;
-import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 import java.util.Iterator;
 
 
@@ -11,17 +10,17 @@ import java.util.Iterator;
  *  Luke: noooooouuuu!
  */
 
-public class ControlDeSombras implements ObjetoVivo {
+
+public class ControlDeSombras {
 
 
-    private Partida partidaControlada;
+    private Piloto piloto;  /** solo usa el vehiculo del piloto, pero quien sabe en un futuro **/
     private Neblina neblina;
 
-    public ControlDeSombras(Partida unaPartida) {
+    public ControlDeSombras(Piloto unPiloto) {
 
-        this.partidaControlada = unaPartida;
+        this.piloto = unPiloto;
         this.neblina = new Neblina();
-
 
     }
 
@@ -34,7 +33,7 @@ public class ControlDeSombras implements ObjetoVivo {
 
 
         Iterator<Posicion> iterator = this.neblina.getPosicionesDeLasSombras().iterator();
-        Posicion posicionVehiculo = this.partidaControlada.getPiloto().getVehiculo().getPosicion();
+        Posicion posicionVehiculo = this.piloto.getVehiculo().getPosicion();
 
 
         while (iterator.hasNext()) {
@@ -74,7 +73,7 @@ public class ControlDeSombras implements ObjetoVivo {
             this.neblina.getVistaSombra(posicionSumada.sumar(posicionDeLaDireccion)).quitarNeblina();
 
         } catch (Exception e) {
-            System.out.println("no hay rango de vision en esta direccion");
+            //System.out.println("no hay rango de vision en esta direccion");
         }
 
     }
@@ -107,7 +106,6 @@ public class ControlDeSombras implements ObjetoVivo {
 
     }
 
-
     public void actualizar() {
 
         this.neblina.nublar();
@@ -116,13 +114,5 @@ public class ControlDeSombras implements ObjetoVivo {
         this.esclarecerVisionDelPiloto();
 
     }
-
-    /** por implementar ObjetoVivo **/
-    public void vivir() {
-
-        this.actualizar();
-
-    }
-
 
 }

@@ -28,6 +28,13 @@ public class Neblina {
 
     }
 
+    public void sacarTodasLasSombras() {
+
+        this.vistaSombras.clear();
+        this.posicionesDeLasSombras.clear();
+
+    }
+
     public void agregar ( VistaSombra unaVistaSombra ) {
 
         this.vistaSombras.add(unaVistaSombra);

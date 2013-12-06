@@ -34,8 +34,9 @@ public class EditorMapa {
         /**Sorpresas**/
         try{
             unMapa.ubicar(new SorpresaDesfavorable(new Posicion(11,4)));
-            unMapa.ubicar(new SorpresaFavorable((new Posicion(2,11))));
+            unMapa.ubicar(new SorpresaFavorable(new Posicion(2,11)));
             unMapa.ubicar(new SorpresaCambioDeVehiculo((new Posicion(11,12))));
+
         } catch (Exception e) { System.out.println("no se pudo ubicar sorpresas");}
 
     }

@@ -31,7 +31,7 @@ public class Partida {
 
 
     private ControlDeEventos controlDeEventos;
-    private ControlDeSombras controlDeSombras;
+    private ControlDeVistas controlDeVistas;
 
 
     public void crearPiloto (String nombreDelPiloto) {
@@ -45,6 +45,13 @@ public class Partida {
         return this.pilotin;
 
     }
+
+    /** no se puede devolver : StackOverFlowError**/
+    /*public GameLoop getGameLoop() {
+
+        return this.getGameLoop();
+
+    }*/
 
     public void cargarNivel (Nivel unNivel) {
 
@@ -83,8 +90,10 @@ public class Partida {
     /** CONSTRUCTOR **/
     public Partida() {
 
+        /** importante crearlo antes de usarlos **/
+        this.gameLoop = new GameLoop();
         this.pilotin = new Piloto();
-        this.controlDeSombras = new ControlDeSombras(this);
+        this.controlDeVistas = new ControlDeVistas(this.gameLoop,this.pilotin);
 
     }
 
@@ -108,14 +117,11 @@ public class Partida {
     /** PRE: Se deben haber invocado los metodos crearPiloto, asignarNivel y asignarCarroceriaDelVehiculo y asignarZonaDeJuego **/
     public void iniciar() {
 
-        this.gameLoop = new GameLoop();
         this.gameLoop.setSuperficieDeDibujo((SuperficieDeDibujo)this.zonaDeJuego);
-        this.gameLoop.setIntervaloSimulacion(150);
+        this.gameLoop.setIntervaloSimulacion(25);
 
         this.cargarGameLoop();
         this.comenzar();
-
-
 
     }
 
@@ -123,12 +129,9 @@ public class Partida {
 
     private void cargarGameLoop() {
 
-        this.agregarVistasAlGameLoop();
         this.agregarObjetosVivosAlGameLoop();
-
     }
 
-    /**!"**/
     private void comenzar() {
 
         this.pilotin.getCronometro().iniciar(this.vistaCronometro.getThread());  /** iniciamos su cronometro **/
@@ -136,122 +139,16 @@ public class Partida {
 
     }
 
-    /** submetodos private (son todos para cargarGameloop) **/
-
-    private void agregarVistasAlGameLoop() {
-
-
-
-        this.agregarVistasDeCallesAlGameLoop();
-        this.agregarVistaInicioAlGameLoop();
-        this.agregarVistaLlegadaAlGameLoop();
-        this.agregarVistasDeAplicablesAlGameLoop();
-        this.agregarVistaAutoAlGameLoop();
-        this.agregarVistasDeLasSombrasAlGameLoop();
-
-
-    }
-
-    private void agregarVistasDeLasSombrasAlGameLoop() {
-
-        ArrayList<Posicion> posicionDeLasSombras = Mapa.getMapa().getPosicionesValidas();
-        Iterator<Posicion> iterador = posicionDeLasSombras.iterator();
-
-        while (iterador.hasNext()) {
-
-            ObjetoPosicionable unaSombra = new RepresentacionDePosicionable(iterador.next());
-            ObjetoDibujable unaVistaSombra = new VistaSombra(unaSombra);
-            this.gameLoop.agregar(unaVistaSombra);
-            this.controlDeSombras.getNeblina().agregar((VistaSombra) unaVistaSombra);
-        }
-
-    }
-
-    private void agregarVistasDeCallesAlGameLoop() {
-
-        ArrayList<Posicion> posicionDeLasCalles = Mapa.getMapa().getPosicionesValidas();
-        Iterator<Posicion> iterador = posicionDeLasCalles.iterator();
-
-        while (iterador.hasNext()) {
-
-            ObjetoPosicionable unaCalle = new RepresentacionDePosicionable(iterador.next());
-            ObjetoDibujable unaVistaCalle = new VistaCalle(unaCalle);
-            this.gameLoop.agregar(unaVistaCalle);
-        }
-
-    }
-
-    private void agregarVistaInicioAlGameLoop() {
-
-        ObjetoPosicionable inicio = new RepresentacionDePosicionable(Mapa.getMapa().getInicio());
-        ObjetoDibujable  vistaInicio = new VistaInicio(inicio);
-        this.gameLoop.agregar(vistaInicio);
-
-    }
-
-    private void agregarVistaLlegadaAlGameLoop() {
-
-        ObjetoPosicionable llegada = new RepresentacionDePosicionable(Mapa.getMapa().getLlegada());
-        ObjetoDibujable  vistaLlegada = new VistaLlegada(llegada);
-        this.gameLoop.agregar(vistaLlegada);
-
-    }
-
-    private void agregarVistasDeAplicablesAlGameLoop() {
-
-        ArrayList<Aplicable> aplicables = Mapa.getMapa().getAplicables();
-        Iterator<Aplicable> it = aplicables.iterator();
-        while (it.hasNext()) {
-            Aplicable unAplicable = it.next();
-
-            if (unAplicable instanceof ControlPolicial) {
-
-                ObjetoPosicionable policia = new RepresentacionDePosicionable(unAplicable.getPosicion());
-                ObjetoDibujable  vistaPolicia = new VistaPolicia(policia);
-                this.gameLoop.agregar(vistaPolicia);
-
-            } else if (unAplicable instanceof Sorpresa) {
-
-                ObjetoPosicionable sorpresa = new RepresentacionDePosicionable(unAplicable.getPosicion());
-                ObjetoDibujable  vistaSorpresa = new VistaSorpresa(sorpresa);
-                this.gameLoop.agregar(vistaSorpresa);
-
-            } else if (unAplicable instanceof Piquete) {
-
-                ObjetoPosicionable piquete = new RepresentacionDePosicionable(unAplicable.getPosicion());
-                ObjetoDibujable  vistaPiquete = new VistaPiquete(piquete);
-                this.gameLoop.agregar(vistaPiquete);
-
-            } else if (unAplicable instanceof Pozo) {
-
-                ObjetoPosicionable pozo = new RepresentacionDePosicionable(unAplicable.getPosicion());
-                ObjetoDibujable  vistaPozo = new VistaPozo(pozo);
-                this.gameLoop.agregar(vistaPozo);
-            }
-        }
-
-    }
-
     private void agregarObjetosVivosAlGameLoop() {
 
         this.gameLoop.agregar(this.pilotin);
 
-        this.gameLoop.agregar(this.controlDeSombras);
+        this.gameLoop.agregar(this.controlDeVistas);
 
         this.controlDeEventos = new ControlDeEventos(this);
         this.gameLoop.agregar(this.controlDeEventos);
 
-
-
     }
-
-    private void agregarVistaAutoAlGameLoop() {
-
-        VistaVehiculo unaVistaVehiculo = new VistaVehiculo(this.pilotin.getVehiculo());
-        this.gameLoop.agregar(unaVistaVehiculo);
-    }
-
-    /** fin submetodos private **/
 
     /** METODOS DE CONTROL **/
 
