@@ -3,6 +3,8 @@ package fiuba.algo3.control;
 /** lo que necesita saber del modelo **/
 import fiuba.algo3.modelo.*;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
+import fiuba.algo3.vista.VistasMenu.VistaFinalizacion;
+
 import java.util.ArrayList;
 import java.util.ListIterator;
 
@@ -23,6 +25,7 @@ public class ControlDeEventos implements ObjetoVivo {
         Vehiculo vehiculoAVerificar = this.partidaControlada.getPiloto().getVehiculo();
         if ( vehiculoAVerificar.getPosicion().equals(Mapa.getMapa().getLlegada()) ) {
             this.partidaControlada.finalizar();
+            VistaFinalizacion unaVistaFinalizado = new VistaFinalizacion();
         }
 
     }
