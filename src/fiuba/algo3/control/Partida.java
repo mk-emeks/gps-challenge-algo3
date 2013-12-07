@@ -113,7 +113,7 @@ public class Partida {
     public void iniciar() {
 
         this.gameLoop.setSuperficieDeDibujo((SuperficieDeDibujo)this.zonaDeJuego);
-        this.gameLoop.setIntervaloSimulacion(15);
+        this.gameLoop.setIntervaloSimulacion(135);
 
         this.cargarGameLoop();
         this.comenzar();
@@ -124,8 +124,7 @@ public class Partida {
 
     private void cargarGameLoop() {
 
-        // en caso de mejorar eficiencia habria que agregar una vez aqui la vistas, ojo con las diferentes frecuencias
-        //this.controlDeVistas.agregarVistasAlGameLoop();
+        this.controlDeVistas.agregarVistasAlGameLoop(); //!
         this.agregarObjetosVivosAlGameLoop();
     }
 

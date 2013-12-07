@@ -12,10 +12,12 @@ import java.util.Iterator;
 
 public class ControlDeVistas implements ObjetoVivo {
 
+    //! arreglada la ineficiencia
 
     private ControlDeSombras controlDeSombras;
     private Piloto pilotin;
     private GameLoop gameLoop;
+    private int cantidadesDeAplicablesTemporales; //!
 
     public ControlDeVistas(GameLoop gameLoop, Piloto unPiloto) {
 
@@ -45,12 +47,10 @@ public class ControlDeVistas implements ObjetoVivo {
     /** mouestro **/
     private void actualizarVistas() {
 
-        /** ineficiente hacerlo siempre, habria que saber si se interactuo con alguna y entonces ahi repintar **/
+        if (cantidadesDeAplicablesTemporales != Mapa.getMapa().getAplicablesTemporales().size()) {  //!
         this.quitarVistaDeAplicablesTemporales();  // funciona igual sin esto, pero es correcto sacar lo que no se usa
-        this.agregarVistasAlGameLoop(); /** este es el ineficiente **/
-
-
-
+        this.agregarVistasAlGameLoop();
+        }
     }
 
 
@@ -72,7 +72,7 @@ public class ControlDeVistas implements ObjetoVivo {
     }
 
     /**!**/
-    private void agregarVistasAlGameLoop() {
+    public void agregarVistasAlGameLoop() {
 
         this.agregarVistasDeCallesAlGameLoop();
         this.agregarVistaInicioAlGameLoop();
@@ -87,6 +87,9 @@ public class ControlDeVistas implements ObjetoVivo {
     private void agregarVistasDeAplicablesTemporales() {
 
         ArrayList<AplicableTemporal> aplicablesTemporales = Mapa.getMapa().getAplicablesTemporales();
+
+        this.cantidadesDeAplicablesTemporales = aplicablesTemporales.size(); //!
+
         Iterator<AplicableTemporal> it = aplicablesTemporales.iterator();
 
         while (it.hasNext()) {
@@ -106,7 +109,7 @@ public class ControlDeVistas implements ObjetoVivo {
         ArrayList<Posicion> posicionDeLasSombras = Mapa.getMapa().getPosicionesValidas();
         Iterator<Posicion> iterador = posicionDeLasSombras.iterator();
 
-        this.controlDeSombras.getNeblina().sacarTodasLasSombras(); /**!**/
+        this.controlDeSombras.getNeblina().sacarTodasLasSombras(); /**importante**/
 
         while (iterador.hasNext()) {
 
