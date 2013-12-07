@@ -113,7 +113,7 @@ public class Partida {
     public void iniciar() {
 
         this.gameLoop.setSuperficieDeDibujo((SuperficieDeDibujo)this.zonaDeJuego);
-        this.gameLoop.setIntervaloSimulacion(135);
+        this.gameLoop.setIntervaloSimulacion(160);
 
         this.cargarGameLoop();
         this.comenzar();

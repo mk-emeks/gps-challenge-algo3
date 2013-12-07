@@ -228,4 +228,16 @@
   <SorpresaCambioDeVehiculo aplicado="false">
     <Posicion posicionX="11" posicionY="12" />
   </SorpresaCambioDeVehiculo>
+  <SorpresaCambioDeVehiculo aplicado="false">
+     <Posicion posicionX="14" posicionY="13" />
+  </SorpresaCambioDeVehiculo>
+  <SorpresaCambioDeVehiculo aplicado="false">
+      <Posicion posicionX="10" posicionY="9" />
+  </SorpresaCambioDeVehiculo>
+  <SorpresaCambioDeVehiculo aplicado="false">
+      <Posicion posicionX="2" posicionY="9" />
+  </SorpresaCambioDeVehiculo>
+  <SorpresaCambioDeVehiculo aplicado="false">
+      <Posicion posicionX="20" posicionY="5" />
+  </SorpresaCambioDeVehiculo>
 </contenidoMapa>
