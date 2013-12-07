@@ -1,4 +1,4 @@
-/** CLASE QUE SIRVE SI TENES LA PC DE LA NASA! :P
+ //CLASE QUE SIRVE SI TENES LA PC DE LA NASA! :P
 package fiuba.algo3.vista.VistasMenu;
 
 
@@ -55,7 +55,7 @@ public class BotonAnimadoVehiculo extends VistaMenu {
         public void run(){
 
             try {
-                Thread.sleep(100);
+                Thread.sleep(300);
                 Estado estadoAuto = new EstadoAuto();
                 Estado estadoMoto = new EstadoMoto();
 
@@ -111,5 +111,5 @@ public class BotonAnimadoVehiculo extends VistaMenu {
 
 
 
-} **/
+}
 
