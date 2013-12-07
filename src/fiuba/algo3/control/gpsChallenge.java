@@ -139,6 +139,10 @@ public class gpsChallenge {
         BotonAnimadoVehiculo botonAnimadoVehiculo = new BotonAnimadoVehiculo(unaPartida,unMarco,120,330,369,150);
         botonAnimadoVehiculo.setVisible(false);
 
+        /**VistaFinalizada**/
+        VistaFinalizacion vistaFinalizacion = new VistaFinalizacion(unaPartida);
+        vistaFinalizacion.setVisible(false);
+
         /** botonGuargarPartida **/
         //Boton botonGuardarPartida = new BotonGuardar()
 
@@ -163,7 +167,7 @@ public class gpsChallenge {
         /**Creo fondo (tiene que ser al final) **/
         JLabel fondo = new JLabel();
         fondo.setIcon(new ImageIcon("src/fiuba/algo3/vista/imagenes/fondoMenuPrincipal.png"));
-        fondo.setBounds(0,0,unMarco.getWidth(),unMarco.getHeight());
+        fondo.setBounds(0, 0, unMarco.getWidth(), unMarco.getHeight());
         unMarco.add(fondo);
 
         /** Una vez que se agrego lo que necesitamos al marco, se lo hace visible **/
@@ -212,6 +216,7 @@ public class gpsChallenge {
         ArrayList<VistaMenu> stageJuegoEnAccion = new ArrayList<VistaMenu>();
         stageJuegoEnAccion.add(vistaCronometro);
         stageJuegoEnAccion.add(botonAnimadoVehiculo);
+        stageJuegoEnAccion.add(vistaFinalizacion);
         stageJuegoEnAccion.add(botonVolverMenuPrincipalDesdeJuegoEnAccion);
 
 
@@ -219,10 +224,10 @@ public class gpsChallenge {
 
         /** stage 1 **/
         botonSoyNuevo.addMouseListener(new ControlDeClickBoton(stageUsuarioNuevo,stageEleccionUsuario));
-        botonGuardar.addMouseListener(new ControlDeClickBotonGuardar(registroUsuarios,unaPartida,areaIngresoNombreDelUsuario,stageMenuPrincipal,stageUsuarioNuevo));
+        botonGuardar.addMouseListener(new ControlDeClickBotonGuardar(registroUsuarios, unaPartida, areaIngresoNombreDelUsuario, stageMenuPrincipal, stageUsuarioNuevo));
 
         /** stage 2 **/
-        botonComenzarPartida.addMouseListener(new ControlDeClickBoton(stageEleccionMapaYVehiculo,stageMenuPrincipal));
+        botonComenzarPartida.addMouseListener(new ControlDeClickBoton(stageEleccionMapaYVehiculo, stageMenuPrincipal));
 
         boxEleccionVehiculo.getBoxAuto().addMouseListener(new ControlDeClickEleccionVehiculo(unaPartida , new EstadoAuto(), boxEleccionVehiculo));
         boxEleccionVehiculo.getBoxMoto().addMouseListener(new ControlDeClickEleccionVehiculo(unaPartida , new EstadoMoto() , boxEleccionVehiculo));
@@ -233,12 +238,11 @@ public class gpsChallenge {
         boxEleccionMapa.getBoxDificil().addMouseListener(new ControlDeClickEleccionMapa(unaPartida, "mapaDificil.xml" , boxEleccionMapa));
 
         /** hasta aca llegue **/
-        botonJugar.addMouseListener(new ControlDeClickBotonJugar(botonAnimadoVehiculo,unaPartida,stageJuegoEnAccion,stageEleccionMapaYVehiculo));
-        //botonJugar.addMouseListener(new ControlDeClickBotonJugar(unaPartida,stageJuegoEnAccion,stageEleccionMapaYVehiculo));
+        botonJugar.addMouseListener(new ControlDeClickBotonJugar(vistaFinalizacion,botonAnimadoVehiculo, unaPartida, stageJuegoEnAccion, stageEleccionMapaYVehiculo));
 
 
         /** musica de fondo, tiene que ir al final **/
-        MusicaDeFondo.playMusic();
+        //MusicaDeFondo.playMusic();
 
     }
 
