@@ -154,7 +154,7 @@ public class gpsChallenge {
         // viejo, solo de referencia del orden de lo que se deberia hacer.
 
         //Mapa.limpiar();
-        //Nivel nivel = new Nivel();
+        //
         //unaPartida.cargarNivel(nivel);
         //unaPartida.crearPiloto("pilotin");
         //unaPartida.asignarCarroceriaDelVehiculo(new EstadoMoto());
@@ -209,9 +209,9 @@ public class gpsChallenge {
         boxEleccionVehiculo.getBoxMoto().addMouseListener(new ControlDeClickEleccionVehiculo(unaPartida , new EstadoMoto() , boxEleccionVehiculo));
         boxEleccionVehiculo.getBox4x4().addMouseListener(new ControlDeClickEleccionVehiculo(unaPartida , new Estado4x4() , boxEleccionVehiculo));
 
-        boxEleccionMapa.getBoxFacil().addMouseListener(new ControlDeClickEleccionMapa(unaPartida /*,xmlMapa*/ , boxEleccionMapa));
-        boxEleccionMapa.getBoxModerado().addMouseListener(new ControlDeClickEleccionMapa(unaPartida /*,xmlMapa*/ , boxEleccionMapa));
-        boxEleccionMapa.getBoxDificil().addMouseListener(new ControlDeClickEleccionMapa(unaPartida /*,xmlMapa*/ , boxEleccionMapa));
+        boxEleccionMapa.getBoxFacil().addMouseListener(new ControlDeClickEleccionMapa(unaPartida ,"mapaFacil.xml" , boxEleccionMapa));
+        boxEleccionMapa.getBoxModerado().addMouseListener(new ControlDeClickEleccionMapa(unaPartida ,"mapaModerado.xml" , boxEleccionMapa));
+        boxEleccionMapa.getBoxDificil().addMouseListener(new ControlDeClickEleccionMapa(unaPartida, "mapaDificil.xml" , boxEleccionMapa));
 
         /** hasta aca llegue **/
         //botonJugar.addMouseListener(new ControlDeClickBotonJugar(botonAnimadoVehiculo,unaPartida,stageJuegoEnAccion,stageEleccionMapaYVehiculo));

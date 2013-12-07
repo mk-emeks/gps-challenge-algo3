@@ -1,7 +1,7 @@
 package fiuba.algo3.control;
 
+import fiuba.algo3.modelo.CargadorDeMapa;
 import fiuba.algo3.modelo.Mapa;
-import fiuba.algo3.modelo.Nivel;
 import fiuba.algo3.vista.VistasMenu.BoxEleccionMapa;
 
 import java.awt.event.MouseEvent;
@@ -12,18 +12,16 @@ import java.awt.event.MouseListener;
 public class ControlDeClickEleccionMapa implements MouseListener {
 
     Partida partida;
-    // el xmlMapa
+    String nombreDelMapa;
     BoxEleccionMapa boxMapa;
 
 
-    public ControlDeClickEleccionMapa(Partida unaPartida /*,XML xmlMapa*/, BoxEleccionMapa boxMapa) {
+    public ControlDeClickEleccionMapa(Partida unaPartida ,String nombreDelMapa, BoxEleccionMapa boxMapa) {
 
         this.partida = unaPartida;
-
-        // el xmlMapa
+        this.nombreDelMapa = nombreDelMapa;
 
         this.boxMapa = boxMapa;
-
 
     }
 
@@ -31,8 +29,8 @@ public class ControlDeClickEleccionMapa implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
         Mapa.limpiar();
-        Nivel nivel = new Nivel(/*elXmlMapa*/);
-        this.partida.cargarNivel(nivel);
+        CargadorDeMapa cargadorDeMapa = new CargadorDeMapa(this.nombreDelMapa);
+        cargadorDeMapa.cargarMapa();
         this.boxMapa.setVisible(false);
 
     }

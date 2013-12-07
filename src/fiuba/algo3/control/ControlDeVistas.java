@@ -45,9 +45,14 @@ public class ControlDeVistas implements ObjetoVivo {
     /** mouestro **/
     private void actualizarVistas() {
 
+        /** ineficiente hacerlo siempre, habria que saber si se interactuo con alguna y entonces ahi repintar **/
         this.quitarVistaDeAplicablesTemporales();  // funciona igual sin esto, pero es correcto sacar lo que no se usa
-        this.agregarVistasAlGameLoop();
+        this.agregarVistasAlGameLoop(); /** este es el ineficiente **/
+
+
+
     }
+
 
     /** la unicas vista que hay que sacar **/
     private void quitarVistaDeAplicablesTemporales() {
@@ -66,6 +71,7 @@ public class ControlDeVistas implements ObjetoVivo {
 
     }
 
+    /**!**/
     private void agregarVistasAlGameLoop() {
 
         this.agregarVistasDeCallesAlGameLoop();

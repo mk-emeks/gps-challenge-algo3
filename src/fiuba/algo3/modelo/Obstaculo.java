@@ -1,17 +1,21 @@
 package fiuba.algo3.modelo;
 
 
-public abstract class Obstaculo implements Aplicable {
+import org.jdom2.Element;
 
-    private int turnosPenalizado;
-    private int turnosPenalizadosMomentaneos;
+import java.io.Serializable;
+
+public abstract class Obstaculo implements Aplicable , Serializable {
+
+    protected int turnosPenalizado;
+    protected int turnosPenalizadosMomentaneos;
     private Posicion posicion;
 
-    public Obstaculo(int penalizacion, Posicion unaPosicion) {
+    /*public Obstaculo(int penalizacion, Posicion unaPosicion) {
         this.turnosPenalizado = penalizacion;
         this.turnosPenalizadosMomentaneos = this.turnosPenalizado;
         this.posicion = unaPosicion;
-    }
+    }*/
 
     public void posicionarEnElMapa() throws NoSePuedePonerEnElMapaElPosicionableException {
 
@@ -61,4 +65,8 @@ public abstract class Obstaculo implements Aplicable {
         this.restarCantidadDeTurnosPenalizado();
 
     }
+
+    /** por ser serializable **/
+
+    public abstract Element serializar();
 }

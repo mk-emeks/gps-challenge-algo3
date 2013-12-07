@@ -1,26 +1,21 @@
 package fiuba.algo3.modelo;
 
 
+import org.jdom2.Element;
+
 import java.util.ArrayList;
 
 public class Mapa {
 
-    private ArrayList<Posicion> posicionesValidas;
 
-    private Vehiculo vehiculo;  /** dudoso uso **/
-    private Posicion inicio; /** new  -> ESTA SIN TESTIAR, PERO ES LO MISMO QUE LA LLEGADA **/
-    private Posicion llegada;
-    private ArrayList<Aplicable> aplicables;
-    private ArrayList<AplicableTemporal> aplicablesTemporales;
 
+
+
+    /** Para lograr hace un Singleton**/
 
     private static Mapa elMapa;
-    /** Para lograr hace un Singleton**/
-    private Mapa() {
-        this.posicionesValidas = new ArrayList<Posicion>();
-        this.aplicables = new ArrayList<Aplicable>();
-        this.aplicablesTemporales = new ArrayList<AplicableTemporal>();
-    }
+
+    private Mapa() {}
 
     public static Mapa getMapa() {
         if (elMapa == null) {
@@ -30,123 +25,118 @@ public class Mapa {
         return elMapa;
     }
 
+    /** fin **/
+
+
     public static void limpiar() {
         elMapa = null;
     }
-    /** ============================================== **/
+
+    private ContenidoMapa contenidoMapa;
+
+
+    public void cargarContenidoMapa(Element nodoContenidoMapa) {
+
+        this.contenidoMapa = new ContenidoMapa(nodoContenidoMapa);
+    }
+
+    public void cargarContenidoMapa() {
+
+        this.contenidoMapa = new ContenidoMapa();
+    }
+
+    public ContenidoMapa getContenidoMapa(/*se le pasara el mapa a levantar*/) {
+
+        return  this.contenidoMapa;
+    }
+
+    /** ya que el mapa fue refactorizado mantendra sus prestaciones pero
+     *  delegara las acciones a la clase ContenidoMapa
+     */
 
     public void agregar(Posicion unaPosicion) throws LaPosicionYaExisteEnElMapaException {
 
-        if ( !this.posicionesValidas.contains(unaPosicion) ) {
-
-            this.posicionesValidas.add(unaPosicion);
-
-        } else { throw new LaPosicionYaExisteEnElMapaException(); }
-
+        this.contenidoMapa.agregar(unaPosicion);
 
     }
 
     public void ubicarPosicionDeLlegada(Posicion laLlegada) throws LaPosicionNoExisteEnElMapaException {
 
-        if ( this.existe(laLlegada) ) {
-
-            this.llegada = laLlegada;
-
-        } else { throw new LaPosicionNoExisteEnElMapaException(); }
+        this.contenidoMapa.ubicarPosicionDeLlegada(laLlegada);
 
     }
 
     /** new **/
     public void ubicarPosicionDeInicio(Posicion elInicio) throws LaPosicionNoExisteEnElMapaException {
 
-        if ( this.existe(elInicio) ) {
-
-            this.inicio = elInicio;
-
-        } else { throw new LaPosicionNoExisteEnElMapaException(); }
+        this.contenidoMapa.ubicarPosicionDeInicio(elInicio);
 
     }
 
     public void ubicar(Vehiculo unVehiculo) throws LaPosicionNoExisteEnElMapaException {
 
-        if ( this.existe(unVehiculo.getPosicion()) ) {
-
-            this.vehiculo = unVehiculo;
-
-        } else { throw new LaPosicionNoExisteEnElMapaException(); }
-
+        this.contenidoMapa.ubicar(unVehiculo);
 
     }
 
     public void ubicar(Aplicable aplicable) throws LaPosicionNoExisteEnElMapaException {
 
-        if ( this.existe(aplicable.getPosicion()) ) {
+        this.contenidoMapa.ubicar(aplicable);
 
-            if ( !this.estaUbicado(aplicable) ) {
-
-                this.aplicables.add(aplicable);
-            }
-            /** si existe la posicion donde se quiere ubicar el posicionable, y el mismo ya fue agregado a
-            * la lista de contenidos no se tiene que hacer nada mas **/
-
-        } else { throw new LaPosicionNoExisteEnElMapaException(); }
     }
 
     public void ubicar(AplicableTemporal aplicableTemporal) throws LaPosicionNoExisteEnElMapaException {
 
-        if ( this.existe(aplicableTemporal.getPosicion()) ) {
-
-            if ( !this.estaUbicado(aplicableTemporal) ) {
-
-                this.aplicablesTemporales.add(aplicableTemporal);
-            }
-            /** si existe la posicion donde se quiere ubicar el posicionable, y el mismo ya fue agregado a
-             * la lista de contenidos no se tiene que hacer nada mas **/
-
-        } else { throw new LaPosicionNoExisteEnElMapaException(); }
+        this.contenidoMapa.ubicar(aplicableTemporal);
     }
 
-
-
     public Posicion getLlegada() {
-        return this.llegada;
+        return this.contenidoMapa.getLlegada();
     }
 
     /** new **/
     public Posicion getInicio() {
-        return this.inicio;
+        return this.contenidoMapa.getInicio();
     }
 
     /** new **/
     public ArrayList<Aplicable> getAplicables() {
-        return this.aplicables;
+        return this.contenidoMapa.getAplicables();
     }
 
     public ArrayList<AplicableTemporal> getAplicablesTemporales() {
-        return this.aplicablesTemporales;
+        return this.contenidoMapa.getAplicablesTemporales();
     }
 
     public ArrayList<Posicion> getPosicionesValidas() {
-        return this.posicionesValidas;
+        return this.contenidoMapa.getPosicionesValidas();
     }
 
     /** testing **/
     // deberian ser private? los hacemos public para poder hacer tests con comodidad
     public boolean estaUbicado(Aplicable unAplicable) {
 
-        return aplicables.contains(unAplicable);
+        return this.contenidoMapa.estaUbicado(unAplicable);
+
+    }
+
+    public boolean estaUbicado(AplicableTemporal unAplicableTemporal) {
+
+        return this.contenidoMapa.estaUbicado(unAplicableTemporal);
 
     }
 
     public boolean existe(Posicion unaPosicion) {
 
-        return posicionesValidas.contains(unaPosicion);
+        return this.contenidoMapa.existe(unaPosicion);
     }
 
     public Vehiculo getVehiculo() {
-        return this.vehiculo;
+        return this.getVehiculo();
     }
 
-    /** fin **/
+    /** fin prestaciones **/
+
+
 
 }

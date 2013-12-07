@@ -1,16 +1,21 @@
 package fiuba.algo3.modelo;
 
+import org.jdom2.Element;
+import java.io.Serializable;
 
-public abstract class Sorpresa implements AplicableTemporal {
+public abstract class Sorpresa implements AplicableTemporal, Serializable {
 
     protected boolean aplicado;
     private Posicion posicion;
 
-    public Sorpresa(Posicion unaPosicion) {
+    /** Si la clase madre posee contructor. A la hora de tener una clase hija y plantiar distintos constructores para las misma
+     *  me pincha, aun no se por que...
+     */
+    /*public Sorpresa(Posicion unaPosicion) {
 
         this.aplicado = false;
         this.posicion = unaPosicion;
-    }
+    } */
 
     public void posicionarEnElMapa() throws NoSePuedePonerEnElMapaElPosicionableException {
 
@@ -39,5 +44,9 @@ public abstract class Sorpresa implements AplicableTemporal {
       return  this.aplicado;
 
     }
+
+    /** por ser serializable **/
+
+    public abstract Element serializar();
 
 }

@@ -1,27 +1,50 @@
 package fiuba.algo3.modelo;
 
+import org.jdom2.Document;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
+
+import java.io.FileOutputStream;
+
 public class EditorMapa {
 
-    /** toquetiado **/
     private Mapa unMapa;
 
     public EditorMapa() {
 
         this.unMapa = Mapa.getMapa();
+        this.unMapa.cargarContenidoMapa(); /** NUEVO NUEVO NUEVO **/
 
     }
 
+    public void editarMapaSimple() {
 
-    /** temporal: uso para probar el mapa plantiado en la consigna inicial **/
+        int ancho =20;
+        int largo = 14;
 
-    //Deja un mapa en las condiciones minimas establecidad para que sea jugable, respetando calles, cuadras y ubicando una llegada.
-    public void editarMapaMinimoJugable() {
-        this.editarMapaSimple(3,3);
-    }
+        this.pintarMapaDeDimensiones(ancho, largo); /** el maximo **/
 
-    public void editarMapaNivel() {
 
-        this.editarMapaSimple(20,14); /** el maximo **/
+        /** Posicion de inicio **/
+
+        try {
+            unMapa.ubicarPosicionDeInicio( new Posicion(1,2) );  /** agregado villa, no hace falta, porque mucho de esto va a cambiar **/
+        } catch (Exception e) { System.out.println("no se pudo ubicar el inicio");}
+
+        /** Posicion de llegada **/
+
+        Posicion posicionDeLlegada;
+
+        if( (largo%2)==0) {
+
+            posicionDeLlegada = new Posicion(ancho,largo);
+        } else {
+            posicionDeLlegada = new Posicion(ancho,largo-1);
+        }
+
+        try {
+            unMapa.ubicarPosicionDeLlegada(posicionDeLlegada);
+        } catch (Exception e) { System.out.println("no se pudo ubicar la posicion de llegada");}
 
         /** Obstaculos**/
         try{
@@ -39,33 +62,14 @@ public class EditorMapa {
 
         } catch (Exception e) { System.out.println("no se pudo ubicar sorpresas");}
 
+
     }
 
+    private void pintarMapaDeDimensiones(int ancho, int largo) {
 
-    public void editarMapaSimple(int ancho, int largo) {
-
-        Posicion posicionDeLlegada;
         this.agregarCallesPares(ancho,largo);
         this.agregarCallesImpares(ancho,largo);
 
-        //La llegada siempre se ubica en una misma posicion con respecto al tamaño del mapa
-        //Siempre en la ultima columna (ancho)
-        //En caso de que el largo sea par se lo ubica ultimo
-        //En caso de que el largo sea impar se sube una posicion (porque si va ultimo hay una cuadra)
-        if( (largo%2)==0) {
-
-            posicionDeLlegada = new Posicion(ancho,largo);
-        } else {
-            posicionDeLlegada = new Posicion(ancho,largo-1);
-        }
-
-        try {
-        unMapa.ubicarPosicionDeLlegada(posicionDeLlegada);
-        } catch (Exception e) { System.out.println("no se pudo ubicar la posicion de llegada");}
-
-        try {
-        unMapa.ubicarPosicionDeInicio( new Posicion(1,2) );  /** agregado villa, no hace falta, porque mucho de esto va a cambiar **/
-        } catch (Exception e) { System.out.println("no se pudo ubicar el inicio");}
     }
 
     private void agregarCallesImpares(int ancho, int largo) {
@@ -92,4 +96,41 @@ public class EditorMapa {
         }
     }
 
+    /** metodo existente solo para el testing, plantea el mapa mas pequeño con el que se podria jugar **/
+    public void editarMapaMinimoJugable() {
+
+        this.pintarMapaDeDimensiones(3, 3);
+
+    }
+
+    /** solo para testing **/
+    public void editarMapaDeDimensiones(int ancho, int largo) {
+
+        this.pintarMapaDeDimensiones(ancho,largo);
+
+    }
+
+    /** xmlWriter **/
+    public void crearXml() {
+
+        ContenidoMapa contenidoMapa = Mapa.getMapa().getContenidoMapa();
+        Document docContenidoMapa = new Document(contenidoMapa.serializar());
+
+        try{
+
+            XMLOutputter out = new XMLOutputter(Format.getPrettyFormat());
+
+            FileOutputStream file = new FileOutputStream("contenidoMapaSimple.xml");
+            out.output(docContenidoMapa,file);
+
+            file.flush();
+            file.close();
+
+            out.output(docContenidoMapa,System.out);
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }

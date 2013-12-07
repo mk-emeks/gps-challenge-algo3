@@ -1,7 +1,11 @@
 package fiuba.algo3.modelo;
 
 
-public class Posicion {
+import org.jdom2.Element;
+
+import java.io.Serializable;
+
+public class Posicion implements Serializable {
 
     private int posicionX;
     private int posicionY;
@@ -61,5 +65,26 @@ public class Posicion {
             iguales = true;
         }
         return iguales;
+    }
+
+    /** Por ser Serializable **/
+
+    public Posicion ( Element nodo ) {
+
+        this.posicionX = Integer.parseInt(nodo.getAttributeValue("posicionX"));
+        this.posicionY = Integer.parseInt(nodo.getAttributeValue("posicionY"));
+
+
+
+    }
+
+    public Element serializar() {
+
+        Element xmlNode = new Element("Posicion");
+        xmlNode.setAttribute("posicionX",String.valueOf(this.posicionX));
+        xmlNode.setAttribute("posicionY",String.valueOf(this.posicionY));
+
+        return xmlNode;
+
     }
 }
