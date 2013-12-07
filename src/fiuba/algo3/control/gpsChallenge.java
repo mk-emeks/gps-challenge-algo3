@@ -235,6 +235,8 @@ public class gpsChallenge {
         boxEleccionMapa.getBoxModerado().addMouseListener(new ControlDeClickEleccionMapa(unaPartida ,"mapaModerado.xml" , boxEleccionMapa));
         boxEleccionMapa.getBoxDificil().addMouseListener(new ControlDeClickEleccionMapa(unaPartida, "mapaDificil.xml" , boxEleccionMapa));
 
+        botonVolverAlMenuPrincipalSimple.addMouseListener(new ControlDeClickBoton(stageMenuPrincipal, stageEleccionMapaYVehiculo));
+
         /** hasta aca llegue **/
         botonJugar.addMouseListener(new ControlDeClickBotonJugar(vistaFinalizacion,botonAnimadoVehiculo, unaPartida, stageJuegoEnAccion, stageEleccionMapaYVehiculo));
 
