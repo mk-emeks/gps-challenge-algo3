@@ -34,7 +34,7 @@ public class VistaFinalizacion extends VistaMenu {
 
         this.partida = unaPartida;
 
-        frameResultado.setBounds(500,200,300,200);
+        frameResultado.setBounds(700,300,300,200);
         frameResultado.setLayout(null);
         frameResultado.setDefaultCloseOperation(frameResultado.DISPOSE_ON_CLOSE);
 
