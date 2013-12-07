@@ -35,15 +35,18 @@ public class CargadorDeMapa {
     }
 
     /** deben ser los limites del mapa (completar) **/
-    int limiteSuperiorX = 20;
-    int limiteInferiorX = 3;
-    int limiteSuperiorY = 14;
-    int limiteInferiorY = 3;
+
+    //int limiteInferiorX = 3;
+    //int limiteInferiorY = 3;
 
     private void cargarInicioYLlegada() {
 
+        int limiteSuperiorX = 20;
+        int limiteSuperiorY = 14;
+
         int xInicio,yInicio,xLlegada,yLlegada;
         Posicion inicio,llegada;
+
 
          do {
 
@@ -56,7 +59,7 @@ public class CargadorDeMapa {
             inicio = new Posicion(xInicio,yInicio);
             llegada = new Posicion(xLlegada,yLlegada);
 
-         } while (!this.randomValido(inicio,llegada)); // hacerlo mientras el random no sea valido
+         } while (!this.posicionesValidas(inicio,llegada)); // hacerlo mientras el random no sea valido
 
         // asignamos al mapa
         try {
@@ -77,7 +80,7 @@ public class CargadorDeMapa {
 
     }
 
-    private boolean randomValido(Posicion inicio, Posicion llegada) {
+    /* private boolean randomValido(Posicion inicio, Posicion llegada) {
 
         int xInicio = inicio.getPosicionX();
         int yInicio = inicio.getPosicionY();
@@ -95,7 +98,7 @@ public class CargadorDeMapa {
 
         return (aprobadoCoordenadasValidas && aprobadoPosicionesValides);
 
-    }
+    } */
 
     /** Validacion de las posiciones **/
     // no se valida que la llegada y el inicio se superpongan con una sorpresa u obstaculo
@@ -121,6 +124,7 @@ public class CargadorDeMapa {
         return  (inicio.equals(llegada));
     }
 
+    // clave! Hace que se banque distintas dimensiones de mapas, ya que verifica si existe o no la posicione que genero el random
     private boolean posicionExistenteEnElMapa(Posicion unaPosicion) {
 
         boolean aprobado = false;
@@ -131,8 +135,9 @@ public class CargadorDeMapa {
 
     }
 
-    /** Validacion de las coordenadas **/
-    private boolean coordenadasValidas(int x, int y) {
+    /* Validacion de las coordenadas : no hace falta, el random me da numeros segun los limites */
+
+    /*private boolean coordenadasValidas(int x, int y) {
 
         boolean aprobadoX = false;
         if (this.limitesValidos(x, limiteSuperiorX, limiteInferiorX)) {
@@ -146,9 +151,9 @@ public class CargadorDeMapa {
 
         return (aprobadoX && aprobadoY);
 
-    }
+    }*/
 
-    private boolean limitesValidos(int coordenada, int limiteSuperior, int limiteInferior) {
+    /*private boolean limitesValidos(int coordenada, int limiteSuperior, int limiteInferior) {
 
         boolean aprobado = false;
         if  ( ( coordenada < limiteSuperior) && ( coordenada > limiteInferior ) ) {
@@ -156,7 +161,7 @@ public class CargadorDeMapa {
         }
 
         return  aprobado;
-    }
+    }*/
 
 
 }

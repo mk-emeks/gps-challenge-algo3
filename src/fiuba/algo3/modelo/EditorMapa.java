@@ -120,7 +120,7 @@ public class EditorMapa {
 
             XMLOutputter out = new XMLOutputter(Format.getPrettyFormat());
 
-            FileOutputStream file = new FileOutputStream("contenidoMapaSimple.xml");
+            FileOutputStream file = new FileOutputStream("mapaSimple.xml");
             out.output(docContenidoMapa,file);
 
             file.flush();
