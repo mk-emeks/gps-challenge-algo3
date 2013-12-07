@@ -20,6 +20,7 @@ public class RegistroUsuarios implements Serializable {
     private static final String nombreDelArchivo = "registroUsuarios.xml";
     public static String getNombreDelArchivo() { return nombreDelArchivo; }
 
+    public static int cantidadDePermitidosUsuarios = 3;
 
     ArrayList <Usuario> usuarios;
 
@@ -29,6 +30,9 @@ public class RegistroUsuarios implements Serializable {
 
     }
 
+    public ArrayList<Usuario> getUsuarios() { return this.usuarios; }
+
+    // servira?
     public boolean existe (Usuario usuarioBuscado) {
 
         Iterator<Usuario> iterator = this.usuarios.iterator();
@@ -90,11 +94,11 @@ public class RegistroUsuarios implements Serializable {
             Document doc = builder.build(new FileInputStream(nombreDelArchivo));
             Element raiz = doc.getRootElement();
 
-            // si no esta vacia verifica que el usuario no existe
-            // carga la lista existente, sino no hay no sapa nada
-            //this.cargarListaUsuarios(raiz);  /** EN EL MOMENTO QUE SE LLAMA LA LISTA YA FUE CARGADA **/
+            /** por ahora solo te deja tres, y si ya esta, no te los guarda un carajo, si queres más paga **/
+            if (this.usuarios.size() < cantidadDePermitidosUsuarios) {
 
-            //verifica que no haya repeticion: nose porque corre dos veces :S
+            //this.cargarListaUsuarios(raiz);  /** EN EL MOMENTO QUE SE LLAMA LA LISTA YA FUE CARGADA **/
+            //verifica que no haya repeticion
             Iterator<Usuario> iteradorUsuarios = this.usuarios.iterator();
             boolean duplicado = false;
 
@@ -110,6 +114,7 @@ public class RegistroUsuarios implements Serializable {
 
             this.actualizarArchivoXml(doc); // aca se llama a la frula: es decir se agrego pero hay que actualizar el archivo
 
+            }
 
         } catch (Exception e) {System.out.println("no se pudo agregar el usuario al registoUsuarios.xml");}
 
