@@ -134,7 +134,7 @@ public class PozoTest {
     public void testDeberiaPoderPenalizarAUnVehiculo4x4() throws Exception{
         EditorMapa unEditor = new EditorMapa();
         //Creo un mapa mas grande
-        unEditor.editarMapaSimple(6, 3);
+        unEditor.editarMapaDeDimensiones(6, 3);
 
         Posicion posicionInicial = new Posicion(6,2);
         Direccion direccion = new DireccionIzquierda();

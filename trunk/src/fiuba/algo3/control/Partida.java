@@ -53,11 +53,6 @@ public class Partida {
 
     }*/
 
-    public void cargarNivel (Nivel unNivel) {
-
-        unNivel.cargarMapa();
-    }
-
     public void asignarCarroceriaDelVehiculo ( Estado unaCarroceria) {
 
         this.carroceria = unaCarroceria;
@@ -72,7 +67,7 @@ public class Partida {
 
         try {
             miVehiculo.posicionarEnElMapa();   /** (!) clave **/
-        } catch (Exception exception) {System.out.println( "no se posicionar el vehiculo en el mapa");}
+        } catch (Exception exception) {System.out.println( "no se pudo posicionar el vehiculo en el mapa");}
 
 
         /** configurando piloto **/
@@ -118,7 +113,7 @@ public class Partida {
     public void iniciar() {
 
         this.gameLoop.setSuperficieDeDibujo((SuperficieDeDibujo)this.zonaDeJuego);
-        this.gameLoop.setIntervaloSimulacion(25);
+        this.gameLoop.setIntervaloSimulacion(15);
 
         this.cargarGameLoop();
         this.comenzar();
@@ -129,6 +124,8 @@ public class Partida {
 
     private void cargarGameLoop() {
 
+        // en caso de mejorar eficiencia habria que agregar una vez aqui la vistas, ojo con las diferentes frecuencias
+        //this.controlDeVistas.agregarVistasAlGameLoop();
         this.agregarObjetosVivosAlGameLoop();
     }
 

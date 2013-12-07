@@ -1,6 +1,10 @@
 package fiuba.algo3.modelo;
 
 
+import org.jdom2.Element;
+
+import java.util.List;
+
 public class ControlPolicial extends Obstaculo {
 
     /** cambiar aca si se quiere modificar la clase -> para calibrar **/
@@ -10,7 +14,10 @@ public class ControlPolicial extends Obstaculo {
     private static final double probabilidadMoto = 0.8;
 
     public ControlPolicial(Posicion unaPosicion) {
-        super(penalizacion,unaPosicion);
+
+        this.turnosPenalizado = penalizacion;
+        this.turnosPenalizadosMomentaneos = this.turnosPenalizado;
+        this.setPosicion(unaPosicion);
     }
 
     //---Implementacion de Aplicable---//
@@ -49,6 +56,30 @@ public class ControlPolicial extends Obstaculo {
         if ( numeroRandom < probabilidad ) {
             this.aplicar(piloto);
         }
+    }
+
+    /** por ser Serializable **/
+
+    public ControlPolicial( Element nodoControlPolicial) {
+
+        this.turnosPenalizadosMomentaneos = Integer.parseInt(nodoControlPolicial.getAttributeValue("turnosPenalizadosMomentaneos"));
+        this.turnosPenalizado = penalizacion; // es static
+
+        // en este caso sabemos que el nodoSorpresa solo tiene un hijo, y es la posicion
+        List<Element> hijo = nodoControlPolicial.getChildren();
+        Element nodoHijo = hijo.get(0);
+        this.setPosicion(new Posicion(nodoHijo));
+    }
+
+    public Element serializar() {
+
+        Element xmlNode = new Element("ControlPolicial");
+
+        xmlNode.setAttribute("turnosPenalizadosMomentaneos",String.valueOf(this.turnosPenalizadosMomentaneos));
+        xmlNode.setContent(this.getPosicion().serializar());
+
+        return xmlNode;
+
     }
 
 }

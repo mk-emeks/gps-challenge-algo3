@@ -1,10 +1,16 @@
 package fiuba.algo3.modelo;
 
+
+import org.jdom2.Element;
+
+import java.util.List;
+
 public class SorpresaCambioDeVehiculo extends Sorpresa {
 
     public SorpresaCambioDeVehiculo (Posicion unaPosicion) {
 
-        super(unaPosicion);
+        this.aplicado = false;
+        this.setPosicion(unaPosicion);
     }
 
     public void actualizar(Piloto piloto) {
@@ -31,4 +37,26 @@ public class SorpresaCambioDeVehiculo extends Sorpresa {
         piloto.getVehiculo().setEstado( new EstadoMoto() );
     }
 
+    /** por ser Serializable **/
+    public SorpresaCambioDeVehiculo( Element nodoSorpresaCambioDeVehiculo) {
+
+        this.aplicado = Boolean.parseBoolean(nodoSorpresaCambioDeVehiculo.getAttributeValue("aplicado"));
+
+        // en este caso sabemos que el nodoSorpresa solo tiene un hijo, y es la posicion
+        List<Element> hijo = nodoSorpresaCambioDeVehiculo.getChildren();
+        Element nodoHijo = hijo.get(0);
+        this.setPosicion(new Posicion(nodoHijo));
+    }
+
+    public Element serializar() {
+
+        Element xmlNode = new Element("SorpresaCambioDeVehiculo");
+        xmlNode.setAttribute("aplicado",String.valueOf(this.aplicado));
+        xmlNode.setContent(this.getPosicion().serializar());
+
+        return xmlNode;
+
+    }
+
 }
+
