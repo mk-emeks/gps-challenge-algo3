@@ -113,11 +113,9 @@ public class gpsChallenge {
         Boton botonJugar = new BotonJugar(unMarco,30,370,369,80);
         botonJugar.setVisible(false);
 
-        /** botonVolverDesde2Ahacia2 -> stage 2 **/
-        /** todo **/
-        // cambiar nombre a la varialble!
-        Boton botonVolver = new BotonVolver(unMarco,30,580,369,80);
-        botonVolver.setVisible(false);
+        /** botonVolverDesde Stage 2.A --> Stage 2, Menu Principal**/
+        Boton botonVolverAlMenuPrincipalSimple = new BotonVolver(unMarco,30,580,369,80);
+        botonVolverAlMenuPrincipalSimple.setVisible(false);
 
         /** Stage 2.B : Puntajes ----------------------------------**/
         /** todo **/
@@ -211,7 +209,7 @@ public class gpsChallenge {
         stageEleccionMapaYVehiculo.add(boxEleccionMapa);
         stageEleccionMapaYVehiculo.add(boxEleccionVehiculo);
         stageEleccionMapaYVehiculo.add(botonJugar);
-        stageEleccionMapaYVehiculo.add(botonVolver);
+        stageEleccionMapaYVehiculo.add(botonVolverAlMenuPrincipalSimple);
 
         ArrayList<VistaMenu> stageJuegoEnAccion = new ArrayList<VistaMenu>();
         stageJuegoEnAccion.add(vistaCronometro);
