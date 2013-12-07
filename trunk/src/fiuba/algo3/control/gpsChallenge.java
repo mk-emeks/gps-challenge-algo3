@@ -4,19 +4,25 @@ package fiuba.algo3.control;
 import fiuba.algo3.modelo.Estado4x4;
 import fiuba.algo3.modelo.EstadoAuto;
 import fiuba.algo3.modelo.EstadoMoto;
+import fiuba.algo3.modelo.Mapa;
+import fiuba.algo3.persistencia.RegistroUsuarios;
+import fiuba.algo3.persistencia.Usuario;
 import fiuba.algo3.sonido.MusicaDeFondo;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.vista.VistasMenu.*;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.input.SAXBuilder;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 
 public class gpsChallenge {
 
     public static void main(String[] argv) {
-
 
         /** Configuracion Ventana Principal **/
         final JFrame unMarco = new JFrame("GPS Challenge");
@@ -27,6 +33,19 @@ public class gpsChallenge {
 
         /** creo la partida **/
         final Partida unaPartida = new Partida();
+
+        /** cargamos el registro de usuarios **/
+        RegistroUsuarios registroUsuarios = new RegistroUsuarios();
+
+        try {
+            SAXBuilder builder = new SAXBuilder();
+            Document doc = builder.build(new FileInputStream(RegistroUsuarios.getNombreDelArchivo()));
+            Element raiz = doc.getRootElement();
+            registroUsuarios = new RegistroUsuarios(raiz);
+
+        } catch (Exception e) {System.out.println("no se pudo cargar el registro de usuarios");}
+
+
 
         /** BOTONES **/
 
@@ -200,7 +219,7 @@ public class gpsChallenge {
 
         /** stage 1 **/
         botonSoyNuevo.addMouseListener(new ControlDeClickBoton(stageUsuarioNuevo,stageEleccionUsuario));
-        botonGuardar.addMouseListener(new ControlDeClickBotonGuardar(unaPartida,areaIngresoNombreDelUsuario,stageMenuPrincipal,stageUsuarioNuevo));
+        botonGuardar.addMouseListener(new ControlDeClickBotonGuardar(registroUsuarios,unaPartida,areaIngresoNombreDelUsuario,stageMenuPrincipal,stageUsuarioNuevo));
 
         /** stage 2 **/
         botonComenzarPartida.addMouseListener(new ControlDeClickBoton(stageEleccionMapaYVehiculo,stageMenuPrincipal));
@@ -221,7 +240,9 @@ public class gpsChallenge {
         /** musica de fondo, tiene que ir al final **/
         MusicaDeFondo.playMusic();
 
-
     }
+
+
+
 }
 
