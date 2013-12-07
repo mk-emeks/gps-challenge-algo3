@@ -80,7 +80,7 @@ public class ControlDeVistas implements ObjetoVivo {
         this.agregarVistasDeAplicablesTemporales();
         this.agregarVistasDeAplicablesAlGameLoop();
         this.agregarVistaAutoAlGameLoop();
-        this.agregarVistasDeLasSombrasAlGameLoop();
+        this.agregarVistasDeLasSombrasAlGameLoop(); /** sacar si se quiere ver el mapa **/
 
     }
 
