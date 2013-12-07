@@ -90,9 +90,23 @@ public class RegistroUsuarios implements Serializable {
             Document doc = builder.build(new FileInputStream(nombreDelArchivo));
             Element raiz = doc.getRootElement();
 
-            /** ojo! **/
-            raiz.addContent(unUsuario.serializar());
-            //this.usuarios.add(unUsuario); //por ahora!
+            // si no esta vacia verifica que el usuario no existe
+            // carga la lista existente, sino no hay no sapa nada
+            //this.cargarListaUsuarios(raiz);  /** EN EL MOMENTO QUE SE LLAMA LA LISTA YA FUE CARGADA **/
+
+            //verifica que no haya repeticion: nose porque corre dos veces :S
+            Iterator<Usuario> iteradorUsuarios = this.usuarios.iterator();
+            boolean duplicado = false;
+
+            while (iteradorUsuarios.hasNext()){
+                Usuario usuario = iteradorUsuarios.next();
+                if (usuario.equals(unUsuario)) {
+                    duplicado = true;
+                    System.out.println("estoy duplicado");
+                }
+
+            }
+            if (!duplicado) {raiz.addContent(unUsuario.serializar());}
 
             this.actualizarArchivoXml(doc); // aca se llama a la frula: es decir se agrego pero hay que actualizar el archivo
 
@@ -115,7 +129,7 @@ public class RegistroUsuarios implements Serializable {
             file.flush();
             file.close();
 
-            out.output(doc,System.out);
+            //out.output(doc,System.out);
 
         } catch(Exception e) {
             e.printStackTrace();
@@ -146,6 +160,20 @@ public class RegistroUsuarios implements Serializable {
         }
 
     }*/
+
+    /*private void cargarListaUsuarios ( Element nodoRegistroUsuarios ) {
+
+        List<Element> hijos =  nodoRegistroUsuarios.getChildren();
+        Iterator<Element> iteradorHijos = hijos.iterator();
+
+        while (iteradorHijos.hasNext()) {
+
+            Element nodoHijo = iteradorHijos.next();
+            this.usuarios.add(new Usuario(nodoHijo));
+
+        }
+
+    } */
 
 }
 

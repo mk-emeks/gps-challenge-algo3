@@ -19,10 +19,11 @@ public class Usuario implements Serializable {
 
     @Override
     public boolean equals(Object unObjetoPosicion) {
+
         Usuario unUsuario = (Usuario) unObjetoPosicion;
         boolean iguales = false;
 
-        if (unUsuario.getNombre() == this.nombre) {
+        if (unUsuario.getNombre().equals(this.nombre)) {
             iguales = true;
         }
         return iguales;
