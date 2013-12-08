@@ -54,6 +54,15 @@ public class VistaFinalizacion extends VistaMenu {
 
         frameResultado.add(imagenResultado);
 
+        JLabel labelMensaje = new JLabel();
+        labelMensaje.setText("Cerrar para continuar");
+        labelMensaje.setForeground(new Color(197,0, 23));
+        labelMensaje.setFont(new Font(Font.SERIF, Font.BOLD, 10));
+        labelMensaje.setBounds(90,150,400,30);
+        labelMensaje.setVisible(true);
+
+        frameResultado.add(labelMensaje);
+
     }
 
 
