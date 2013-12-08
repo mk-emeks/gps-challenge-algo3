@@ -23,13 +23,9 @@ public class Partida {
 
     //private SuperficieDeDibujo zonaDeJuego;
     private JPanel zonaDeJuego;
-
     private Piloto pilotin;
     private Estado carroceria;
-
     VistaCronometro vistaCronometro;
-
-
     private ControlDeEventos controlDeEventos;
     private ControlDeVistas controlDeVistas;
 
@@ -180,6 +176,22 @@ public class Partida {
 
         if (this.gameLoop.estaEnEjecucion()) return false;
         else return true;
+
+
     }
+
+    private void quitarObjetosVivosAlGameLoop() {
+
+        this.gameLoop.remover(this.pilotin);
+        this.gameLoop.remover(this.controlDeVistas);
+        this.gameLoop.remover(this.controlDeEventos);
+
+
+    }
+
+    public void destruir(){
+        this.quitarObjetosVivosAlGameLoop();
+    }
+
 
 }
