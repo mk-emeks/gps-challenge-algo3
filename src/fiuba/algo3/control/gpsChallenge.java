@@ -239,10 +239,11 @@ public class gpsChallenge {
 
         /** hasta aca llegue **/
         botonJugar.addMouseListener(new ControlDeClickBotonJugar(vistaFinalizacion,botonAnimadoVehiculo, unaPartida, stageJuegoEnAccion, stageEleccionMapaYVehiculo));
+        botonVolverMenuPrincipalDesdeJuegoEnAccion.addMouseListener(new ControlDeClickBotonVolver(unaPartida, stageMenuPrincipal, stageJuegoEnAccion));
 
 
         /** musica de fondo, tiene que ir al final **/
-        //MusicaDeFondo.playMusic();
+        MusicaDeFondo.playMusic();
 
     }
 
