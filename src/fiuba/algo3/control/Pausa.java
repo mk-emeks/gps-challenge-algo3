@@ -8,15 +8,15 @@ public class Pausa implements KeyListener {
 
 
     private Partida partida;
-    private boolean pausa;
+   // private boolean pausa;
 
     public Pausa(Partida laPartida) {
 
         this.partida = laPartida;
-        pausa = false;
+        //pausa = false;
 
     }
-
+    /**
     private boolean estaEnPausa() {
         return this.pausa;
     }
@@ -26,7 +26,7 @@ public class Pausa implements KeyListener {
     }
     private void reanudar() {
         this.pausa = false;
-    }
+    } **/
 
     @Override
     public void keyTyped(KeyEvent keyEvent) {
@@ -40,15 +40,15 @@ public class Pausa implements KeyListener {
 
             case KeyEvent.VK_ENTER:
 
-                if (this.estaEnPausa()) {
+                if (partida.estaPausada()) {
                     this.partida.reanudar();
                     System.out.println("quiero seguir!");
-                    this.reanudar();
+                    //this.reanudar();
                     break;
                 } else {
                     this.partida.pausar();
                     System.out.println("toque pausa mierda!");
-                    this.pausar();
+                    //this.pausar();
 
                 }
 
