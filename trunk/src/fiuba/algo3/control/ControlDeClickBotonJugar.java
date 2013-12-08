@@ -41,6 +41,7 @@ public class ControlDeClickBotonJugar extends ControlDeClickBotonConPartida {
 
         this.partida.cargarVehiculoParaElPiloto();
         this.partida.iniciar();
+        //this.partida.pausar();
 
         this.actualizar();
         this.botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!

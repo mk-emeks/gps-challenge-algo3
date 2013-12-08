@@ -20,7 +20,7 @@ public class ControlDeClickBotonVolver extends ControlDeClickBotonConPartida   {
     public void mouseClicked(MouseEvent e) {
 
 
-        if(!this.partida.estaFinalizada()) {
+        if(!this.partida.estaPausada()) {
 
             /**Hay que limpiar el gameloop!! **/
             this.partida.finalizar();

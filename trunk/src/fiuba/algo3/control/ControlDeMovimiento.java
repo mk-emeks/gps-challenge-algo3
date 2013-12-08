@@ -27,27 +27,37 @@ public class ControlDeMovimiento implements KeyListener {
         switch (tecla) {
 
             case KeyEvent.VK_RIGHT:
-                DireccionDerecha unaDireccionDerecha = new DireccionDerecha();
-                vehiculo.setDireccion(unaDireccionDerecha);
-                System.out.println("Me muevo para la derecha");
+                if(!partida.estaPausada()) {
+                    DireccionDerecha unaDireccionDerecha = new DireccionDerecha();
+                    vehiculo.setDireccion(unaDireccionDerecha);
+                    System.out.println("Me muevo para la derecha");
+                }
                 break;
 
             case KeyEvent.VK_LEFT:
-                DireccionIzquierda unaDireccionIzquierda = new DireccionIzquierda();
-                vehiculo.setDireccion(unaDireccionIzquierda);
-                System.out.println("Me muevo para la izquierda");
+                if(!partida.estaPausada()) {
+                    DireccionIzquierda unaDireccionIzquierda = new DireccionIzquierda();
+                    vehiculo.setDireccion(unaDireccionIzquierda);
+                    System.out.println("Me muevo para la izquierda");
+                }
                 break;
 
             case KeyEvent.VK_UP:
-                DireccionArriba unaDireccionArriba = new DireccionArriba();
-                vehiculo.setDireccion(unaDireccionArriba);
-                System.out.println("Me muevo para la arriba");
+                if(!partida.estaPausada()) {
+                    DireccionArriba unaDireccionArriba = new DireccionArriba();
+                    vehiculo.setDireccion(unaDireccionArriba);
+                    System.out.println("Me muevo para la arriba");
+
+                }
                 break;
 
             case KeyEvent.VK_DOWN:
-                DireccionAbajo unaDireccionAbajo = new DireccionAbajo();
-                vehiculo.setDireccion(unaDireccionAbajo);
-                System.out.println("Me muevo para la abajo");
+                if(!partida.estaPausada()) {
+                    DireccionAbajo unaDireccionAbajo = new DireccionAbajo();
+                    vehiculo.setDireccion(unaDireccionAbajo);
+                    System.out.println("Me muevo para la abajo");
+
+                }
                 break;
 
         }

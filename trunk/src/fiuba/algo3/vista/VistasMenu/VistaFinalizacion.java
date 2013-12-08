@@ -18,7 +18,7 @@ public class VistaFinalizacion extends VistaMenu {
 
             try {
                 Thread.sleep(300);
-                while (!partida.estaFinalizada()) {
+                while (!partida.estaTerminada()) {
                     frameResultado.setVisible(false);
                 }
 

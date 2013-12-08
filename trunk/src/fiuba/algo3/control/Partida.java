@@ -28,6 +28,7 @@ public class Partida {
     VistaCronometro vistaCronometro;
     private ControlDeEventos controlDeEventos;
     private ControlDeVistas controlDeVistas;
+    Boolean juegoTerminado;
 
 
     public void crearPiloto (String nombreDelPiloto) {
@@ -113,6 +114,7 @@ public class Partida {
 
         this.cargarGameLoop();
         this.comenzar();
+        this.juegoTerminado = false;
 
     }
 
@@ -168,16 +170,19 @@ public class Partida {
 
         this.pilotin.getCronometro().pausar(this.vistaCronometro.getThread());  /** el cronometro es un tipo independiente; A no olvidarselo **/
         this.gameLoop.detenerJuego();
+        this.juegoTerminado = true;
         System.out.println("la partida finalizo");
 
     }
 
-     public boolean estaFinalizada() {
+     public boolean estaPausada() {
 
         if (this.gameLoop.estaEnEjecucion()) return false;
         else return true;
+    }
 
-
+    public boolean estaTerminada() {
+        return this.juegoTerminado;
     }
 
     private void quitarObjetosVivosAlGameLoop() {
@@ -185,8 +190,6 @@ public class Partida {
         this.gameLoop.remover(this.pilotin);
         this.gameLoop.remover(this.controlDeVistas);
         this.gameLoop.remover(this.controlDeEventos);
-
-
     }
 
     public void destruir(){

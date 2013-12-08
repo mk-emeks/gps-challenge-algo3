@@ -59,7 +59,7 @@ public class BotonAnimadoVehiculo extends VistaMenu {
                 Estado estadoAuto = new EstadoAuto();
                 Estado estadoMoto = new EstadoMoto();
 
-                while (!partida.estaFinalizada()) {
+                while (!partida.estaPausada()) {
 
                     Estado estadoAcomparar = partida.getPiloto().getVehiculo().getEstado();
                     if  (estadoAcomparar.equals(estadoAuto)) {
