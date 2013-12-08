@@ -45,6 +45,16 @@ public class GameLoop implements Runnable {
         this.estaEnEjecucion = false;
         this.hilo.interrupt();
     }
+    /**
+    public void pausarJuego() {
+        this.estaEnEjecucion = false;
+        this.hilo.suspend();
+    }
+
+    public void reanuadarJuego() {
+        this.estaEnEjecucion = true;
+        this.hilo.resume();
+    }**/
 
     /** la posta **/
     public void run() {
