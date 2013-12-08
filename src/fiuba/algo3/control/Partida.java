@@ -152,6 +152,7 @@ public class Partida {
 
             this.pilotin.detenerVehiculo(); //Si queremos que el juego arranque en pause es necesario
             this.pilotin.getCronometro().pausar(this.vistaCronometro.getThread());  // el cronometro es un tipo independiente; A no olvidarselo
+            //this.gameLoop.pausarJuego();
             this.gameLoop.detenerJuego();
         }
 
@@ -163,6 +164,7 @@ public class Partida {
 
             this.pilotin.arrancarVehiculo(); //Si queremos que el juego arranque en pause es necesario
             this.pilotin.getCronometro().reanudar(this.vistaCronometro.getThread());  // el cronometro es un tipo independiente; A no olvidarselo
+            //this.gameLoop.reanuadarJuego();
             this.gameLoop.comenzarJuego();
         }
 
