@@ -9,19 +9,14 @@ import java.awt.event.MouseListener;
 
 /** la idea es asignar un control a cada box que se pasa por paramentro, pero con Xml de mapas diferentes **/
 
-public class ControlDeClickEleccionMapa implements MouseListener {
+public class ControlDeClickEleccionMapa extends ControlDeClickBox {
 
-    Partida partida;
-    String nombreDelMapa;
-    BoxEleccionMapa boxMapa;
+    private String nombreDelMapa;
 
+    public ControlDeClickEleccionMapa(String nombreDelMapa, Partida unaPartida, BoxEleccionMapa boxMapa) {
 
-    public ControlDeClickEleccionMapa(Partida unaPartida ,String nombreDelMapa, BoxEleccionMapa boxMapa) {
-
-        this.partida = unaPartida;
-        this.nombreDelMapa = nombreDelMapa;
-
-        this.boxMapa = boxMapa;
+       super(unaPartida,boxMapa);
+       this.nombreDelMapa = nombreDelMapa;
 
     }
 
@@ -31,7 +26,7 @@ public class ControlDeClickEleccionMapa implements MouseListener {
         Mapa.limpiar();
         CargadorDeMapa cargadorDeMapa = new CargadorDeMapa(this.nombreDelMapa);
         cargadorDeMapa.cargarMapa();
-        this.boxMapa.setVisible(false);
+        this.box.setVisible(false);
 
     }
 

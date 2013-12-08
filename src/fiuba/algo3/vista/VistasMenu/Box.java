@@ -18,17 +18,17 @@ public abstract class Box extends VistaMenu {
         this.itembox1 = new JLabel ();
         itembox1.setBounds(posicionX, posicionY, ancho, largo);
         unMarco.add(itembox1);
-        this.itembox1.setVisible(true);
+        this.itembox1.setVisible(false);
 
         this.itembox2 = new JLabel ();
         itembox2.setBounds(posicionX,posicionY+this.distanciaXEntreEllas,ancho,largo);
         unMarco.add(itembox2);
-        this.itembox2.setVisible(true);
+        this.itembox2.setVisible(false);
 
         this.itembox3 = new JLabel ();
         this.itembox3.setBounds(posicionX,posicionY+2*this.distanciaXEntreEllas,ancho,largo);
         unMarco.add(itembox3);
-        this.itembox3.setVisible(true);
+        this.itembox3.setVisible(false);
 
     }
 

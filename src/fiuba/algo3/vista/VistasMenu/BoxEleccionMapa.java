@@ -22,13 +22,13 @@ public class BoxEleccionMapa extends Box {
 
     }
 
-    public JLabel getBoxFacil() {
+    public JLabel getItemBoxFacil() {
         return this.itembox1;
     }
-    public JLabel getBoxModerado() {
+    public JLabel getItemBoxModerado() {
         return this.itembox2;
     }
-    public JLabel getBoxDificil() {
+    public JLabel getItemBoxDificil() {
         return this.itembox3;
     }
 
