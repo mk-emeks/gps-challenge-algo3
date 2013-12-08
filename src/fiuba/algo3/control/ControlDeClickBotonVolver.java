@@ -24,6 +24,7 @@ public class ControlDeClickBotonVolver extends ControlDeClickBotonConPartida   {
 
             /**Hay que limpiar el gameloop!! **/
             this.partida.finalizar();
+            this.partida.destruir();
             this.actualizar();
         }
 
