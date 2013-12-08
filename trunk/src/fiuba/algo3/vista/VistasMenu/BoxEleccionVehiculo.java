@@ -17,13 +17,13 @@ public class BoxEleccionVehiculo extends Box {
 
     }
 
-    public JLabel getBoxAuto() {
+    public JLabel getItemBoxAuto() {
         return this.itembox1;
     }
-    public JLabel getBoxMoto() {
+    public JLabel getItemBoxMoto() {
         return this.itembox2;
     }
-    public JLabel getBox4x4() {
+    public JLabel getItemBox4x4() {
         return this.itembox3;
     }
 

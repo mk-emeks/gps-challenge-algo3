@@ -4,9 +4,7 @@ package fiuba.algo3.control;
 import fiuba.algo3.modelo.Estado4x4;
 import fiuba.algo3.modelo.EstadoAuto;
 import fiuba.algo3.modelo.EstadoMoto;
-import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.persistencia.RegistroUsuarios;
-import fiuba.algo3.persistencia.Usuario;
 import fiuba.algo3.sonido.MusicaDeFondo;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.vista.VistasMenu.*;
@@ -57,20 +55,18 @@ public class gpsChallenge {
 
 
         /** boton Ingresar Usuario -> stage 1.B **/
-        /** todo **/
         Boton botonIngresarUsuario = new BotonIngresarUsuario(unMarco,30,250,369,80);
         botonIngresarUsuario.setVisible(true);
 
         /** Stage 1.A : Usuario Nuevo ----------------------------------**/
 
-        /** texto **/
+        /** texto mensajeParaUsuarioNuevo **/
         Texto mensajeParaUsuarioNuevo = new Texto(unMarco,40,200,380,40);
         mensajeParaUsuarioNuevo.setMensaje("Por favor, eliga un nombre (10 caracteres max)");
         // ponerle color, o reemplazar por imagen
         mensajeParaUsuarioNuevo.setVisible(false);
 
         /** area IngresoNombreDelUsuario **/
-        /** todo  (persistencia)**/
         CampoTexto areaIngresoNombreDelUsuario = new CampoTexto(unMarco,140,260,150,30);
         areaIngresoNombreDelUsuario.setVisible(false);
 
@@ -79,9 +75,22 @@ public class gpsChallenge {
         botonGuardar.setVisible(false);
 
         /** Stage 1.B : Cargar Usuario ----------------------------------**/
-        /** todo **/
-        // check box elegir usuario existente
-        // boton aceptar -> stage 2
+
+        /** texto listaUsuariosExistenes **/
+        Texto listaUsuariosExistenes = new Texto(unMarco,40,150,380,40);
+        listaUsuariosExistenes.setMensaje("Usuarios:");
+        // ponerle color, dejarlo lindo
+        listaUsuariosExistenes.setVisible(false);
+
+        /** boxUsuariosExistentes **/
+        BoxUsuariosExistentes boxUsuariosExistentes = new BoxUsuariosExistentes(registroUsuarios,unMarco,100,200,150,60);
+        // ponerle color, dejarlo lindo
+        boxUsuariosExistentes.setVisible(false);
+
+        /** botonAceptar -> stage 2 **/
+        Boton botonAceptar = new BotonAceptar (unMarco,30,400,369,80);
+        botonAceptar.setVisible(false);
+
 
         /** Stage 2 : Menu Principal --------------------------------------------------------------------**/
 
@@ -200,6 +209,12 @@ public class gpsChallenge {
         stageUsuarioNuevo.add(areaIngresoNombreDelUsuario);
         stageUsuarioNuevo.add(botonGuardar);
 
+        ArrayList<VistaMenu> stageCargarUsuario  = new ArrayList<VistaMenu>();
+        stageCargarUsuario.add(listaUsuariosExistenes);
+        stageCargarUsuario.add(boxUsuariosExistentes);
+        stageCargarUsuario.add(botonAceptar);
+
+
         ArrayList<VistaMenu> stageMenuPrincipal = new ArrayList<VistaMenu>();
         stageMenuPrincipal.add(botonComenzarPartida);
         stageMenuPrincipal.add(botonReanudarPartidaGuardada);
@@ -221,19 +236,32 @@ public class gpsChallenge {
         /** controles de los botones **/
 
         /** stage 1 **/
-        botonSoyNuevo.addMouseListener(new ControlDeClickBoton(stageUsuarioNuevo,stageEleccionUsuario));
+
+        botonSoyNuevo.addMouseListener(new ControlDeClickBoton(stageUsuarioNuevo, stageEleccionUsuario));
+        botonIngresarUsuario.addMouseListener(new ControlDeClickBoton(stageCargarUsuario,stageEleccionUsuario));
+
+        /**A**/
         botonGuardar.addMouseListener(new ControlDeClickBotonGuardar(registroUsuarios, unaPartida, areaIngresoNombreDelUsuario, stageMenuPrincipal, stageUsuarioNuevo));
+
+
+        /**B**/
+        boxUsuariosExistentes.getItemBox1erNombre().addMouseListener(new ControlDeClickEleccionUsuarioExistente(boxUsuariosExistentes.getItemBox1erNombre() , unaPartida , boxUsuariosExistentes));
+        boxUsuariosExistentes.getItemBox2doNombre().addMouseListener(new ControlDeClickEleccionUsuarioExistente( boxUsuariosExistentes.getItemBox1erNombre(), unaPartida , boxUsuariosExistentes));
+        boxUsuariosExistentes.getItemBox3erNombre().addMouseListener(new ControlDeClickEleccionUsuarioExistente( boxUsuariosExistentes.getItemBox1erNombre() ,unaPartida  , boxUsuariosExistentes));
+
+        botonAceptar.addMouseListener(new ControlDeClickBoton(stageMenuPrincipal,stageCargarUsuario));
+
 
         /** stage 2 **/
         botonComenzarPartida.addMouseListener(new ControlDeClickBoton(stageEleccionMapaYVehiculo, stageMenuPrincipal));
 
-        boxEleccionVehiculo.getBoxAuto().addMouseListener(new ControlDeClickEleccionVehiculo(unaPartida , new EstadoAuto(), boxEleccionVehiculo));
-        boxEleccionVehiculo.getBoxMoto().addMouseListener(new ControlDeClickEleccionVehiculo(unaPartida , new EstadoMoto() , boxEleccionVehiculo));
-        boxEleccionVehiculo.getBox4x4().addMouseListener(new ControlDeClickEleccionVehiculo(unaPartida , new Estado4x4() , boxEleccionVehiculo));
+        boxEleccionVehiculo.getItemBoxAuto().addMouseListener(new ControlDeClickEleccionVehiculo(new EstadoAuto(), unaPartida , boxEleccionVehiculo));
+        boxEleccionVehiculo.getItemBoxMoto().addMouseListener(new ControlDeClickEleccionVehiculo( new EstadoMoto(), unaPartida , boxEleccionVehiculo));
+        boxEleccionVehiculo.getItemBox4x4().addMouseListener(new ControlDeClickEleccionVehiculo( new Estado4x4() ,unaPartida  , boxEleccionVehiculo));
 
-        boxEleccionMapa.getBoxFacil().addMouseListener(new ControlDeClickEleccionMapa(unaPartida ,"mapaFacil.xml" , boxEleccionMapa));
-        boxEleccionMapa.getBoxModerado().addMouseListener(new ControlDeClickEleccionMapa(unaPartida ,"mapaModerado.xml" , boxEleccionMapa));
-        boxEleccionMapa.getBoxDificil().addMouseListener(new ControlDeClickEleccionMapa(unaPartida, "mapaDificil.xml" , boxEleccionMapa));
+        boxEleccionMapa.getItemBoxFacil().addMouseListener(new ControlDeClickEleccionMapa("mapaFacil.xml",unaPartida , boxEleccionMapa));
+        boxEleccionMapa.getItemBoxModerado().addMouseListener(new ControlDeClickEleccionMapa("mapaModerado.xml" ,unaPartida , boxEleccionMapa));
+        boxEleccionMapa.getItemBoxDificil().addMouseListener(new ControlDeClickEleccionMapa("mapaDificil.xml" ,unaPartida , boxEleccionMapa));
 
         botonVolverAlMenuPrincipalSimple.addMouseListener(new ControlDeClickBoton(stageMenuPrincipal, stageEleccionMapaYVehiculo));
 

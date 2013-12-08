@@ -9,29 +9,21 @@ import java.awt.event.MouseListener;
 
 /** la idea es asignar un control a cada box que se pasa por paramentro, pero con Estados diferentes **/
 
-public class ControlDeClickEleccionVehiculo implements MouseListener {
+public class ControlDeClickEleccionVehiculo extends ControlDeClickBox {
 
-    Partida partida;
-    Estado estadoActivado;
-    BoxEleccionVehiculo boxVehiculo;
+    private Estado estadoActivado;
 
+    public ControlDeClickEleccionVehiculo(Estado estadoActivado , Partida unaPartida , BoxEleccionVehiculo boxVehiculo) {
 
-    public ControlDeClickEleccionVehiculo(Partida unaPartida ,Estado estadoActivado, BoxEleccionVehiculo boxVehiculo) {
-
-        this.partida = unaPartida;
-
+        super (unaPartida,boxVehiculo);
         this.estadoActivado = estadoActivado;
-
-        this.boxVehiculo = boxVehiculo;
-
-
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
 
         this.partida.asignarCarroceriaDelVehiculo(this.estadoActivado);
-        this.boxVehiculo.setVisible(false);
+        this.box.setVisible(false);
 
     }
 
