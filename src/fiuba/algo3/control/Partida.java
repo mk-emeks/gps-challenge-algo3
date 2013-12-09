@@ -3,14 +3,20 @@ package fiuba.algo3.control;
 import fiuba.algo3.masterOfPuppets.GameLoop;
 import fiuba.algo3.modelo.*;
 
+import fiuba.algo3.persistencia.RegistroUsuariosConPuntuacion;
+import fiuba.algo3.persistencia.UsuarioConPuntuacion;
 import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 import fiuba.algo3.vista.*;
 import fiuba.algo3.vista.RepresentacionDePosicionable;
 import fiuba.algo3.vista.VistasMenu.VistaCronometro;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.input.SAXBuilder;
 
 import javax.swing.*;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -175,6 +181,24 @@ public class Partida {
         this.pilotin.getCronometro().pausar(this.vistaCronometro.getThread());  /** el cronometro es un tipo independiente; A no olvidarselo **/
         this.gameLoop.detenerJuego();
         this.juegoTerminado = true;
+
+
+        /** cargamos el registro de usuario con puntuacion y "agregamos al nuevo competidor" **/
+        RegistroUsuariosConPuntuacion registroUsuariosConPuntuacion = new RegistroUsuariosConPuntuacion();
+        try {
+            SAXBuilder builder = new SAXBuilder();
+            Document doc = builder.build(new FileInputStream(registroUsuariosConPuntuacion.getNombreDelArchivo()));
+            Element raiz = doc.getRootElement();
+            registroUsuariosConPuntuacion = new RegistroUsuariosConPuntuacion(raiz);
+
+        } catch (Exception e) {System.out.println("no se pudo cargar el registro de usuarios con puntuacion");}
+
+        String nombreDelPiloto = this.getPiloto().getNombre();
+        int tiempoDelPiloto = this.getPiloto().getCronometro().tiempoEnSegundos();
+
+        registroUsuariosConPuntuacion.agregarUsuario(new UsuarioConPuntuacion(nombreDelPiloto,tiempoDelPiloto));
+
+
         System.out.println("la partida finalizo");
 
     }
