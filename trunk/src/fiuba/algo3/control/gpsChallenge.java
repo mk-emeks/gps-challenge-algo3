@@ -123,8 +123,8 @@ public class gpsChallenge {
         botonJugar.setVisible(false);
 
         /** botonVolver Stage 2.A --> Stage 2, Menu Principal**/
-        Boton botonVolverAlMenuPrincipalSimple = new BotonVolver(unMarco,30,580,369,80);
-        botonVolverAlMenuPrincipalSimple.setVisible(false);
+        Boton botonVolverAlMenuPrincipalDesdeEleccionMapaYVehiculo = new BotonVolver(unMarco,30,580,369,80);
+        botonVolverAlMenuPrincipalDesdeEleccionMapaYVehiculo.setVisible(false);
 
 
         /** Stage 2.B : Puntajes ----------------------------------**/
@@ -238,7 +238,7 @@ public class gpsChallenge {
         stageEleccionMapaYVehiculo.add(boxEleccionMapa);
         stageEleccionMapaYVehiculo.add(boxEleccionVehiculo);
         stageEleccionMapaYVehiculo.add(botonJugar);
-        stageEleccionMapaYVehiculo.add(botonVolverAlMenuPrincipalSimple);
+        stageEleccionMapaYVehiculo.add(botonVolverAlMenuPrincipalDesdeEleccionMapaYVehiculo);
 
         /** 2.B: Puntajes**/
         ArrayList<VistaMenu> stagePuntajes  = new ArrayList<VistaMenu>();
@@ -269,8 +269,8 @@ public class gpsChallenge {
         /**Stage 2.B: Cargar Usuario **/
 
         boxUsuariosExistentes.getItemBox1erNombre().addMouseListener(new ControlDeClickEleccionUsuarioExistente(boxUsuariosExistentes.getItemBox1erNombre() , unaPartida , boxUsuariosExistentes));
-        boxUsuariosExistentes.getItemBox2doNombre().addMouseListener(new ControlDeClickEleccionUsuarioExistente( boxUsuariosExistentes.getItemBox1erNombre(), unaPartida , boxUsuariosExistentes));
-        boxUsuariosExistentes.getItemBox3erNombre().addMouseListener(new ControlDeClickEleccionUsuarioExistente( boxUsuariosExistentes.getItemBox1erNombre() ,unaPartida  , boxUsuariosExistentes));
+        boxUsuariosExistentes.getItemBox2doNombre().addMouseListener(new ControlDeClickEleccionUsuarioExistente( boxUsuariosExistentes.getItemBox2doNombre(), unaPartida , boxUsuariosExistentes));
+        boxUsuariosExistentes.getItemBox3erNombre().addMouseListener(new ControlDeClickEleccionUsuarioExistente( boxUsuariosExistentes.getItemBox3erNombre() ,unaPartida  , boxUsuariosExistentes));
 
         botonAceptar.addMouseListener(new ControlDeClickBoton(stageMenuPrincipal, stageCargarUsuario));
 
@@ -292,7 +292,7 @@ public class gpsChallenge {
 
         botonJugar.addMouseListener(new ControlDeClickBotonJugar(boxEleccionMapa, boxEleccionVehiculo, vistaFinalizacion,botonAnimadoVehiculo, unaPartida, stageJuegoEnAccion, stageEleccionMapaYVehiculo));
 
-        botonVolverAlMenuPrincipalSimple.addMouseListener(new ControlDeClickBoton(stageMenuPrincipal, stageEleccionMapaYVehiculo));
+        botonVolverAlMenuPrincipalDesdeEleccionMapaYVehiculo.addMouseListener(new ControlDeClickBoton(stageMenuPrincipal, stageEleccionMapaYVehiculo));
 
         /** 2.B: Puntajes**/
 
