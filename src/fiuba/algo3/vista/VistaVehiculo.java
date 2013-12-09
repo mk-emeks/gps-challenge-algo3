@@ -1,11 +1,7 @@
 package fiuba.algo3.vista;
 
-import fiuba.algo3.modelo.Estado;
-import fiuba.algo3.modelo.EstadoAuto;
-import fiuba.algo3.modelo.EstadoMoto;
-import fiuba.algo3.modelo.Estado4x4;
+import fiuba.algo3.modelo.*;
 
-import fiuba.algo3.modelo.Vehiculo;
 import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
@@ -13,6 +9,7 @@ public class VistaVehiculo implements ObjetoDibujable {
 
     private VistaDireccionada vistaDireccionada;
     private Vehiculo vehiculo;
+
 
     public VistaVehiculo (Vehiculo unVehiculo ) {
 
@@ -47,5 +44,12 @@ public class VistaVehiculo implements ObjetoDibujable {
             this.vistaDireccionada = new VistaDireccionada4x4(this.vehiculo);
             this.vistaDireccionada.dibujar(superficieDeDibujo);
         }
+
+        /** alf cheat (el misterioso señor null) **/
+        if (vehiculo.getEstado().equals(new EstadoAlf())) {
+            this.vistaDireccionada = new VistaAlf(this.vehiculo);
+            this.vistaDireccionada.dibujar(superficieDeDibujo);
+        }
+
     }
 }
