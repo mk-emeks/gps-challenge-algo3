@@ -7,11 +7,11 @@ import java.awt.event.KeyListener;
 
 public class ControlDeMovimiento implements KeyListener {
 
-    private Partida partida;
+    private Juego juego;
 
-    public ControlDeMovimiento(Partida unaPartida) {
+    public ControlDeMovimiento(Juego unJuego) {
 
-        this.partida = unaPartida;
+        this.juego = unJuego;
 
     }
 
@@ -21,13 +21,13 @@ public class ControlDeMovimiento implements KeyListener {
     }
 
     public void keyPressed(KeyEvent keyEvent) {
-        Vehiculo vehiculo = this.partida.getPiloto().getVehiculo();
+        Vehiculo vehiculo = this.juego.getPiloto().getVehiculo();
         int tecla = keyEvent.getKeyCode();
 
         switch (tecla) {
 
             case KeyEvent.VK_RIGHT:
-                if(!partida.estaPausada()) {
+                if(!juego.estaPausada()) {
                     DireccionDerecha unaDireccionDerecha = new DireccionDerecha();
                     vehiculo.setDireccion(unaDireccionDerecha);
                     System.out.println("Me muevo para la derecha");
@@ -35,7 +35,7 @@ public class ControlDeMovimiento implements KeyListener {
                 break;
 
             case KeyEvent.VK_LEFT:
-                if(!partida.estaPausada()) {
+                if(!juego.estaPausada()) {
                     DireccionIzquierda unaDireccionIzquierda = new DireccionIzquierda();
                     vehiculo.setDireccion(unaDireccionIzquierda);
                     System.out.println("Me muevo para la izquierda");
@@ -43,7 +43,7 @@ public class ControlDeMovimiento implements KeyListener {
                 break;
 
             case KeyEvent.VK_UP:
-                if(!partida.estaPausada()) {
+                if(!juego.estaPausada()) {
                     DireccionArriba unaDireccionArriba = new DireccionArriba();
                     vehiculo.setDireccion(unaDireccionArriba);
                     System.out.println("Me muevo para la arriba");
@@ -52,7 +52,7 @@ public class ControlDeMovimiento implements KeyListener {
                 break;
 
             case KeyEvent.VK_DOWN:
-                if(!partida.estaPausada()) {
+                if(!juego.estaPausada()) {
                     DireccionAbajo unaDireccionAbajo = new DireccionAbajo();
                     vehiculo.setDireccion(unaDireccionAbajo);
                     System.out.println("Me muevo para la abajo");

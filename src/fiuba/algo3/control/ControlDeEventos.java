@@ -1,7 +1,6 @@
 package fiuba.algo3.control;
 
 /** lo que necesita saber del modelo **/
-import fiuba.algo3.masterOfPuppets.GameLoop;
 import fiuba.algo3.modelo.*;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
@@ -12,11 +11,11 @@ public class ControlDeEventos implements ObjetoVivo {
 
     private ArrayList<Aplicable> aplicables;
     private ArrayList<AplicableTemporal> aplicablesTemporables;
-    private Partida partidaControlada;
+    private Juego juegoControlado;
 
-    public ControlDeEventos(Partida unaPartida) {
+    public ControlDeEventos(Juego unJuego) {
 
-        this.partidaControlada = unaPartida;
+        this.juegoControlado = unJuego;
         this.aplicables = Mapa.getMapa().getAplicables();
         this.aplicablesTemporables = Mapa.getMapa().getAplicablesTemporales();
 
@@ -24,16 +23,16 @@ public class ControlDeEventos implements ObjetoVivo {
 
      private void actualizarElEstadoDeLaPartida() {
 
-        Vehiculo vehiculoAVerificar = this.partidaControlada.getPiloto().getVehiculo();
+        Vehiculo vehiculoAVerificar = this.juegoControlado.getPiloto().getVehiculo();
         if ( vehiculoAVerificar.getPosicion().equals(Mapa.getMapa().getLlegada()) ) {
-            this.partidaControlada.finalizar();
+            this.juegoControlado.finalizar();
         }
 
     }
 
     private void actualizarAplicables() {
 
-        Piloto pilotoAVerificar = this.partidaControlada.getPiloto();
+        Piloto pilotoAVerificar = this.juegoControlado.getPiloto();
 
         // eficiencia: break, si suponemos que no hay 2 aplicables en la misma posicion
 

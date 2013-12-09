@@ -7,12 +7,12 @@ import java.util.ArrayList;
 public class ControlDeClickBotonConPartida extends ControlDeClickBoton {
 
 
-    protected Partida partida;
+    protected Juego juego;
 
-    public ControlDeClickBotonConPartida( Partida unaPartida, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff) {
+    public ControlDeClickBotonConPartida( Juego unJuego, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff) {
 
         super(vistasOn,vistasOff);
-        this.partida = unaPartida;
+        this.juego = unJuego;
 
     }
 }

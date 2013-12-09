@@ -1,7 +1,6 @@
 package fiuba.algo3.control;
 
 
-import fiuba.algo3.persistencia.RegistroUsuarios;
 import fiuba.algo3.vista.VistasMenu.BoxUsuariosExistentes;
 
 import javax.swing.*;
@@ -15,9 +14,9 @@ public class ControlDeClickEleccionUsuarioExistente extends ControlDeClickBox {
      *  las item box deberian ser clases aparte y tener metodos propios con el cual comunicarse con el resto de los objetos
      */
 
-    public ControlDeClickEleccionUsuarioExistente (JLabel itemBoxControlada, Partida unaPartida, BoxUsuariosExistentes boxUsuariosExistentes) {
+    public ControlDeClickEleccionUsuarioExistente (JLabel itemBoxControlada, Juego unJuego, BoxUsuariosExistentes boxUsuariosExistentes) {
 
-        super(unaPartida,boxUsuariosExistentes);
+        super(unJuego,boxUsuariosExistentes);
 
         this.nombreDelUsuario = itemBoxControlada.getText();
 
@@ -26,7 +25,7 @@ public class ControlDeClickEleccionUsuarioExistente extends ControlDeClickBox {
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        this.partida.crearPiloto(nombreDelUsuario);
+        this.juego.crearPiloto(nombreDelUsuario);
         this.box.setVisible(false);
 
     }

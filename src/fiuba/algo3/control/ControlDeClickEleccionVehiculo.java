@@ -7,7 +7,6 @@ import fiuba.algo3.vista.VistasMenu.BoxEleccionVehiculo;
 
 
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 /** la idea es asignar un control a cada box que se pasa por paramentro, pero con Estados diferentes **/
 
@@ -15,9 +14,9 @@ public class ControlDeClickEleccionVehiculo extends ControlDeClickBox {
 
     private Estado estadoActivado;
 
-    public ControlDeClickEleccionVehiculo(Estado estadoActivado , Partida unaPartida , BoxEleccionVehiculo boxVehiculo) {
+    public ControlDeClickEleccionVehiculo(Estado estadoActivado , Juego unJuego, BoxEleccionVehiculo boxVehiculo) {
 
-        super (unaPartida,boxVehiculo);
+        super (unJuego,boxVehiculo);
         this.estadoActivado = estadoActivado;
     }
 
@@ -25,11 +24,11 @@ public class ControlDeClickEleccionVehiculo extends ControlDeClickBox {
     public void mouseClicked(MouseEvent e) {
 
         /** alf cheat (el misterioso señor null) **/
-        if (this.partida.getPiloto().getNombre() == null) {
+        if (this.juego.getPiloto().getNombre() == null) {
             MusicaCheat.playMusic();
-            this.partida.asignarCarroceriaDelVehiculo(new EstadoAlf());
+            this.juego.asignarCarroceriaDelVehiculo(new EstadoAlf());
         }  else {
-            this.partida.asignarCarroceriaDelVehiculo(this.estadoActivado);
+            this.juego.asignarCarroceriaDelVehiculo(this.estadoActivado);
         }
 
         this.box.setVisible(false);
