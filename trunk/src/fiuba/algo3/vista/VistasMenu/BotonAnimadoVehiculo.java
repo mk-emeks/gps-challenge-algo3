@@ -2,7 +2,7 @@
 package fiuba.algo3.vista.VistasMenu;
 
 
-import fiuba.algo3.control.Partida;
+import fiuba.algo3.control.Juego;
 import fiuba.algo3.modelo.Estado;
 import fiuba.algo3.modelo.EstadoAuto;
 import fiuba.algo3.modelo.EstadoMoto;
@@ -13,7 +13,7 @@ import javax.swing.*;
 
 public class BotonAnimadoVehiculo extends VistaMenu {
 
-    Partida partida;
+    Juego juego;
     //JLabel foto;
 
     JLabel fotoAuto;
@@ -21,9 +21,9 @@ public class BotonAnimadoVehiculo extends VistaMenu {
     JLabel foto4x4;
 
 
-    public BotonAnimadoVehiculo(Partida unaPartida ,JFrame unMarco, int posicionX, int posicionY, int ancho, int largo) {
+    public BotonAnimadoVehiculo(Juego unJuego,JFrame unMarco, int posicionX, int posicionY, int ancho, int largo) {
 
-        this.partida = unaPartida;
+        this.juego = unJuego;
         //foto = new JLabel();
 
         //foto.setBounds(posicionX, posicionY, ancho, largo);
@@ -59,9 +59,9 @@ public class BotonAnimadoVehiculo extends VistaMenu {
                 Estado estadoAuto = new EstadoAuto();
                 Estado estadoMoto = new EstadoMoto();
 
-                while (!partida.estaPausada()) {
+                while (!juego.estaPausada()) {
 
-                    Estado estadoAcomparar = partida.getPiloto().getVehiculo().getEstado();
+                    Estado estadoAcomparar = juego.getPiloto().getVehiculo().getEstado();
                     if  (estadoAcomparar.equals(estadoAuto)) {
                       fotoAuto.setVisible(true);
                       fotoMoto.setVisible(false);

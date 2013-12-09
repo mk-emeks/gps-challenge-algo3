@@ -1,16 +1,13 @@
 package fiuba.algo3.vista.VistasMenu;
 
-import fiuba.algo3.control.Partida;
-import fiuba.algo3.modelo.Estado;
-import fiuba.algo3.modelo.EstadoAuto;
-import fiuba.algo3.modelo.EstadoMoto;
+import fiuba.algo3.control.Juego;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class VistaFinalizacion extends VistaMenu {
 
-    Partida partida;
+    Juego juego;
     JFrame frameResultado = new JFrame();
 
     Thread hilo = new Thread() {
@@ -18,7 +15,7 @@ public class VistaFinalizacion extends VistaMenu {
 
             try {
                 Thread.sleep(300);
-                while (!partida.estaTerminada()) {
+                while (!juego.estaTerminada()) {
                     frameResultado.setVisible(false);
                 }
 
@@ -30,9 +27,9 @@ public class VistaFinalizacion extends VistaMenu {
 
 
 
-    public VistaFinalizacion(Partida unaPartida) {
+    public VistaFinalizacion(Juego unJuego) {
 
-        this.partida = unaPartida;
+        this.juego = unJuego;
 
         frameResultado.setBounds(700,300,300,200);
         frameResultado.setLayout(null);
