@@ -105,7 +105,6 @@ public class gpsChallenge {
         botonReanudarPartidaGuardada.setVisible(false);
 
         /** botonVerPuntajes -> stage 2.B **/
-        /** todo **/
         Boton botonVerPuntajes = new BotonVerPuntajes(unMarco,30,350,369,80);
         botonVerPuntajes.setVisible(false);
 
@@ -123,7 +122,7 @@ public class gpsChallenge {
         Boton botonJugar = new BotonJugar(unMarco,30,370,369,80);
         botonJugar.setVisible(false);
 
-        /** botonVolverDesde Stage 2.A --> Stage 2, Menu Principal**/
+        /** botonVolver Stage 2.A --> Stage 2, Menu Principal**/
         Boton botonVolverAlMenuPrincipalSimple = new BotonVolver(unMarco,30,580,369,80);
         botonVolverAlMenuPrincipalSimple.setVisible(false);
 
@@ -136,6 +135,10 @@ public class gpsChallenge {
         /** boxUsuariosConPuntajes **/
         BoxUsuariosConPuntajes boxUsuariosConPuntajes = new BoxUsuariosConPuntajes(unMarco,100,200,150,60);
         boxUsuariosConPuntajes.setVisible(false);
+
+        /** botonVolverAlMenuPrincipalDesdePuntajes Stage 2.A --> Stage 2, Menu Principal**/
+        Boton botonVolverAlMenuPrincipalDesdePuntajes = new BotonVolver(unMarco,30,580,369,80);
+        botonVolverAlMenuPrincipalDesdePuntajes .setVisible(false);
 
 
         /** Stage 3 : Juego en Accion --------------------------------------------------------------------**/
@@ -207,37 +210,43 @@ public class gpsChallenge {
 
         /** Listas con los Elementos de cada Stage **/
 
+        /** Stage 1: Eleccion Usuario **/
         ArrayList<VistaMenu> stageEleccionUsuario = new ArrayList<VistaMenu>();
         stageEleccionUsuario.add(botonSoyNuevo);
         stageEleccionUsuario.add(botonIngresarUsuario);
 
+        /**Stage 1.A: Usuario nuevo **/
         ArrayList<VistaMenu> stageUsuarioNuevo = new ArrayList<VistaMenu>();
         stageUsuarioNuevo.add(mensajeParaUsuarioNuevo);
         stageUsuarioNuevo.add(areaIngresoNombreDelUsuario);
         stageUsuarioNuevo.add(botonGuardar);
 
+        /**Stage 2.B: Cargar Usuario **/
         ArrayList<VistaMenu> stageCargarUsuario  = new ArrayList<VistaMenu>();
         stageCargarUsuario.add(listaUsuariosExistenes);
         stageCargarUsuario.add(boxUsuariosExistentes);
         stageCargarUsuario.add(botonAceptar);
 
-
+        /** Stage 2: Menu Principal  **/
         ArrayList<VistaMenu> stageMenuPrincipal = new ArrayList<VistaMenu>();
         stageMenuPrincipal.add(botonComenzarPartida);
         stageMenuPrincipal.add(botonReanudarPartidaGuardada);
         stageMenuPrincipal.add(botonVerPuntajes);
 
+        /**Stage 2.A: Eleccion Mapa y Vehiculo**/
         ArrayList<VistaMenu> stageEleccionMapaYVehiculo = new ArrayList<VistaMenu>();
         stageEleccionMapaYVehiculo.add(boxEleccionMapa);
         stageEleccionMapaYVehiculo.add(boxEleccionVehiculo);
         stageEleccionMapaYVehiculo.add(botonJugar);
         stageEleccionMapaYVehiculo.add(botonVolverAlMenuPrincipalSimple);
 
+        /** 2.B: Puntajes**/
         ArrayList<VistaMenu> stagePuntajes  = new ArrayList<VistaMenu>();
         stagePuntajes.add(listaDePuntajes);
         stagePuntajes.add(boxUsuariosConPuntajes);
-        stagePuntajes.add(botonVolverAlMenuPrincipalSimple);
+        stagePuntajes.add(botonVolverAlMenuPrincipalDesdePuntajes);
 
+        /** Stage 3 : Juego en Accion **/
         ArrayList<VistaMenu> stageJuegoEnAccion = new ArrayList<VistaMenu>();
         stageJuegoEnAccion.add(vistaCronometro);
         stageJuegoEnAccion.add(botonAnimadoVehiculo);
@@ -245,28 +254,33 @@ public class gpsChallenge {
         stageJuegoEnAccion.add(botonVolverMenuPrincipalDesdeJuegoEnAccion);
 
 
-        /** controles de los botones **/
+        /** Controles de los botones segun stage **/
 
-        /** stage 1 **/
+        /** Stage 1: Eleccion Usuario **/
 
         botonSoyNuevo.addMouseListener(new ControlDeClickBoton(stageUsuarioNuevo, stageEleccionUsuario));
         botonIngresarUsuario.addMouseListener(new ControlDeClickBoton(stageCargarUsuario,stageEleccionUsuario));
 
-        /**A**/
+        /**Stage 1.A: Usuario nuevo **/
+
         botonGuardar.addMouseListener(new ControlDeClickBotonGuardar(registroUsuarios, unaPartida, areaIngresoNombreDelUsuario, stageMenuPrincipal, stageUsuarioNuevo));
 
 
-        /**B**/
+        /**Stage 2.B: Cargar Usuario **/
+
         boxUsuariosExistentes.getItemBox1erNombre().addMouseListener(new ControlDeClickEleccionUsuarioExistente(boxUsuariosExistentes.getItemBox1erNombre() , unaPartida , boxUsuariosExistentes));
         boxUsuariosExistentes.getItemBox2doNombre().addMouseListener(new ControlDeClickEleccionUsuarioExistente( boxUsuariosExistentes.getItemBox1erNombre(), unaPartida , boxUsuariosExistentes));
         boxUsuariosExistentes.getItemBox3erNombre().addMouseListener(new ControlDeClickEleccionUsuarioExistente( boxUsuariosExistentes.getItemBox1erNombre() ,unaPartida  , boxUsuariosExistentes));
 
-        botonAceptar.addMouseListener(new ControlDeClickBoton(stageMenuPrincipal,stageCargarUsuario));
+        botonAceptar.addMouseListener(new ControlDeClickBoton(stageMenuPrincipal, stageCargarUsuario));
 
 
-        /** stage 2 **/
-        /**Pantalla de eleccion Vehiculo y Nivel**/
+        /** Stage 2: Menu Principal  **/
+
         botonComenzarPartida.addMouseListener(new ControlDeClickBoton(stageEleccionMapaYVehiculo, stageMenuPrincipal));
+        botonVerPuntajes.addMouseListener(new ControlDeClickBoton(stagePuntajes, stageMenuPrincipal));
+
+        /**Stage 2.A: Eleccion Mapa y Vehiculo**/
 
         boxEleccionVehiculo.getItemBoxAuto().addMouseListener(new ControlDeClickEleccionVehiculo(new EstadoAuto(), unaPartida , boxEleccionVehiculo));
         boxEleccionVehiculo.getItemBoxMoto().addMouseListener(new ControlDeClickEleccionVehiculo( new EstadoMoto(), unaPartida , boxEleccionVehiculo));
@@ -276,18 +290,20 @@ public class gpsChallenge {
         boxEleccionMapa.getItemBoxModerado().addMouseListener(new ControlDeClickEleccionMapa("mapaModerado.xml" ,unaPartida , boxEleccionMapa));
         boxEleccionMapa.getItemBoxDificil().addMouseListener(new ControlDeClickEleccionMapa("mapaDificil.xml" ,unaPartida , boxEleccionMapa));
 
-        /**Pantalla de puntajes**/
-        botonVerPuntajes.addMouseListener(new ControlDeClickBoton(stagePuntajes, stageMenuPrincipal));
-
+        botonJugar.addMouseListener(new ControlDeClickBotonJugar(boxEleccionMapa, boxEleccionVehiculo, vistaFinalizacion,botonAnimadoVehiculo, unaPartida, stageJuegoEnAccion, stageEleccionMapaYVehiculo));
 
         botonVolverAlMenuPrincipalSimple.addMouseListener(new ControlDeClickBoton(stageMenuPrincipal, stageEleccionMapaYVehiculo));
 
-        /** hasta aca llegue **/
-        botonJugar.addMouseListener(new ControlDeClickBotonJugar(boxEleccionMapa, boxEleccionVehiculo, vistaFinalizacion,botonAnimadoVehiculo, unaPartida, stageJuegoEnAccion, stageEleccionMapaYVehiculo));
-        //botonVolverMenuPrincipalDesdeJuegoEnAccion.addMouseListener(new ControlDeClickBotonVolver(unaPartida, stageMenuPrincipal, stageJuegoEnAccion));
+        /** 2.B: Puntajes**/
+
+        botonVolverAlMenuPrincipalDesdePuntajes.addMouseListener(new ControlDeClickBoton(stageMenuPrincipal,stagePuntajes));
+
+
+
 
 
         /** musica de fondo, tiene que ir al final **/
+
         MusicaDeFondo.playMusic();
 
     }
