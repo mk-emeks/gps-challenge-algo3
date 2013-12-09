@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo;
+/**package fiuba.algo3.modelo;
 
 import junit.framework.Assert;
 import org.junit.After;
@@ -19,7 +19,7 @@ public class SorpresaFavorableTest {
         Assert.assertEquals(unaSorpresa.getPosicion(),unaPosicion);
     }
 
-    /** por ser posicionable la sorpresa **/
+    //por ser posicionable la sorpresa
     @Test
     public void testDeberiaPonerseEnElMapa() throws Exception {
 
@@ -55,4 +55,4 @@ public class SorpresaFavorableTest {
 
     }
 
-}
+}      **/
