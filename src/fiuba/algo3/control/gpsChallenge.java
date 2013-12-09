@@ -5,6 +5,8 @@ import fiuba.algo3.modelo.Estado4x4;
 import fiuba.algo3.modelo.EstadoAuto;
 import fiuba.algo3.modelo.EstadoMoto;
 import fiuba.algo3.persistencia.RegistroUsuarios;
+import fiuba.algo3.persistencia.RegistroUsuariosConPuntuacion;
+import fiuba.algo3.persistencia.UsuarioConPuntuacion;
 import fiuba.algo3.sonido.MusicaDeFondo;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.vista.VistasMenu.*;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 public class gpsChallenge {
 
     public static void main(String[] argv) {
+
 
         /** Configuracion Ventana Principal **/
         final JFrame unMarco = new JFrame("GPS Challenge");
@@ -42,6 +45,21 @@ public class gpsChallenge {
             registroUsuarios = new RegistroUsuarios(raiz);
 
         } catch (Exception e) {System.out.println("no se pudo cargar el registro de usuarios");}
+
+        /** cargamos el registro de usuario con puntuacion **/
+        RegistroUsuariosConPuntuacion registroUsuariosConPuntuacion = new RegistroUsuariosConPuntuacion();
+
+        try {
+            SAXBuilder builder = new SAXBuilder();
+            Document doc = builder.build(new FileInputStream(registroUsuariosConPuntuacion.getNombreDelArchivo()));
+            Element raiz = doc.getRootElement();
+            registroUsuariosConPuntuacion = new RegistroUsuariosConPuntuacion(raiz);
+
+        } catch (Exception e) {System.out.println("no se pudo cargar el registro de usuarios con puntuacion");}
+
+       registroUsuariosConPuntuacion.agregarUsuario(new UsuarioConPuntuacion("edu",5));
+
+
 
 
 

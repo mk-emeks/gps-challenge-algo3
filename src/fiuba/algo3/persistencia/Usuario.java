@@ -7,7 +7,8 @@ import org.jdom2.Element;
 
 public class Usuario implements Serializable {
 
-    String nombre;
+    protected String nombre;
+
 
     public Usuario(String nombre) {
 

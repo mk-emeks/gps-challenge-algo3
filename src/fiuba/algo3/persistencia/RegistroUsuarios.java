@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.Serializable;
 
-import fiuba.algo3.vista.VistasMenu.VistaUsuarioYaExiste;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
@@ -21,9 +20,9 @@ public class RegistroUsuarios implements Serializable {
     private static final String nombreDelArchivo = "registroUsuarios.xml";
     public static String getNombreDelArchivo() { return nombreDelArchivo; }
 
-    public static int cantidadDePermitidosUsuarios = 3;
+    private static int cantidadDeUsuariosPermitidos = 3;
 
-    ArrayList <Usuario> usuarios;
+    private ArrayList <Usuario> usuarios;
 
     public RegistroUsuarios() {
 
@@ -61,7 +60,6 @@ public class RegistroUsuarios implements Serializable {
         List<Element> hijos = nodoRegistroUsuarios.getChildren();
         Iterator<Element> iteradorHijos = hijos.iterator();
 
-        /** este metodo es el mejor ejemplo de lo que "no" hay que hacer **/
         while (iteradorHijos.hasNext()) {
 
             Element nodoHijo = iteradorHijos.next();
@@ -96,7 +94,7 @@ public class RegistroUsuarios implements Serializable {
             Element raiz = doc.getRootElement();
 
             /** por ahora solo te deja tres, y si ya esta, no te los guarda un carajo, si queres más paga **/
-            if (this.usuarios.size() < cantidadDePermitidosUsuarios) {
+            if (this.usuarios.size() < cantidadDeUsuariosPermitidos) {
 
             //this.cargarListaUsuarios(raiz);  /** EN EL MOMENTO QUE SE LLAMA LA LISTA YA FUE CARGADA **/
             //verifica que no haya repeticion
@@ -124,7 +122,7 @@ public class RegistroUsuarios implements Serializable {
     }
 
     /** toda la frula: se autoactualiza **/
-    private void actualizarArchivoXml(Document doc) {
+    protected void actualizarArchivoXml(Document doc) {
 
         try{
 
