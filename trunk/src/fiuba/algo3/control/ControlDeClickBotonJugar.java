@@ -39,14 +39,18 @@ public class ControlDeClickBotonJugar extends ControlDeClickBotonConPartida {
 
         if ((!this.boxMapa.isVisible()) && (!this.boxVehiculo.isVisible())) {
 
+
             this.partida.cargarVehiculoParaElPiloto();
+            this.botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
+
             this.partida.iniciar();
             this.partida.pausar();
-            VistaInstrucciones unaVistaInstrucciones = new VistaInstrucciones();
 
             this.actualizar();
-            this.botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
+
+            VistaInstrucciones unaVistaInstrucciones = new VistaInstrucciones();
             this.vistaFinalizacion.comenzarVista();
+
 
         }
     }
