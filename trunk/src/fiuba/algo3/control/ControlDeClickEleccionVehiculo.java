@@ -1,6 +1,8 @@
 package fiuba.algo3.control;
 
 import fiuba.algo3.modelo.Estado;
+import fiuba.algo3.modelo.EstadoAlf;
+import fiuba.algo3.sonido.MusicaCheat;
 import fiuba.algo3.vista.VistasMenu.BoxEleccionVehiculo;
 
 
@@ -22,7 +24,14 @@ public class ControlDeClickEleccionVehiculo extends ControlDeClickBox {
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        this.partida.asignarCarroceriaDelVehiculo(this.estadoActivado);
+        /** alf cheat (el misterioso señor null) **/
+        if (this.partida.getPiloto().getNombre() == null) {
+            MusicaCheat.playMusic();
+            this.partida.asignarCarroceriaDelVehiculo(new EstadoAlf());
+        }  else {
+            this.partida.asignarCarroceriaDelVehiculo(this.estadoActivado);
+        }
+
         this.box.setVisible(false);
 
     }
