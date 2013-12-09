@@ -36,19 +36,19 @@ public class BoxUsuariosConPuntajes extends Box {
 
         try {
 
-            this.itembox1.setText("1) " + listaUsuariosConPuntajes.get(0).getNombre() + "   " + listaUsuariosConPuntajes.get(0).getPuntuacion());
+            this.itembox1.setText("1) " + listaUsuariosConPuntajes.get(0).getNombre() + "   " + listaUsuariosConPuntajes.get(0).getPuntuacionComoString());
             this.itembox1.setForeground(new Color(197, 104, 13));
             this.itembox1.setFont(new Font(Font.SERIF, Font.BOLD, 20));
         } catch (Exception e1) { System.out.println("error al cargar el nombre del 1er usuario"); }
 
         try {
-            this.itembox2.setText("2) " + listaUsuariosConPuntajes.get(1).getNombre() + "   " + listaUsuariosConPuntajes.get(1).getPuntuacion());
+            this.itembox2.setText("2) " + listaUsuariosConPuntajes.get(1).getNombre() + "   " + listaUsuariosConPuntajes.get(1).getPuntuacionComoString());
             this.itembox2.setForeground(new Color(197, 104, 13));
             this.itembox2.setFont(new Font(Font.SERIF, Font.BOLD, 20));
         } catch (Exception e1) { System.out.println("error al cargar el nombre del 2er usuario"); }
 
         try{
-            this.itembox3.setText("3) " + listaUsuariosConPuntajes.get(2).getNombre() + "   " + listaUsuariosConPuntajes.get(2).getPuntuacion());
+            this.itembox3.setText("3) " + listaUsuariosConPuntajes.get(2).getNombre() + "   " + listaUsuariosConPuntajes.get(2).getPuntuacionComoString());
             this.itembox3.setForeground(new Color(197, 104, 13));
             this.itembox3.setFont(new Font(Font.SERIF, Font.BOLD, 20));
         } catch (Exception e1) { System.out.println("error al cargar el nombre del 3er usuario"); }
