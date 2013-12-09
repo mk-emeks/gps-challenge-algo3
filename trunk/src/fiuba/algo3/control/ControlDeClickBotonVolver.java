@@ -10,9 +10,9 @@ public class ControlDeClickBotonVolver extends ControlDeClickBotonConPartida   {
 
 
 
-    public ControlDeClickBotonVolver(Partida unaPartida, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff){
+    public ControlDeClickBotonVolver(Juego unJuego, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff){
 
-        super(unaPartida, vistasOn, vistasOff);
+        super(unJuego, vistasOn, vistasOff);
 
     }
 
@@ -20,11 +20,11 @@ public class ControlDeClickBotonVolver extends ControlDeClickBotonConPartida   {
     public void mouseClicked(MouseEvent e) {
 
 
-        if(!this.partida.estaPausada()) {
+        if(!this.juego.estaPausada()) {
 
             /**Hay que limpiar el gameloop!! **/
-            this.partida.finalizar();
-            this.partida.destruir();
+            this.juego.finalizar();
+            this.juego.destruir();
             this.actualizar();
         }
 

@@ -22,7 +22,7 @@ import java.util.Iterator;
 
 
 
-public class Partida {
+public class Juego {
 
 
     private GameLoop gameLoop;
@@ -86,7 +86,7 @@ public class Partida {
     }
 
     /** CONSTRUCTOR **/
-    public Partida() {
+    public Juego() {
 
         /** importante crearlo antes de usarlos **/
         this.gameLoop = new GameLoop();
@@ -95,12 +95,6 @@ public class Partida {
 
     }
 
-    /* public Partida( SuperficiePanel unaZonaDeJuego) {
-
-        this.zonaDeJuego = unaZonaDeJuego;
-        this.gameLoop = new GameLoop(90,this.zonaDeJuego);
-
-    } */
 
     //public JPanel getZonaDeJUego(){ return this.zonaDeJuego;}
 
@@ -199,7 +193,7 @@ public class Partida {
         registroUsuariosConPuntuacion.agregarUsuario(new UsuarioConPuntuacion(nombreDelPiloto,tiempoDelPiloto));
 
 
-        System.out.println("la partida finalizo");
+        System.out.println("el juego finalizo");
 
     }
 

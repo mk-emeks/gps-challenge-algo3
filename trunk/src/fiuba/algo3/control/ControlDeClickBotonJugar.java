@@ -16,9 +16,9 @@ public class ControlDeClickBotonJugar extends ControlDeClickBotonConPartida {
     BoxEleccionVehiculo boxVehiculo;
     BoxEleccionMapa boxMapa;
 
-    public ControlDeClickBotonJugar(BoxEleccionMapa unBoxMapa, BoxEleccionVehiculo unBoxVehiculo, VistaFinalizacion unaVistaFinalizacion, BotonAnimadoVehiculo botonAnimadoVehiculo, Partida unaPartida, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff){
+    public ControlDeClickBotonJugar(BoxEleccionMapa unBoxMapa, BoxEleccionVehiculo unBoxVehiculo, VistaFinalizacion unaVistaFinalizacion, BotonAnimadoVehiculo botonAnimadoVehiculo, Juego unJuego, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff){
 
-        super(unaPartida,vistasOn,vistasOff);
+        super(unJuego,vistasOn,vistasOff);
         this.botonAnimadoVehiculo = botonAnimadoVehiculo;
         this.vistaFinalizacion = unaVistaFinalizacion;
         this.boxMapa= unBoxMapa;
@@ -27,9 +27,9 @@ public class ControlDeClickBotonJugar extends ControlDeClickBotonConPartida {
 
     }
 
-    public ControlDeClickBotonJugar(Partida unaPartida, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff){
+    public ControlDeClickBotonJugar(Juego unJuego, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff){
 
-        super(unaPartida,vistasOn,vistasOff);
+        super(unJuego,vistasOn,vistasOff);
 
 
     }
@@ -40,11 +40,11 @@ public class ControlDeClickBotonJugar extends ControlDeClickBotonConPartida {
         if ((!this.boxMapa.isVisible()) && (!this.boxVehiculo.isVisible())) {
 
 
-            this.partida.cargarVehiculoParaElPiloto();
+            this.juego.cargarVehiculoParaElPiloto();
             this.botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
 
-            this.partida.iniciar();
-            this.partida.pausar();
+            this.juego.iniciar();
+            this.juego.pausar();
 
             this.actualizar();
 

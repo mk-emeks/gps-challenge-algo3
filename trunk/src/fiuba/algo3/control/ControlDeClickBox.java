@@ -9,13 +9,13 @@ import java.awt.event.MouseListener;
 
 public abstract class ControlDeClickBox  implements MouseListener {
 
-    protected Partida partida;
+    protected Juego juego;
     protected Box box;
 
 
-    public ControlDeClickBox(Partida unaPartida , Box box) {
+    public ControlDeClickBox(Juego unJuego, Box box) {
 
-        this.partida = unaPartida;
+        this.juego = unJuego;
         this.box = box;
 
     }

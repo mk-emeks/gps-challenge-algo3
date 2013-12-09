@@ -7,12 +7,12 @@ import java.awt.event.KeyListener;
 public class Pausa implements KeyListener {
 
 
-    private Partida partida;
+    private Juego juego;
    // private boolean pausa;
 
-    public Pausa(Partida laPartida) {
+    public Pausa(Juego elJuego) {
 
-        this.partida = laPartida;
+        this.juego = elJuego;
         //pausa = false;
 
     }
@@ -40,13 +40,13 @@ public class Pausa implements KeyListener {
 
             case KeyEvent.VK_ENTER:
 
-                if (partida.estaPausada()) {
-                    this.partida.reanudar();
+                if (juego.estaPausada()) {
+                    this.juego.reanudar();
                     System.out.println("quiero seguir!");
                     //this.reanudar();
                     break;
                 } else {
-                    this.partida.pausar();
+                    this.juego.pausar();
                     System.out.println("toque pausa mierda!");
                     //this.pausar();
 

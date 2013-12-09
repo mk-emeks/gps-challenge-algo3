@@ -17,9 +17,9 @@ public class ControlDeClickBotonGuardar extends ControlDeClickBotonConPartida {
     private CampoTexto areaTexto;
 
 
-    public ControlDeClickBotonGuardar(RegistroUsuarios registroUsuarios, Partida unaPartida,CampoTexto campoTexto, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff) {
+    public ControlDeClickBotonGuardar(RegistroUsuarios registroUsuarios, Juego unJuego,CampoTexto campoTexto, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff) {
 
-        super(unaPartida,vistasOn,vistasOff);
+        super(unJuego,vistasOn,vistasOff);
         this.registroUsuarios = registroUsuarios;
         this.areaTexto = campoTexto;
 
@@ -33,7 +33,7 @@ public class ControlDeClickBotonGuardar extends ControlDeClickBotonConPartida {
 
             String nombreDelCompetidor = this.areaTexto.getTexto();
             this.registroUsuarios.agregarUsuario(new Usuario(nombreDelCompetidor));
-            this.partida.crearPiloto(nombreDelCompetidor);
+            this.juego.crearPiloto(nombreDelCompetidor);
             /** falta persistencia! **/
 
             this.actualizar();
