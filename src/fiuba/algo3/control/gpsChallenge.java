@@ -60,30 +60,31 @@ public class gpsChallenge {
         /** Stage 1.A : Usuario Nuevo ----------------------------------**/
 
         /** texto mensajeParaUsuarioNuevo **/
-        Texto mensajeParaUsuarioNuevo = new Texto(unMarco,35,200,380,40);
-        mensajeParaUsuarioNuevo.setMensaje("Por favor, eliga un nombre (10 caracteres max)");
-        // ponerle color, o reemplazar por imagen
+        Texto mensajeParaUsuarioNuevo = new Texto(unMarco,70,200,380,40);
+        mensajeParaUsuarioNuevo.setMensaje("Por favor, escribir un nombre");
         mensajeParaUsuarioNuevo.setVisible(false);
 
         /** area IngresoNombreDelUsuario **/
-        CampoTexto areaIngresoNombreDelUsuario = new CampoTexto(unMarco,140,260,150,30);
+        CampoTexto areaIngresoNombreDelUsuario = new CampoTexto(unMarco,140,245,150,30);
         areaIngresoNombreDelUsuario.setVisible(false);
 
+        Texto avisoParaUsuarioNuevo = new Texto(unMarco,100,280,380,40);
+        avisoParaUsuarioNuevo.setMensaje("10 caracteres máximo");
+        avisoParaUsuarioNuevo.setVisible(false);
+
         /** botonGuardar -> stage 2 **/
-        Boton botonGuardar = new BotonGuardar(unMarco,35,325,369,80);
+        Boton botonGuardar = new BotonGuardar(unMarco,35,330,369,80);
         botonGuardar.setVisible(false);
 
         /** Stage 1.B : Cargar Usuario ----------------------------------**/
 
         /** texto listaUsuariosExistenes **/
-        Texto listaUsuariosExistenes = new Texto(unMarco,40,150,380,40);
+        Texto listaUsuariosExistenes = new Texto(unMarco,40,170,380,40);
         listaUsuariosExistenes.setMensaje("Usuarios:");
-        // ponerle color, dejarlo lindo
         listaUsuariosExistenes.setVisible(false);
 
         /** boxUsuariosExistentes **/
-        BoxUsuariosExistentes boxUsuariosExistentes = new BoxUsuariosExistentes(registroUsuarios,unMarco,100,200,150,60);
-        // ponerle color, dejarlo lindo
+        BoxUsuariosExistentes boxUsuariosExistentes = new BoxUsuariosExistentes(registroUsuarios,unMarco,100,220,300,40);
         boxUsuariosExistentes.setVisible(false);
 
         /** botonAceptar -> stage 2 **/
@@ -126,12 +127,12 @@ public class gpsChallenge {
 
 
         /** Stage 2.B : Puntajes ----------------------------------**/
-        Texto listaDePuntajes = new Texto(unMarco,40,150,380,40);
+        Texto listaDePuntajes = new Texto(unMarco,40,170,380,40);
         listaDePuntajes.setMensaje("Puntajes:");
         listaDePuntajes.setVisible(false);
 
         /** boxUsuariosConPuntajes **/
-        BoxUsuariosConPuntajes boxUsuariosConPuntajes = new BoxUsuariosConPuntajes(unMarco,100,200,150,60);
+        BoxUsuariosConPuntajes boxUsuariosConPuntajes = new BoxUsuariosConPuntajes(unMarco,100,220,300,40);
         boxUsuariosConPuntajes.setVisible(false);
 
         /** botonVolverAlMenuPrincipalDesdePuntajes Stage 2.A --> Stage 2, Menu Principal**/
@@ -210,6 +211,7 @@ public class gpsChallenge {
         ArrayList<VistaMenu> stageUsuarioNuevo = new ArrayList<VistaMenu>();
         stageUsuarioNuevo.add(mensajeParaUsuarioNuevo);
         stageUsuarioNuevo.add(areaIngresoNombreDelUsuario);
+        stageUsuarioNuevo.add(avisoParaUsuarioNuevo);
         stageUsuarioNuevo.add(botonGuardar);
 
         /**Stage 2.B: Cargar Usuario **/
@@ -296,7 +298,7 @@ public class gpsChallenge {
 
         /** musica de fondo, tiene que ir al final **/
 
-        //MusicaDeFondo.playMusic();
+        MusicaDeFondo.playMusic();
 
     }
 
