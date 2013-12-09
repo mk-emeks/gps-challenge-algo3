@@ -46,23 +46,6 @@ public class gpsChallenge {
 
         } catch (Exception e) {System.out.println("no se pudo cargar el registro de usuarios");}
 
-        /** cargamos el registro de usuario con puntuacion **/
-        RegistroUsuariosConPuntuacion registroUsuariosConPuntuacion = new RegistroUsuariosConPuntuacion();
-
-        try {
-            SAXBuilder builder = new SAXBuilder();
-            Document doc = builder.build(new FileInputStream(registroUsuariosConPuntuacion.getNombreDelArchivo()));
-            Element raiz = doc.getRootElement();
-            registroUsuariosConPuntuacion = new RegistroUsuariosConPuntuacion(raiz);
-
-        } catch (Exception e) {System.out.println("no se pudo cargar el registro de usuarios con puntuacion");}
-
-       registroUsuariosConPuntuacion.agregarUsuario(new UsuarioConPuntuacion("edu",5));
-
-
-
-
-
         /** BOTONES **/
 
         /** Stage 1 : Eleccion Usuario --------------------------------------------------------------------**/
