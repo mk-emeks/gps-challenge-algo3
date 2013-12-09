@@ -49,18 +49,18 @@ public class gpsChallenge {
         /** Stage 1 : Eleccion Usuario --------------------------------------------------------------------**/
 
         /** boton Soy Nuevo -> stage 1.A **/
-        Boton botonSoyNuevo = new BotonSoyNuevo(unMarco,30,150,369,80);
+        Boton botonSoyNuevo = new BotonSoyNuevo(unMarco,35,170,369,80);
         botonSoyNuevo.setVisible(true);
 
 
         /** boton Ingresar Usuario -> stage 1.B **/
-        Boton botonIngresarUsuario = new BotonIngresarUsuario(unMarco,30,250,369,80);
+        Boton botonIngresarUsuario = new BotonIngresarUsuario(unMarco,35,280,369,80);
         botonIngresarUsuario.setVisible(true);
 
         /** Stage 1.A : Usuario Nuevo ----------------------------------**/
 
         /** texto mensajeParaUsuarioNuevo **/
-        Texto mensajeParaUsuarioNuevo = new Texto(unMarco,40,200,380,40);
+        Texto mensajeParaUsuarioNuevo = new Texto(unMarco,35,200,380,40);
         mensajeParaUsuarioNuevo.setMensaje("Por favor, eliga un nombre (10 caracteres max)");
         // ponerle color, o reemplazar por imagen
         mensajeParaUsuarioNuevo.setVisible(false);
@@ -70,7 +70,7 @@ public class gpsChallenge {
         areaIngresoNombreDelUsuario.setVisible(false);
 
         /** botonGuardar -> stage 2 **/
-        Boton botonGuardar = new BotonGuardar(unMarco,30,300,369,80);
+        Boton botonGuardar = new BotonGuardar(unMarco,35,325,369,80);
         botonGuardar.setVisible(false);
 
         /** Stage 1.B : Cargar Usuario ----------------------------------**/
@@ -87,41 +87,41 @@ public class gpsChallenge {
         boxUsuariosExistentes.setVisible(false);
 
         /** botonAceptar -> stage 2 **/
-        Boton botonAceptar = new BotonAceptar (unMarco,30,400,369,80);
+        Boton botonAceptar = new BotonAceptar (unMarco,35,400,369,80);
         botonAceptar.setVisible(false);
 
 
         /** Stage 2 : Menu Principal --------------------------------------------------------------------**/
 
         /** botonComenzarPartida -> stage 2.A **/
-        Boton botonComenzarPartida = new BotonComenzarPartida(unMarco,30,150,369,80);
+        Boton botonComenzarPartida = new BotonComenzarPartida(unMarco,35,170,369,80);
         botonComenzarPartida.setVisible(false);
 
         /** botonReanudarPartidaGuardada -> carga Xmlmapa y acciona el juego **/
         /** todo **/
-        Boton botonReanudarPartidaGuardada = new BotonReanudarPartidaGuardada(unMarco,30,250,369,80);
+        Boton botonReanudarPartidaGuardada = new BotonReanudarPartidaGuardada(unMarco,35,280,369,80);
         botonReanudarPartidaGuardada.setVisible(false);
 
         /** botonVerPuntajes -> stage 2.B **/
-        Boton botonVerPuntajes = new BotonVerPuntajes(unMarco,30,350,369,80);
+        Boton botonVerPuntajes = new BotonVerPuntajes(unMarco,35,390,369,80);
         botonVerPuntajes.setVisible(false);
 
         /** Stage 2.A : Eleccion Mapa y Carruaje ----------------------------------**/
 
         /** checkBoxEleccionMapa **/
-        BoxEleccionMapa boxEleccionMapa = new BoxEleccionMapa(unMarco,200,165,100,60);
+        BoxEleccionMapa boxEleccionMapa = new BoxEleccionMapa(unMarco,250,170,100,60);
         boxEleccionMapa.setVisible(false);
 
         /** checkBoxEleccionVehiculo **/
-        BoxEleccionVehiculo boxEleccionVehiculo = new BoxEleccionVehiculo(unMarco,30,165,150,60);
+        BoxEleccionVehiculo boxEleccionVehiculo = new BoxEleccionVehiculo(unMarco,40,170,150,60);
         boxEleccionVehiculo.setVisible(false);
 
         /** botonJugar -> acciona el juego, pasa al stage 3 **/
-        Boton botonJugar = new BotonJugar(unMarco,30,370,369,80);
+        Boton botonJugar = new BotonJugar(unMarco,35,400,369,80);
         botonJugar.setVisible(false);
 
         /** botonVolver Stage 2.A --> Stage 2, Menu Principal**/
-        Boton botonVolverAlMenuPrincipalDesdeEleccionMapaYVehiculo = new BotonVolver(unMarco,30,580,369,80);
+        Boton botonVolverAlMenuPrincipalDesdeEleccionMapaYVehiculo = new BotonVolver(unMarco,35,640,369,80);
         botonVolverAlMenuPrincipalDesdeEleccionMapaYVehiculo.setVisible(false);
 
 
@@ -135,7 +135,7 @@ public class gpsChallenge {
         boxUsuariosConPuntajes.setVisible(false);
 
         /** botonVolverAlMenuPrincipalDesdePuntajes Stage 2.A --> Stage 2, Menu Principal**/
-        Boton botonVolverAlMenuPrincipalDesdePuntajes = new BotonVolver(unMarco,30,580,369,80);
+        Boton botonVolverAlMenuPrincipalDesdePuntajes = new BotonVolver(unMarco,35,640,369,80);
         botonVolverAlMenuPrincipalDesdePuntajes .setVisible(false);
 
 
@@ -145,13 +145,17 @@ public class gpsChallenge {
         /** botonAnimadoCronometro **/
 
         /** vistaCronometro **/
-        VistaCronometro vistaCronometro = new VistaCronometro(unJuego.getPiloto().getCronometro(),unMarco,100,500,300,40);
+        Texto textoCronometro = new Texto(unMarco,40,170,380,40);
+        textoCronometro.setMensaje("Tiempo");
+        textoCronometro.setVisible(false);
+
+        VistaCronometro vistaCronometro = new VistaCronometro(unJuego.getPiloto().getCronometro(),unMarco,100,220,300,40);
         unJuego.asignarVistaAlCronometro(vistaCronometro);
         vistaCronometro.setVisible(false);
 
 
         /** botonAnimadoVehiculo **/
-        BotonAnimadoVehiculo botonAnimadoVehiculo = new BotonAnimadoVehiculo(unJuego,unMarco,120,330,369,150);
+        BotonAnimadoVehiculo botonAnimadoVehiculo = new BotonAnimadoVehiculo(unJuego,unMarco,40,450,369,150);
         botonAnimadoVehiculo.setVisible(false);
 
         /**VistaFinalizada**/
@@ -162,7 +166,7 @@ public class gpsChallenge {
         //Boton botonGuardarPartida = new BotonGuardar()
 
         /** botonVolverMenuPrincipalDesdeJuegoEnAccion **/
-        Boton botonVolverMenuPrincipalDesdeJuegoEnAccion = new BotonVolver(unMarco,30,580,369,80);
+        Boton botonVolverMenuPrincipalDesdeJuegoEnAccion = new BotonVolver(unMarco,35,640,369,80);
         botonVolverMenuPrincipalDesdeJuegoEnAccion.setVisible(false);
 
 
@@ -235,6 +239,7 @@ public class gpsChallenge {
 
         /** Stage 3 : Juego en Accion **/
         ArrayList<VistaMenu> stageJuegoEnAccion = new ArrayList<VistaMenu>();
+        stageJuegoEnAccion.add(textoCronometro);
         stageJuegoEnAccion.add(vistaCronometro);
         stageJuegoEnAccion.add(botonAnimadoVehiculo);
         stageJuegoEnAccion.add(vistaFinalizacion);
@@ -291,7 +296,7 @@ public class gpsChallenge {
 
         /** musica de fondo, tiene que ir al final **/
 
-        MusicaDeFondo.playMusic();
+        //MusicaDeFondo.playMusic();
 
     }
 
