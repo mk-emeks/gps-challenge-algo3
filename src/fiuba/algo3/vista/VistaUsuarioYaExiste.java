@@ -9,11 +9,11 @@ public class VistaUsuarioYaExiste {
     public VistaUsuarioYaExiste() {
         {
 
-            JFrame unFrame = new JFrame();
-            unFrame.setBounds(200,200,400,90);
-            unFrame.setLayout(null);
-
-            unFrame.setDefaultCloseOperation(unFrame.DISPOSE_ON_CLOSE);
+            JDialog unDialog = new JDialog();
+            unDialog.setBounds(200,200,400,90);
+            unDialog.setLayout(null);
+            unDialog.setModal(true);
+            unDialog.setDefaultCloseOperation(unDialog.DISPOSE_ON_CLOSE);
 
             JLabel labelMensaje1 = new JLabel();
             labelMensaje1.setText("Ese usuario ya estaba registrado");
@@ -29,10 +29,10 @@ public class VistaUsuarioYaExiste {
             labelMensaje2.setBounds(10,30,400,30);
             labelMensaje2.setVisible(true);
 
-            unFrame.add(labelMensaje1);
-            unFrame.add(labelMensaje2);
+            unDialog.add(labelMensaje1);
+            unDialog.add(labelMensaje2);
 
-            unFrame.setVisible(true);
+            unDialog.setVisible(true);
 
         }
     }
