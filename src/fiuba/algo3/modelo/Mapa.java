@@ -7,10 +7,6 @@ import java.util.ArrayList;
 
 public class Mapa {
 
-
-
-
-
     /** Para lograr hace un Singleton**/
 
     private static Mapa elMapa;
@@ -38,6 +34,12 @@ public class Mapa {
     public void cargarContenidoMapa(Element nodoContenidoMapa) {
 
         this.contenidoMapa = new ContenidoMapa(nodoContenidoMapa);
+    }
+
+    /** para cuando se recupera la persistencia **/
+    public void cargarContenidoMapa(ContenidoMapa unContenidoMapa) {
+
+        this.contenidoMapa = unContenidoMapa;
     }
 
     public void cargarContenidoMapa() {

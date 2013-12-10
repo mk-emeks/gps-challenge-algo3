@@ -9,11 +9,12 @@ import org.jdom2.output.XMLOutputter;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.Serializable;
 import java.util.*;
 
 // parecido a RegistroUsuarios
 
-public class RegistroUsuariosConPuntuacion {
+public class RegistroUsuariosConPuntuacion implements Serializable {
 
     private static final String nombreDelArchivo = "registroUsuariosConPuntuacion.xml";
     public static String getNombreDelArchivo() { return nombreDelArchivo; }
@@ -134,9 +135,7 @@ public class RegistroUsuariosConPuntuacion {
 
     }
 
-    /** deberia tener un super consultor de existencia de archivos, y en caso de no tenerlos, crearlos..pero que paja **/
-    /** el chabon se auto crea **/
-    public void crearRegistroUsuariosXml() {
+    /*public void crearRegistroUsuariosConPuntuacionXml() {
 
         Document doc = new Document(this.serializar());
 
@@ -156,6 +155,6 @@ public class RegistroUsuariosConPuntuacion {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
 }

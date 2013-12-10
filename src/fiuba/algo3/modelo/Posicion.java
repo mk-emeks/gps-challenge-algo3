@@ -87,4 +87,15 @@ public class Posicion implements Serializable {
         return xmlNode;
 
     }
+
+    /** alto invento **/
+    public Element serializar(String nombreIdentificador) {
+
+        Element xmlNode = new Element("Posicion"+nombreIdentificador);
+        xmlNode.setAttribute("posicionX",String.valueOf(this.posicionX));
+        xmlNode.setAttribute("posicionY",String.valueOf(this.posicionY));
+
+        return xmlNode;
+
+    }
 }

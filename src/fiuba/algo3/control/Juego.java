@@ -5,11 +5,9 @@ import fiuba.algo3.modelo.*;
 
 import fiuba.algo3.persistencia.RegistroUsuariosConPuntuacion;
 import fiuba.algo3.persistencia.UsuarioConPuntuacion;
-import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
-import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
+
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
-import fiuba.algo3.vista.*;
-import fiuba.algo3.vista.RepresentacionDePosicionable;
+
 import fiuba.algo3.vista.VistasMenu.VistaCronometro;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -17,17 +15,11 @@ import org.jdom2.input.SAXBuilder;
 
 import javax.swing.*;
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-
 
 public class Juego {
 
-
     private GameLoop gameLoop;
 
-    //private SuperficieDeDibujo zonaDeJuego;
     private JPanel zonaDeJuego;
     private Piloto pilotin;
     private Estado carroceria;
@@ -95,13 +87,9 @@ public class Juego {
 
     }
 
+    public void asignarZonaDeJuego(JPanel unaZonaDeJuego) {
 
-    //public JPanel getZonaDeJUego(){ return this.zonaDeJuego;}
-
-    //public void asignarZonaDeJuego(SuperficieDeDibujo unaZonaDeJuego) {
-      public void asignarZonaDeJuego(JPanel unaZonaDeJuego) {
-          this.zonaDeJuego = unaZonaDeJuego;
-          //this.zonaDeJuego = (SuperficieDeDibujo)unaZonaDeJuego;
+        this.zonaDeJuego = unaZonaDeJuego;
 
     }
 
