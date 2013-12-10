@@ -105,9 +105,14 @@ public class BotonAnimadoVehiculo extends VistaMenu {
 
     public void comenzarAnimacion() {
 
+        this.hilo = new Thread();
         this.hilo.start();
 
     }
+
+    /*public void detenerAnimacion() {
+        this.hilo.interrupt();
+    }*/
 
 
 
