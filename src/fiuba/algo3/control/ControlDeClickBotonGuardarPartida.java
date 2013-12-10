@@ -3,6 +3,7 @@ package fiuba.algo3.control;
 
 import fiuba.algo3.persistencia.Partida;
 import fiuba.algo3.persistencia.RegistroUsuarios;
+import fiuba.algo3.vista.VistasMenu.VistaJuegoGuardado;
 import fiuba.algo3.vista.VistasMenu.VistaMenu;
 
 import java.awt.event.MouseEvent;
@@ -24,6 +25,8 @@ public class ControlDeClickBotonGuardarPartida extends ControlDeClickBotonConPar
 
         Partida partidaGuardada = new Partida(this.juego);
         partidaGuardada.guardarPartida();
+        this.juego.pausar();
+        VistaJuegoGuardado unaVista = new VistaJuegoGuardado();
 
     }
 }

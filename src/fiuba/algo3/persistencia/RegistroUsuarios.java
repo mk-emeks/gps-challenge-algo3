@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.Serializable;
 
+import fiuba.algo3.vista.VistasMenu.VistaCapacidadMaximaUsuario;
+import fiuba.algo3.vista.VistasMenu.VistaUsuarioYaExiste;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
@@ -105,7 +107,7 @@ public class RegistroUsuarios implements Serializable {
                 Usuario usuario = iteradorUsuarios.next();
                 if (usuario.equals(unUsuario)) {
                     duplicado = true;
-                    //VistaUsuarioYaExiste unaVista = new VistaUsuarioYaExiste();
+                    VistaUsuarioYaExiste unaVista = new VistaUsuarioYaExiste();
                     System.out.println("estoy duplicado");
                 }
 
@@ -115,6 +117,7 @@ public class RegistroUsuarios implements Serializable {
             this.actualizarArchivoXml(doc); // aca se llama a la frula: es decir se agrego pero hay que actualizar el archivo
 
             }
+            VistaCapacidadMaximaUsuario unaVistaMaxima = new VistaCapacidadMaximaUsuario();
 
         } catch (Exception e) {System.out.println("no se pudo agregar el usuario al registoUsuarios.xml");}
 
