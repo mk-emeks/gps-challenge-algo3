@@ -7,7 +7,7 @@ import fiuba.algo3.modelo.EstadoMoto;
 import fiuba.algo3.persistencia.RegistroUsuarios;
 import fiuba.algo3.sonido.MusicaDeFondo;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
-import fiuba.algo3.vista.VistasMenu.*;
+import fiuba.algo3.vista.*;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;

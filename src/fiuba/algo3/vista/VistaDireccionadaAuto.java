@@ -9,10 +9,10 @@ public class VistaDireccionadaAuto extends VistaDireccionada {
 
         super(auto);
 
-        this.vistaArriba.setNombreArchivoImagen("imagenes/Vehiculos/Auto/autoArriba.png");
-        this.vistaOrientada.setNombreArchivoImagen("imagenes/Vehiculos/Auto/autoAbajo.png");
-        this.vistaDerecha.setNombreArchivoImagen("imagenes/Vehiculos/Auto/autoDerecha.png");
-        this.vistaIzquierda.setNombreArchivoImagen("imagenes/Vehiculos/Auto/autoSurda.png");
+        this.vistaArriba.setNombreArchivoImagen("imagenes/autoArriba.png");
+        this.vistaOrientada.setNombreArchivoImagen("imagenes/autoAbajo.png");
+        this.vistaDerecha.setNombreArchivoImagen("imagenes/autoDerecha.png");
+        this.vistaIzquierda.setNombreArchivoImagen("imagenes/autoSurda.png");
 
     }
 

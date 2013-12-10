@@ -5,8 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.Serializable;
 
-import fiuba.algo3.vista.VistasMenu.VistaCapacidadMaximaUsuario;
-import fiuba.algo3.vista.VistasMenu.VistaUsuarioYaExiste;
+import fiuba.algo3.vista.VistaCapacidadMaximaUsuario;
+import fiuba.algo3.vista.VistaUsuarioYaExiste;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;

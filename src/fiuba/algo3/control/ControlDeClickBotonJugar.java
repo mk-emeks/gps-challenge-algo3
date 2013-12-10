@@ -2,8 +2,7 @@ package fiuba.algo3.control;
 
 
 //import fiuba.algo3.vista.VistasMenu.BotonAnimadoVehiculo;
-import fiuba.algo3.persistencia.Partida;
-import fiuba.algo3.vista.VistasMenu.*;
+import fiuba.algo3.vista.*;
 
 import java.awt.event.MouseEvent;
         import java.util.ArrayList;

@@ -2,7 +2,7 @@ package fiuba.algo3.control;
 
 import fiuba.algo3.modelo.CargadorDeMapa;
 import fiuba.algo3.modelo.Mapa;
-import fiuba.algo3.vista.VistasMenu.BoxEleccionMapa;
+import fiuba.algo3.vista.BoxEleccionMapa;
 
 import java.awt.event.MouseEvent;
 

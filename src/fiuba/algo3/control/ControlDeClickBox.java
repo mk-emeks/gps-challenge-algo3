@@ -1,6 +1,6 @@
 package fiuba.algo3.control;
 
-import fiuba.algo3.vista.VistasMenu.Box;
+import fiuba.algo3.vista.Box;
 
 
 import java.awt.event.MouseEvent;

@@ -14,7 +14,7 @@ public class VistaPiquete implements ObjetoDibujable {
     public VistaPiquete(ObjetoPosicionable unPosicionable) {
 
         try {
-            URL urlPiquete = this.getClass().getResource("imagenes/Obstaculos/piquete.png");
+            URL urlPiquete = this.getClass().getResource("imagenes/piquete.png");
             this.imagen = new Imagen(urlPiquete,unPosicionable);
 
         } catch (Exception e) {

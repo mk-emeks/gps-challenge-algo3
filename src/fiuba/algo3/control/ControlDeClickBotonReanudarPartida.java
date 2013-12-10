@@ -2,11 +2,10 @@ package fiuba.algo3.control;
 
 
 import fiuba.algo3.persistencia.Partida;
-import fiuba.algo3.persistencia.RegistroUsuariosConPuntuacion;
-import fiuba.algo3.vista.VistasMenu.BotonAnimadoVehiculo;
-import fiuba.algo3.vista.VistasMenu.VistaFinalizacion;
-import fiuba.algo3.vista.VistasMenu.VistaInstrucciones;
-import fiuba.algo3.vista.VistasMenu.VistaMenu;
+import fiuba.algo3.vista.BotonAnimadoVehiculo;
+import fiuba.algo3.vista.VistaFinalizacion;
+import fiuba.algo3.vista.VistaInstrucciones;
+import fiuba.algo3.vista.VistaMenu;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;

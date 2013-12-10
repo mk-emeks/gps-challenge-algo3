@@ -1,6 +1,6 @@
 package fiuba.algo3.control;
 
-import fiuba.algo3.vista.VistasMenu.VistaMenu;
+import fiuba.algo3.vista.VistaMenu;
 
 import java.util.ArrayList;
 

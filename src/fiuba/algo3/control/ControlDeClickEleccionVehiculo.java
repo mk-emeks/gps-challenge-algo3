@@ -3,7 +3,7 @@ package fiuba.algo3.control;
 import fiuba.algo3.modelo.Estado;
 import fiuba.algo3.modelo.EstadoAlf;
 import fiuba.algo3.sonido.MusicaCheat;
-import fiuba.algo3.vista.VistasMenu.BoxEleccionVehiculo;
+import fiuba.algo3.vista.BoxEleccionVehiculo;
 
 
 import java.awt.event.MouseEvent;
