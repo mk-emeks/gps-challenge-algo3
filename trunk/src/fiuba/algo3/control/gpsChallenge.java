@@ -155,7 +155,7 @@ public class gpsChallenge {
 
 
         /** botonAnimadoVehiculo **/
-        BotonAnimadoVehiculo botonAnimadoVehiculo = new BotonAnimadoVehiculo(unJuego,unMarco,100,400,369,150);
+        BotonAnimadoVehiculo botonAnimadoVehiculo = new BotonAnimadoVehiculo(unJuego,unMarco,100,300,369,150);
         botonAnimadoVehiculo.setVisible(false);
 
         /**VistaFinalizada**/
@@ -163,7 +163,7 @@ public class gpsChallenge {
         vistaFinalizacion.setVisible(false);
 
         /** botonGuargarPartida **/
-        Boton botonGuardarPartida = new BotonGuardar(unMarco,35,290,369,80);
+        Boton botonGuardarPartida = new BotonGuardar(unMarco,35,530,369,80);
         botonGuardarPartida.setVisible(false);
 
         /** botonVolverMenuPrincipalDesdeJuegoEnAccion **/
@@ -302,7 +302,7 @@ public class gpsChallenge {
 
         /** musica de fondo, tiene que ir al final **/
 
-        MusicaDeFondo.playMusic();
+        //MusicaDeFondo.playMusic();
 
     }
 
