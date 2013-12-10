@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-/*public class Texto extends VistaMenu {
+public class Texto extends VistaMenu {
 
     JLabel mensaje;
 
@@ -35,4 +35,3 @@ import java.awt.*;
 
 
 }
-     */
