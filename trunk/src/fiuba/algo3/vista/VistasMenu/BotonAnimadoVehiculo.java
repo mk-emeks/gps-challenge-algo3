@@ -11,7 +11,7 @@ import javax.swing.*;
 
 //Esta clase se usa creandola y comenzando animacion, su set visible solo la deja invisible
 
-public class BotonAnimadoVehiculo extends VistaMenu {
+public class BotonAnimadoVehiculo extends VistaMenu implements Runnable {
 
     Juego juego;
     //JLabel foto;
@@ -19,6 +19,8 @@ public class BotonAnimadoVehiculo extends VistaMenu {
     JLabel fotoAuto;
     JLabel fotoMoto;
     JLabel foto4x4;
+
+    Thread hilo;
 
 
     public BotonAnimadoVehiculo(Juego unJuego,JFrame unMarco, int posicionX, int posicionY, int ancho, int largo) {
@@ -51,7 +53,7 @@ public class BotonAnimadoVehiculo extends VistaMenu {
 
     }
 
-    Thread hilo = new Thread() {
+    //Thread hilo = new Thread() {
         public void run(){
 
             try {
@@ -83,7 +85,7 @@ public class BotonAnimadoVehiculo extends VistaMenu {
                 System.out.println("NO CARGE EL BOTON ANIMADO");
             }
         }
-    };
+    //};
 
 
    //mintiendole al usuario
@@ -105,9 +107,19 @@ public class BotonAnimadoVehiculo extends VistaMenu {
 
     public void comenzarAnimacion() {
 
+        //this.hilo.start();
+        this.hilo = new Thread(this);
         this.hilo.start();
 
     }
+
+
+    public void detenerAnimacion() {
+
+        this.hilo.interrupt();
+
+    }
+
 
 
 

@@ -214,15 +214,15 @@ public class Juego {
         return this.juegoTerminado;
     }
 
-    private void quitarObjetosVivosAlGameLoop() {
+   /* private void quitarObjetosVivosAlGameLoop() {
 
         this.gameLoop.remover(this.pilotin);
         this.gameLoop.remover(this.controlDeVistas);
         this.gameLoop.remover(this.controlDeEventos);
-    }
+    }*/
 
     public void destruir(){
-        this.quitarObjetosVivosAlGameLoop();
+        this.gameLoop.destruir();
     }
 
 
