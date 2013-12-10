@@ -1,4 +1,4 @@
-/**package fiuba.algo3.modelo;
+package fiuba.algo3.modelo;
 
 import junit.framework.Assert;
 import org.junit.After;
@@ -117,4 +117,4 @@ public class MapaTest {
     //los aplicables no estan probados: metodo ubicar(Aplicable)
 
 
-} **/
+}

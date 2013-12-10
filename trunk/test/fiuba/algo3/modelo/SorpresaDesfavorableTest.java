@@ -1,4 +1,4 @@
-/**package fiuba.algo3.modelo;
+package fiuba.algo3.modelo;
 
 
 import junit.framework.Assert;
@@ -56,4 +56,4 @@ public class SorpresaDesfavorableTest {
 
     }
 
-}   **/
+}

@@ -6,7 +6,7 @@ import fiuba.algo3.vista.VistaMenu;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class ControlDeClickBotonVolverAlMenuPrincipalDesdeJuegoEnAccion extends ControlDeClickBotonConPartida{
+public class ControlDeClickBotonVolverAlMenuPrincipalDesdeJuegoEnAccion extends ControlDeClickBotonConJuego {
 
     //BotonAnimadoVehiculo botonAnimadoVehiculo;
 

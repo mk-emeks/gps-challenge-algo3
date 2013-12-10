@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
         import java.util.ArrayList;
 
 
-public class ControlDeClickBotonJugar extends ControlDeClickBotonConPartida {
+public class ControlDeClickBotonJugar extends ControlDeClickBotonConJuego {
 
 
     BotonAnimadoVehiculo botonAnimadoVehiculo;

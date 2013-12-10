@@ -274,7 +274,7 @@ public class gpsChallenge {
 
         botonComenzarPartida.addMouseListener(new ControlDeClickBoton(stageEleccionMapaYVehiculo, stageMenuPrincipal));
         botonVerPuntajes.addMouseListener(new ControlDeClickBoton(stagePuntajes, stageMenuPrincipal));
-        botonReanudarPartidaGuardada.addMouseListener(new ControlDeClickBotonReanudarPartida(vistaFinalizacion,botonAnimadoVehiculo, unJuego, stageJuegoEnAccion, stageMenuPrincipal));
+        botonReanudarPartidaGuardada.addMouseListener(new ControlDeClickBotonReanudarJuego(vistaFinalizacion,botonAnimadoVehiculo, unJuego, stageJuegoEnAccion, stageMenuPrincipal));
 
         /**Stage 2.A: Eleccion Mapa y Vehiculo **/
 
@@ -295,7 +295,7 @@ public class gpsChallenge {
         botonVolverAlMenuPrincipalDesdePuntajes.addMouseListener(new ControlDeClickBoton(stageMenuPrincipal,stagePuntajes));
 
         /** 3: Juego En Accion **/
-        botonGuardarPartida.addMouseListener(new ControlDeClickBotonGuardarPartida(unJuego,null,null));
+        botonGuardarPartida.addMouseListener(new ControlDeClickBotonGuardarJuego(unJuego,null,null));
         botonVolverMenuPrincipalDesdeJuegoEnAccion.addMouseListener(new ControlDeClickBotonVolverAlMenuPrincipalDesdeJuegoEnAccion(/*botonAnimadoVehiculo,*/unJuego,stageMenuPrincipal,stageJuegoEnAccion));
 
 
