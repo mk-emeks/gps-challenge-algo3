@@ -18,11 +18,14 @@ public class Partida implements Serializable {
 
     private static final String terminacionArchivo = "Partida.xml";
 
+    public static String getTerminacionArchivo() {return terminacionArchivo;}
+
     Posicion posicionInicio;
     Posicion posicionLlegada;
     ContenidoMapa contenidoMapa;
 
     String nombreUsuario;
+    Posicion posicionActualDelVehiculo;
     Estado estadoVehiculo;
     int tiempoTranscurrido;
 
@@ -33,6 +36,7 @@ public class Partida implements Serializable {
         this.posicionLlegada = Mapa.getMapa().getLlegada();
 
         this.nombreUsuario = unJuego.getPiloto().getNombre();
+        this.posicionActualDelVehiculo = unJuego.getPiloto().getVehiculo().getPosicion(); /** es la posicion actual que tenga el vehiculo **/
         this.estadoVehiculo = unJuego.getPiloto().getVehiculo().getEstado();
         this.tiempoTranscurrido = unJuego.getPiloto().getCronometro().tiempoEnSegundos();
 
@@ -51,16 +55,17 @@ public class Partida implements Serializable {
         unJuego.crearPiloto(this.nombreUsuario);
         unJuego.getPiloto().getCronometro().sumarSegundos(this.tiempoTranscurrido);
         unJuego.asignarCarroceriaDelVehiculo(this.estadoVehiculo); // despues de asignar el inicio!
-        unJuego.cargarVehiculoParaElPiloto(); //despues de asignar carroceria
+        unJuego.cargarVehiculoParaElPiloto(this.posicionActualDelVehiculo); //despues de asignar carroceria
 
     }
 
 
     /** por ser serializable **/
+    public Partida(){}
 
     public Partida( Element nodoPartida ) {
 
-        this.nombreUsuario = String.valueOf(nodoPartida.getAttribute("nombreUsuario"));
+        this.nombreUsuario = nodoPartida.getAttributeValue("nombreUsuario");
         this.tiempoTranscurrido = Integer.parseInt(nodoPartida.getAttributeValue("tiempoTranscurrido"));
 
 
@@ -72,7 +77,11 @@ public class Partida implements Serializable {
 
             Element nodoHijo = iteradorHijos.next();
 
-            if (nodoHijo.getName() == "Estado4x4") {
+            if (nodoHijo.getName() == "PosicionActualDelVehiculo") {
+
+                this.posicionActualDelVehiculo = new Posicion(nodoHijo);
+
+            } else if (nodoHijo.getName() == "Estado4x4") {
 
                 this.estadoVehiculo = new Estado4x4(nodoHijo);
 
@@ -117,6 +126,7 @@ public class Partida implements Serializable {
         xmlNode.setAttribute("nombreUsuario",this.nombreUsuario);
         xmlNode.setAttribute("tiempoTranscurrido",String.valueOf(this.tiempoTranscurrido));
 
+        xmlNode.addContent(this.posicionActualDelVehiculo.serializar("ActualDelVehiculo"));
         xmlNode.addContent(this.estadoVehiculo.serializar());
 
         xmlNode.addContent(this.posicionInicio.serializar("Inicio"));
@@ -143,7 +153,7 @@ public class Partida implements Serializable {
             file.flush();
             file.close();
 
-            out.output(doc,System.out);
+            //out.output(doc,System.out);
 
         } catch(Exception e) {
             e.printStackTrace();

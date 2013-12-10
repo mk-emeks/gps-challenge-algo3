@@ -67,7 +67,7 @@ public class GameLoop implements Runnable {
                 hilo.sleep(this.intervaloSimulacion);
             } catch (InterruptedException e) {
                 System.out.println("interrupcion al gameloop");
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }
     }
