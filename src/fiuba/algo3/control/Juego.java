@@ -227,6 +227,7 @@ public class Juego {
     }*/
 
     public void destruir(){
+        this.pilotin.getCronometro().reset(this.vistaCronometro.getThread());
         this.gameLoop.destruir();
         this.gameLoop = null;
         this.controlDeVistas = null;
