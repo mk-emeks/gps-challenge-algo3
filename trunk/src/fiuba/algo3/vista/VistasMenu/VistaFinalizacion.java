@@ -69,11 +69,12 @@ public class VistaFinalizacion extends VistaMenu {
 
     @Override
     public boolean isVisible() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return false;
     }
 
     public void comenzarVista() {
 
+        this.hilo = new Thread();
         this.hilo.start();
 
     }
