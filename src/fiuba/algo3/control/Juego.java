@@ -100,9 +100,9 @@ public class Juego {
     public Juego() {
 
         /** importante crearlo antes de usarlos **/
-        this.gameLoop = new GameLoop();
+        //this.gameLoop = new GameLoop();
         this.pilotin = new Piloto();
-        this.controlDeVistas = new ControlDeVistas(this.gameLoop,this.pilotin);
+        //this.controlDeVistas = new ControlDeVistas(this.gameLoop,this.pilotin);
 
     }
 
@@ -116,8 +116,13 @@ public class Juego {
     /** PRE: Se deben haber invocado los metodos crearPiloto, asignarNivel y asignarCarroceriaDelVehiculo y asignarZonaDeJuego **/
     public void iniciar() {
 
-        this.gameLoop.setSuperficieDeDibujo((SuperficieDeDibujo)this.zonaDeJuego);
-        this.gameLoop.setIntervaloSimulacion(160);
+        if (gameLoop ==null) {
+            this.gameLoop = new GameLoop();
+            this.controlDeVistas = new ControlDeVistas(this.gameLoop,this.pilotin);
+            this.gameLoop.setSuperficieDeDibujo((SuperficieDeDibujo)this.zonaDeJuego);
+            this.gameLoop.setIntervaloSimulacion(160);
+        }
+
 
         this.cargarGameLoop();
         this.comenzar();
@@ -153,7 +158,7 @@ public class Juego {
 
     /** METODOS DE CONTROL **/
 
-     public void pausar() {
+    public void pausar() {
 
         if (this.gameLoop.estaEnEjecucion()) {
 
@@ -165,7 +170,7 @@ public class Juego {
 
     }
 
-     public void reanudar() {
+    public void reanudar() {
 
         if ( !(this.gameLoop.estaEnEjecucion()) ) {
 
@@ -204,7 +209,7 @@ public class Juego {
 
     }
 
-     public boolean estaPausada() {
+    public boolean estaPausada() {
 
         if (this.gameLoop.estaEnEjecucion()) return false;
         else return true;
@@ -214,15 +219,17 @@ public class Juego {
         return this.juegoTerminado;
     }
 
-    private void quitarObjetosVivosAlGameLoop() {
+   /* private void quitarObjetosVivosAlGameLoop() {
 
         this.gameLoop.remover(this.pilotin);
         this.gameLoop.remover(this.controlDeVistas);
         this.gameLoop.remover(this.controlDeEventos);
-    }
+    }*/
 
     public void destruir(){
-        this.quitarObjetosVivosAlGameLoop();
+        this.gameLoop.destruir();
+        this.gameLoop = null;
+        this.controlDeVistas = null;
     }
 
 
