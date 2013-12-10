@@ -2,15 +2,14 @@ package fiuba.algo3.persistencia;
 
 import fiuba.algo3.control.Juego;
 import fiuba.algo3.modelo.*;
+
 import org.jdom2.Document;
 import org.jdom2.Element;
-import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.Serializable;
+
 import java.util.Iterator;
 import java.util.List;
 
