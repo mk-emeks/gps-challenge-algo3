@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**seguramente necesite refactorizarse una vez que exista la persistencia de los nombres de los jugadores **/
 
-public class ControlDeClickBotonGuardar extends ControlDeClickBotonConPartida {
+public class ControlDeClickBotonGuardar extends ControlDeClickBotonConJuego {
 
     private RegistroUsuarios registroUsuarios;
     private CampoTexto areaTexto;

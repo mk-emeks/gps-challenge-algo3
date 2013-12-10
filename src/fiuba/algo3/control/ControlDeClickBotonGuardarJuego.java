@@ -8,12 +8,12 @@ import fiuba.algo3.vista.VistaMenu;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class ControlDeClickBotonGuardarPartida extends ControlDeClickBotonConPartida {
+public class ControlDeClickBotonGuardarJuego extends ControlDeClickBotonConJuego {
 
     //RegistroUsuarios registroUsuarios;
 
     /** pasar vistaOn y vistaOff en null **/
-    public ControlDeClickBotonGuardarPartida (Juego unJuego, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff)
+    public ControlDeClickBotonGuardarJuego(Juego unJuego, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff)
     {
         super(unJuego,vistasOn,vistasOff);
 

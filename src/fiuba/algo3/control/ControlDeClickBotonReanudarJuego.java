@@ -15,12 +15,12 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 
 
-public class ControlDeClickBotonReanudarPartida extends ControlDeClickBotonConPartida {
+public class ControlDeClickBotonReanudarJuego extends ControlDeClickBotonConJuego {
 
     BotonAnimadoVehiculo botonAnimadoVehiculo;
     VistaFinalizacion vistaFinalizacion;
 
-    public ControlDeClickBotonReanudarPartida ( VistaFinalizacion unaVistaFinalizacion, BotonAnimadoVehiculo botonAnimadoVehiculo ,Juego unJuego, ArrayList<VistaMenu> vistasOn, java.util.ArrayList<VistaMenu> vistasOff) {
+    public ControlDeClickBotonReanudarJuego(VistaFinalizacion unaVistaFinalizacion, BotonAnimadoVehiculo botonAnimadoVehiculo, Juego unJuego, ArrayList<VistaMenu> vistasOn, java.util.ArrayList<VistaMenu> vistasOff) {
 
         super(unJuego,vistasOn,vistasOff);
         this.vistaFinalizacion = unaVistaFinalizacion;

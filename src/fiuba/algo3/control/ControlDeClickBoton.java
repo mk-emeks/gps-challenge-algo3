@@ -23,12 +23,12 @@ public class ControlDeClickBoton  implements MouseListener {
 
     protected void actualizar() {
 
-        this.ActivarVistas();
-        this.DesactivarVistas();
+        this.activarVistas();
+        this.desactivarVistas();
 
     }
 
-    protected void ActivarVistas() {
+    protected void activarVistas() {
 
       Iterator<VistaMenu> iterador = this.vistasOn.iterator();
 
@@ -39,7 +39,7 @@ public class ControlDeClickBoton  implements MouseListener {
         }
     }
 
-    protected void DesactivarVistas() {
+    protected void desactivarVistas() {
 
         Iterator<VistaMenu> iterador = this.vistasOff.iterator();
 
