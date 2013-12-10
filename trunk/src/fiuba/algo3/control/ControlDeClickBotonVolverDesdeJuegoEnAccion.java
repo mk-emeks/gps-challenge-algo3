@@ -8,7 +8,6 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 
-// botonVolverAlMenuPrincipalDesdeJuegoEnAccion.addMouseListener(new ControlDeClickBotonVolverDesdeJuegoEnAccion(unJuego,stageMenuPrincipal,stageJuegoEnAccion));
 public class ControlDeClickBotonVolverDesdeJuegoEnAccion extends ControlDeClickBotonConPartida {
 
     private BotonAnimadoVehiculo botonAnimadoVehiculo;
