@@ -166,9 +166,9 @@ public class gpsChallenge {
         Boton botonGuardarPartida = new BotonGuardar(unMarco,35,530,369,80);
         botonGuardarPartida.setVisible(false);
 
-        /** botonVolverMenuPrincipalDesdeJuegoEnAccion **/
-        Boton botonVolverMenuPrincipalDesdeJuegoEnAccion = new BotonVolver(unMarco,35,640,369,80);
-        botonVolverMenuPrincipalDesdeJuegoEnAccion.setVisible(false);
+        /** botonVolverAlMenuPrincipalDesdeJuegoEnAccion **/
+        Boton botonVolverAlMenuPrincipalDesdeJuegoEnAccion = new BotonVolver(unMarco,35,640,369,80);
+        botonVolverAlMenuPrincipalDesdeJuegoEnAccion.setVisible(false);
 
 
 
@@ -246,7 +246,7 @@ public class gpsChallenge {
         stageJuegoEnAccion.add(botonAnimadoVehiculo);
         stageJuegoEnAccion.add(vistaFinalizacion);
         stageJuegoEnAccion.add(botonGuardarPartida);
-        stageJuegoEnAccion.add(botonVolverMenuPrincipalDesdeJuegoEnAccion);
+        stageJuegoEnAccion.add(botonVolverAlMenuPrincipalDesdeJuegoEnAccion);
 
 
         /** Controles de los botones segun stage **/
@@ -295,7 +295,10 @@ public class gpsChallenge {
         botonVolverAlMenuPrincipalDesdePuntajes.addMouseListener(new ControlDeClickBoton(stageMenuPrincipal,stagePuntajes));
 
         /** 3: Juego En Accion **/
+
         botonGuardarPartida.addMouseListener(new ControlDeClickBotonGuardarPartida(unJuego,null,null));
+
+        botonVolverAlMenuPrincipalDesdeJuegoEnAccion.addMouseListener(new ControlDeClickBotonVolverDesdeJuegoEnAccion(botonAnimadoVehiculo, unJuego,stageMenuPrincipal,stageJuegoEnAccion));
 
 
 
