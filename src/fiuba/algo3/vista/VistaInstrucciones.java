@@ -9,11 +9,12 @@ public class VistaInstrucciones {
     public VistaInstrucciones() {
 
 
-        JFrame unFrame = new JFrame();
-        unFrame.setBounds(50,50,770,700);
-        unFrame.setTitle("Instrucciones");
-        unFrame.setLayout(null);
-        unFrame.setDefaultCloseOperation(unFrame.DISPOSE_ON_CLOSE);
+        JDialog unDialog = new JDialog();
+        unDialog.setBounds(50,50,770,700);
+        unDialog.setTitle("Instrucciones");
+        unDialog.setLayout(null);
+        unDialog.setDefaultCloseOperation(unDialog.DISPOSE_ON_CLOSE);
+        unDialog.setModal(true);
 
 
         JLabel instrucciones = new JLabel();
@@ -21,7 +22,7 @@ public class VistaInstrucciones {
         instrucciones.setIcon(new ImageIcon("src/fiuba/algo3/vista/imagenes/instrucciones.png"));
         instrucciones.setVisible(true);
 
-        unFrame.add(instrucciones);
-        unFrame.setVisible(true);
+        unDialog.add(instrucciones);
+        unDialog.setVisible(true);
     }
 }
