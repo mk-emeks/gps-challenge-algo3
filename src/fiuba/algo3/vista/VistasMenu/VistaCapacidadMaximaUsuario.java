@@ -3,13 +3,6 @@ package fiuba.algo3.vista.VistasMenu;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: edu
- * Date: 09/12/13
- * Time: 23:35
- * To change this template use File | Settings | File Templates.
- */
 public class VistaCapacidadMaximaUsuario {
 
     public VistaCapacidadMaximaUsuario() {
