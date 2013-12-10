@@ -1,6 +1,9 @@
 package fiuba.algo3.modelo;
 
-public abstract class Estado {
+import java.io.Serializable;
+import org.jdom2.Element;
+
+public abstract class Estado implements Serializable {
 
     /** es igual en todos, son distintos los this ver() **/
     public abstract void interactuarCon(Piloto piloto, Pozo pozo);
@@ -22,4 +25,7 @@ public abstract class Estado {
         }
         return iguales;
     }
+
+    /** por ser serializable **/
+    public abstract Element serializar();
 }

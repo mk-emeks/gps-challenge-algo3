@@ -156,7 +156,7 @@ public class gpsChallenge {
 
 
         /** botonAnimadoVehiculo **/
-        BotonAnimadoVehiculo botonAnimadoVehiculo = new BotonAnimadoVehiculo(unJuego,unMarco,40,450,369,150);
+        BotonAnimadoVehiculo botonAnimadoVehiculo = new BotonAnimadoVehiculo(unJuego,unMarco,100,300,369,150);
         botonAnimadoVehiculo.setVisible(false);
 
         /**VistaFinalizada**/

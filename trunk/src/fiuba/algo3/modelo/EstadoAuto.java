@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo;
 
+import org.jdom2.Element;
+
 public class EstadoAuto extends Estado {
 
     public void interactuarCon(Piloto piloto, Pozo pozo) {
@@ -29,6 +31,20 @@ public class EstadoAuto extends Estado {
     }
     public void interactuarCon(Piloto piloto, SorpresaCambioDeVehiculo sorpresa) {
         sorpresa.aplicarA(piloto,this);
+
+    }
+
+    /** por ser serializable **/
+
+    public EstadoAuto(){}
+
+    public EstadoAuto(Element xmlEstadoAuto) {}
+
+    public Element serializar() {
+
+        Element xmlNode = new Element("EstadoAuto");
+
+        return xmlNode;
 
     }
 

@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo;
 
+import org.jdom2.Element;
+
 /** alf cheat (el misterioso señor null) **/
 public class EstadoAlf extends Estado {
 
@@ -9,6 +11,20 @@ public class EstadoAlf extends Estado {
     public void interactuarCon(Piloto piloto, SorpresaFavorable sorpresaFavorable){}
     public void interactuarCon(Piloto piloto, SorpresaDesfavorable sorpresaDesfavorable){}
     public void interactuarCon(Piloto piloto, SorpresaCambioDeVehiculo sorpresaCambioDeVehiculo){}
+
+    /** por ser serializable **/
+
+    public EstadoAlf(){}
+
+    public EstadoAlf(Element xmlEstadoAlf) {}
+
+    public Element serializar() {
+
+        Element xmlNode = new Element("EstadoAlf");
+
+        return xmlNode;
+
+    }
 
 }
 

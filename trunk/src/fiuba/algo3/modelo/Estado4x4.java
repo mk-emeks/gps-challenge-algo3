@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo;
 
+import org.jdom2.Element;
 
 public class Estado4x4 extends Estado {
 
@@ -34,5 +35,19 @@ public class Estado4x4 extends Estado {
 
     }
 
+
+    /** por ser serializable **/
+
+    public Estado4x4(){}
+
+    public Estado4x4(Element xmlEstado4x4) {}
+
+    public Element serializar() {
+
+        Element xmlNode = new Element("Estado4x4");
+
+        return xmlNode;
+
+    }
 
 }
