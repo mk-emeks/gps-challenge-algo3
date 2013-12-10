@@ -88,7 +88,7 @@ public class gpsChallenge {
         boxUsuariosExistentes.setVisible(false);
 
         /** botonAceptar -> stage 2 **/
-        Boton botonAceptar = new BotonAceptar (unMarco,35,400,369,80);
+        Boton botonAceptar = new BotonAceptar (unMarco,35,640,369,80);
         botonAceptar.setVisible(false);
 
 
