@@ -1,4 +1,4 @@
-package fiuba.algo3.vista.VistasMenu;
+/*package fiuba.algo3.vista.VistasMenu;
 
 
 import javax.swing.*;
@@ -10,4 +10,4 @@ public class BotonSoyNuevo extends Boton {
         super(unMarco,posicionX,posicionY,ancho,largo);
         boton.setIcon(new ImageIcon("src/fiuba/algo3/vista/imagenes/Botones/botonSoyNuevo.png"));
     }
-}
+}          */
