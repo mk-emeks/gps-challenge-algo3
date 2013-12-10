@@ -9,11 +9,11 @@ public class VistaJuegoGuardado {
     public VistaJuegoGuardado() {
         {
 
-            JFrame unFrame = new JFrame();
-            unFrame.setBounds(440,50,400,120);
-            unFrame.setLayout(null);
-
-            unFrame.setDefaultCloseOperation(unFrame.DISPOSE_ON_CLOSE);
+            JDialog unDialog = new JDialog();
+            unDialog.setBounds(440,50,400,120);
+            unDialog.setLayout(null);
+            unDialog.setModal(true);
+            unDialog.setDefaultCloseOperation(unDialog.DISPOSE_ON_CLOSE);
 
             JLabel labelMensaje1 = new JLabel();
             labelMensaje1.setText("La partida fue guardada.");
@@ -36,11 +36,11 @@ public class VistaJuegoGuardado {
             labelMensaje3.setBounds(10,60,400,30);
             labelMensaje3.setVisible(true);
 
-            unFrame.add(labelMensaje1);
-            unFrame.add(labelMensaje2);
-            unFrame.add(labelMensaje3);
+            unDialog.add(labelMensaje1);
+            unDialog.add(labelMensaje2);
+            unDialog.add(labelMensaje3);
 
-            unFrame.setVisible(true);
+            unDialog.setVisible(true);
 
         }
     }
