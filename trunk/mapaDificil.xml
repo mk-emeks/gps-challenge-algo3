@@ -184,35 +184,35 @@
     <Posicion posicionX="16" posicionY="13" />
     <Posicion posicionX="18" posicionY="13" />
     <Posicion posicionX="20" posicionY="13" />
-    <Pozo turnosPenalizadosMomentaneos="3">
-        <Posicion posicionX="12" posicionY="3" />
-    </Pozo>
-    <Piquete turnosPenalizadosMomentaneos="2">
-        <Posicion posicionX="2" posicionY="6" />
-    </Piquete>
-    <Piquete turnosPenalizadosMomentaneos="2">
-        <Posicion posicionX="18" posicionY="11" />
-    </Piquete>
-    <ControlPolicial turnosPenalizadosMomentaneos="3">
-        <Posicion posicionX="9" posicionY="8" />
-    </ControlPolicial>
-    <ControlPolicial turnosPenalizadosMomentaneos="3">
-        <Posicion posicionX="4" posicionY="11" />
-    </ControlPolicial>
-    <SorpresaDesfavorable aplicado="false">
-        <Posicion posicionX="11" posicionY="4" />
-    </SorpresaDesfavorable>
-    <SorpresaDesfavorable aplicado="false">
-        <Posicion posicionX="2" posicionY="11" />
-    </SorpresaDesfavorable>
-    <SorpresaCambioDeVehiculo aplicado="false">
-        <Posicion posicionX="11" posicionY="12" />
-    </SorpresaCambioDeVehiculo>
-    <Pozo turnosPenalizadosMomentaneos="3">
-        <Posicion posicionX="20" posicionY="7" />
-    </Pozo>
-    <Pozo turnosPenalizadosMomentaneos="3">
-        <Posicion posicionX="4" posicionY="3" />
-    </Pozo>
+  <Pozo turnosPenalizadosMomentaneos="3">
+    <Posicion posicionX="12" posicionY="3" />
+  </Pozo>
+  <Piquete turnosPenalizadosMomentaneos="2">
+    <Posicion posicionX="2" posicionY="6" />
+  </Piquete>
+  <Piquete turnosPenalizadosMomentaneos="2">
+    <Posicion posicionX="18" posicionY="11" />
+  </Piquete>
+  <ControlPolicial turnosPenalizadosMomentaneos="3">
+    <Posicion posicionX="9" posicionY="8" />
+  </ControlPolicial>
+  <ControlPolicial turnosPenalizadosMomentaneos="3">
+    <Posicion posicionX="4" posicionY="11" />
+  </ControlPolicial>
+  <SorpresaDesfavorable aplicado="false">
+    <Posicion posicionX="11" posicionY="4" />
+  </SorpresaDesfavorable>
+  <SorpresaDesfavorable aplicado="false">
+    <Posicion posicionX="2" posicionY="11" />
+  </SorpresaDesfavorable>
+  <SorpresaCambioDeVehiculo aplicado="false">
+    <Posicion posicionX="11" posicionY="12" />
+  </SorpresaCambioDeVehiculo>
+  <Pozo turnosPenalizadosMomentaneos="3">
+    <Posicion posicionX="20" posicionY="7" />
+  </Pozo>
+  <Pozo turnosPenalizadosMomentaneos="3">
+    <Posicion posicionX="4" posicionY="3" />
+  </Pozo>
 
 </contenidoMapa>

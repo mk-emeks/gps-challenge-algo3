@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class ControlDeClickBotonGuardarPartida extends ControlDeClickBotonConPartida {
 
-    RegistroUsuarios registroUsuarios;
+    //RegistroUsuarios registroUsuarios;
 
     /** pasar vistaOn y vistaOff en null **/
     public ControlDeClickBotonGuardarPartida (Juego unJuego, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff)
