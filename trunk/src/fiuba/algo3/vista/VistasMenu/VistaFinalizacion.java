@@ -64,7 +64,7 @@ public class VistaFinalizacion extends VistaMenu {
 
 
 
-    @Override
+   /* @Override
     public void setVisible(boolean visibilidad) {}
 
     @Override
@@ -76,5 +76,5 @@ public class VistaFinalizacion extends VistaMenu {
 
         this.hilo.start();
 
-    }
+    }*/
 }
