@@ -2,6 +2,7 @@ package fiuba.algo3.control;
 
 
 //import fiuba.algo3.vista.VistasMenu.BotonAnimadoVehiculo;
+import fiuba.algo3.persistencia.Partida;
 import fiuba.algo3.vista.VistasMenu.*;
 
 import java.awt.event.MouseEvent;
@@ -50,7 +51,6 @@ public class ControlDeClickBotonJugar extends ControlDeClickBotonConPartida {
 
             VistaInstrucciones unaVistaInstrucciones = new VistaInstrucciones();
             this.vistaFinalizacion.comenzarVista();
-
 
         }
     }

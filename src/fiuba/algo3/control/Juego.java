@@ -71,6 +71,25 @@ public class Juego {
 
     }
 
+    /** X2, este se le pasa la posicion de inicio que uno quiera, esto lo usa el cargar partida **/
+    /** lo ideal seria tmb persistir la direccion del vehiculo, pero como arranca en pausa, es lo mismo **/
+    public void cargarVehiculoParaElPiloto(Posicion posicionDeInicioDelVehiculo) {
+
+        Direccion direccionDeInicioDelVehiculo = new DireccionDerecha(); /** una cualquiera, no cambia mucho **/
+        Vehiculo miVehiculo = new Vehiculo( posicionDeInicioDelVehiculo,direccionDeInicioDelVehiculo,this.carroceria);
+
+
+        try {
+            miVehiculo.posicionarEnElMapa();   /** (!) clave **/
+        } catch (Exception exception) {System.out.println( "no se pudo posicionar el vehiculo en el mapa");}
+
+
+        /** configurando piloto **/
+        this.pilotin.asignarVehiculo(miVehiculo);
+        this.pilotin.arrancarVehiculo();
+
+    }
+
     public void asignarVistaAlCronometro( VistaCronometro unaVistaCronometro) {
 
         this.vistaCronometro = unaVistaCronometro;
@@ -169,7 +188,7 @@ public class Juego {
         RegistroUsuariosConPuntuacion registroUsuariosConPuntuacion = new RegistroUsuariosConPuntuacion();
         try {
             SAXBuilder builder = new SAXBuilder();
-            Document doc = builder.build(new FileInputStream(registroUsuariosConPuntuacion.getNombreDelArchivo()));
+            Document doc = builder.build(new FileInputStream(RegistroUsuariosConPuntuacion.getNombreDelArchivo()));
             Element raiz = doc.getRootElement();
             registroUsuariosConPuntuacion = new RegistroUsuariosConPuntuacion(raiz);
 
