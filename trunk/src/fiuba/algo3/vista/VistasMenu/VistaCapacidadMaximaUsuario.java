@@ -15,7 +15,7 @@ public class VistaCapacidadMaximaUsuario {
     public VistaCapacidadMaximaUsuario() {
         {
 
-            JFrame unFrame = new JFrame();
+            JDialog unFrame = new JDialog();
             unFrame.setBounds(200,200,450,120);
             unFrame.setLayout(null);
 
