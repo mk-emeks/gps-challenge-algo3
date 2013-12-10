@@ -8,7 +8,7 @@ import java.awt.*;
 public class VistaFinalizacion extends VistaMenu {
 
     Juego juego;
-    JFrame frameResultado = new JFrame();
+    JDialog frameResultado = new JDialog();
 
     Thread hilo = new Thread() {
         public void run(){
