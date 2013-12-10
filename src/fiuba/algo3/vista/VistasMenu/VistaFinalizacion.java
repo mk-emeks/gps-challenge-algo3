@@ -9,22 +9,7 @@ public class VistaFinalizacion extends VistaMenu {
 
     Juego juego;
     JFrame frameResultado = new JFrame();
-
-    Thread hilo = new Thread() {
-        public void run(){
-
-            try {
-                Thread.sleep(300);
-                while (!juego.estaTerminada()) {
-                    frameResultado.setVisible(false);
-                }
-
-                frameResultado.setVisible(true);
-
-            } catch (Exception e) {}
-        }
-    };
-
+    Thread hilo;
 
 
     public VistaFinalizacion(Juego unJuego) {
@@ -74,7 +59,21 @@ public class VistaFinalizacion extends VistaMenu {
 
     public void comenzarVista() {
 
-        this.hilo = new Thread();
+        this.hilo = new Thread() {
+            public void run(){
+
+                try {
+                    Thread.sleep(300);
+                    while (!juego.estaTerminada()) {
+                        frameResultado.setVisible(false);
+                    }
+
+                    frameResultado.setVisible(true);
+
+                } catch (Exception e) {}
+            }
+        };
+
         this.hilo.start();
 
     }
