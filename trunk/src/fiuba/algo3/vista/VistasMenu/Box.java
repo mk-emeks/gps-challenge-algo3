@@ -11,7 +11,7 @@ public abstract class Box extends VistaMenu {
     protected JLabel itembox2;
     protected JLabel itembox3;
 
-    protected int distanciaXEntreEllas = 40;
+    protected int distanciaXEntreEllas = 70;
 
     public Box (JFrame unMarco, int posicionX, int posicionY, int ancho, int largo) {
 
