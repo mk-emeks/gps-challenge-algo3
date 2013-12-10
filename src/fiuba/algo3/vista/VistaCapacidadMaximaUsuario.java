@@ -3,23 +3,16 @@ package fiuba.algo3.vista;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: edu
- * Date: 09/12/13
- * Time: 23:35
- * To change this template use File | Settings | File Templates.
- */
 public class VistaCapacidadMaximaUsuario {
 
     public VistaCapacidadMaximaUsuario() {
         {
 
-            JFrame unFrame = new JFrame();
-            unFrame.setBounds(200,200,450,120);
-            unFrame.setLayout(null);
-
-            unFrame.setDefaultCloseOperation(unFrame.DISPOSE_ON_CLOSE);
+            JDialog unDialog = new JDialog();
+            unDialog.setBounds(200,200,450,120);
+            unDialog.setLayout(null);
+            unDialog.setModal(true);
+            unDialog.setDefaultCloseOperation(unDialog.DISPOSE_ON_CLOSE);
 
             JLabel labelMensaje1 = new JLabel();
             labelMensaje1.setText("Cupo de usuarios esta completo.");
@@ -42,11 +35,11 @@ public class VistaCapacidadMaximaUsuario {
             labelMensaje3.setBounds(10,60,450,30);
             labelMensaje3.setVisible(true);
 
-            unFrame.add(labelMensaje1);
-            unFrame.add(labelMensaje2);
-            unFrame.add(labelMensaje3);
+            unDialog.add(labelMensaje1);
+            unDialog.add(labelMensaje2);
+            unDialog.add(labelMensaje3);
 
-            unFrame.setVisible(true);
+            unDialog.setVisible(true);
 
         }
     }
