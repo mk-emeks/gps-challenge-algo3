@@ -9,11 +9,12 @@ public class VistaInstrucciones {
     public VistaInstrucciones() {
 
 
-        JFrame unFrame = new JFrame();
+        JDialog unFrame = new JDialog();
         unFrame.setBounds(50,50,770,700);
         unFrame.setTitle("Instrucciones");
         unFrame.setLayout(null);
-        unFrame.setDefaultCloseOperation(unFrame.DISPOSE_ON_CLOSE);
+        unFrame.setResizable(false);
+        //unFrame.setDefaultCloseOperation(unFrame.DISPOSE_ON_CLOSE);
 
 
         JLabel instrucciones = new JLabel();
