@@ -116,8 +116,7 @@ public class RegistroUsuarios implements Serializable {
 
             this.actualizarArchivoXml(doc); // aca se llama a la frula: es decir se agrego pero hay que actualizar el archivo
 
-            }
-            VistaCapacidadMaximaUsuario unaVistaMaxima = new VistaCapacidadMaximaUsuario();
+            } else { VistaCapacidadMaximaUsuario unaVistaMaxima = new VistaCapacidadMaximaUsuario(); }
 
         } catch (Exception e) {System.out.println("no se pudo agregar el usuario al registoUsuarios.xml");}
 
