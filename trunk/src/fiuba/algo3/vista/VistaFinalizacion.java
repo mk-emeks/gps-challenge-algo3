@@ -8,7 +8,7 @@ import java.awt.*;
 public class VistaFinalizacion extends VistaMenu {
 
     Juego juego;
-    JFrame frameResultado = new JFrame();
+    JDialog dialogResultado = new JDialog();
     Thread hilo;
 
 
@@ -16,9 +16,10 @@ public class VistaFinalizacion extends VistaMenu {
 
         this.juego = unJuego;
 
-        frameResultado.setBounds(700,300,300,200);
-        frameResultado.setLayout(null);
-        frameResultado.setDefaultCloseOperation(frameResultado.DISPOSE_ON_CLOSE);
+        dialogResultado.setBounds(700,300,300,200);
+        dialogResultado.setLayout(null);
+        dialogResultado.setDefaultCloseOperation(dialogResultado.DISPOSE_ON_CLOSE);
+        dialogResultado.setModal(true);
 
         JLabel labelResultado = new JLabel();
         labelResultado.setText("LLegaste a la FIUBA!!");
@@ -27,14 +28,14 @@ public class VistaFinalizacion extends VistaMenu {
         labelResultado.setBounds(30,0,300,30);
         labelResultado.setVisible(true);
 
-        frameResultado.add(labelResultado);
+        dialogResultado.add(labelResultado);
 
         JLabel imagenResultado = new JLabel();
         imagenResultado.setIcon(new ImageIcon("src/fiuba/algo3/vista/imagenes/resultado.png"));
         imagenResultado.setBounds(90, 40, 120, 120);
         imagenResultado.setVisible(true);
 
-        frameResultado.add(imagenResultado);
+        dialogResultado.add(imagenResultado);
 
         JLabel labelMensaje = new JLabel();
         labelMensaje.setText("Cerrar para continuar");
@@ -43,7 +44,7 @@ public class VistaFinalizacion extends VistaMenu {
         labelMensaje.setBounds(90,150,400,30);
         labelMensaje.setVisible(true);
 
-        frameResultado.add(labelMensaje);
+        dialogResultado.add(labelMensaje);
 
     }
 
@@ -65,10 +66,10 @@ public class VistaFinalizacion extends VistaMenu {
                 try {
                     Thread.sleep(300);
                     while (!juego.estaTerminada()) {
-                        frameResultado.setVisible(false);
+                        dialogResultado.setVisible(false);
                     }
 
-                    frameResultado.setVisible(true);
+                    dialogResultado.setVisible(true);
 
                 } catch (Exception e) {}
             }
