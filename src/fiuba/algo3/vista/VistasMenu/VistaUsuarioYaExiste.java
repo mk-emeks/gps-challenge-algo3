@@ -9,7 +9,7 @@ public class VistaUsuarioYaExiste {
     public VistaUsuarioYaExiste() {
         {
 
-            JFrame unFrame = new JFrame();
+            JDialog unFrame = new JDialog();
             unFrame.setBounds(200,200,400,90);
             unFrame.setLayout(null);
 
