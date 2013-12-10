@@ -104,6 +104,14 @@ public class GameLoop implements Runnable {
         dibujables.remove(unDibujable);
     }
 
+    public void destruir() {
+        objetosVivos.clear();
+        dibujables.clear();
+        this.detenerJuego();
+        this.superficieDeDibujo.actualizar();
+
+    }
+
     private void dibujar() {
 
         for (int i = 0 ; i < this.dibujables.size() ; i++) {
