@@ -9,10 +9,9 @@ public class VistaJuegoGuardado {
     public VistaJuegoGuardado() {
         {
 
-            JDialog unFrame = new JDialog();
+            JFrame unFrame = new JFrame();
             unFrame.setBounds(440,50,400,120);
             unFrame.setLayout(null);
-            unFrame.setResizable(false);
 
             unFrame.setDefaultCloseOperation(unFrame.DISPOSE_ON_CLOSE);
 
