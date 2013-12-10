@@ -8,7 +8,7 @@ import fiuba.algo3.persistencia.UsuarioConPuntuacion;
 
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
-import fiuba.algo3.vista.VistasMenu.VistaCronometro;
+import fiuba.algo3.vista.VistaCronometro;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;

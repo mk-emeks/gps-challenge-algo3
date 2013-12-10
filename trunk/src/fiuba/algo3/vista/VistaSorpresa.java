@@ -14,7 +14,7 @@ public class VistaSorpresa implements ObjetoDibujable {
     public VistaSorpresa(ObjetoPosicionable unPosicionable) {
 
         try {
-            URL urlSorpresa = this.getClass().getResource("imagenes/Obstaculos/sorpresas.png");
+            URL urlSorpresa = this.getClass().getResource("imagenes/sorpresas.png");
             this.imagen = new Imagen(urlSorpresa,unPosicionable);
 
         } catch (Exception e) {

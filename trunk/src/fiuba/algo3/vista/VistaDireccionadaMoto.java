@@ -10,10 +10,10 @@ public class VistaDireccionadaMoto extends VistaDireccionada {
 
         super(moto);
 
-        this.vistaArriba.setNombreArchivoImagen("imagenes/Vehiculos/Moto/motoArriba.png");
-        this.vistaOrientada.setNombreArchivoImagen("imagenes/Vehiculos/Moto/motoAbajo.png");
-        this.vistaDerecha.setNombreArchivoImagen("imagenes/Vehiculos/Moto/motoDerecha.png");
-        this.vistaIzquierda.setNombreArchivoImagen("imagenes/Vehiculos/Moto/motoSurda.png");
+        this.vistaArriba.setNombreArchivoImagen("imagenes/motoArriba.png");
+        this.vistaOrientada.setNombreArchivoImagen("imagenes/motoAbajo.png");
+        this.vistaDerecha.setNombreArchivoImagen("imagenes/motoDerecha.png");
+        this.vistaIzquierda.setNombreArchivoImagen("imagenes/motoSurda.png");
 
     }
 

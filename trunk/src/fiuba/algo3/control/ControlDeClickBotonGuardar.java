@@ -2,8 +2,8 @@ package fiuba.algo3.control;
 
 import fiuba.algo3.persistencia.RegistroUsuarios;
 import fiuba.algo3.persistencia.Usuario;
-import fiuba.algo3.vista.VistasMenu.CampoTexto;
-import fiuba.algo3.vista.VistasMenu.VistaMenu;
+import fiuba.algo3.vista.CampoTexto;
+import fiuba.algo3.vista.VistaMenu;
 
 import java.awt.event.MouseEvent;
 

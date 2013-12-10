@@ -1,7 +1,7 @@
 package fiuba.algo3.control;
 
 
-import fiuba.algo3.vista.VistasMenu.BoxUsuariosExistentes;
+import fiuba.algo3.vista.BoxUsuariosExistentes;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;

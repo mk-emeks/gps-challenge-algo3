@@ -14,7 +14,7 @@ public class VistaPozo implements ObjetoDibujable {
     public VistaPozo(ObjetoPosicionable unPosicionable) {
 
         try {
-            URL urlPozo = this.getClass().getResource("imagenes/Obstaculos/pozo.png");
+            URL urlPozo = this.getClass().getResource("imagenes/pozo.png");
             this.imagen = new Imagen(urlPozo,unPosicionable);
 
         } catch (Exception e) {

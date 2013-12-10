@@ -14,7 +14,7 @@ public class VistaPolicia implements ObjetoDibujable {
     public VistaPolicia(ObjetoPosicionable unPosicionable) {
 
         try {
-            URL urlPolicia = this.getClass().getResource("imagenes/Obstaculos/poli.png");
+            URL urlPolicia = this.getClass().getResource("imagenes/poli.png");
             this.imagen = new Imagen(urlPolicia,unPosicionable);
 
         } catch (Exception e) {
