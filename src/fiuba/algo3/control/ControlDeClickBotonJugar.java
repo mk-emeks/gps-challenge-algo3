@@ -52,7 +52,7 @@ public class ControlDeClickBotonJugar extends ControlDeClickBotonConJuego {
 
 
             /**aca aparece siempre al inicio pero no cambia **/
-            this.botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
+            //this.botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
 
 
         }
