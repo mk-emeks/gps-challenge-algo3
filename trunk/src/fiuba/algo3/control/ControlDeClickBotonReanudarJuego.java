@@ -56,7 +56,7 @@ public class ControlDeClickBotonReanudarJuego extends ControlDeClickBotonConJueg
             this.vistaFinalizacion.comenzarVista();
 
             /**aca aparece siempre al inicio pero no cambia **/
-            //this.botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
+            this.botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
 
         } catch (Exception execpcion) {System.out.println("no se pudo cargar la partida guardad");}
 
