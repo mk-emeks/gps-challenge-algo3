@@ -4,6 +4,7 @@ package fiuba.algo3.vista;
 
 import fiuba.algo3.control.Juego;
 import fiuba.algo3.modelo.Estado;
+import fiuba.algo3.modelo.Estado4x4;
 import fiuba.algo3.modelo.EstadoAuto;
 import fiuba.algo3.modelo.EstadoMoto;
 
@@ -13,12 +14,12 @@ import javax.swing.*;
 
 public class BotonAnimadoVehiculo extends VistaMenu {
 
-    Juego juego;
+    private Juego juego;
     //JLabel foto;
 
-    JLabel fotoAuto;
-    JLabel fotoMoto;
-    JLabel foto4x4;
+    private JLabel fotoAuto;
+    private JLabel fotoMoto;
+    private JLabel foto4x4;
 
 
     public BotonAnimadoVehiculo(Juego unJuego,JFrame unMarco, int posicionX, int posicionY, int ancho, int largo) {
@@ -47,44 +48,7 @@ public class BotonAnimadoVehiculo extends VistaMenu {
         unMarco.add(foto4x4);
         foto4x4.setVisible(false);
 
-
-
     }
-
-    Thread hilo = new Thread() {
-        public void run(){
-
-            try {
-                Thread.sleep(300);
-                Estado estadoAuto = new EstadoAuto();
-                Estado estadoMoto = new EstadoMoto();
-
-                while (!juego.estaPausada()) {
-
-                    Estado estadoAcomparar = juego.getPiloto().getVehiculo().getEstado();
-                    if  (estadoAcomparar.equals(estadoAuto)) {
-                      fotoAuto.setVisible(true);
-                      fotoMoto.setVisible(false);
-                      foto4x4.setVisible(false);
-                    } else {
-                        if (estadoAcomparar.equals(estadoMoto)) {
-                            fotoAuto.setVisible(false);
-                            fotoMoto.setVisible(true);
-                            foto4x4.setVisible(false);
-
-                        } else {
-                            fotoAuto.setVisible(false);
-                            fotoMoto.setVisible(false);
-                            foto4x4.setVisible(true);
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println("NO CARGE EL BOTON ANIMADO");
-            }
-        }
-    };
-
 
    //mintiendole al usuario
     public void setVisible ( boolean visibilidad) {
@@ -103,16 +67,52 @@ public class BotonAnimadoVehiculo extends VistaMenu {
     }
     // fin
 
+    private Thread hilo;
+
     public void comenzarAnimacion() {
 
-        this.hilo = new Thread();
+        this.hilo = new Thread() {
+            public void run(){
+
+                try {
+                    Thread.sleep(310);
+                    Estado estadoAuto = new EstadoAuto();
+                    Estado estadoMoto = new EstadoMoto();
+                    Estado estado4x4 = new Estado4x4();
+
+
+                    while (!juego.estaPausada()) {
+
+                        Estado estadoAcomparar = juego.getPiloto().getVehiculo().getEstado();
+                        if  (estadoAcomparar.equals(estadoAuto)) {
+                            fotoAuto.setVisible(true);
+                            fotoMoto.setVisible(false);
+                            foto4x4.setVisible(false);
+                        } else {
+                            if (estadoAcomparar.equals(estadoMoto)) {
+                                fotoAuto.setVisible(false);
+                                fotoMoto.setVisible(true);
+                                foto4x4.setVisible(false);
+
+                            } else if (estadoAcomparar.equals(estado4x4)) {
+                                fotoAuto.setVisible(false);
+                                fotoMoto.setVisible(false);
+                                foto4x4.setVisible(true);
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("NO CARGE EL BOTON ANIMADO");
+                }
+            }
+        };
         this.hilo.start();
 
     }
 
-    /*public void detenerAnimacion() {
+    public void detenerAnimacion() {
         this.hilo.interrupt();
-    }*/
+    }
 
 
 

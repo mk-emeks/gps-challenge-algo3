@@ -100,9 +100,7 @@ public class Juego {
     public Juego() {
 
         /** importante crearlo antes de usarlos **/
-        //this.gameLoop = new GameLoop();
         this.pilotin = new Piloto();
-        //this.controlDeVistas = new ControlDeVistas(this.gameLoop,this.pilotin);
 
     }
 
@@ -186,8 +184,6 @@ public class Juego {
             //this.pilotin.getCronometro().reanudar(this.vistaCronometro.getThread());  // el cronometro es un tipo independiente; A no olvidarselo
             this.pilotin.getCronometro().reanudar();
 
-
-
             this.gameLoop.comenzarJuego();
         }
 
@@ -219,7 +215,7 @@ public class Juego {
 
 
         System.out.println("el juego finalizo");
-        this.pilotin.getCronometro().reset();
+        this.pilotin.getCronometro().reset(); //!
 
     }
 
@@ -241,7 +237,8 @@ public class Juego {
     }*/
 
     public void destruir(){
-        //this.pilotin.getCronometro().reset();
+
+        this.pilotin.getCronometro().reset();
         //this.pilotin.getCronometro().reset(this.vistaCronometro.getThread());
         this.gameLoop.destruir();
         this.gameLoop = null;

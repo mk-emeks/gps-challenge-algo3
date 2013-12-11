@@ -296,7 +296,7 @@ public class gpsChallenge {
 
         /** 3: Juego En Accion **/
         botonGuardarPartida.addMouseListener(new ControlDeClickBotonGuardarJuego(unJuego,null,null));
-        botonVolverMenuPrincipalDesdeJuegoEnAccion.addMouseListener(new ControlDeClickBotonVolverAlMenuPrincipalDesdeJuegoEnAccion(/*botonAnimadoVehiculo,*/unJuego,stageMenuPrincipal,stageJuegoEnAccion));
+        botonVolverMenuPrincipalDesdeJuegoEnAccion.addMouseListener(new ControlDeClickBotonVolverAlMenuPrincipalDesdeJuegoEnAccion(botonAnimadoVehiculo,unJuego,stageMenuPrincipal,stageJuegoEnAccion));
 
 
 

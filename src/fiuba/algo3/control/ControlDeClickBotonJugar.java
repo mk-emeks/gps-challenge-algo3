@@ -42,15 +42,17 @@ public class ControlDeClickBotonJugar extends ControlDeClickBotonConJuego {
 
             this.juego.cargarVehiculoParaElPiloto();
 
-
             this.juego.iniciar();
             this.juego.pausar();
 
             this.actualizar();
-            this.botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
 
             VistaInstrucciones unaVistaInstrucciones = new VistaInstrucciones();
             this.vistaFinalizacion.comenzarVista();
+
+
+            /**aca aparece siempre al inicio pero no cambia **/
+            this.botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
 
 
         }
