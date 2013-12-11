@@ -45,15 +45,20 @@ public class ControlDeClickBotonReanudarJuego extends ControlDeClickBotonConJueg
             partidaARecuperar.cargarPartidaGuardada(this.juego);
 
             /** el resto de lo que hace boton jugar **/
-            this.botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
+
 
             this.juego.iniciar();
+
             this.juego.pausar();
 
             this.actualizar();
+            this.botonAnimadoVehiculo.comenzarAnimacion();
 
             VistaInstrucciones unaVistaInstrucciones = new VistaInstrucciones();
             this.vistaFinalizacion.comenzarVista();
+
+            /**aca aparece siempre al inicio pero no cambia **/
+            this.botonAnimadoVehiculo.comenzarAnimacion(); // el orden es importante, tiene que ser despues!
 
         } catch (Exception execpcion) {System.out.println("no se pudo cargar la partida guardad");}
 
