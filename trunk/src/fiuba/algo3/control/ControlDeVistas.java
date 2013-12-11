@@ -79,7 +79,7 @@ public class ControlDeVistas implements ObjetoVivo {
         this.agregarVistaLlegadaAlGameLoop();
         this.agregarVistasDeAplicablesTemporales();
         this.agregarVistasDeAplicablesAlGameLoop();
-        this.agregarVistaAutoAlGameLoop();
+        this.agregarVistaVehiculoAlGameLoop();
         this.agregarVistasDeLasSombrasAlGameLoop(); /** sacar si se quiere ver el mapa **/
 
     }
@@ -180,7 +180,7 @@ public class ControlDeVistas implements ObjetoVivo {
 
     }
 
-    private void agregarVistaAutoAlGameLoop() {
+    private void agregarVistaVehiculoAlGameLoop() {
 
         VistaVehiculo unaVistaVehiculo = new VistaVehiculo(this.pilotin.getVehiculo());
         gameLoop.agregar(unaVistaVehiculo);
