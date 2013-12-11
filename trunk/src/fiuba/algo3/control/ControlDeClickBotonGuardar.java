@@ -34,7 +34,6 @@ public class ControlDeClickBotonGuardar extends ControlDeClickBotonConJuego {
             String nombreDelCompetidor = this.areaTexto.getTexto();
             this.registroUsuarios.agregarUsuario(new Usuario(nombreDelCompetidor));
             this.juego.crearPiloto(nombreDelCompetidor);
-            /** falta persistencia! **/
 
             this.actualizar();
 

@@ -27,13 +27,6 @@ public class ControlDeClickBotonJugar extends ControlDeClickBotonConJuego {
 
     }
 
-    public ControlDeClickBotonJugar(Juego unJuego, ArrayList<VistaMenu> vistasOn, ArrayList<VistaMenu> vistasOff){
-
-        super(unJuego,vistasOn,vistasOff);
-
-
-    }
-
     @Override
     public void mouseClicked(MouseEvent e) {
 

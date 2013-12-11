@@ -41,13 +41,6 @@ public class Juego {
 
     }
 
-    /** no se puede devolver : StackOverFlowError**/
-    /*public GameLoop getGameLoop() {
-
-        return this.getGameLoop();
-
-    }*/
-
     public void asignarCarroceriaDelVehiculo ( Estado unaCarroceria) {
 
         this.carroceria = unaCarroceria;
