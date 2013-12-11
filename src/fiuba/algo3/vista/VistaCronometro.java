@@ -11,7 +11,7 @@ public class VistaCronometro extends VistaMenu {
     public Cronometro unCronometro = new Cronometro();
     JLabel vistaTiempo;
 
-    Thread hiloTiempo = new Thread(){
+    /*Thread hiloTiempo = new Thread(){
         public void run(){
             try {
                 while (!unCronometro.estaPausado()) {
@@ -22,12 +22,12 @@ public class VistaCronometro extends VistaMenu {
                 }
             } catch(Exception e){}
         }
-    };
+    };*/
 
     public VistaCronometro(Cronometro cronometroPiloto , JFrame unMarco, int posicionX, int posicionY, int ancho, int largo) {
 
         this.unCronometro= cronometroPiloto;
-        vistaTiempo = new JLabel("00:00:00");
+        vistaTiempo = new JLabel(this.unCronometro.devolverTiempoComoString());
         vistaTiempo.setFont(new Font(Font.SERIF, Font.BOLD, 50));
         vistaTiempo.setForeground(new Color(197, 104, 13));
         vistaTiempo.setBounds(posicionX,posicionY,ancho,largo);
@@ -36,8 +36,13 @@ public class VistaCronometro extends VistaMenu {
 
     }
 
-    public Thread getThread() {
+    /*public Thread getThread() {
         return hiloTiempo;
+    }*/
+
+    public void setText (String texto) {
+
+        this.vistaTiempo.setText(texto);
     }
 
     public void setVisible(boolean visibilidad) {

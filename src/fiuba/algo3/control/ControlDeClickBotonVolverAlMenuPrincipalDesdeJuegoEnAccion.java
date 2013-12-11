@@ -18,8 +18,12 @@ public class ControlDeClickBotonVolverAlMenuPrincipalDesdeJuegoEnAccion extends 
 
     public void mouseClicked(MouseEvent e) {
 
+        if (this.juego.estaPausada()) {
         //this.botonAnimadoVehiculo.detenerAnimacion();
+        this.juego.finalizar(); // va?
         this.juego.destruir();
         this.actualizar();
+
+        }
     }
 }
