@@ -21,7 +21,7 @@ public class ControlDeClickBotonVolverAlMenuPrincipalDesdeJuegoEnAccion extends 
 
         if (this.juego.estaPausada()) {
 
-        this.botonAnimadoVehiculo.detenerAnimacion();
+        //this.botonAnimadoVehiculo.detenerAnimacion();
         this.juego.destruir();
         this.actualizar();
 
