@@ -45,7 +45,7 @@ public class BoxUsuariosConPuntajes extends fiuba.algo3.vista.Box {
             this.itembox2.setText("2) " + listaUsuariosConPuntajes.get(1).getNombre() + "   " + listaUsuariosConPuntajes.get(1).getPuntuacionComoString());
             this.itembox2.setForeground(new Color(197, 104, 13));
             this.itembox2.setFont(new Font(Font.SERIF, Font.BOLD, 20));
-        } catch (Exception e1) { System.out.println("error al cargar el nombre del 2er usuario"); }
+        } catch (Exception e1) { System.out.println("error al cargar el nombre del 2do usuario"); }
 
         try{
             this.itembox3.setText("3) " + listaUsuariosConPuntajes.get(2).getNombre() + "   " + listaUsuariosConPuntajes.get(2).getPuntuacionComoString());
