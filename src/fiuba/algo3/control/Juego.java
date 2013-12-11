@@ -139,9 +139,8 @@ public class Juego {
     private void comenzar() {
 
         /**!**/
-        this.pilotin.getCronometro().setVistaCronometro(this.vistaCronometro);
+        this.pilotin.getCronometro().setVistaCronometro(this.vistaCronometro); //asignamos vista al cronometro
         this.pilotin.getCronometro().iniciar();
-        //this.pilotin.getCronometro().iniciar(this.vistaCronometro.getThread());  /** iniciamos su cronometro **/
 
         this.gameLoop.comenzarJuego();
 
@@ -165,10 +164,7 @@ public class Juego {
         if (this.gameLoop.estaEnEjecucion()) {
 
             this.pilotin.detenerVehiculo(); //Si queremos que el juego arranque en pause es necesario
-
-            //this.pilotin.getCronometro().pausar(this.vistaCronometro.getThread());  // el cronometro es un tipo independiente; A no olvidarselo
             this.pilotin.getCronometro().pausar();
-            //this.pilotin.getCronometro().iniciar();
 
             this.gameLoop.detenerJuego();
         }
@@ -180,8 +176,6 @@ public class Juego {
         if ( !(this.gameLoop.estaEnEjecucion()) ) {
 
             this.pilotin.arrancarVehiculo(); //Si queremos que el juego arranque en pause es necesario
-
-            //this.pilotin.getCronometro().reanudar(this.vistaCronometro.getThread());  // el cronometro es un tipo independiente; A no olvidarselo
             this.pilotin.getCronometro().reanudar();
 
             this.gameLoop.comenzarJuego();
@@ -191,9 +185,7 @@ public class Juego {
 
     public void finalizar() {
 
-
         this.pilotin.getCronometro().pausar();
-        //this.pilotin.getCronometro().pausar(this.vistaCronometro.getThread());  /** el cronometro es un tipo independiente; A no olvidarselo **/
         this.gameLoop.detenerJuego();
         this.juegoTerminado = true;
 
@@ -229,17 +221,9 @@ public class Juego {
         return this.juegoTerminado;
     }
 
-   /* private void quitarObjetosVivosAlGameLoop() {
-
-        this.gameLoop.remover(this.pilotin);
-        this.gameLoop.remover(this.controlDeVistas);
-        this.gameLoop.remover(this.controlDeEventos);
-    }*/
-
     public void destruir(){
 
         this.pilotin.getCronometro().reset();
-        //this.pilotin.getCronometro().reset(this.vistaCronometro.getThread());
         this.gameLoop.destruir();
         this.gameLoop = null;
         this.controlDeVistas = null;
