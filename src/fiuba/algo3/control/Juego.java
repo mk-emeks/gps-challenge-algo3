@@ -140,7 +140,9 @@ public class Juego {
 
         /**!**/
         this.pilotin.getCronometro().setVistaCronometro(this.vistaCronometro); //asignamos vista al cronometro
-        this.pilotin.getCronometro().iniciar();
+
+        //this.pilotin.getCronometro().iniciar();
+        this.pilotin.getCronometro().comenzarCronometro();
 
         this.gameLoop.comenzarJuego();
 
@@ -164,7 +166,9 @@ public class Juego {
         if (this.gameLoop.estaEnEjecucion()) {
 
             this.pilotin.detenerVehiculo(); //Si queremos que el juego arranque en pause es necesario
-            this.pilotin.getCronometro().pausar();
+
+            //this.pilotin.getCronometro().pausar();
+            this.pilotin.getCronometro().detenerCronometro();
 
             this.gameLoop.detenerJuego();
         }
@@ -176,7 +180,9 @@ public class Juego {
         if ( !(this.gameLoop.estaEnEjecucion()) ) {
 
             this.pilotin.arrancarVehiculo(); //Si queremos que el juego arranque en pause es necesario
-            this.pilotin.getCronometro().reanudar();
+
+            //this.pilotin.getCronometro().reanudar();
+            this.pilotin.getCronometro().comenzarCronometro();
 
             this.gameLoop.comenzarJuego();
         }
@@ -185,7 +191,9 @@ public class Juego {
 
     public void finalizar() {
 
-        this.pilotin.getCronometro().pausar();
+        //this.pilotin.getCronometro().pausar();
+        this.pilotin.getCronometro().detenerCronometro();
+
         this.gameLoop.detenerJuego();
         this.juegoTerminado = true;
 
@@ -207,6 +215,8 @@ public class Juego {
 
 
         System.out.println("el juego finalizo");
+
+        /**!**/
         this.pilotin.getCronometro().reset(); //!
 
     }
@@ -223,7 +233,10 @@ public class Juego {
 
     public void destruir(){
 
+        /**!**/
         this.pilotin.getCronometro().reset();
+
+
         this.gameLoop.destruir();
         this.gameLoop = null;
         this.controlDeVistas = null;
