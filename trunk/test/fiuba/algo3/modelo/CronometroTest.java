@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo;
+/*package fiuba.algo3.modelo;
 
 
 import junit.framework.Assert;
@@ -13,9 +13,9 @@ public class CronometroTest {
     Cronometro cronometroDePueba;
     int errorMaximo;
     int errorMinimo;
-    Thread hiloTiempo;
+    Thread hiloTiempo; */
 
-
+    /*
     @Before
     public void setUp() {
         cronometroDePueba = new Cronometro();
@@ -32,12 +32,12 @@ public class CronometroTest {
                 } catch(Exception e){}
             }
         };
-    }
+    }  */
 
-    @After
+   /* @After
     public void resetear() throws Exception {
         this.cronometroDePueba.reset();
-    }
+    }*/
 
     /*@Test
     public void testDeberiaMarcarLosSegundosQuePasen() throws Exception {
@@ -145,4 +145,4 @@ public class CronometroTest {
        Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) >= errorMinimo);
     } **/
 
-}
+//}

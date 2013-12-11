@@ -58,7 +58,7 @@ public class Cronometro implements Runnable {
                 try {
                     hilo.sleep(850);
                 } catch (InterruptedException e) {
-                    System.out.println("no carge el hilo del cronometro");
+                    System.out.println("interrupcion al cronometro");
                     //e.printStackTrace();
                 }
 
