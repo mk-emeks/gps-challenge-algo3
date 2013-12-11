@@ -1,16 +1,25 @@
 package fiuba.algo3.modelo;
 
 
+import fiuba.algo3.vista.VistaCronometro;
 
-public class Cronometro {
+public class Cronometro implements Runnable {
 
-    public int segundos;
-    public int errorEnSegundos;
+    private int segundos;
+    private int errorEnSegundos;
     private Conversor donConversor;
     private boolean pausa;
 
+    private VistaCronometro vistaTiempo;
+    private Thread hilo;
+
+    /** el unico lugar donde se cochinea la vista: por ahora **/
+    public void setVistaCronometro(VistaCronometro unVista) {
+        this.vistaTiempo = unVista;
+    }
 
     public Cronometro() {
+
 
         this.segundos = 0;
         this.errorEnSegundos = 2;
@@ -19,35 +28,62 @@ public class Cronometro {
     }
 
 
-    public void pausar(Thread hilo) {
+    public void pausar() {
 
         hilo.suspend();
         this.pausa = true;
     }
 
 
-    public void reanudar(Thread hilo) {
+    public void reanudar() {
 
-        this.iniciar(hilo);
+        this.iniciar();
     }
 
 
-    public void reset(Thread hilo) {
+    public void reset(/*Thread hilo*/) {
 
-        this.pausar(hilo);
         this.segundos = 0;
+        this.pausar(/*hilo*/);
+
     }
 
     //Fin
 
-    public void iniciar(Thread hilo) {
+    public void run(){
+        try {
+            while (!this.estaPausado()) {
+
+                this.contar();
+                vistaTiempo.setText(this.devolverTiempoComoString());
+
+                try {
+                    hilo.sleep(850);
+                } catch (InterruptedException e) {
+                    System.out.println("no carge el hilo del cronometro");
+                    //e.printStackTrace();
+                }
+
+            }
+        } catch(Exception e){}
+    }
+
+    public void iniciar(/*Thread hilo*/) {
 
         if (!this.pausa) {
+
+            this.hilo = new Thread(this);
+            this.hilo.start();
+        }  else {
+            this.pausa=false;
+            this.hilo.resume();
+        }
+        /*if (!this.pausa) {
             hilo.start();
         }else {
             this.pausa=false;
             hilo.resume();
-        }
+        }*/
     }
 
     public void contar() {
@@ -61,12 +97,12 @@ public class Cronometro {
     }
 
 
-    public String devolverTiempoComoString() { //throws Exception {
+    public synchronized String devolverTiempoComoString() { //throws Exception {
         return this.donConversor.devolverTiempoComoString(this.segundos);
     }
 
 
-    public int tiempoEnSegundos() {
+    public synchronized int tiempoEnSegundos() {
         return this.segundos;
     }
 
