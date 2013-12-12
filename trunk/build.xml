@@ -133,10 +133,13 @@
 	<target name="empaquetar" depends="compilar.paquete">
         <!-- <<jar destfile="${build}/dist/titiritero.jar" basedir="${build}/classes"/>  -->
         <copydir src="src/fiuba/algo3/vista/imagenes"
-                dest="${build}/classes/vista/imagenes"
+                dest="${build}/fiuba/algo3/vista/imagenes"
                 includes="**/*.png" />
 		<jar destfile="${build}/dist/gpsChallenge.jar" basedir="${build}/classes"/>
 	</target>
+
+
+
     <target name="ejecutar.aplicacion" depends="empaquetar">
         <java classname="fiuba.algo3.control.GpsChallenge" fork="true">
             <classpath refid="classpath" />
