@@ -6,7 +6,7 @@ import fiuba.algo3.modelo.Cronometro;
 import javax.swing.*;
 import java.awt.*;
 
-public class VistaCronometro extends VistaMenu {
+public class VistaCronometro extends VistaMenu implements Runnable {
 
     public Cronometro unCronometro = new Cronometro();
     JLabel vistaTiempo;
@@ -23,31 +23,10 @@ public class VistaCronometro extends VistaMenu {
 
     }
 
-
-    /** refactor; el modelo no conosca la vista **/
-    /*Thread hilo;
-
-    public void comenzarVista() {
-
-        this.hilo = new Thread() {
-            public void run(){
-
-                try {
-                    vistaTiempo.setText(unCronometro.devolverTiempoComoString());
-                    Thread.sleep(10);
-
-                } catch (Exception e) {}
-            }
-        };
-
-        this.hilo.start();
-
-    }*/
-
-    public void setText (String texto) {
+    /*public void setText (String texto) {
 
         this.vistaTiempo.setText(texto);
-    }
+    }*/
 
     public void setVisible(boolean visibilidad) {
 
@@ -59,4 +38,36 @@ public class VistaCronometro extends VistaMenu {
 
         return this.vistaTiempo.isVisible();
     }
+
+    private boolean estaEnEjecucion;
+    private Thread hilo;
+
+    public boolean estaEnEjecucion(){
+        return this.estaEnEjecucion;
+    }
+
+    public void comenzarAnimacion() {
+        this.estaEnEjecucion = true;
+        this.hilo = new Thread(this);
+        this.hilo.start();
+    }
+
+    public void detenerAnimacion() {
+        this.estaEnEjecucion = false;
+        this.hilo.interrupt();
+    }
+
+    public void run(){
+
+        estaEnEjecucion = true;
+        while (estaEnEjecucion) {
+            vistaTiempo.setText(unCronometro.devolverTiempoComoString());
+
+            try {
+                Thread.sleep(10);
+            } catch (Exception e) { System.out.println("interrupcion a la vistaCronometro");}
+
+        }
+    }
+
 }

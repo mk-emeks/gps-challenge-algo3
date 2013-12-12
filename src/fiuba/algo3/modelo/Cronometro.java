@@ -10,13 +10,12 @@ public class Cronometro implements Runnable {
     private Conversor donConversor;
     private boolean estaEnEjecucion;
 
-    private VistaCronometro vistaTiempo;
+    //private VistaCronometro vistaTiempo;
     private Thread hilo;
 
-    /** el unico lugar donde se cochinea la vista: por ahora **/
-    public void setVistaCronometro(VistaCronometro unVista) {
+    /*public void setVistaCronometro(VistaCronometro unVista) {
         this.vistaTiempo = unVista;
-    }
+    }*/
 
     public Cronometro() {
 
@@ -48,22 +47,21 @@ public class Cronometro implements Runnable {
     }
 
     public void run(){
-        try {
-            estaEnEjecucion = true;
-            while (estaEnEjecucion) {
 
-                this.contar();
-                vistaTiempo.setText(this.devolverTiempoComoString());
+        estaEnEjecucion = true;
+        while (estaEnEjecucion) {
 
-                try {
-                    hilo.sleep(850);
-                } catch (InterruptedException e) {
-                    System.out.println("interrupcion al cronometro");
-                    //e.printStackTrace();
-                }
+            this.contar();
+            //vistaTiempo.setText(this.devolverTiempoComoString());
 
+            try {
+                hilo.sleep(850);
+            } catch (InterruptedException e) {
+                System.out.println("interrupcion al cronometro");
             }
-        } catch(Exception e){}
+
+        }
+
     }
 
     public void contar() {
@@ -71,7 +69,7 @@ public class Cronometro implements Runnable {
         this.segundos++;
     }
 
-    public synchronized String devolverTiempoComoString() { //throws Exception {
+    public synchronized String devolverTiempoComoString() {
         return this.donConversor.devolverTiempoComoString(this.segundos);
     }
 
@@ -90,7 +88,6 @@ public class Cronometro implements Runnable {
         int segundosASumar = ((this.tiempoEnSegundos() * unPorcentaje) / 100);
         this.sumarSegundos(segundosASumar);
     }
-
 
     public int errorEnSegundos() {
         return this.errorEnSegundos;
