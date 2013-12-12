@@ -301,7 +301,7 @@ public class GpsChallenge {
 
         /** musica de fondo, tiene que ir al final **/
 
-        MusicaDeFondo.playMusic();
+        //MusicaDeFondo.playMusic();
 
     }
 
