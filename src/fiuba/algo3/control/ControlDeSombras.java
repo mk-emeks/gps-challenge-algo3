@@ -48,10 +48,7 @@ public class ControlDeSombras {
 
                 } catch (Exception e) {/*nunca va ser invalida, ya que entro en el if*/}
 
-                this.esclarecerVision(posicionSombra,new DireccionArriba());
-                this.esclarecerVision(posicionSombra,new DireccionAbajo());
-                this.esclarecerVision(posicionSombra,new DireccionDerecha());
-                this.esclarecerVision(posicionSombra,new DireccionIzquierda());
+                this.esclarecerAlrededorConVecindad(posicionSombra);
 
                 break;
             }
@@ -59,26 +56,24 @@ public class ControlDeSombras {
 
     }
 
-    /** ACEPTA MODIFICACIONES **/
-    /** quita la niebla de dos sombras consecutivas ( respecto de una posicion la dos que le sigan
-     *  en determinada direccion **/
-    private void esclarecerVision( Posicion posicion , Direccion unaDireccion) {
+    /** quita la niebla de n posiciones consecutivas en una direccion, respecto de la posicion que se le pase**/
+    private void esclarecerVision( Posicion posicion , Direccion unaDireccion, int cantidadDeSombrasConsecutivasAEsclarecer) {
 
         Posicion posicionDeLaDireccion = unaDireccion.devolverComoPosicion();
-        Posicion posicionSumada = posicion.sumar(posicionDeLaDireccion);
+        Posicion posicionIterada = posicion.sumar(posicionDeLaDireccion);
+        for (int i=0 ; i<cantidadDeSombrasConsecutivasAEsclarecer ; i++) {
 
-        try {
+            try {
+                this.neblina.getVistaSombra( posicionIterada.sumar(posicionDeLaDireccion.multiplicarPorEscalar(i))).quitarNeblina();
+            } catch (Exception e1) { /*System.out.println("no hay rango de vision en esta direccion");*/}
 
-            this.neblina.getVistaSombra( posicionSumada ).quitarNeblina();
-            this.neblina.getVistaSombra(posicionSumada.sumar(posicionDeLaDireccion)).quitarNeblina();
-
-        } catch (Exception e) {
-            //System.out.println("no hay rango de vision en esta direccion");
         }
 
     }
 
-    private void esclarecerAlrededor(Posicion unaPosicion) {
+    private void esclarecerAlrededorSimple(Posicion unaPosicion) {
+
+        int nSombrasConsecutivas = 1;
 
         try {
 
@@ -86,23 +81,56 @@ public class ControlDeSombras {
 
         } catch (Exception e) {/*nunca va ser invalida, ya que entro en el if*/}
 
-        this.esclarecerVision(unaPosicion,new DireccionArriba());
-        this.esclarecerVision(unaPosicion,new DireccionAbajo());
-        this.esclarecerVision(unaPosicion,new DireccionDerecha());
-        this.esclarecerVision(unaPosicion,new DireccionIzquierda());
+        this.esclarecerVision(unaPosicion,new DireccionArriba(),nSombrasConsecutivas);
+        this.esclarecerVision(unaPosicion, new DireccionAbajo(),nSombrasConsecutivas);
+        this.esclarecerVision(unaPosicion,new DireccionDerecha(),nSombrasConsecutivas);
+        this.esclarecerVision(unaPosicion,new DireccionIzquierda(),nSombrasConsecutivas);
+
+    }
+
+    private void esclarecerAlrededorConVecindad(Posicion unaPosicion) {
+
+    int nSombrasConsecutivas = 2;
+
+    Direccion arriba = new DireccionArriba();
+    Direccion abajo= new DireccionAbajo();
+    Direccion derecha = new DireccionDerecha();
+    Direccion izquierda = new DireccionIzquierda();
+
+
+    // esclarece arriba y sus dos costados
+    this.esclarecerVision(unaPosicion,arriba,nSombrasConsecutivas);
+    this.esclarecerVision(unaPosicion.sumar(arriba.devolverComoPosicion()),derecha,nSombrasConsecutivas);
+    this.esclarecerVision(unaPosicion.sumar(arriba.devolverComoPosicion()),izquierda,nSombrasConsecutivas);
+
+    // esclarece abajo y sus dos costados
+    this.esclarecerVision(unaPosicion,abajo,nSombrasConsecutivas);
+    this.esclarecerVision(unaPosicion.sumar(abajo.devolverComoPosicion()),derecha,nSombrasConsecutivas);
+    this.esclarecerVision(unaPosicion.sumar(abajo.devolverComoPosicion()),izquierda,nSombrasConsecutivas);
+
+    // esclarece hacia la derecha y sus dos costados
+    this.esclarecerVision(unaPosicion,derecha,2);
+    this.esclarecerVision(unaPosicion.sumar(derecha.devolverComoPosicion()),arriba,nSombrasConsecutivas);
+    this.esclarecerVision(unaPosicion.sumar(derecha.devolverComoPosicion()),abajo,nSombrasConsecutivas);
+
+    // esclarece hacia la izquierda y sus dos costados
+    this.esclarecerVision(unaPosicion,izquierda,2);
+    this.esclarecerVision(unaPosicion.sumar(izquierda.devolverComoPosicion()),arriba,nSombrasConsecutivas);
+    this.esclarecerVision(unaPosicion.sumar(izquierda.devolverComoPosicion()),abajo,nSombrasConsecutivas);
+
     }
 
     private void esclareceInicio() {
 
         Posicion inicio = Mapa.getMapa().getInicio();
-        this.esclarecerAlrededor(inicio);
+        this.esclarecerAlrededorSimple(inicio);
 
     }
 
     private void esclarecerLLegada() {
 
         Posicion llegada = Mapa.getMapa().getLlegada();
-        this.esclarecerAlrededor(llegada);
+        this.esclarecerAlrededorSimple(llegada);
 
     }
 
