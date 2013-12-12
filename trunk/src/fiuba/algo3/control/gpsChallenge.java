@@ -140,17 +140,15 @@ public class gpsChallenge {
 
 
         /** Stage 3 : Juego en Accion --------------------------------------------------------------------**/
-        /** todo **/
 
-        /** botonAnimadoCronometro **/
-
-        /** vistaCronometro **/
+        /**  textoCronometro **/
         Texto textoCronometro = new Texto(unMarco,40,170,380,40);
         textoCronometro.setMensaje("Tiempo");
         textoCronometro.setVisible(false);
 
+        /** vistaCronometro **/
         VistaCronometro vistaCronometro = new VistaCronometro(unJuego.getPiloto().getCronometro(),unMarco,100,220,300,40);
-        unJuego.asignarVistaAlCronometro(vistaCronometro);
+        unJuego.asignarVistaAlCronometro(vistaCronometro); /**!**/
         vistaCronometro.setVisible(false);
 
 
@@ -310,4 +308,3 @@ public class gpsChallenge {
 
 
 }
-

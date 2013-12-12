@@ -83,12 +83,6 @@ public class Juego {
 
     }
 
-    public void asignarVistaAlCronometro( VistaCronometro unaVistaCronometro) {
-
-        this.vistaCronometro = unaVistaCronometro;
-
-    }
-
     /** CONSTRUCTOR **/
     public Juego() {
 
@@ -100,6 +94,13 @@ public class Juego {
     public void asignarZonaDeJuego(JPanel unaZonaDeJuego) {
 
         this.zonaDeJuego = unaZonaDeJuego;
+
+    }
+
+    /**!**/
+    public void asignarVistaAlCronometro( VistaCronometro unaVistaCronometro) {
+
+        this.vistaCronometro = unaVistaCronometro;
 
     }
 
@@ -131,10 +132,7 @@ public class Juego {
 
     private void comenzar() {
 
-        /**!**/
-        this.pilotin.getCronometro().setVistaCronometro(this.vistaCronometro); //asignamos vista al cronometro
-
-        //this.pilotin.getCronometro().iniciar();
+        this.vistaCronometro.comenzarAnimacion(); /**! solo se necesita aca**/
         this.pilotin.getCronometro().comenzarCronometro();
 
         this.gameLoop.comenzarJuego();
@@ -159,8 +157,6 @@ public class Juego {
         if (this.gameLoop.estaEnEjecucion()) {
 
             this.pilotin.detenerVehiculo(); //Si queremos que el juego arranque en pause es necesario
-
-            //this.pilotin.getCronometro().pausar();
             this.pilotin.getCronometro().detenerCronometro();
 
             this.gameLoop.detenerJuego();
@@ -173,8 +169,6 @@ public class Juego {
         if ( !(this.gameLoop.estaEnEjecucion()) ) {
 
             this.pilotin.arrancarVehiculo(); //Si queremos que el juego arranque en pause es necesario
-
-            //this.pilotin.getCronometro().reanudar();
             this.pilotin.getCronometro().comenzarCronometro();
 
             this.gameLoop.comenzarJuego();
@@ -184,7 +178,6 @@ public class Juego {
 
     public void finalizar() {
 
-        //this.pilotin.getCronometro().pausar();
         this.pilotin.getCronometro().detenerCronometro();
 
         this.gameLoop.detenerJuego();
@@ -228,7 +221,6 @@ public class Juego {
 
         /**!**/
         this.pilotin.getCronometro().reset();
-
 
         this.gameLoop.destruir();
         this.gameLoop = null;
