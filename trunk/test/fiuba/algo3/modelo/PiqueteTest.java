@@ -131,18 +131,18 @@ public class PiqueteTest {
         unaMoto.posicionarEnElMapa();
         unMotoquero.arrancarVehiculo();
 
-        Pozo unPozo = new Pozo(new Posicion(2,2));
-        unPozo.posicionarEnElMapa();
+        Piquete unPiquete = new Piquete(new Posicion(2,2));
+        unPiquete.posicionarEnElMapa();
 
-        int numeroPenalizacion = unPozo.cantidadDeTurnosPenalizado();
+        int numeroPenalizacion = unPiquete.cantidadDeTurnosPenalizado();
 
         for(int i =1; i<=numeroPenalizacion;i++) {
-            unPozo.aplicarA(unMotoquero, (EstadoMoto)unaMoto.getEstado()); //Le aseguro al compilador que es un EstadoMoto
+            unPiquete.aplicarA(unMotoquero, (EstadoMoto)unaMoto.getEstado()); //Le aseguro al compilador que es un EstadoMoto
             unMotoquero.conducir();
             Assert.assertTrue(unMotoquero.getVehiculo().getPosicion().equals(posicionInicial));
         }
         /**Ahora no deberia afectarme el piquete **/
-        unPozo.aplicarA(unMotoquero, (EstadoMoto)unaMoto.getEstado());
+        unPiquete.aplicarA(unMotoquero, (EstadoMoto)unaMoto.getEstado());
         unMotoquero.conducir();
         Assert.assertTrue(unMotoquero.getVehiculo().getPosicion().equals(new Posicion(1,2)));
     }

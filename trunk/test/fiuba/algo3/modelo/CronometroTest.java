@@ -1,4 +1,4 @@
-/*package fiuba.algo3.modelo;
+package fiuba.algo3.modelo;
 
 
 import junit.framework.Assert;
@@ -13,16 +13,16 @@ public class CronometroTest {
     Cronometro cronometroDePueba;
     int errorMaximo;
     int errorMinimo;
-    Thread hiloTiempo; */
+    Thread hiloTiempo;
 
-    /*
+
     @Before
     public void setUp() {
         cronometroDePueba = new Cronometro();
         hiloTiempo = new Thread(){
             public void run(){
                 try {
-                    while (!cronometroDePueba.estaPausado()) {
+                    while (!cronometroDePueba.estaEnEjecucion()) {
 
                         Thread.sleep(850);
                         cronometroDePueba.contar();
@@ -32,38 +32,38 @@ public class CronometroTest {
                 } catch(Exception e){}
             }
         };
-    }  */
+    }
 
-   /* @After
+    @After
     public void resetear() throws Exception {
         this.cronometroDePueba.reset();
-    }*/
+    }
 
-    /*@Test
+    @Test
     public void testDeberiaMarcarLosSegundosQuePasen() throws Exception {
 
-        this.cronometroDePueba.iniciar();
-        Thread.currentThread().sleep(10000); //Cuenta 10 seg
-        this.cronometroDePueba.pausar();
+        this.cronometroDePueba.comenzarCronometro();
+        Thread.currentThread().sleep(2000); //Cuenta 10 seg
+        this.cronometroDePueba.detenerCronometro();
 
         //Errores bordes, tiempo transcurrido + - el error del cronometro.
-        this.errorMaximo = 10 + this.cronometroDePueba.errorEnSegundos();
-        this.errorMinimo = 10 - this.cronometroDePueba.errorEnSegundos();
+        this.errorMaximo = 2 + this.cronometroDePueba.errorEnSegundos();
+        this.errorMinimo = 2 - this.cronometroDePueba.errorEnSegundos();
 
         Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) <= errorMaximo);
         Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) >= errorMinimo);
-    }*/
-    /*
+    }
+
     @Test
     public void testDeberiaPausarse() throws Exception {
 
-        this.cronometroDePueba.iniciar(hiloTiempo);
-        Thread.currentThread().sleep(10000); //Transcurren 10 seg
-        this.cronometroDePueba.pausar(hiloTiempo);
+        this.cronometroDePueba.comenzarCronometro();
+        Thread.currentThread().sleep(3000); //Transcurren 10 seg
+        this.cronometroDePueba.detenerCronometro();
 
         //Errores bordes, tiempo transcurrido + - el error del cronometro.
-        this.errorMaximo = 10 + this.cronometroDePueba.errorEnSegundos();
-        this.errorMinimo = 10 - this.cronometroDePueba.errorEnSegundos();
+        this.errorMaximo = 3 + this.cronometroDePueba.errorEnSegundos();
+        this.errorMinimo = 3 - this.cronometroDePueba.errorEnSegundos();
 
         Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) <= errorMaximo);
         Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) >= errorMinimo);
@@ -77,26 +77,26 @@ public class CronometroTest {
     @Test
     public void testDeberiaReanudarse() throws Exception {
 
-        this.cronometroDePueba.iniciar(hiloTiempo);
-        Thread.currentThread().sleep(9000); //Transcurren 9 seg
-        this.cronometroDePueba.pausar(hiloTiempo);
+        this.cronometroDePueba.comenzarCronometro();
+        Thread.currentThread().sleep(2000); //Transcurren 9 seg
+        this.cronometroDePueba.detenerCronometro();
 
         //Errores bordes, tiempo transcurrido + - el error del cronometro.
-        this.errorMaximo = 9 + this.cronometroDePueba.errorEnSegundos();
-        this.errorMinimo = 9 - this.cronometroDePueba.errorEnSegundos();
+        this.errorMaximo = 2 + this.cronometroDePueba.errorEnSegundos();
+        this.errorMinimo = 2 - this.cronometroDePueba.errorEnSegundos();
 
         Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) <= errorMaximo);
         Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) >= errorMinimo);
 
-        Thread.currentThread().sleep(3000);  //Sigue pausado
+        Thread.currentThread().sleep(1000);  //Sigue pausado
         Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) <= errorMaximo);
         Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) >= errorMinimo);
 
-        this.cronometroDePueba.reanudar(hiloTiempo);
-        Thread.currentThread().sleep(4000); //Reanudo y dejo correr 4 segundos.
+        this.cronometroDePueba.comenzarCronometro();
+        Thread.currentThread().sleep(1000); //Reanudo y dejo correr 4 segundos.
 
-        this.errorMaximo = errorMaximo + 4;   //Se acumula el error porque sigue transcurriendo tiempo.
-        this.errorMinimo = errorMinimo + 4;
+        this.errorMaximo = errorMaximo + 1;   //Se acumula el error porque sigue transcurriendo tiempo.
+        this.errorMinimo = errorMinimo + 1;
 
         Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) <= errorMaximo);
         Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) >= errorMinimo);
@@ -105,33 +105,33 @@ public class CronometroTest {
     @Test
     public void testDeberiaResetiarse() throws Exception {
 
-        this.cronometroDePueba.iniciar(hiloTiempo);
-        Thread.currentThread().sleep(10000); //Cuenta 10 seg
-        this.cronometroDePueba.pausar(hiloTiempo);
+        this.cronometroDePueba.comenzarCronometro();
+        Thread.currentThread().sleep(2000); //Cuenta 10 seg
+        this.cronometroDePueba.detenerCronometro();
 
         //Errores bordes, tiempo transcurrido + - el error del cronometro.
-        this.errorMaximo = 10 + this.cronometroDePueba.errorEnSegundos();
-        this.errorMinimo = 10 - this.cronometroDePueba.errorEnSegundos();
+        this.errorMaximo = 2 + this.cronometroDePueba.errorEnSegundos();
+        this.errorMinimo = 2 - this.cronometroDePueba.errorEnSegundos();
 
         Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) <= errorMaximo);
         Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) >= errorMinimo);
 
-        this.cronometroDePueba.reset(hiloTiempo);
-        Thread.currentThread().sleep(5000); //Transcurre mas tiempo pero como esta reseteado deberia ser 0 el tiempo.
+        this.cronometroDePueba.reset();
+        Thread.currentThread().sleep(1000); //Transcurre mas tiempo pero como esta reseteado deberia ser 0 el tiempo.
 
         Assert.assertEquals(0,this.cronometroDePueba.tiempoEnSegundos());
     }
 
 
-   @Test
+    @Test
     public void testDeberiaPoderIncrementarUnPorcentajeDeTiempo() throws Exception {
 
-       this.cronometroDePueba.iniciar(hiloTiempo);
-       Thread.currentThread().sleep(10000); //Pasan 10 seg
+       this.cronometroDePueba.comenzarCronometro();
+       Thread.currentThread().sleep(2000); //Pasan 10 seg
 
        //Errores bordes, tiempo transcurrido + - el error del cronometro.
-       this.errorMaximo = 10 + this.cronometroDePueba.errorEnSegundos();
-       this.errorMinimo = 10 - this.cronometroDePueba.errorEnSegundos();
+       this.errorMaximo = 2 + this.cronometroDePueba.errorEnSegundos();
+       this.errorMinimo = 2 - this.cronometroDePueba.errorEnSegundos();
 
        Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) <= errorMaximo);
        Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) >= errorMinimo);
@@ -143,6 +143,6 @@ public class CronometroTest {
 
        Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) <= errorMaximo);
        Assert.assertTrue((this.cronometroDePueba.tiempoEnSegundos()) >= errorMinimo);
-    } **/
+    }
 
-//}
+}

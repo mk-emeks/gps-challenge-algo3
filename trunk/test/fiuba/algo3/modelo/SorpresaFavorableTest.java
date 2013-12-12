@@ -1,4 +1,4 @@
-/**package fiuba.algo3.modelo;
+package fiuba.algo3.modelo;
 
 import junit.framework.Assert;
 import org.junit.After;
@@ -42,17 +42,36 @@ public class SorpresaFavorableTest {
         Sorpresa unaSorpresa = new SorpresaFavorable(unaPosicion);
 
         Piloto schumy = new Piloto();
-        //schumy.getCronometro().iniciar(new Thread());
-        //schumy.getCronometro().pausar(new Thread());
 
         int tiempoPrueba = 500;
-        int tiempoRestado = (int)(tiempoPrueba*0.2);
+        int tiempoRestado = (int)(tiempoPrueba*0.4);
 
         schumy.getCronometro().sumarSegundos(tiempoPrueba);
-        unaSorpresa.aplicarA(schumy); // -20%
+        unaSorpresa.aplicarA(schumy); // -40%
 
         Assert.assertTrue(schumy.getCronometro().tiempoEnSegundos() == (tiempoPrueba-tiempoRestado));
 
     }
 
-} **/
+    @Test
+    public void testDeberiaPasarAEstarAplicadaAlRestarleTiempoAlCronometro() throws Exception {
+
+        Posicion unaPosicion = new Posicion(2,2);
+        Sorpresa unaSorpresa = new SorpresaFavorable(unaPosicion);
+
+        Piloto schumy = new Piloto();
+
+        Vehiculo unAuto = new Vehiculo(new Posicion(2,2),new DireccionArriba(),new EstadoAuto());
+        schumy.asignarVehiculo(unAuto);
+
+        int tiempoPrueba = 500;
+
+        schumy.getCronometro().sumarSegundos(tiempoPrueba);
+        unaSorpresa.actualizar(schumy); // -40%
+
+        Assert.assertTrue(unaSorpresa.aplicado());
+
+    }
+
+
+}

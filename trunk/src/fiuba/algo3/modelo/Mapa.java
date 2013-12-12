@@ -134,7 +134,7 @@ public class Mapa {
     }
 
     public Vehiculo getVehiculo() {
-        return this.getVehiculo();
+        return this.contenidoMapa.getVehiculo();
     }
 
     /** fin prestaciones **/

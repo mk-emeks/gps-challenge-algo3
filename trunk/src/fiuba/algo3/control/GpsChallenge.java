@@ -18,7 +18,7 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 
 
-public class gpsChallenge {
+public class GpsChallenge {
 
     public static void main(String[] argv) {
 
