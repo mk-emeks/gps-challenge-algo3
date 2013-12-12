@@ -89,5 +89,20 @@ public class SorpresaCambioDeVehiculoTest {
 
     }
 
+    @Test
+    public void testDeberiaPasarAEstarAplicadaDespuesDeEfectuarse() {
+
+        Posicion unaPosicion = new Posicion(2,2);
+        Sorpresa unaSorpresa = new SorpresaCambioDeVehiculo(unaPosicion);
+        Estado estadoInicial = new Estado4x4();
+
+        Vehiculo unVehiculo = new Vehiculo(unaPosicion,new DireccionDerecha(),estadoInicial);
+        String nombrePiloto = "Pilotin";
+        Piloto pilotin = new Piloto(unVehiculo,nombrePiloto);
+
+        unaSorpresa.actualizar(pilotin);
+        Assert.assertTrue(unaSorpresa.aplicado());
+
+    }
 
 }

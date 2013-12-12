@@ -1,25 +1,18 @@
 package fiuba.algo3.modelo;
 
 import junit.framework.Assert;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 
-public class MapaTest {
+public class ContenidoMapaTest {
 
-    Mapa map;
+    ContenidoMapa map;
 
     @Before
     public void setUp() {
-        map = Mapa.getMapa();
-        map.cargarContenidoMapa();
-    }
-
-    @After
-    public void limpiezaMapa() {
-        Mapa.limpiar();
+        map = new ContenidoMapa();
     }
 
     @Test
@@ -34,7 +27,7 @@ public class MapaTest {
     }
 
     @Rule
-    public  ExpectedException thrown = ExpectedException.none();
+    public ExpectedException thrown = ExpectedException.none();
     @Test
     public void testDeberiaLanzarExcepcionAlAgregarDeVueltaLaMismaUnaPosicion() throws Exception {
 
@@ -91,7 +84,6 @@ public class MapaTest {
 
     }
 
-
     @Test
     public void testDeberiaUbicarAlVehiculo() throws Exception {
 
@@ -101,7 +93,6 @@ public class MapaTest {
 
         Vehiculo auto = new Vehiculo(unaPosicion ,new DireccionDerecha(),new EstadoAuto());
         map.ubicar(auto);
-
         Assert.assertEquals(map.getVehiculo(),auto);
 
     }
@@ -121,3 +112,4 @@ public class MapaTest {
 
 
 }
+

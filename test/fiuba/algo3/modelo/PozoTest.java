@@ -131,7 +131,7 @@ public class PozoTest {
     }
 
     @Test
-    public void testDeberiaPoderPenalizarAUnVehiculo4x4() throws Exception{
+    public void testNoDeberiaPenalizarAUnVehiculo4x4() throws Exception{
         EditorMapa unEditor = new EditorMapa();
         //Creo un mapa mas grande
         unEditor.editarMapaDeDimensiones(6, 3);

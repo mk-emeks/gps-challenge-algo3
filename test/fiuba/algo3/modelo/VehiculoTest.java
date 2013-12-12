@@ -1,4 +1,4 @@
-/**package fiuba.algo3.modelo;
+package fiuba.algo3.modelo;
 
 import junit.framework.Assert;
 import org.junit.After;
@@ -20,6 +20,7 @@ public class VehiculoTest {
     @After
     public void limpiezaMapa() {
         Mapa.limpiar();
+
     }
 
     @Test
@@ -39,8 +40,11 @@ public class VehiculoTest {
     @Test
     public void testDeberiaPonerAlVehiculoEnUnMapa() throws Exception {
 
+        map.cargarContenidoMapa();
+
         EditorMapa editor = new EditorMapa();
         editor.editarMapaMinimoJugable();
+
         Posicion unaPosicion = new Posicion(1,2);
         Direccion derecha = new DireccionDerecha();
         EstadoAuto unEstadoAuto = new EstadoAuto();
@@ -56,6 +60,7 @@ public class VehiculoTest {
     @Test
     public void testNoDeberiaPonerAlVehiculoEnUnMapaYaQueLaPosicionEsInvalida() throws Exception {
 
+        map.cargarContenidoMapa();
         EditorMapa editor = new EditorMapa();
         editor.editarMapaMinimoJugable();
         Posicion unaPosicion = new Posicion(1,1);
@@ -105,4 +110,4 @@ public class VehiculoTest {
 
         Assert.assertTrue(unVehiculo.getPosicion().equals(new Posicion(1,2))); // creo que no llega a ejecutarse.. :S
     }
-}**/
+}

@@ -179,6 +179,7 @@ public class Juego {
     public void finalizar() {
 
         this.pilotin.getCronometro().detenerCronometro();
+        this.vistaCronometro.detenerAnimacion(); //!
 
         this.gameLoop.detenerJuego();
         this.juegoTerminado = true;

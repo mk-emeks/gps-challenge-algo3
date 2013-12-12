@@ -12,7 +12,7 @@ public class ContenidoMapa implements Serializable {
 
     private ArrayList<Posicion> posicionesValidas;
 
-    transient private Vehiculo vehiculo;  /** dudoso uso **/
+    transient private Vehiculo vehiculo;  /** NO SIRVE DE NADA (OBSOLETO) **/
     transient private Posicion inicio; /** new  -> ESTA SIN TESTIAR, PERO ES LO MISMO QUE LA LLEGADA **/
     transient private Posicion llegada;
     private ArrayList<Aplicable> aplicables;

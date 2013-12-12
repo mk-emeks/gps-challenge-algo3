@@ -126,7 +126,7 @@
 
 	<target name="compilar.paquete" depends="test">
 		<javac srcdir="src" destdir="${build}/classes" debug="no">
-        <classpath refid="classpath" />
+        <classpath refid="classpath"/>
         </javac>
 	</target>
 
